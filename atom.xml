@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yong-s.github.io</id>
     <title>YongsBlog</title>
-    <updated>2021-05-05T13:01:57.881Z</updated>
+    <updated>2021-05-15T07:35:49.787Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yong-s.github.io"/>
     <link rel="self" href="https://yong-s.github.io/atom.xml"/>
-    <subtitle>温故而知新，技术、搞钱、生活......</subtitle>
+    <subtitle>温故而知新，手艺人、搞钱、生活......</subtitle>
     <logo>https://yong-s.github.io/images/avatar.png</logo>
     <icon>https://yong-s.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, YongsBlog</rights>
@@ -205,6 +205,11 @@ sudo journalctl -u clash.service -f
 <p><code>docker exec -it jd_scripts sh -c &quot;docker_entrypoint.sh&quot;</code> 手动更新jd_scripts仓库最新脚本</p>
 <p><code>docker exec -it jd_scripts /bin/sh</code> 仅进入容器命令</p>
 <p><code>rm -rf logs/*.log</code> 删除logs文件夹里面所有的日志文件</p>
+<ul>
+<li>[1] <a href="https://github.com/wisz2021/jd_docker">jd_docker</a></li>
+<li>[2] <a href="https://github.com/yuanlam/Clash-Linux">clash安装参考</a></li>
+<li>[3] <a href="https://kebingzao.com/2019/02/22/docker-container-proxy/">docker内代理参考</a></li>
+</ul>
 ]]></content>
     </entry>
 </feed>

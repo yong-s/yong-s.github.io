@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1620218379572">
+<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1621064118339">
 <link rel="stylesheet" href="https://yong-s.github.io/styles/main.css">
 
 
@@ -22,6 +22,15 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-175460382-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-175460382-3');
+</script>
 
 
     <meta name="description" content="使用docker部署自动领金豆bot脚本
@@ -41,7 +50,7 @@ docker-compose： 1.27.4
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://yong-s.github.io">
-        <img src="https://yong-s.github.io/images/avatar.png?v=1620218379572" class="site-logo">
+        <img src="https://yong-s.github.io/images/avatar.png?v=1621064118339" class="site-logo">
         <h1 class="site-title">YongsBlog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -95,7 +104,7 @@ docker-compose： 1.27.4
       
     </div>
     <div class="site-description">
-      温故而知新，技术、搞钱、生活......
+      温故而知新，手艺人、搞钱、生活......
     </div>
     <div class="site-footer">
       Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://yong-s.github.io/atom.xml" target="_blank">RSS</a>
@@ -298,6 +307,11 @@ sudo journalctl -u clash.service -f
 <p><code>docker exec -it jd_scripts sh -c &quot;docker_entrypoint.sh&quot;</code> 手动更新jd_scripts仓库最新脚本</p>
 <p><code>docker exec -it jd_scripts /bin/sh</code> 仅进入容器命令</p>
 <p><code>rm -rf logs/*.log</code> 删除logs文件夹里面所有的日志文件</p>
+<ul>
+<li>[1] <a href="https://github.com/wisz2021/jd_docker">jd_docker</a></li>
+<li>[2] <a href="https://github.com/yuanlam/Clash-Linux">clash安装参考</a></li>
+<li>[3] <a href="https://kebingzao.com/2019/02/22/docker-container-proxy/">docker内代理参考</a></li>
+</ul>
 
             </div>
             
