@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" >
 
-<title>云服务器docker搭建自动领京豆bot互动指令 | YongsBlog</title>
+<title>云服务器docker搭建自动领京豆bot互动指令 | Yongs的网络日志</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1621064118339">
+<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1622977919634">
 <link rel="stylesheet" href="https://yong-s.github.io/styles/main.css">
 
 
@@ -42,6 +42,7 @@ docker-compose： 1.27.4
 1、服务器安装docker，docker-compose
 推荐使用centos..." />
     <meta name="keywords" content="docker,centos,脚本,京豆,羊毛" />
+	<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
     <div id="app" class="main">
@@ -50,8 +51,8 @@ docker-compose： 1.27.4
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://yong-s.github.io">
-        <img src="https://yong-s.github.io/images/avatar.png?v=1621064118339" class="site-logo">
-        <h1 class="site-title">YongsBlog</h1>
+        <img src="https://yong-s.github.io/images/avatar.png?v=1622977919634" class="site-logo">
+        <h1 class="site-title">Yongs的网络日志</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
         <div class="line"></div>
@@ -104,7 +105,7 @@ docker-compose： 1.27.4
       
     </div>
     <div class="site-description">
-      温故而知新，手艺人、搞钱、生活......
+      手艺人、搞钱、剪片子、生活......
     </div>
     <div class="site-footer">
       Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://yong-s.github.io/atom.xml" target="_blank">RSS</a>
@@ -119,8 +120,9 @@ docker-compose： 1.27.4
             <h2 class="post-title">云服务器docker搭建自动领京豆bot互动指令</h2>
             <div class="post-date">2021-04-30</div>
             
-            <div class="post-content" v-pre>
-              <p>使用docker部署自动领金豆bot脚本</p>
+			 <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>
 <p>服务器：centos 8</p>
@@ -239,6 +241,82 @@ WantedBy=multi-user.target
 <pre><code class="language-shell">curl -I https://www.google.com
 </code></pre>
 <p>返回200即表示代理已经成功</p>
+<h5 id="5-自动更新订阅配置文件">5、自动更新订阅配置文件</h5>
+<blockquote>
+<p>通过shell脚本自动更新Clash在线配置</p>
+</blockquote>
+<p>通过systemctl来管理Clash的进程，对应<code>clash.service</code>文件，通过两个脚本<code>start-clash.sh</code>和<code>stop-clash.sh</code>来管理Clash的启停：</p>
+<p>把上面的配置文件修改下：</p>
+<pre><code class="language-bash">vim/usr/lib/systemd/system/clash.service
+</code></pre>
+<pre><code class="language-shell">[Unit]
+Description=clash proxy
+After=network.target
+
+[Service]
+WorkingDirectory=/当前用户目录/.config/clash
+Type=simple
+ExecStart=/当前用户目录/.config/clash/start-clash.sh
+ExecStop=/当前用户目录/.config/clash/stop-clash.sh
+Environment=&quot;HOME=/当前用户目录&quot;
+Environment=&quot;CLASH_URL=你的订阅链接&quot;
+
+[Install]
+WantedBy=multi-user.target
+
+</code></pre>
+<pre><code class="language-bash">vim /当前用户目录/.config/clash/start-clash.sh
+</code></pre>
+<pre><code class="language-bash">#!/bin/bash
+# save this file to ${HOME}/.config/clash/start-clash.sh
+
+# save pid file
+echo $$ &gt; ${HOME}/.config/clash/clash.pid
+
+diff ${HOME}/.config/clash/config.yaml &lt;(curl -s ${CLASH_URL})
+if [ &quot;$?&quot; == 0 ]
+then
+    /usr/bin/clash
+else
+    TIME=`date '+%Y-%m-%d %H:%M:%S'`
+    cp ${HOME}/.config/clash/config.yaml &quot;${HOME}/.config/clash/config.yaml.bak${TIME}&quot;
+    curl -L -o ${HOME}/.config/clash/config.yaml ${CLASH_URL}
+    /usr/bin/clash
+fi
+</code></pre>
+<pre><code class="language-bash">vim /当前用户目录/.config/clash/stop-clash.sh
+</code></pre>
+<pre><code class="language-bash">#!/bin/bash
+# save this file to ${HOME}/.config/clash/stop-clash.sh
+
+# read pid file
+PID=`cat ${HOME}/.config/clash/clash.pid`
+kill -9 ${PID}
+rm ${HOME}/.config/clash/clash.pid
+</code></pre>
+<p>配置添加完成后，如果你的clash 正在运行中，需要重新加载配置文件并重启</p>
+<pre><code class="language-bash">$ systemctl daemon-reload
+$ sudo systemctl restart clash.service
+</code></pre>
+<p>这样每次启动clash时就会自动更新配置文件了，接下来通过crontab 自动重启 clash.service实现自动更新节点</p>
+<pre><code class="language-bash">#新建shell文件
+vim restart-clash.sh
+</code></pre>
+<p>新增一条命令</p>
+<pre><code class="language-bash">#/bin/sh
+sudo systemctl restart clash.service
+
+</code></pre>
+<pre><code class="language-bash">chmod +x restart-clash.sh
+crontab -e
+#插入下面命令
+#每3小时重启一次
+0 */3 * * * restart-clash.sh
+#每分钟重启一次
+* * * * * restart-clash.sh
+</code></pre>
+<p>大功告成，可通过<code>tail -500f /var/log/cron</code>查看定时任务是否执行</p>
+<p><code>sudo systemctl status clash.service</code>  查看是否重启成功</p>
 <h3 id="4-docker内开代理">4、docker内开代理</h3>
 <p>由于主要用来使用tg-bot，故只检测tgapi即可</p>
 <p>1、判断宿主机可连接tgapi</p>
@@ -311,8 +389,38 @@ sudo journalctl -u clash.service -f
 <li>[1] <a href="https://github.com/wisz2021/jd_docker">jd_docker</a></li>
 <li>[2] <a href="https://github.com/yuanlam/Clash-Linux">clash安装参考</a></li>
 <li>[3] <a href="https://kebingzao.com/2019/02/22/docker-container-proxy/">docker内代理参考</a></li>
+<li>[4] <a href="https://akillcool.github.io/post/clash-with-auto-update-config/">clash自动更新订阅配置</a></li>
 </ul>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85dockerdocker-compose">1、服务器安装docker，docker-compose</a></li>
+<li><a href="#2-%E5%AE%89%E8%A3%85jd_scripts">2、安装jd_scripts</a></li>
+<li><a href="#3-%E5%BC%80%E4%BB%A3%E7%90%86%E6%9C%BA%E5%99%A8%E6%BF%80%E6%B4%BBtg-bot">3、开代理机器，激活tg-bot</a><br>
+*
+<ul>
+<li><a href="#1-%E4%B9%B0%E5%9B%BD%E5%86%85%E6%9C%BA%E5%99%A8%E6%8E%A8%E8%8D%90%E5%A4%A7%E5%8E%82%E7%9A%84">1、买国内机器，推荐大厂的</a></li>
+<li><a href="#2-%E5%AE%89%E8%A3%85clash">2、安装clash</a></li>
+<li><a href="#3-%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E5%AE%89%E8%A3%85%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF">3、创建配置文件、安装控制面板</a></li>
+<li><a href="#4-%E8%AE%BE%E7%BD%AEclash%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8">4、设置clash开机启动</a></li>
+<li><a href="#5-%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%AE%A2%E9%98%85%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">5、自动更新订阅配置文件</a></li>
+</ul>
+</li>
+<li><a href="#4-docker%E5%86%85%E5%BC%80%E4%BB%A3%E7%90%86">4、docker内开代理</a></li>
+<li><a href="#clash%E7%9B%B8%E5%85%B3%E7%9A%84%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4">Clash相关的管理命令</a></li>
+<li><a href="#docker%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4">docker相关命令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
             </div>
             
               <div class="tag-container">
@@ -339,6 +447,8 @@ sudo journalctl -u clash.service -f
                 
               </div>
             
+			
+        </div>
             
 
             
@@ -348,13 +458,11 @@ sudo journalctl -u clash.service -f
 
               
             
-
+			
           </div>
-
-        </div>
+		
       </div>
     </div>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script type="application/javascript">
 
@@ -402,5 +510,46 @@ var app = new Vue({
 
 
 
+	
+	<script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
   </body>
 </html>

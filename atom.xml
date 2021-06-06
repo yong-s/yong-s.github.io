@@ -1,15 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yong-s.github.io</id>
-    <title>YongsBlog</title>
-    <updated>2021-05-15T07:35:49.787Z</updated>
+    <title>Yongs的网络日志</title>
+    <updated>2021-06-06T11:13:09.997Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yong-s.github.io"/>
     <link rel="self" href="https://yong-s.github.io/atom.xml"/>
-    <subtitle>温故而知新，手艺人、搞钱、生活......</subtitle>
+    <subtitle>手艺人、搞钱、剪片子、生活......</subtitle>
     <logo>https://yong-s.github.io/images/avatar.png</logo>
     <icon>https://yong-s.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, YongsBlog</rights>
+    <rights>All rights reserved 2021, Yongs的网络日志</rights>
+    <entry>
+        <title type="html"><![CDATA[girde simple修改添加支持侧边栏目录]]></title>
+        <id>https://yong-s.github.io/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</id>
+        <link href="https://yong-s.github.io/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/">
+        </link>
+        <updated>2021-06-06T10:50:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>修改主题文件支持侧边栏目录</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>修改主题文件支持侧边栏目录</p>
+<!-- more -->
+<p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
+<h3 id="1-修改postejs文件">1、修改post.ejs文件</h3>
+<p><code>head</code>新增</p>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<p>搜索<code>&lt;%- post.content %&gt;</code>复制一下代码覆盖copy</p>
+<pre><code class="language-html">&lt;div class=&quot;post-content-wrapper&quot;&gt;
+  &lt;div class=&quot;post-content&quot; v-pre&gt;
+    &lt;%- post.content %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;toc-container&quot;&gt;
+   &lt;%- post.toc %&gt;
+ &lt;/div&gt;
+</code></pre>
+<p>新增高亮js</p>
+<pre><code class="language-javascript">&lt;script&gt;
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(&quot;.markdownIt-TOC a&quot;);
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener(&quot;scroll&quot;, () =&gt; {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener(&quot;scroll&quot;, event =&gt; {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) =&gt; {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop &lt;= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop &gt; fromTop) {
+                link.classList.add(&quot;current&quot;);
+              } else {
+                link.classList.remove(&quot;current&quot;);    
+              }
+            } else {
+              link.classList.add(&quot;current&quot;);
+            }
+          } else {
+            link.classList.remove(&quot;current&quot;);
+          }
+        });
+      });
+
+    &lt;/script&gt;
+</code></pre>
+<h3 id="2-客户端新增自定义css">2、客户端新增自定义css</h3>
+<pre><code class="language-css">.toc-container  .markdownIt-TOC {
+    position: sticky;
+    top: 32px;
+    width: 200px;
+    font-size: 12px;
+    list-style: none;
+    padding-left: 0;
+    padding: 16px 8px;
+ }
+.toc-container  .markdownIt-TOC:before {
+      content: &quot;&quot;;
+      position: absolute;
+      top: 0;
+      left: 8px;
+      bottom: 0;
+      width: 1px;
+      background-color: #ebedef;
+      opacity: .5;
+  }
+.toc-container  ul {
+    list-style: none;
+  }
+.toc-container  li {
+    padding-left: 16px;
+}
+.toc-container  li a {
+      color: #868e96;
+      padding: 4px;
+      display: block;
+      transition: all 0.3s;
+  }
+.toc-container  li a:hover {
+        background: #cddbef;
+      }
+.toc-container  li a.current {
+        color: #006CFF;
+        background: #fafafa;
+  }
+.post-content-wrapper {
+display: flex;
+}
+.post-content {
+width: 100%;
+margin-right: 20px;
+}
+@media (max-width: 1150px) {
+  .toc-container {
+    display: none;
+  }
+}
+</code></pre>
+<h3 id="3-修改maincss文件">3、修改main.css文件</h3>
+<p>搜索<code>.post-detail</code> 修改<code>margin: 0 auto;</code>为</p>
+<p><code>margin: 0 20px;</code></p>
+<p>重新渲染网页即可尽情享用吧！</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[云服务器docker搭建自动领京豆bot互动指令]]></title>
         <id>https://yong-s.github.io/post/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</id>
@@ -137,6 +260,82 @@ WantedBy=multi-user.target
 <pre><code class="language-shell">curl -I https://www.google.com
 </code></pre>
 <p>返回200即表示代理已经成功</p>
+<h5 id="5-自动更新订阅配置文件">5、自动更新订阅配置文件</h5>
+<blockquote>
+<p>通过shell脚本自动更新Clash在线配置</p>
+</blockquote>
+<p>通过systemctl来管理Clash的进程，对应<code>clash.service</code>文件，通过两个脚本<code>start-clash.sh</code>和<code>stop-clash.sh</code>来管理Clash的启停：</p>
+<p>把上面的配置文件修改下：</p>
+<pre><code class="language-bash">vim/usr/lib/systemd/system/clash.service
+</code></pre>
+<pre><code class="language-shell">[Unit]
+Description=clash proxy
+After=network.target
+
+[Service]
+WorkingDirectory=/当前用户目录/.config/clash
+Type=simple
+ExecStart=/当前用户目录/.config/clash/start-clash.sh
+ExecStop=/当前用户目录/.config/clash/stop-clash.sh
+Environment=&quot;HOME=/当前用户目录&quot;
+Environment=&quot;CLASH_URL=你的订阅链接&quot;
+
+[Install]
+WantedBy=multi-user.target
+
+</code></pre>
+<pre><code class="language-bash">vim /当前用户目录/.config/clash/start-clash.sh
+</code></pre>
+<pre><code class="language-bash">#!/bin/bash
+# save this file to ${HOME}/.config/clash/start-clash.sh
+
+# save pid file
+echo $$ &gt; ${HOME}/.config/clash/clash.pid
+
+diff ${HOME}/.config/clash/config.yaml &lt;(curl -s ${CLASH_URL})
+if [ &quot;$?&quot; == 0 ]
+then
+    /usr/bin/clash
+else
+    TIME=`date '+%Y-%m-%d %H:%M:%S'`
+    cp ${HOME}/.config/clash/config.yaml &quot;${HOME}/.config/clash/config.yaml.bak${TIME}&quot;
+    curl -L -o ${HOME}/.config/clash/config.yaml ${CLASH_URL}
+    /usr/bin/clash
+fi
+</code></pre>
+<pre><code class="language-bash">vim /当前用户目录/.config/clash/stop-clash.sh
+</code></pre>
+<pre><code class="language-bash">#!/bin/bash
+# save this file to ${HOME}/.config/clash/stop-clash.sh
+
+# read pid file
+PID=`cat ${HOME}/.config/clash/clash.pid`
+kill -9 ${PID}
+rm ${HOME}/.config/clash/clash.pid
+</code></pre>
+<p>配置添加完成后，如果你的clash 正在运行中，需要重新加载配置文件并重启</p>
+<pre><code class="language-bash">$ systemctl daemon-reload
+$ sudo systemctl restart clash.service
+</code></pre>
+<p>这样每次启动clash时就会自动更新配置文件了，接下来通过crontab 自动重启 clash.service实现自动更新节点</p>
+<pre><code class="language-bash">#新建shell文件
+vim restart-clash.sh
+</code></pre>
+<p>新增一条命令</p>
+<pre><code class="language-bash">#/bin/sh
+sudo systemctl restart clash.service
+
+</code></pre>
+<pre><code class="language-bash">chmod +x restart-clash.sh
+crontab -e
+#插入下面命令
+#每3小时重启一次
+0 */3 * * * restart-clash.sh
+#每分钟重启一次
+* * * * * restart-clash.sh
+</code></pre>
+<p>大功告成，可通过<code>tail -500f /var/log/cron</code>查看定时任务是否执行</p>
+<p><code>sudo systemctl status clash.service</code>  查看是否重启成功</p>
 <h3 id="4-docker内开代理">4、docker内开代理</h3>
 <p>由于主要用来使用tg-bot，故只检测tgapi即可</p>
 <p>1、判断宿主机可连接tgapi</p>
@@ -209,6 +408,7 @@ sudo journalctl -u clash.service -f
 <li>[1] <a href="https://github.com/wisz2021/jd_docker">jd_docker</a></li>
 <li>[2] <a href="https://github.com/yuanlam/Clash-Linux">clash安装参考</a></li>
 <li>[3] <a href="https://kebingzao.com/2019/02/22/docker-container-proxy/">docker内代理参考</a></li>
+<li>[4] <a href="https://akillcool.github.io/post/clash-with-auto-update-config/">clash自动更新订阅配置</a></li>
 </ul>
 ]]></content>
     </entry>

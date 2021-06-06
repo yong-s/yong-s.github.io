@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | Yongs的网络日志</title>
+<title>girde simple修改添加支持侧边栏目录 | Yongs的网络日志</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -33,18 +33,12 @@
 </script>
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+    <meta name="description" content="修改主题文件支持侧边栏目录
 
-🏠 关于本站
-这里主要记录一些平常遇到的一些技术坑，方便以后可以查阅😄
-👨‍💻 博主是谁
-匆匆的蚂蚁
-克莱登大学毕业
-没有理想的人不伤心
-某非知名小厂规则长方体固体物质空间移动工程师
-⛹ ..." />
-    <meta name="keywords" content="" />
+simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。
+1、修改post.ejs文件
+hea..." />
+    <meta name="keywords" content="girde,simple" />
 	<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
@@ -120,36 +114,137 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2021-01-01</div>
+            <h2 class="post-title">girde simple修改添加支持侧边栏目录</h2>
+            <div class="post-date">2021-06-06</div>
             
 			 <div class="post-content-wrapper">
               <div class="post-content" v-pre>
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>这里主要记录一些平常遇到的一些技术坑，方便以后可以查阅😄</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>匆匆的蚂蚁<br>
-克莱登大学毕业<br>
-没有理想的人不伤心<br>
-某非知名小厂规则长方体固体物质空间移动工程师</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p><s>贪财好色（瞎说的）</s><br>
-看电影、cooding......</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p><a href="https://t.me/pyisg">tg</a></p>
+                <p>修改主题文件支持侧边栏目录</p>
+<!-- more -->
+<p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
+<h3 id="1-修改postejs文件">1、修改post.ejs文件</h3>
+<p><code>head</code>新增</p>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<p>搜索<code>&lt;%- post.content %&gt;</code>复制一下代码覆盖copy</p>
+<pre><code class="language-html">&lt;div class=&quot;post-content-wrapper&quot;&gt;
+  &lt;div class=&quot;post-content&quot; v-pre&gt;
+    &lt;%- post.content %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;toc-container&quot;&gt;
+   &lt;%- post.toc %&gt;
+ &lt;/div&gt;
+</code></pre>
+<p>新增高亮js</p>
+<pre><code class="language-javascript">&lt;script&gt;
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(&quot;.markdownIt-TOC a&quot;);
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener(&quot;scroll&quot;, () =&gt; {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener(&quot;scroll&quot;, event =&gt; {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) =&gt; {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop &lt;= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop &gt; fromTop) {
+                link.classList.add(&quot;current&quot;);
+              } else {
+                link.classList.remove(&quot;current&quot;);    
+              }
+            } else {
+              link.classList.add(&quot;current&quot;);
+            }
+          } else {
+            link.classList.remove(&quot;current&quot;);
+          }
+        });
+      });
+
+    &lt;/script&gt;
+</code></pre>
+<h3 id="2-客户端新增自定义css">2、客户端新增自定义css</h3>
+<pre><code class="language-css">.toc-container  .markdownIt-TOC {
+    position: sticky;
+    top: 32px;
+    width: 200px;
+    font-size: 12px;
+    list-style: none;
+    padding-left: 0;
+    padding: 16px 8px;
+ }
+.toc-container  .markdownIt-TOC:before {
+      content: &quot;&quot;;
+      position: absolute;
+      top: 0;
+      left: 8px;
+      bottom: 0;
+      width: 1px;
+      background-color: #ebedef;
+      opacity: .5;
+  }
+.toc-container  ul {
+    list-style: none;
+  }
+.toc-container  li {
+    padding-left: 16px;
+}
+.toc-container  li a {
+      color: #868e96;
+      padding: 4px;
+      display: block;
+      transition: all 0.3s;
+  }
+.toc-container  li a:hover {
+        background: #cddbef;
+      }
+.toc-container  li a.current {
+        color: #006CFF;
+        background: #fafafa;
+  }
+.post-content-wrapper {
+display: flex;
+}
+.post-content {
+width: 100%;
+margin-right: 20px;
+}
+@media (max-width: 1150px) {
+  .toc-container {
+    display: none;
+  }
+}
+</code></pre>
+<h3 id="3-修改maincss文件">3、修改main.css文件</h3>
+<p>搜索<code>.post-detail</code> 修改<code>margin: 0 auto;</code>为</p>
+<p><code>margin: 0 20px;</code></p>
+<p>重新渲染网页即可尽情享用吧！</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#1-%E4%BF%AE%E6%94%B9postejs%E6%96%87%E4%BB%B6">1、修改post.ejs文件</a></li>
+<li><a href="#2-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%B0%E5%A2%9E%E8%87%AA%E5%AE%9A%E4%B9%89css">2、客户端新增自定义css</a></li>
+<li><a href="#3-%E4%BF%AE%E6%94%B9maincss%E6%96%87%E4%BB%B6">3、修改main.css文件</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -157,8 +252,29 @@
               </div>
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://yong-s.github.io/tag/CveC3Byot/" class="tag">
+                    girde
+                  </a>
+                
+                  <a href="https://yong-s.github.io/tag/mEL3Y7ncgm/" class="tag">
+                    simple
+                  </a>
+                
+              </div>
+            
 			
         </div>
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://yong-s.github.io/post/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/">
+                  <h3 class="post-title">
+                    云服务器docker搭建自动领京豆bot互动指令
+                  </h3>
+                </a>
+              </div>
             
 
             
