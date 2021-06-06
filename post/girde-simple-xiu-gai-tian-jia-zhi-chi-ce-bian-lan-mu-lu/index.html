@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1622977919634">
+<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1622978640429">
 <link rel="stylesheet" href="https://yong-s.github.io/styles/main.css">
 
 
@@ -48,7 +48,7 @@ hea..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://yong-s.github.io">
-        <img src="https://yong-s.github.io/images/avatar.png?v=1622977919634" class="site-logo">
+        <img src="https://yong-s.github.io/images/avatar.png?v=1622978640429" class="site-logo">
         <h1 class="site-title">Yongs的网络日志</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -124,7 +124,7 @@ hea..." />
 <p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
 <h3 id="1-修改postejs文件">1、修改post.ejs文件</h3>
 <p><code>head</code>新增</p>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<p><code>&lt;script src=&quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>搜索<code>&lt;%- post.content %&gt;</code>复制一下代码覆盖copy</p>
 <pre><code class="language-html">&lt;div class=&quot;post-content-wrapper&quot;&gt;
   &lt;div class=&quot;post-content&quot; v-pre&gt;
@@ -133,6 +133,7 @@ hea..." />
   &lt;div class=&quot;toc-container&quot;&gt;
    &lt;%- post.toc %&gt;
  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 <p>新增高亮js</p>
 <pre><code class="language-javascript">&lt;script&gt;

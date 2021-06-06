@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yong-s.github.io</id>
     <title>Yongs的网络日志</title>
-    <updated>2021-06-06T11:13:09.997Z</updated>
+    <updated>2021-06-06T11:24:28.582Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yong-s.github.io"/>
     <link rel="self" href="https://yong-s.github.io/atom.xml"/>
@@ -23,7 +23,7 @@
 <p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
 <h3 id="1-修改postejs文件">1、修改post.ejs文件</h3>
 <p><code>head</code>新增</p>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<p><code>&lt;script src=&quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>搜索<code>&lt;%- post.content %&gt;</code>复制一下代码覆盖copy</p>
 <pre><code class="language-html">&lt;div class=&quot;post-content-wrapper&quot;&gt;
   &lt;div class=&quot;post-content&quot; v-pre&gt;
@@ -32,6 +32,7 @@
   &lt;div class=&quot;toc-container&quot;&gt;
    &lt;%- post.toc %&gt;
  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 <p>新增高亮js</p>
 <pre><code class="language-javascript">&lt;script&gt;
