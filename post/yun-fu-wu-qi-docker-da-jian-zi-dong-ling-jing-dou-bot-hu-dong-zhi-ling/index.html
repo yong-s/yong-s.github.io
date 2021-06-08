@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1622978640429">
+<link rel="shortcut icon" href="https://yong-s.github.io/favicon.ico?v=1623158856516">
 <link rel="stylesheet" href="https://yong-s.github.io/styles/main.css">
 
 
@@ -51,7 +51,7 @@ docker-compose： 1.27.4
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://yong-s.github.io">
-        <img src="https://yong-s.github.io/images/avatar.png?v=1622978640429" class="site-logo">
+        <img src="https://yong-s.github.io/images/avatar.png?v=1623158856516" class="site-logo">
         <h1 class="site-title">Yongs的网络日志</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -247,7 +247,7 @@ WantedBy=multi-user.target
 </blockquote>
 <p>通过systemctl来管理Clash的进程，对应<code>clash.service</code>文件，通过两个脚本<code>start-clash.sh</code>和<code>stop-clash.sh</code>来管理Clash的启停：</p>
 <p>把上面的配置文件修改下：</p>
-<pre><code class="language-bash">vim/usr/lib/systemd/system/clash.service
+<pre><code class="language-bash">vim /usr/lib/systemd/system/clash.service
 </code></pre>
 <pre><code class="language-shell">[Unit]
 Description=clash proxy

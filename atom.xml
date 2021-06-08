@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yong-s.github.io</id>
     <title>Yongs的网络日志</title>
-    <updated>2021-06-06T11:24:28.582Z</updated>
+    <updated>2021-06-08T13:28:00.186Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yong-s.github.io"/>
     <link rel="self" href="https://yong-s.github.io/atom.xml"/>
@@ -267,7 +267,7 @@ WantedBy=multi-user.target
 </blockquote>
 <p>通过systemctl来管理Clash的进程，对应<code>clash.service</code>文件，通过两个脚本<code>start-clash.sh</code>和<code>stop-clash.sh</code>来管理Clash的启停：</p>
 <p>把上面的配置文件修改下：</p>
-<pre><code class="language-bash">vim/usr/lib/systemd/system/clash.service
+<pre><code class="language-bash">vim /usr/lib/systemd/system/clash.service
 </code></pre>
 <pre><code class="language-shell">[Unit]
 Description=clash proxy
