@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yong-s.github.io</id>
     <title>Yongs的网络日志</title>
-    <updated>2021-06-08T13:28:00.186Z</updated>
+    <updated>2021-06-21T15:52:34.128Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yong-s.github.io"/>
     <link rel="self" href="https://yong-s.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://yong-s.github.io/images/avatar.png</logo>
     <icon>https://yong-s.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Yongs的网络日志</rights>
+    <entry>
+        <title type="html"><![CDATA[docker 生成自己的镜像]]></title>
+        <id>https://yong-s.github.io/post/docker-sheng-cheng-zi-ji-de-jing-xiang/</id>
+        <link href="https://yong-s.github.io/post/docker-sheng-cheng-zi-ji-de-jing-xiang/">
+        </link>
+        <updated>2021-06-21T15:26:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他...</p>
+<!-- more -->
+<h3 id="1-创建dockerfile文件">1、创建Dockerfile文件</h3>
+<p>比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换</p>
+<p>换完在当前目录 <code>docker build -t jd_scripts .</code></p>
+<p>直接生成自己的image</p>
+<p><code>docker images</code> 查看镜像</p>
+<h3 id="2-修改docker-compose文件">2、修改docker-compose文件</h3>
+<p>修改docker-compose里面的仓库地址为自己的地址，其他参数不用变</p>
+<p><code>docker-compose up -d</code> 启动镜像</p>
+<p>完美运行！</p>
+<p>继续躺平。</p>
+<p>建议学学docker，真的好强大！</p>
+<p>附上一个不错的docker教程</p>
+<p><a href="https://yeasy.gitbook.io/docker_practice/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABk0lEQVRYR+2W3UvCUByGX7fchQpZuvmRq1WEUElWEEPMDMz+mf7Bym4qJCjJCCsUJeii8hOhAt3AWGBkkc6dpF2c3e685zzn+f3O2Syd4l4HJn4sFJCwOtQgoUBQg9QgqQHSPO1BapDUAGm+bw9mr3K4zN70rMEwDFyTToRCQUwH/LAwDClD37wuQK+Xh91u+5hIaSt4LlfRarUhij7EohvgOG5kkLoAt+MypBnxE0JVFZxfXOMuX8TCvISIvAaGZUcCaQhQI9EgU0dpVGt17O7EwPMucwFqNIVCCafpDFbDiwivLJkPsFKpYf/wGIEpH+JbsnkBJ5zjSCY2kbvN/zj1g6hnJbHv5gz3oLZw12AX8OX1DY1GcxBTz3uHwwZBcP+a+RNA05bY1IdEu7APUieoN5pIJqLwePihSqt3sKESa3DpswxK9w/muKi/f+oen8pQVBVzkoiIvA4rZ9UrZOhxugx+nZUdYyG4XQgtB+H3Cf/7szD0dkcQoL/8pFKpQWqQ1ABpnvYgNUhqgDRPe5DU4DsPyz1QKJJZDwAAAABJRU5ErkJggg==" alt="img" loading="lazy">Docker —— 从入门到实践</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[girde simple修改添加支持侧边栏目录]]></title>
         <id>https://yong-s.github.io/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</id>

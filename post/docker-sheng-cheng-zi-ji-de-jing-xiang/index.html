@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | Yongs的网络日志</title>
+<title>docker 生成自己的镜像 | Yongs的网络日志</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -33,18 +33,11 @@
 </script>
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+    <meta name="description" content="看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他...
 
-🏠 关于本站
-这里主要记录一些平常遇到的一些技术坑，方便以后可以查阅😄
-👨‍💻 博主是谁
-匆匆的蚂蚁
-克莱登大学毕业
-没有理想的人不伤心
-某非知名小厂规则长方体固体物质空间移动工程师
-⛹ ..." />
-    <meta name="keywords" content="" />
+1、创建Dockerfile文件
+比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也..." />
+    <meta name="keywords" content="docker,京豆" />
 	<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
@@ -120,36 +113,38 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2021-01-01</div>
+            <h2 class="post-title">docker 生成自己的镜像</h2>
+            <div class="post-date">2021-06-21</div>
             
 			 <div class="post-content-wrapper">
               <div class="post-content" v-pre>
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>这里主要记录一些平常遇到的一些技术坑，方便以后可以查阅😄</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>匆匆的蚂蚁<br>
-克莱登大学毕业<br>
-没有理想的人不伤心<br>
-某非知名小厂规则长方体固体物质空间移动工程师</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p><s>贪财好色（瞎说的）</s><br>
-看电影、cooding......</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p><a href="https://t.me/pyisg">tg</a></p>
+                <p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他...</p>
+<!-- more -->
+<h3 id="1-创建dockerfile文件">1、创建Dockerfile文件</h3>
+<p>比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换</p>
+<p>换完在当前目录 <code>docker build -t jd_scripts .</code></p>
+<p>直接生成自己的image</p>
+<p><code>docker images</code> 查看镜像</p>
+<h3 id="2-修改docker-compose文件">2、修改docker-compose文件</h3>
+<p>修改docker-compose里面的仓库地址为自己的地址，其他参数不用变</p>
+<p><code>docker-compose up -d</code> 启动镜像</p>
+<p>完美运行！</p>
+<p>继续躺平。</p>
+<p>建议学学docker，真的好强大！</p>
+<p>附上一个不错的docker教程</p>
+<p><a href="https://yeasy.gitbook.io/docker_practice/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABk0lEQVRYR+2W3UvCUByGX7fchQpZuvmRq1WEUElWEEPMDMz+mf7Bym4qJCjJCCsUJeii8hOhAt3AWGBkkc6dpF2c3e685zzn+f3O2Syd4l4HJn4sFJCwOtQgoUBQg9QgqQHSPO1BapDUAGm+bw9mr3K4zN70rMEwDFyTToRCQUwH/LAwDClD37wuQK+Xh91u+5hIaSt4LlfRarUhij7EohvgOG5kkLoAt+MypBnxE0JVFZxfXOMuX8TCvISIvAaGZUcCaQhQI9EgU0dpVGt17O7EwPMucwFqNIVCCafpDFbDiwivLJkPsFKpYf/wGIEpH+JbsnkBJ5zjSCY2kbvN/zj1g6hnJbHv5gz3oLZw12AX8OX1DY1GcxBTz3uHwwZBcP+a+RNA05bY1IdEu7APUieoN5pIJqLwePihSqt3sKESa3DpswxK9w/muKi/f+oen8pQVBVzkoiIvA4rZ9UrZOhxugx+nZUdYyG4XQgtB+H3Cf/7szD0dkcQoL/8pFKpQWqQ1ABpnvYgNUhqgDRPe5DU4DsPyz1QKJJZDwAAAABJRU5ErkJggg==" alt="img" loading="lazy">Docker —— 从入门到实践</a></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#1-%E5%88%9B%E5%BB%BAdockerfile%E6%96%87%E4%BB%B6">1、创建Dockerfile文件</a></li>
+<li><a href="#2-%E4%BF%AE%E6%94%B9docker-compose%E6%96%87%E4%BB%B6">2、修改docker-compose文件</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -157,8 +152,29 @@
               </div>
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://yong-s.github.io/tag/jSxUieihy/" class="tag">
+                    docker
+                  </a>
+                
+                  <a href="https://yong-s.github.io/tag/cGMzUJK2S4/" class="tag">
+                    京豆
+                  </a>
+                
+              </div>
+            
 			
         </div>
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://yong-s.github.io/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/">
+                  <h3 class="post-title">
+                    girde simple修改添加支持侧边栏目录
+                  </h3>
+                </a>
+              </div>
             
 
             
