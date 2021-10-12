@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://yong-s.github.io</id>
+    <id>https://blog.yongs.ml</id>
     <title>Yongs的网络日志</title>
-    <updated>2021-10-12T15:58:25.809Z</updated>
+    <updated>2021-10-12T15:59:26.524Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://yong-s.github.io"/>
-    <link rel="self" href="https://yong-s.github.io/atom.xml"/>
+    <link rel="alternate" href="https://blog.yongs.ml"/>
+    <link rel="self" href="https://blog.yongs.ml/atom.xml"/>
     <subtitle>手艺人、搞钱、剪片子、生活......</subtitle>
-    <logo>https://yong-s.github.io/images/avatar.png</logo>
-    <icon>https://yong-s.github.io/favicon.ico</icon>
+    <logo>https://blog.yongs.ml/images/avatar.png</logo>
+    <icon>https://blog.yongs.ml/favicon.ico</icon>
     <rights>All rights reserved 2021, Yongs的网络日志</rights>
     <entry>
         <title type="html"><![CDATA[docker 生成自己的镜像]]></title>
-        <id>https://yong-s.github.io/post/docker-sheng-cheng-zi-ji-de-jing-xiang/</id>
-        <link href="https://yong-s.github.io/post/docker-sheng-cheng-zi-ji-de-jing-xiang/">
+        <id>https://blog.yongs.ml/post/docker-sheng-cheng-zi-ji-de-jing-xiang/</id>
+        <link href="https://blog.yongs.ml/post/docker-sheng-cheng-zi-ji-de-jing-xiang/">
         </link>
         <updated>2021-06-21T15:26:34.000Z</updated>
         <summary type="html"><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他...</p>
@@ -37,8 +37,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[girde simple修改添加支持侧边栏目录]]></title>
-        <id>https://yong-s.github.io/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</id>
-        <link href="https://yong-s.github.io/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/">
+        <id>https://blog.yongs.ml/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</id>
+        <link href="https://blog.yongs.ml/post/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/">
         </link>
         <updated>2021-06-06T10:50:26.000Z</updated>
         <summary type="html"><![CDATA[<p>修改主题文件支持侧边栏目录</p>
@@ -161,8 +161,8 @@ margin-right: 20px;
     </entry>
     <entry>
         <title type="html"><![CDATA[云服务器docker搭建自动领京豆bot互动指令]]></title>
-        <id>https://yong-s.github.io/post/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</id>
-        <link href="https://yong-s.github.io/post/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/">
+        <id>https://blog.yongs.ml/post/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</id>
+        <link href="https://blog.yongs.ml/post/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/">
         </link>
         <updated>2021-04-30T14:49:08.000Z</updated>
         <summary type="html"><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
