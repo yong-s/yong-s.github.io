@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>girde on Yong’s 网络日志</title>
+    <link>https://blog.yongs.ml/tags/girde/</link>
+    <description>Recent content in girde on Yong’s 网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+    <lastBuildDate>Sun, 06 Jun 2021 18:50:26 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/girde/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>girde simple修改添加支持侧边栏目录</title>
+      <link>https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/</link>
+      <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
+      
+      <guid>https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/</guid>
+      <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
+      <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
+<!-- more -->
+<p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
+<h3 id="1修改postejs文件">1、修改post.ejs文件</h3>
+<p><code>head</code>新增</p>
+<p><code>&lt;script src=&quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>搜索<code>&lt;%- post.content %&gt;</code>复制一下代码覆盖copy</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-content-wrapper&#34;</span>&gt;
+  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-content&#34;</span> <span style="color:#007f7f">v-pre</span>&gt;
+    <span style="color:#f00">&lt;</span>%- post.content %&gt;
+  &lt;/<span style="font-weight:bold">div</span>&gt;
+  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;toc-container&#34;</span>&gt;
+   <span style="color:#f00">&lt;</span>%- post.toc %&gt;
+ &lt;/<span style="font-weight:bold">div</span>&gt;
+&lt;/<span style="font-weight:bold">div</span>&gt;
+</code></pre></div><p>新增高亮js</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">&lt;script&gt;
+      hljs.initHighlightingOnLoad()
+
+      <span style="color:#fff;font-weight:bold">let</span> mainNavLinks = <span style="color:#fff;font-weight:bold">document</span>.querySelectorAll(<span style="color:#0ff;font-weight:bold">&#34;.markdownIt-TOC a&#34;</span>);
+
+      <span style="color:#007f7f">// This should probably be throttled.
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// Especially because it triggers during smooth scrolling.
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// https://lodash.com/docs/4.17.10#throttle
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// You could do like...
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// window.addEventListener(&#34;scroll&#34;, () =&gt; {
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">//    _.throttle(doThatStuff, 100);
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// });
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// Only not doing it here to keep this Pen dependency-free.
+</span><span style="color:#007f7f"></span>
+      <span style="color:#fff;font-weight:bold">window</span>.addEventListener(<span style="color:#0ff;font-weight:bold">&#34;scroll&#34;</span>, event =&gt; {
+        <span style="color:#fff;font-weight:bold">let</span> fromTop = <span style="color:#fff;font-weight:bold">window</span>.scrollY;
+
+        mainNavLinks.forEach((link, index) =&gt; {
+          <span style="color:#fff;font-weight:bold">let</span> section = <span style="color:#fff;font-weight:bold">document</span>.getElementById(<span style="color:#fff;font-weight:bold">decodeURI</span>(link.hash).substring(<span style="color:#ff0;font-weight:bold">1</span>));
+          <span style="color:#fff;font-weight:bold">let</span> nextSection = <span style="color:#fff;font-weight:bold">null</span>
+          <span style="color:#fff;font-weight:bold">if</span> (mainNavLinks[index + <span style="color:#ff0;font-weight:bold">1</span>]) {
+            nextSection = <span style="color:#fff;font-weight:bold">document</span>.getElementById(<span style="color:#fff;font-weight:bold">decodeURI</span>(mainNavLinks[index + <span style="color:#ff0;font-weight:bold">1</span>].hash).substring(<span style="color:#ff0;font-weight:bold">1</span>));
+          }
+          <span style="color:#fff;font-weight:bold">if</span> (section.offsetTop &lt;= fromTop) {
+            <span style="color:#fff;font-weight:bold">if</span> (nextSection) {
+              <span style="color:#fff;font-weight:bold">if</span> (nextSection.offsetTop &gt; fromTop) {
+                link.classList.add(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);
+              } <span style="color:#fff;font-weight:bold">else</span> {
+                link.classList.remove(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);    
+              }
+            } <span style="color:#fff;font-weight:bold">else</span> {
+              link.classList.add(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);
+            }
+          } <span style="color:#fff;font-weight:bold">else</span> {
+            link.classList.remove(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);
+          }
+        });
+      });
+
+    &lt;<span style="color:#f00">/script&gt;</span>
+</code></pre></div><h3 id="2客户端新增自定义css">2、客户端新增自定义css</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.toc-container  .markdownIt-TOC {
+    <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">sticky</span>;
+    <span style="color:#fff;font-weight:bold">top</span>: <span style="color:#ff0;font-weight:bold">32</span><span style="color:#fff;font-weight:bold">px</span>;
+    <span style="color:#fff;font-weight:bold">width</span>: <span style="color:#ff0;font-weight:bold">200</span><span style="color:#fff;font-weight:bold">px</span>;
+    <span style="color:#fff;font-weight:bold">font-size</span>: <span style="color:#ff0;font-weight:bold">12</span><span style="color:#fff;font-weight:bold">px</span>;
+    <span style="color:#fff;font-weight:bold">list-style</span>: <span style="color:#fff;font-weight:bold">none</span>;
+    <span style="color:#fff;font-weight:bold">padding-left</span>: <span style="color:#ff0;font-weight:bold">0</span>;
+    <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">16</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#ff0;font-weight:bold">8</span><span style="color:#fff;font-weight:bold">px</span>;
+ }
+.toc-container  .markdownIt-TOC:before {
+      <span style="color:#fff;font-weight:bold">content</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>;
+      <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">absolute</span>;
+      <span style="color:#fff;font-weight:bold">top</span>: <span style="color:#ff0;font-weight:bold">0</span>;
+      <span style="color:#fff;font-weight:bold">left</span>: <span style="color:#ff0;font-weight:bold">8</span><span style="color:#fff;font-weight:bold">px</span>;
+      <span style="color:#fff;font-weight:bold">bottom</span>: <span style="color:#ff0;font-weight:bold">0</span>;
+      <span style="color:#fff;font-weight:bold">width</span>: <span style="color:#ff0;font-weight:bold">1</span><span style="color:#fff;font-weight:bold">px</span>;
+      <span style="color:#fff;font-weight:bold">background-color</span>: <span style="color:#ff0;font-weight:bold">#ebedef</span>;
+      <span style="color:#fff;font-weight:bold">opacity</span>: <span style="color:#ff0;font-weight:bold">.5</span>;
+  }
+.toc-container  <span style="font-weight:bold">ul</span> {
+    <span style="color:#fff;font-weight:bold">list-style</span>: <span style="color:#fff;font-weight:bold">none</span>;
+  }
+.toc-container  <span style="font-weight:bold">li</span> {
+    <span style="color:#fff;font-weight:bold">padding-left</span>: <span style="color:#ff0;font-weight:bold">16</span><span style="color:#fff;font-weight:bold">px</span>;
+}
+.toc-container  <span style="font-weight:bold">li</span> <span style="font-weight:bold">a</span> {
+      <span style="color:#fff;font-weight:bold">color</span>: <span style="color:#ff0;font-weight:bold">#868e96</span>;
+      <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">4</span><span style="color:#fff;font-weight:bold">px</span>;
+      <span style="color:#fff;font-weight:bold">display</span>: <span style="color:#fff;font-weight:bold">block</span>;
+      <span style="color:#fff;font-weight:bold">transition</span>: <span style="color:#fff;font-weight:bold">all</span> <span style="color:#ff0;font-weight:bold">0.3</span><span style="color:#fff;font-weight:bold">s</span>;
+  }
+.toc-container  <span style="font-weight:bold">li</span> <span style="font-weight:bold">a</span>:hover {
+        <span style="color:#fff;font-weight:bold">background</span>: <span style="color:#ff0;font-weight:bold">#cddbef</span>;
+      }
+.toc-container  <span style="font-weight:bold">li</span> <span style="font-weight:bold">a</span>.current {
+        <span style="color:#fff;font-weight:bold">color</span>: <span style="color:#ff0;font-weight:bold">#006CFF</span>;
+        <span style="color:#fff;font-weight:bold">background</span>: <span style="color:#ff0;font-weight:bold">#fafafa</span>;
+  }
+.post-content-wrapper {
+<span style="color:#fff;font-weight:bold">display</span>: <span style="color:#fff;font-weight:bold">flex</span>;
+}
+.post-content {
+<span style="color:#fff;font-weight:bold">width</span>: <span style="color:#ff0;font-weight:bold">100</span><span style="color:#fff;font-weight:bold">%</span>;
+<span style="color:#fff;font-weight:bold">margin-right</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
+}
+@<span style="color:#fff;font-weight:bold">media</span> (<span style="font-weight:bold">max-width</span>: <span style="font-weight:bold">1150px</span>) {
+  .toc-container {
+    <span style="color:#fff;font-weight:bold">display</span>: <span style="color:#fff;font-weight:bold">none</span>;
+  }
+}
+</code></pre></div><h3 id="3修改maincss文件">3、修改main.css文件</h3>
+<p>搜索<code>.post-detail</code> 修改<code>margin: 0 auto;</code>为</p>
+<p><code>margin: 0 20px;</code></p>
+<p>重新渲染网页即可尽情享用吧！</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

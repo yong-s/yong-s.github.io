@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>云服务器docker搭建自动领京豆bot互动指令 | Yong’s 网络日志</title>
+<meta name="keywords" content="docker, centos, 脚本, 京豆, 羊毛" />
+<meta name="description" content="快速用docker部署领京豆服务">
+<meta name="author" content="
+作者:&nbsp;yongs">
+<link rel="canonical" href="https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="apple-touch-icon" href="https://blog.yongs.ml/Q.gif">
+<link rel="mask-icon" href="https://blog.yongs.ml/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.91.2" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="云服务器docker搭建自动领京豆bot互动指令" />
+<meta property="og:description" content="快速用docker部署领京豆服务" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-30T22:49:08&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-30T22:49:08&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="云服务器docker搭建自动领京豆bot互动指令"/>
+<meta name="twitter:description" content="快速用docker部署领京豆服务"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://blog.yongs.ml/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "云服务器docker搭建自动领京豆bot互动指令",
+      "item": "https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "云服务器docker搭建自动领京豆bot互动指令",
+  "name": "云服务器docker搭建自动领京豆bot互动指令",
+  "description": "快速用docker部署领京豆服务",
+  "keywords": [
+    "docker", "centos", "脚本", "京豆", "羊毛"
+  ],
+  "articleBody": "使用docker部署自动领金豆bot脚本\n使用的版本：\n服务器：centos 8\ndocker： 20.10.6\ndocker-compose： 1.27.4\n1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose\nDocker安装\n 国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun  docker-compose安装\n$ sudo curl -L \"https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose\n要安装其他版本的 Compose，请替换 1.24.1。\n最新发行的版本地址：https://github.com/docker/compose/releases。\n将可执行权限应用于二进制文件：\n$ sudo chmod +x /usr/local/bin/docker-compose\n创建软链：\n$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose\n通过docker-compose version查看docker-compose版本，确认是否安装成功。\n2、安装jd_scripts 创建一个目录jd_scripts用于存放备份配置等数据，迁移重装的时候只需要备份整个jd_scripts目录即可\n需要新建的目录文件结构参考如下:\njd_scripts ├── logs │ ├── XXXX.log │ └── XXXX.log ├── my_crontab_list.sh └── docker-compose.yml  jd_scripts/logs建一个空文件夹就行 jd_scripts/docker-compose.yml 参考内容如下(自己动手能力不行搞不定请使用默认配置)：  根据文档一步一步下去就ok了，下面主要记录下可能用到的命令\n目录文件配置好之后在 jd_scripts目录执行。\ndocker-compose up -d 启动（修改docker-compose.yml后需要使用此命令使更改生效）；\ndocker-compose logs 打印日志；\ndocker-compose logs -f 打印日志，-f表示跟随日志； docker logs -f jd_scripts 和上面两条相比可以显示汉字； docker-compose pull 更新镜像；\ndocker-compose stop 停止容器；\ndocker-compose restart 重启容器；\ndocker-compose down 停止并删除容器；\n3、开代理机器，激活tg-bot 这里是个大坑，拿个小本本记下来，其实就是docker内代理宿主机代理的问题\n由于众所周知的原因，国内的机器不能访问tg，而又想使用tg-bot来控制，无奈，国外机子太贵（穷），最低也要5美刀！遂买国内机子开代理使用\n1、买国内机器，推荐大厂的 这里应该放各大厂的aff的，留个坑\n2、安装clash 一直在使用clash，直接网上搜索clash下载，找到对应版本下载，博主用的是centos，下载linux-amd64的\n1、下载clash，最新版本可去官网找\nwget https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz 2、解压\ngzip -d clash-linux-amd64-v0.19.0.gz 3、移动至usr/bin/clash并重命名为clash\nsudo mv clash-linux-amd64-v0.19.0 /usr/bin/clash 4、赋予clash运行权限\nsudo chmod +x /usr/bin/clash 5、检查是否安装成功\nclash -v 3、创建配置文件、安装控制面板 1.创建配置文件目录\nmkdir -p /etc/clash/ 2.进入目录\ncd /etc/clash/ 3.创建配置文件\nvim config.yaml 4.手动编辑很麻烦，可用winscp上传\n配置参数自行查找\n5.下载前端代码\nwget https://github.com/Dreamacro/clash-dashboard/tree/gh-pages 6.解压\nunzip gh-pages.zip 7.修改目录名,这里的目录名是上面配置文件里的 external-ui: dashboard\nmv clash-dashboard-gh-pages dashboard 可用这个面板远程控制\n4、设置clash开机启动 1.创建service文件\nsudo vim /usr/lib/systemd/system/clash.service 2.输入下面代码\n[Unit] Description=clash proxy After=network.target [Service] Type=simple ExecStart=/usr/bin/clash -d /etc/clash [Install] WantedBy=multi-user.target 3.重新加载 systemd 模块\nsudo systemctl daemon-reload 4.启动Clash\nsudo systemctl start clash.service 5.设置Clash开机自启动\nsudo systemctl enable clash.service 6.判断是否成功开启代理\ncurl -I https://www.google.com 返回200即表示代理已经成功\n5、自动更新订阅配置文件  通过shell脚本自动更新Clash在线配置\n 通过systemctl来管理Clash的进程，对应clash.service文件，通过两个脚本start-clash.sh和stop-clash.sh来管理Clash的启停：\n把上面的配置文件修改下：\nvim /usr/lib/systemd/system/clash.service [Unit] Description=clash proxy After=network.target [Service] WorkingDirectory=/当前用户目录/.config/clash Type=simple ExecStart=/当前用户目录/.config/clash/start-clash.sh ExecStop=/当前用户目录/.config/clash/stop-clash.sh Environment=\"HOME=/当前用户目录\" Environment=\"CLASH_URL=你的订阅链接\" [Install] WantedBy=multi-user.target vim /当前用户目录/.config/clash/start-clash.sh #!/bin/bash # save this file to ${HOME}/.config/clash/start-clash.sh # save pid file echo $$  ${HOME}/.config/clash/clash.pid diff ${HOME}/.config/clash/config.yaml ${CLASH_URL}) if [ \"$?\" == 0 ] then /usr/bin/clash else TIME=`date '+%Y-%m-%d %H:%M:%S'` cp ${HOME}/.config/clash/config.yaml \"${HOME}/.config/clash/config.yaml.bak${TIME}\" curl -L -o ${HOME}/.config/clash/config.yaml ${CLASH_URL} /usr/bin/clash fi vim /当前用户目录/.config/clash/stop-clash.sh #!/bin/bash # save this file to ${HOME}/.config/clash/stop-clash.sh # read pid file PID=`cat ${HOME}/.config/clash/clash.pid` kill -9 ${PID} rm ${HOME}/.config/clash/clash.pid 配置添加完成后，如果你的clash 正在运行中，需要重新加载配置文件并重启\n$ systemctl daemon-reload $ sudo systemctl restart clash.service 这样每次启动clash时就会自动更新配置文件了，接下来通过crontab 自动重启 clash.service实现自动更新节点\n#新建shell文件 vim restart-clash.sh 新增一条命令\n#/bin/sh sudo systemctl restart clash.service chmod +x restart-clash.sh crontab -e #插入下面命令 #每3小时重启一次 0 */3 * * * restart-clash.sh #每分钟重启一次 * * * * * restart-clash.sh 大功告成，可通过tail -500f /var/log/cron查看定时任务是否执行\nsudo systemctl status clash.service 查看是否重启成功\n4、docker内开代理 由于主要用来使用tg-bot，故只检测tgapi即可\n1、判断宿主机可连接tgapi\ncurl -sX POST \"https://api.telegram.org/bot'''Your Token'''/sendMessage\" -d \"chat_id=\"Some Chat id\"\u0026text=hello\" curl -sX POST \"https://api.telegram.org/botxxxxxxxxugt5A/sendMessage\" -d \"chat_id=48xxxxxx\u0026text=hello\" 如果返回成功，即表示成功\n2、进入容器\ndocker exec -it jd_scripts /bin/sh 执行步骤1命令，如若响应时间长或失败，则需要配置代理\n3、配置容器代理走宿主机\ndocker官方有教程\ndocker版本大于 17.07以上可用下面的方法\ncd mkdir .docker vim ~/.docker/config.json 填入下面json\n{ \"proxies\": { \"default\": { \"httpProxy\": \"http://172.17.0.1:7890\", \"httpsProxy\": \"http://172.17.0.1:7890\", \"noProxy\": \"localhost,127.0.0.1\" \" } } } 保存文件创建或者启动新容器时才生效\n这里有个大坑，搞了一天，就是\n代理的ip一定要写对！\n代理的ip一定要写对！\n代理的ip一定要写对!\n 下午调试的时候https的写成了127的了，机器启动起来，pull代码的时候，直接找不到文件，当时还骂这破代理，没法，就把报错ip不走代理了，没想到下面不报错了，直接无限重启，搞得头都大了，还在想是不是内存爆了呢！晚上，打开配置文件，定睛一看，WC！“httpsProxy\"端口写的127…赶紧改了，重新跑遍，妥了，bot成功了！\n 4、删除容器，重新启用\n接下来在jd_scripts 目录内\ndocker-compose down docker-compose up -d 启动成功后，tgbot即可收到成功的消息，尽情享用吧！\nClash相关的管理命令 ## 启动Clash ## sudo systemctl start clash.service ## 重启Clash ## sudo systemctl restart clash.service ## 查看Clash运行状态 ## sudo systemctl status clash.service ## 实时滚动状态 ## sudo journalctl -u clash.service -f docker相关命令 docker exec -it jd_scripts /bin/sh -c 'git -C /scripts pull \u0026\u0026 node /scripts/jd_bean_change.js' 手动运行一脚本\ndocker exec -it jd_scripts /bin/sh -c 'env' 查看设置的环境变量\ndocker exec -it jd_scripts /bin/sh -c 'crontab -l' 查看已生效的crontab_list定时器任务\ndocker exec -it jd_scripts sh -c \"docker_entrypoint.sh\" 手动更新jd_scripts仓库最新脚本\ndocker exec -it jd_scripts /bin/sh 仅进入容器命令\nrm -rf logs/*.log 删除logs文件夹里面所有的日志文件\n [1] jd_docker [2] clash安装参考 [3] docker内代理参考 [4] clash自动更新订阅配置  ",
+  "wordCount" : "2667",
+  "inLanguage": "zh",
+  "datePublished": "2021-04-30T22:49:08Z",
+  "dateModified": "2021-04-30T22:49:08Z",
+  "author":{
+    "@type": "Person",
+    "name": "yongs"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yong’s 网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.yongs.ml/img/Q.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.yongs.ml" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/archives" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      云服务器docker搭建自动领京豆bot互动指令
+    </h1>
+    <div class="post-description">
+      快速用docker部署领京豆服务
+    </div>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2021-04-30 22:49:08 +0000 UTC'>2021-04-30</span>&nbsp;|&nbsp;更新:&nbsp;2021-04-30&nbsp;|&nbsp;字数:&nbsp;2667字&nbsp;|&nbsp;时长: 6分钟&nbsp;|&nbsp;
+作者:&nbsp;yongs
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#1%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%ae%89%e8%a3%85dockerdocker-compose" aria-label="1、服务器安装docker，docker-compose">1、服务器安装docker，docker-compose</a></li>
+                    <li>
+                        <a href="#2%e5%ae%89%e8%a3%85jd_scripts" aria-label="2、安装jd_scripts">2、安装jd_scripts</a></li>
+                    <li>
+                        <a href="#3%e5%bc%80%e4%bb%a3%e7%90%86%e6%9c%ba%e5%99%a8%e6%bf%80%e6%b4%bbtg-bot" aria-label="3、开代理机器，激活tg-bot">3、开代理机器，激活tg-bot</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#1%e4%b9%b0%e5%9b%bd%e5%86%85%e6%9c%ba%e5%99%a8%e6%8e%a8%e8%8d%90%e5%a4%a7%e5%8e%82%e7%9a%84" aria-label="1、买国内机器，推荐大厂的">1、买国内机器，推荐大厂的</a></li>
+                    <li>
+                        <a href="#2%e5%ae%89%e8%a3%85clash" aria-label="2、安装clash">2、安装clash</a></li>
+                    <li>
+                        <a href="#3%e5%88%9b%e5%bb%ba%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%ae%89%e8%a3%85%e6%8e%a7%e5%88%b6%e9%9d%a2%e6%9d%bf" aria-label="3、创建配置文件、安装控制面板">3、创建配置文件、安装控制面板</a></li>
+                    <li>
+                        <a href="#4%e8%ae%be%e7%bd%aeclash%e5%bc%80%e6%9c%ba%e5%90%af%e5%8a%a8" aria-label="4、设置clash开机启动">4、设置clash开机启动</a></li>
+                    <li>
+                        <a href="#5%e8%87%aa%e5%8a%a8%e6%9b%b4%e6%96%b0%e8%ae%a2%e9%98%85%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="5、自动更新订阅配置文件">5、自动更新订阅配置文件</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#4docker%e5%86%85%e5%bc%80%e4%bb%a3%e7%90%86" aria-label="4、docker内开代理">4、docker内开代理</a></li>
+                    <li>
+                        <a href="#clash%e7%9b%b8%e5%85%b3%e7%9a%84%e7%ae%a1%e7%90%86%e5%91%bd%e4%bb%a4" aria-label="Clash相关的管理命令">Clash相关的管理命令</a></li>
+                    <li>
+                        <a href="#docker%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4" aria-label="docker相关命令">docker相关命令</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>使用docker部署自动领金豆bot脚本</p>
+<!-- more -->
+<p>使用的版本：</p>
+<p>服务器：centos 8</p>
+<p>docker： 20.10.6</p>
+<p>docker-compose： 1.27.4</p>
+<h3 id="1服务器安装dockerdocker-compose">1、服务器安装docker，docker-compose<a hidden class="anchor" aria-hidden="true" href="#1服务器安装dockerdocker-compose">#</a></h3>
+<p>推荐使用centos服务器安装docker、docker-compose</p>
+<p>Docker安装</p>
+<ul>
+<li>国内一键安装 <code>curl -sSL https://get.daocloud.io/docker | sh</code></li>
+<li>国外一键安装 <code>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</code></li>
+</ul>
+<p>docker-compose安装</p>
+<p><code>$ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</code></p>
+<p>要安装其他版本的 Compose，请替换 1.24.1。</p>
+<p>最新发行的版本地址：https://github.com/docker/compose/releases。</p>
+<p>将可执行权限应用于二进制文件：</p>
+<p><code>$ sudo chmod +x /usr/local/bin/docker-compose</code></p>
+<p>创建软链：</p>
+<p><code>$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</code></p>
+<p>通过<code>docker-compose version</code>查看<code>docker-compose</code>版本，确认是否安装成功。</p>
+<h3 id="2安装jd_scripts">2、安装jd_scripts<a hidden class="anchor" aria-hidden="true" href="#2安装jd_scripts">#</a></h3>
+<p>创建一个目录<code>jd_scripts</code>用于存放备份配置等数据，迁移重装的时候只需要备份整个jd_scripts目录即可</p>
+<p>需要新建的目录文件结构参考如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">jd_scripts
+├── logs
+│   ├── XXXX.log
+│   └── XXXX.log
+├── my_crontab_list.sh
+└── docker-compose.yml
+</code></pre></div><ul>
+<li><code>jd_scripts/logs</code>建一个空文件夹就行</li>
+<li><code>jd_scripts/docker-compose.yml</code> 参考内容如下(自己动手能力不行搞不定请使用默认配置)：</li>
+</ul>
+<p>根据文档一步一步下去就ok了，下面主要记录下可能用到的命令</p>
+<p>目录文件配置好之后在 <code>jd_scripts</code>目录执行。<br>
+<code>docker-compose up -d</code> 启动（修改docker-compose.yml后需要使用此命令使更改生效）；<br>
+<code>docker-compose logs</code> 打印日志；<br>
+<code>docker-compose logs -f</code> 打印日志，-f表示跟随日志；
+<code>docker logs -f jd_scripts</code> 和上面两条相比可以显示汉字；
+<code>docker-compose pull</code> 更新镜像；<br>
+<code>docker-compose stop</code> 停止容器；<br>
+<code>docker-compose restart</code> 重启容器；<br>
+<code>docker-compose down</code> 停止并删除容器；</p>
+<h3 id="3开代理机器激活tg-bot">3、开代理机器，激活tg-bot<a hidden class="anchor" aria-hidden="true" href="#3开代理机器激活tg-bot">#</a></h3>
+<p>这里是个大坑，拿个小本本记下来，其实就是docker内代理宿主机代理的问题</p>
+<p>由于众所周知的原因，国内的机器不能访问tg，而又想使用tg-bot来控制，无奈，国外机子太贵（穷），最低也要5美刀！遂买国内机子开代理使用</p>
+<h5 id="1买国内机器推荐大厂的">1、买国内机器，推荐大厂的<a hidden class="anchor" aria-hidden="true" href="#1买国内机器推荐大厂的">#</a></h5>
+<p>这里应该放各大厂的aff的，留个坑</p>
+<h5 id="2安装clash">2、安装clash<a hidden class="anchor" aria-hidden="true" href="#2安装clash">#</a></h5>
+<p>一直在使用clash，直接网上搜索clash<a href="https://github.com/Dreamacro/clash/releases">下载</a>，找到对应版本下载，博主用的是centos，下载linux-amd64的</p>
+<p>1、下载clash，最新版本可去官网找</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz
+</code></pre></div><p>2、解压</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gzip -d clash-linux-amd64-v0.19.0.gz
+</code></pre></div><p>3、移动至usr/bin/clash并重命名为clash</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo mv clash-linux-amd64-v0.19.0 /usr/bin/clash
+</code></pre></div><p>4、赋予clash运行权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo chmod +x /usr/bin/clash
+</code></pre></div><p>5、检查是否安装成功</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">clash -v 
+</code></pre></div><h5 id="3创建配置文件安装控制面板">3、创建配置文件、安装控制面板<a hidden class="anchor" aria-hidden="true" href="#3创建配置文件安装控制面板">#</a></h5>
+<p>1.创建配置文件目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /etc/clash/
+</code></pre></div><p>2.进入目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span> /etc/clash/
+</code></pre></div><p>3.创建配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim config.yaml
+</code></pre></div><p>4.手动编辑很麻烦，可用winscp上传</p>
+<p>配置参数自行查找</p>
+<p>5.下载前端代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/Dreamacro/clash-dashboard/tree/gh-pages
+</code></pre></div><p>6.解压</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">unzip gh-pages.zip
+</code></pre></div><p>7.修改目录名,这里的目录名是上面配置文件里的 external-ui: dashboard</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mv clash-dashboard-gh-pages dashboard
+</code></pre></div><p><a href="http://clash.razord.top/">可用这个面板远程控制</a></p>
+<h5 id="4设置clash开机启动">4、设置clash开机启动<a hidden class="anchor" aria-hidden="true" href="#4设置clash开机启动">#</a></h5>
+<p>1.创建service文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo vim /usr/lib/systemd/system/clash.service
+</code></pre></div><p>2.输入下面代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">[Unit]
+Description=clash proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clash -d /etc/clash
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div><p>3.重新加载 systemd 模块</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
+</code></pre></div><p>4.启动Clash</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl start clash.service
+</code></pre></div><p>5.设置Clash开机自启动</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl <span style="color:#fff;font-weight:bold">enable</span> clash.service
+</code></pre></div><p>6.判断是否成功开启代理</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -I https://www.google.com
+</code></pre></div><p>返回200即表示代理已经成功</p>
+<h5 id="5自动更新订阅配置文件">5、自动更新订阅配置文件<a hidden class="anchor" aria-hidden="true" href="#5自动更新订阅配置文件">#</a></h5>
+<blockquote>
+<p>通过shell脚本自动更新Clash在线配置</p>
+</blockquote>
+<p>通过systemctl来管理Clash的进程，对应<code>clash.service</code>文件，通过两个脚本<code>start-clash.sh</code>和<code>stop-clash.sh</code>来管理Clash的启停：</p>
+<p>把上面的配置文件修改下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /usr/lib/systemd/system/clash.service
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">[Unit]
+Description=clash proxy
+After=network.target
+
+[Service]
+WorkingDirectory=/当前用户目录/.config/clash
+Type=simple
+ExecStart=/当前用户目录/.config/clash/start-clash.sh
+ExecStop=/当前用户目录/.config/clash/stop-clash.sh
+Environment=<span style="color:#0ff;font-weight:bold">&#34;HOME=/当前用户目录&#34;</span>
+Environment=<span style="color:#0ff;font-weight:bold">&#34;CLASH_URL=你的订阅链接&#34;</span>
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /当前用户目录/.config/clash/start-clash.sh
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/start-clash.sh</span>
+
+<span style="color:#007f7f"># save pid file</span>
+<span style="color:#fff;font-weight:bold">echo</span> $$ &gt; <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid
+
+diff <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml &lt;(curl -s <span style="color:#0ff;font-weight:bold">${</span>CLASH_URL<span style="color:#0ff;font-weight:bold">}</span>)
+<span style="color:#fff;font-weight:bold">if</span> [ <span style="color:#0ff;font-weight:bold">&#34;</span>$?<span style="color:#0ff;font-weight:bold">&#34;</span> == <span style="color:#ff0;font-weight:bold">0</span> ]
+<span style="color:#fff;font-weight:bold">then</span>
+    /usr/bin/clash
+<span style="color:#fff;font-weight:bold">else</span>
+    TIME=<span style="color:#0ff;font-weight:bold">`</span>date <span style="color:#0ff;font-weight:bold">&#39;+%Y-%m-%d %H:%M:%S&#39;</span><span style="color:#0ff;font-weight:bold">`</span>
+    cp <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/.config/clash/config.yaml.bak</span><span style="color:#0ff;font-weight:bold">${</span>TIME<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+    curl -L -o <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml <span style="color:#0ff;font-weight:bold">${</span>CLASH_URL<span style="color:#0ff;font-weight:bold">}</span>
+    /usr/bin/clash
+<span style="color:#fff;font-weight:bold">fi</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /当前用户目录/.config/clash/stop-clash.sh
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/stop-clash.sh</span>
+
+<span style="color:#007f7f"># read pid file</span>
+PID=<span style="color:#0ff;font-weight:bold">`</span>cat <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid<span style="color:#0ff;font-weight:bold">`</span>
+<span style="color:#fff;font-weight:bold">kill</span> -9 <span style="color:#0ff;font-weight:bold">${</span>PID<span style="color:#0ff;font-weight:bold">}</span>
+rm <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid
+</code></pre></div><p>配置添加完成后，如果你的clash 正在运行中，需要重新加载配置文件并重启</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ systemctl daemon-reload
+$ sudo systemctl restart clash.service
+</code></pre></div><p>这样每次启动clash时就会自动更新配置文件了，接下来通过crontab 自动重启 clash.service实现自动更新节点</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#新建shell文件</span>
+vim restart-clash.sh
+</code></pre></div><p>新增一条命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#/bin/sh</span>
+sudo systemctl restart clash.service
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x restart-clash.sh
+crontab -e
+<span style="color:#007f7f">#插入下面命令</span>
+<span style="color:#007f7f">#每3小时重启一次</span>
+<span style="color:#ff0;font-weight:bold">0</span> */3 * * * restart-clash.sh
+<span style="color:#007f7f">#每分钟重启一次</span>
+* * * * * restart-clash.sh
+</code></pre></div><p>大功告成，可通过<code>tail -500f /var/log/cron</code>查看定时任务是否执行</p>
+<p><code>sudo systemctl status clash.service</code>  查看是否重启成功</p>
+<h3 id="4docker内开代理">4、docker内开代理<a hidden class="anchor" aria-hidden="true" href="#4docker内开代理">#</a></h3>
+<p>由于主要用来使用tg-bot，故只检测tgapi即可</p>
+<p>1、判断宿主机可连接tgapi</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegram.org/bot&#39;&#39;&#39;Your Token&#39;&#39;&#39;/sendMessage&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#34;chat_id=&#34;</span>Some Chat id<span style="color:#0ff;font-weight:bold">&#34;&amp;text=hello&#34;</span>
+
+curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegram.org/botxxxxxxxxugt5A/sendMessage&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#34;chat_id=48xxxxxx&amp;text=hello&#34;</span>
+</code></pre></div><p>如果返回成功，即表示成功</p>
+<p>2、进入容器</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker <span style="color:#fff;font-weight:bold">exec</span> -it jd_scripts /bin/sh
+</code></pre></div><p>执行步骤1命令，如若响应时间长或失败，则需要配置代理</p>
+<p>3、配置容器代理走宿主机</p>
+<p><a href="https://docs.docker.com/network/proxy/#use-environment-variables">docker官方有教程</a></p>
+<p>docker版本大于 17.07以上可用下面的方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span>
+mkdir .docker
+vim  ~/.docker/config.json
+</code></pre></div><p>填入下面json</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+ <span style="font-weight:bold">&#34;proxies&#34;</span>:
+ {
+   <span style="font-weight:bold">&#34;default&#34;</span>:
+   {
+     <span style="font-weight:bold">&#34;httpProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;http://172.17.0.1:7890&#34;</span>,
+     <span style="font-weight:bold">&#34;httpsProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;http://172.17.0.1:7890&#34;</span>,
+     <span style="font-weight:bold">&#34;noProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;localhost,127.0.0.1&#34;</span>
+<span style="color:#f00">&#34;</span>
+   }
+ }
+}
+</code></pre></div><p>保存文件<strong>创建或者启动新容器时才生效</strong></p>
+<p>这里有个大坑，搞了一天，就是</p>
+<p><strong>代理的ip一定要写对！</strong></p>
+<p><strong>代理的ip一定要写对！</strong></p>
+<p><strong>代理的ip一定要写对!</strong></p>
+<blockquote>
+<p>下午调试的时候https的写成了127的了，机器启动起来，pull代码的时候，直接找不到文件，当时还骂这破代理，没法，就把报错ip不走代理了，没想到下面不报错了，直接无限重启，搞得头都大了，还在想是不是内存爆了呢！晚上，打开配置文件，定睛一看，WC！&ldquo;httpsProxy&quot;端口写的127&hellip;赶紧改了，重新跑遍，妥了，bot成功了！</p>
+</blockquote>
+<p>4、删除容器，重新启用</p>
+<p>接下来在jd_scripts 目录内</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker-compose down
+docker-compose up -d
+</code></pre></div><p>启动成功后，tgbot即可收到成功的消息，尽情享用吧！</p>
+<h3 id="clash相关的管理命令">Clash相关的管理命令<a hidden class="anchor" aria-hidden="true" href="#clash相关的管理命令">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#007f7f">## 启动Clash ##</span>
+sudo systemctl start clash.service
+
+<span style="color:#007f7f">## 重启Clash ##</span>
+sudo systemctl restart clash.service
+
+<span style="color:#007f7f">## 查看Clash运行状态 ##</span>
+sudo systemctl status clash.service
+
+<span style="color:#007f7f">## 实时滚动状态 ##</span>
+sudo journalctl -u clash.service -f
+</code></pre></div><h3 id="docker相关命令">docker相关命令<a hidden class="anchor" aria-hidden="true" href="#docker相关命令">#</a></h3>
+<p><code>docker exec -it jd_scripts /bin/sh -c 'git -C /scripts pull &amp;&amp; node /scripts/jd_bean_change.js'</code>  手动运行一脚本</p>
+<p><code>docker exec -it jd_scripts /bin/sh -c 'env'</code>  查看设置的环境变量</p>
+<p><code>docker exec -it jd_scripts /bin/sh -c 'crontab -l'</code>  查看已生效的crontab_list定时器任务</p>
+<p><code>docker exec -it jd_scripts sh -c &quot;docker_entrypoint.sh&quot;</code> 手动更新jd_scripts仓库最新脚本</p>
+<p><code>docker exec -it jd_scripts /bin/sh</code> 仅进入容器命令</p>
+<p><code>rm -rf  logs/*.log</code> 删除logs文件夹里面所有的日志文件</p>
+<ul>
+<li>[1] <a href="https://github.com/wisz2021/jd_docker">jd_docker</a></li>
+<li>[2] <a href="https://github.com/yuanlam/Clash-Linux">clash安装参考</a></li>
+<li>[3] <a href="https://kebingzao.com/2019/02/22/docker-container-proxy/">docker内代理参考</a></li>
+<li>[4] <a href="https://akillcool.github.io/post/clash-with-auto-update-config/">clash自动更新订阅配置</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.yongs.ml/tags/docker/">docker</a></li>
+      <li><a href="https://blog.yongs.ml/tags/centos/">centos</a></li>
+      <li><a href="https://blog.yongs.ml/tags/%E8%84%9A%E6%9C%AC/">脚本</a></li>
+      <li><a href="https://blog.yongs.ml/tags/%E4%BA%AC%E8%B1%86/">京豆</a></li>
+      <li><a href="https://blog.yongs.ml/tags/%E7%BE%8A%E6%AF%9B/">羊毛</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>girde simple修改添加支持侧边栏目录</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

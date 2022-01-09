@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>girde simple修改添加支持侧边栏目录 | Yong’s 网络日志</title>
+<meta name="keywords" content="girde, simple" />
+<meta name="description" content="修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术">
+<meta name="author" content="
+作者:&nbsp;yongs">
+<link rel="canonical" href="https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="apple-touch-icon" href="https://blog.yongs.ml/Q.gif">
+<link rel="mask-icon" href="https://blog.yongs.ml/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.91.2" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="girde simple修改添加支持侧边栏目录" />
+<meta property="og:description" content="修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-06T18:50:26&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-06T18:50:26&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="girde simple修改添加支持侧边栏目录"/>
+<meta name="twitter:description" content="修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://blog.yongs.ml/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "girde simple修改添加支持侧边栏目录",
+      "item": "https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "girde simple修改添加支持侧边栏目录",
+  "name": "girde simple修改添加支持侧边栏目录",
+  "description": "修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术",
+  "keywords": [
+    "girde", "simple"
+  ],
+  "articleBody": "修改主题文件支持侧边栏目录\nsimple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。\n1、修改post.ejs文件 head新增\n\n搜索复制一下代码覆盖copy\ndiv class=\"post-content-wrapper\" div class=\"post-content\" v-pre %- post.content % div div class=\"toc-container\" %- post.toc % div div 新增高亮js\n hljs.initHighlightingOnLoad() let mainNavLinks = document.querySelectorAll(\".markdownIt-TOC a\"); // This should probably be throttled.  // Especially because it triggers during smooth scrolling.  // https://lodash.com/docs/4.17.10#throttle  // You could do like...  // window.addEventListener(\"scroll\", () = {  // _.throttle(doThatStuff, 100);  // });  // Only not doing it here to keep this Pen dependency-free.  window.addEventListener(\"scroll\", event = { let fromTop = window.scrollY; mainNavLinks.forEach((link, index) = { let section = document.getElementById(decodeURI(link.hash).substring(1)); let nextSection = null if (mainNavLinks[index + 1]) { nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1)); } if (section.offsetTop if (nextSection) { if (nextSection.offsetTop  fromTop) { link.classList.add(\"current\"); } else { link.classList.remove(\"current\"); } } else { link.classList.add(\"current\"); } } else { link.classList.remove(\"current\"); } }); }); /script 2、客户端新增自定义css .toc-container .markdownIt-TOC { position: sticky; top: 32px; width: 200px; font-size: 12px; list-style: none; padding-left: 0; padding: 16px 8px; } .toc-container .markdownIt-TOC:before { content: \"\"; position: absolute; top: 0; left: 8px; bottom: 0; width: 1px; background-color: #ebedef; opacity: .5; } .toc-container ul { list-style: none; } .toc-container li { padding-left: 16px; } .toc-container li a { color: #868e96; padding: 4px; display: block; transition: all 0.3s; } .toc-container li a:hover { background: #cddbef; } .toc-container li a.current { color: #006CFF; background: #fafafa; } .post-content-wrapper { display: flex; } .post-content { width: 100%; margin-right: 20px; } @media (max-width: 1150px) { .toc-container { display: none; } } 3、修改main.css文件 搜索.post-detail 修改margin: 0 auto;为\nmargin: 0 20px;\n重新渲染网页即可尽情享用吧！\n",
+  "wordCount" : "458",
+  "inLanguage": "zh",
+  "datePublished": "2021-06-06T18:50:26Z",
+  "dateModified": "2021-06-06T18:50:26Z",
+  "author":{
+    "@type": "Person",
+    "name": "yongs"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yong’s 网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.yongs.ml/img/Q.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.yongs.ml" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/archives" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      girde simple修改添加支持侧边栏目录
+    </h1>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2021-06-06 18:50:26 +0000 UTC'>2021-06-06</span>&nbsp;|&nbsp;更新:&nbsp;2021-06-06&nbsp;|&nbsp;字数:&nbsp;458字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;yongs
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#1%e4%bf%ae%e6%94%b9postejs%e6%96%87%e4%bb%b6" aria-label="1、修改post.ejs文件">1、修改post.ejs文件</a></li>
+                    <li>
+                        <a href="#2%e5%ae%a2%e6%88%b7%e7%ab%af%e6%96%b0%e5%a2%9e%e8%87%aa%e5%ae%9a%e4%b9%89css" aria-label="2、客户端新增自定义css">2、客户端新增自定义css</a></li>
+                    <li>
+                        <a href="#3%e4%bf%ae%e6%94%b9maincss%e6%96%87%e4%bb%b6" aria-label="3、修改main.css文件">3、修改main.css文件</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>修改主题文件支持侧边栏目录</p>
+<!-- more -->
+<p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
+<h3 id="1修改postejs文件">1、修改post.ejs文件<a hidden class="anchor" aria-hidden="true" href="#1修改postejs文件">#</a></h3>
+<p><code>head</code>新增</p>
+<p><code>&lt;script src=&quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>搜索<code>&lt;%- post.content %&gt;</code>复制一下代码覆盖copy</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-content-wrapper&#34;</span>&gt;
+  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-content&#34;</span> <span style="color:#007f7f">v-pre</span>&gt;
+    <span style="color:#f00">&lt;</span>%- post.content %&gt;
+  &lt;/<span style="font-weight:bold">div</span>&gt;
+  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;toc-container&#34;</span>&gt;
+   <span style="color:#f00">&lt;</span>%- post.toc %&gt;
+ &lt;/<span style="font-weight:bold">div</span>&gt;
+&lt;/<span style="font-weight:bold">div</span>&gt;
+</code></pre></div><p>新增高亮js</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">&lt;script&gt;
+      hljs.initHighlightingOnLoad()
+
+      <span style="color:#fff;font-weight:bold">let</span> mainNavLinks = <span style="color:#fff;font-weight:bold">document</span>.querySelectorAll(<span style="color:#0ff;font-weight:bold">&#34;.markdownIt-TOC a&#34;</span>);
+
+      <span style="color:#007f7f">// This should probably be throttled.
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// Especially because it triggers during smooth scrolling.
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// https://lodash.com/docs/4.17.10#throttle
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// You could do like...
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// window.addEventListener(&#34;scroll&#34;, () =&gt; {
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">//    _.throttle(doThatStuff, 100);
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// });
+</span><span style="color:#007f7f"></span>      <span style="color:#007f7f">// Only not doing it here to keep this Pen dependency-free.
+</span><span style="color:#007f7f"></span>
+      <span style="color:#fff;font-weight:bold">window</span>.addEventListener(<span style="color:#0ff;font-weight:bold">&#34;scroll&#34;</span>, event =&gt; {
+        <span style="color:#fff;font-weight:bold">let</span> fromTop = <span style="color:#fff;font-weight:bold">window</span>.scrollY;
+
+        mainNavLinks.forEach((link, index) =&gt; {
+          <span style="color:#fff;font-weight:bold">let</span> section = <span style="color:#fff;font-weight:bold">document</span>.getElementById(<span style="color:#fff;font-weight:bold">decodeURI</span>(link.hash).substring(<span style="color:#ff0;font-weight:bold">1</span>));
+          <span style="color:#fff;font-weight:bold">let</span> nextSection = <span style="color:#fff;font-weight:bold">null</span>
+          <span style="color:#fff;font-weight:bold">if</span> (mainNavLinks[index + <span style="color:#ff0;font-weight:bold">1</span>]) {
+            nextSection = <span style="color:#fff;font-weight:bold">document</span>.getElementById(<span style="color:#fff;font-weight:bold">decodeURI</span>(mainNavLinks[index + <span style="color:#ff0;font-weight:bold">1</span>].hash).substring(<span style="color:#ff0;font-weight:bold">1</span>));
+          }
+          <span style="color:#fff;font-weight:bold">if</span> (section.offsetTop &lt;= fromTop) {
+            <span style="color:#fff;font-weight:bold">if</span> (nextSection) {
+              <span style="color:#fff;font-weight:bold">if</span> (nextSection.offsetTop &gt; fromTop) {
+                link.classList.add(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);
+              } <span style="color:#fff;font-weight:bold">else</span> {
+                link.classList.remove(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);    
+              }
+            } <span style="color:#fff;font-weight:bold">else</span> {
+              link.classList.add(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);
+            }
+          } <span style="color:#fff;font-weight:bold">else</span> {
+            link.classList.remove(<span style="color:#0ff;font-weight:bold">&#34;current&#34;</span>);
+          }
+        });
+      });
+
+    &lt;<span style="color:#f00">/script&gt;</span>
+</code></pre></div><h3 id="2客户端新增自定义css">2、客户端新增自定义css<a hidden class="anchor" aria-hidden="true" href="#2客户端新增自定义css">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.toc-container  .markdownIt-TOC {
+    <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">sticky</span>;
+    <span style="color:#fff;font-weight:bold">top</span>: <span style="color:#ff0;font-weight:bold">32</span><span style="color:#fff;font-weight:bold">px</span>;
+    <span style="color:#fff;font-weight:bold">width</span>: <span style="color:#ff0;font-weight:bold">200</span><span style="color:#fff;font-weight:bold">px</span>;
+    <span style="color:#fff;font-weight:bold">font-size</span>: <span style="color:#ff0;font-weight:bold">12</span><span style="color:#fff;font-weight:bold">px</span>;
+    <span style="color:#fff;font-weight:bold">list-style</span>: <span style="color:#fff;font-weight:bold">none</span>;
+    <span style="color:#fff;font-weight:bold">padding-left</span>: <span style="color:#ff0;font-weight:bold">0</span>;
+    <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">16</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#ff0;font-weight:bold">8</span><span style="color:#fff;font-weight:bold">px</span>;
+ }
+.toc-container  .markdownIt-TOC:before {
+      <span style="color:#fff;font-weight:bold">content</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>;
+      <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">absolute</span>;
+      <span style="color:#fff;font-weight:bold">top</span>: <span style="color:#ff0;font-weight:bold">0</span>;
+      <span style="color:#fff;font-weight:bold">left</span>: <span style="color:#ff0;font-weight:bold">8</span><span style="color:#fff;font-weight:bold">px</span>;
+      <span style="color:#fff;font-weight:bold">bottom</span>: <span style="color:#ff0;font-weight:bold">0</span>;
+      <span style="color:#fff;font-weight:bold">width</span>: <span style="color:#ff0;font-weight:bold">1</span><span style="color:#fff;font-weight:bold">px</span>;
+      <span style="color:#fff;font-weight:bold">background-color</span>: <span style="color:#ff0;font-weight:bold">#ebedef</span>;
+      <span style="color:#fff;font-weight:bold">opacity</span>: <span style="color:#ff0;font-weight:bold">.5</span>;
+  }
+.toc-container  <span style="font-weight:bold">ul</span> {
+    <span style="color:#fff;font-weight:bold">list-style</span>: <span style="color:#fff;font-weight:bold">none</span>;
+  }
+.toc-container  <span style="font-weight:bold">li</span> {
+    <span style="color:#fff;font-weight:bold">padding-left</span>: <span style="color:#ff0;font-weight:bold">16</span><span style="color:#fff;font-weight:bold">px</span>;
+}
+.toc-container  <span style="font-weight:bold">li</span> <span style="font-weight:bold">a</span> {
+      <span style="color:#fff;font-weight:bold">color</span>: <span style="color:#ff0;font-weight:bold">#868e96</span>;
+      <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">4</span><span style="color:#fff;font-weight:bold">px</span>;
+      <span style="color:#fff;font-weight:bold">display</span>: <span style="color:#fff;font-weight:bold">block</span>;
+      <span style="color:#fff;font-weight:bold">transition</span>: <span style="color:#fff;font-weight:bold">all</span> <span style="color:#ff0;font-weight:bold">0.3</span><span style="color:#fff;font-weight:bold">s</span>;
+  }
+.toc-container  <span style="font-weight:bold">li</span> <span style="font-weight:bold">a</span>:hover {
+        <span style="color:#fff;font-weight:bold">background</span>: <span style="color:#ff0;font-weight:bold">#cddbef</span>;
+      }
+.toc-container  <span style="font-weight:bold">li</span> <span style="font-weight:bold">a</span>.current {
+        <span style="color:#fff;font-weight:bold">color</span>: <span style="color:#ff0;font-weight:bold">#006CFF</span>;
+        <span style="color:#fff;font-weight:bold">background</span>: <span style="color:#ff0;font-weight:bold">#fafafa</span>;
+  }
+.post-content-wrapper {
+<span style="color:#fff;font-weight:bold">display</span>: <span style="color:#fff;font-weight:bold">flex</span>;
+}
+.post-content {
+<span style="color:#fff;font-weight:bold">width</span>: <span style="color:#ff0;font-weight:bold">100</span><span style="color:#fff;font-weight:bold">%</span>;
+<span style="color:#fff;font-weight:bold">margin-right</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
+}
+@<span style="color:#fff;font-weight:bold">media</span> (<span style="font-weight:bold">max-width</span>: <span style="font-weight:bold">1150px</span>) {
+  .toc-container {
+    <span style="color:#fff;font-weight:bold">display</span>: <span style="color:#fff;font-weight:bold">none</span>;
+  }
+}
+</code></pre></div><h3 id="3修改maincss文件">3、修改main.css文件<a hidden class="anchor" aria-hidden="true" href="#3修改maincss文件">#</a></h3>
+<p>搜索<code>.post-detail</code> 修改<code>margin: 0 auto;</code>为</p>
+<p><code>margin: 0 20px;</code></p>
+<p>重新渲染网页即可尽情享用吧！</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.yongs.ml/tags/girde/">girde</a></li>
+      <li><a href="https://blog.yongs.ml/tags/simple/">simple</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>docker 生成自己的镜像</span>
+  </a>
+  <a class="next" href="https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>云服务器docker搭建自动领京豆bot互动指令</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

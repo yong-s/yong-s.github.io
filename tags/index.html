@@ -1,151 +1,234 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" >
+<html lang="zh" dir="auto">
 
-<title>标签列表 | Yongs的网络日志</title>
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Tags | Yong’s 网络日志</title>
+<meta name="keywords" content="" />
+<meta name="description" content="分享技术、生活；手艺人">
+<meta name="author" content="
+作者:&nbsp;yongs">
+<link rel="canonical" href="https://blog.yongs.ml/tags/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="apple-touch-icon" href="https://blog.yongs.ml/Q.gif">
+<link rel="mask-icon" href="https://blog.yongs.ml/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.91.2" />
+<link rel="alternate" type="application/rss+xml" href="https://blog.yongs.ml/tags/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.yongs.ml/favicon.ico?v=1634054364618">
-<link rel="stylesheet" href="https://blog.yongs.ml/styles/main.css">
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </style>
+</noscript><meta property="og:title" content="Tags" />
+<meta property="og:description" content="分享技术、生活；手艺人" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.yongs.ml/tags/" />
 
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tags"/>
+<meta name="twitter:description" content="分享技术、生活；手艺人"/>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-175460382-3"></script>
+</head>
+
+<body class="list" id="top">
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-  gtag('config', 'UA-175460382-3');
 </script>
 
-
-    <meta name="description" content="手艺人、搞钱、剪片子、生活......">
-  </head>
-  <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://blog.yongs.ml">
-        <img src="https://blog.yongs.ml/images/avatar.png?v=1634054364618" class="site-logo">
-        <h1 class="site-title">Yongs的网络日志</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-          <a class="social-link" href="https://github.com/yong-s" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      手艺人、搞钱、剪片子、生活......
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.yongs.ml/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="tags-container">
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/jSxUieihy/">docker</a>
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/cGMzUJK2S4/">京豆</a>
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/CveC3Byot/">girde</a>
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/mEL3Y7ncgm/">simple</a>
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/AAFpnJhWhc/">centos</a>
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/-eisxYfbD5/">脚本</a>
-            
-              <a class="tag" href="https://blog.yongs.ml/tag/BGAEiimWne/">羊毛</a>
-            
-          </div>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.yongs.ml" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
         </div>
-      </div>
-    </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/archives" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/tags" title="标签">
+                    <span class="active">标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+<header class="page-header">
+    
+</header>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+<ul class="terms-tags">
+    <li>
+        <a href="https://blog.yongs.ml/tags/centos/">centos <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://blog.yongs.ml/tags/docker/">docker <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://blog.yongs.ml/tags/girde/">girde <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://blog.yongs.ml/tags/simple/">simple <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://blog.yongs.ml/tags/%E4%BA%AC%E8%B1%86/">京豆 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://blog.yongs.ml/tags/%E7%BE%8A%E6%AF%9B/">羊毛 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://blog.yongs.ml/tags/%E8%84%9A%E6%9C%AC/">脚本 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+</ul>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
-AOS.init();
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
 </script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad()
-  </script>
+</script>
+</body>
 
-
-
-
-
-  </body>
 </html>

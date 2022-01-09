@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>docker 生成自己的镜像 | Yong’s 网络日志</title>
+<meta name="keywords" content="docker, 京豆" />
+<meta name="description" content="docker 自定义镜像">
+<meta name="author" content="
+作者:&nbsp;yongs">
+<link rel="canonical" href="https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.yongs.ml/img/Q.gif">
+<link rel="apple-touch-icon" href="https://blog.yongs.ml/Q.gif">
+<link rel="mask-icon" href="https://blog.yongs.ml/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.91.2" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="docker 生成自己的镜像" />
+<meta property="og:description" content="docker 自定义镜像" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-21T23:26:34&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-21T23:26:34&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="docker 生成自己的镜像"/>
+<meta name="twitter:description" content="docker 自定义镜像"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://blog.yongs.ml/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "docker 生成自己的镜像",
+      "item": "https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "docker 生成自己的镜像",
+  "name": "docker 生成自己的镜像",
+  "description": "docker 自定义镜像",
+  "keywords": [
+    "docker", "京豆"
+  ],
+  "articleBody": "看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他…\n1、创建Dockerfile文件 比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换\n换完在当前目录 docker build -t jd_scripts .\n直接生成自己的image\ndocker images 查看镜像\n2、修改docker-compose文件 修改docker-compose里面的仓库地址为自己的地址，其他参数不用变\ndocker-compose up -d 启动镜像\n完美运行！\n继续躺平。\n建议学学docker，真的好强大！\n附上一个不错的docker教程\nDocker —— 从入门到实践\n",
+  "wordCount" : "269",
+  "inLanguage": "zh",
+  "datePublished": "2021-06-21T23:26:34Z",
+  "dateModified": "2021-06-21T23:26:34Z",
+  "author":{
+    "@type": "Person",
+    "name": "yongs"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yong’s 网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.yongs.ml/img/Q.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.yongs.ml" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/archives" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      docker 生成自己的镜像
+    </h1>
+    <div class="post-description">
+      docker 自定义镜像
+    </div>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2021-06-21 23:26:34 +0000 UTC'>2021-06-21</span>&nbsp;|&nbsp;更新:&nbsp;2021-06-21&nbsp;|&nbsp;字数:&nbsp;269字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;yongs
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#1%e5%88%9b%e5%bb%badockerfile%e6%96%87%e4%bb%b6" aria-label="1、创建Dockerfile文件">1、创建Dockerfile文件</a></li>
+                    <li>
+                        <a href="#2%e4%bf%ae%e6%94%b9docker-compose%e6%96%87%e4%bb%b6" aria-label="2、修改docker-compose文件">2、修改docker-compose文件</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
+<!-- more -->
+<h3 id="1创建dockerfile文件">1、创建Dockerfile文件<a hidden class="anchor" aria-hidden="true" href="#1创建dockerfile文件">#</a></h3>
+<p>比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换</p>
+<p>换完在当前目录 <code>docker build -t jd_scripts .</code></p>
+<p>直接生成自己的image</p>
+<p><code>docker images</code> 查看镜像</p>
+<h3 id="2修改docker-compose文件">2、修改docker-compose文件<a hidden class="anchor" aria-hidden="true" href="#2修改docker-compose文件">#</a></h3>
+<p>修改docker-compose里面的仓库地址为自己的地址，其他参数不用变</p>
+<p><code>docker-compose up -d</code> 启动镜像</p>
+<p>完美运行！</p>
+<p>继续躺平。</p>
+<p>建议学学docker，真的好强大！</p>
+<p>附上一个不错的docker教程</p>
+<p><a href="https://yeasy.gitbook.io/docker_practice/"><img loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABk0lEQVRYR&#43;2W3UvCUByGX7fchQpZuvmRq1WEUElWEEPMDMz&#43;mf7Bym4qJCjJCCsUJeii8hOhAt3AWGBkkc6dpF2c3e685zzn&#43;f3O2Syd4l4HJn4sFJCwOtQgoUBQg9QgqQHSPO1BapDUAGm&#43;bw9mr3K4zN70rMEwDFyTToRCQUwH/LAwDClD37wuQK&#43;Xh91u&#43;5hIaSt4LlfRarUhij7EohvgOG5kkLoAt&#43;MypBnxE0JVFZxfXOMuX8TCvISIvAaGZUcCaQhQI9EgU0dpVGt17O7EwPMucwFqNIVCCafpDFbDiwivLJkPsFKpYf/wGIEpH&#43;JbsnkBJ5zjSCY2kbvN/zj1g6hnJbHv5gz3oLZw12AX8OX1DY1GcxBTz3uHwwZBcP&#43;a&#43;RNA05bY1IdEu7APUieoN5pIJqLwePihSqt3sKESa3DpswxK9w/muKi/f&#43;oen8pQVBVzkoiIvA4rZ9UrZOhxugx&#43;nZUdYyG4XQgtB&#43;H3Cf/7szD0dkcQoL/8pFKpQWqQ1ABpnvYgNUhqgDRPe5DU4DsPyz1QKJJZDwAAAABJRU5ErkJggg==" alt="img"  />
+Docker —— 从入门到实践</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.yongs.ml/tags/docker/">docker</a></li>
+      <li><a href="https://blog.yongs.ml/tags/%E4%BA%AC%E8%B1%86/">京豆</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.yongs.ml/girde-simple%E4%BF%AE%E6%94%B9%E6%B7%BB%E5%8A%A0%E6%94%AF%E6%8C%81%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>girde simple修改添加支持侧边栏目录</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
