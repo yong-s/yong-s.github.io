@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 21 Jun 2021 23:26:34 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker 生成自己的镜像</title>
-      <link>https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/</link>
+      <link>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/docker-%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/</guid>
+      <guid>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</guid>
       <description>docker 自定义镜像</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
@@ -36,10 +36,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/</link>
+      <link>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%A2%86%E4%BA%AC%E8%B1%86bot%E4%BA%92%E5%8A%A8%E6%8C%87%E4%BB%A4/</guid>
+      <guid>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
       <description>快速用docker部署领京豆服务</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
