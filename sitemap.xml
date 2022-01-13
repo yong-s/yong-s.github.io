@@ -2,50 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yongs.ml/about/</loc>
+    <loc>https://blog.yongs.ml/about/</loc>
     <lastmod>2022-01-13T20:56:38+08:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/docker/</loc>
+    <loc>https://blog.yongs.ml/tags/docker/</loc>
     <lastmod>2021-06-21T23:26:34+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</loc>
+    <loc>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</loc>
     <lastmod>2021-06-21T23:26:34+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/posts/</loc>
+    <loc>https://blog.yongs.ml/posts/</loc>
     <lastmod>2021-06-21T23:26:34+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/</loc>
+    <loc>https://blog.yongs.ml/tags/</loc>
     <lastmod>2021-06-21T23:26:34+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/</loc>
+    <loc>https://blog.yongs.ml/</loc>
     <lastmod>2021-06-21T23:26:34+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/%E4%BA%AC%E8%B1%86/</loc>
+    <loc>https://blog.yongs.ml/tags/%E4%BA%AC%E8%B1%86/</loc>
     <lastmod>2021-06-21T23:26:34+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/girde/</loc>
+    <loc>https://blog.yongs.ml/tags/girde/</loc>
     <lastmod>2021-06-06T18:50:26+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</loc>
+    <loc>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</loc>
     <lastmod>2021-06-06T18:50:26+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/simple/</loc>
+    <loc>https://blog.yongs.ml/tags/simple/</loc>
     <lastmod>2021-06-06T18:50:26+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/centos/</loc>
+    <loc>https://blog.yongs.ml/tags/centos/</loc>
     <lastmod>2021-04-30T22:49:08+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</loc>
+    <loc>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</loc>
     <lastmod>2021-04-30T22:49:08+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/%E7%BE%8A%E6%AF%9B/</loc>
+    <loc>https://blog.yongs.ml/tags/%E7%BE%8A%E6%AF%9B/</loc>
     <lastmod>2021-04-30T22:49:08+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/tags/%E8%84%9A%E6%9C%AC/</loc>
+    <loc>https://blog.yongs.ml/tags/%E8%84%9A%E6%9C%AC/</loc>
     <lastmod>2021-04-30T22:49:08+00:00</lastmod>
   </url><url>
-    <loc>https://yongs.ml/archives/</loc>
+    <loc>https://blog.yongs.ml/archives/</loc>
   </url><url>
-    <loc>https://yongs.ml/search/</loc>
+    <loc>https://blog.yongs.ml/search/</loc>
   </url>
 </urlset>

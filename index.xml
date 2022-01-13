@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Yong’s 网络日志</title>
-    <link>https://yongs.ml/</link>
+    <link>https://blog.yongs.ml/</link>
     <description>Recent content on Yong’s 网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 21 Jun 2021 23:26:34 +0000</lastBuildDate><atom:link href="https://yongs.ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Jun 2021 23:26:34 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://yongs.ml/about/</link>
+      <link>https://blog.yongs.ml/about/</link>
       <pubDate>Thu, 13 Jan 2022 20:56:38 +0800</pubDate>
       
-      <guid>https://yongs.ml/about/</guid>
+      <guid>https://blog.yongs.ml/about/</guid>
       <description>欢迎来到我的小站呀，很高兴遇见你！🤝 🏠 关于本站 这里主要记录一些平常遇到的一些技术坑，</description>
       <content:encoded><![CDATA[<blockquote>
 <p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
@@ -33,10 +33,10 @@
     
     <item>
       <title>docker 生成自己的镜像</title>
-      <link>https://yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</link>
+      <link>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</guid>
+      <guid>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</guid>
       <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
@@ -59,10 +59,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>girde simple修改添加支持侧边栏目录</title>
-      <link>https://yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</link>
+      <link>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</guid>
+      <guid>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</guid>
       <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
@@ -180,10 +180,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
+      <link>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
+      <guid>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
       <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
