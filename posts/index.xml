@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Yong’s 网络日志</title>
-    <link>https://blog.yongs.ml/posts/</link>
+    <link>https://yongs.ml/posts/</link>
     <description>Recent content in Posts on Yong’s 网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Mon, 21 Jun 2021 23:26:34 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 21 Jun 2021 23:26:34 +0000</lastBuildDate><atom:link href="https://yongs.ml/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker 生成自己的镜像</title>
-      <link>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</link>
+      <link>https://yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</guid>
-      <description>docker 自定义镜像</description>
+      <guid>https://yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</guid>
+      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
 <h3 id="1创建dockerfile文件">1、创建Dockerfile文件</h3>
@@ -36,10 +36,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>girde simple修改添加支持侧边栏目录</title>
-      <link>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</link>
+      <link>https://yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</guid>
+      <guid>https://yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</guid>
       <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
@@ -157,11 +157,11 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
+      <link>https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
-      <description>快速用docker部署领京豆服务</description>
+      <guid>https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
+      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>
@@ -284,6 +284,7 @@ Environment=<span style="color:#0ff;font-weight:bold">&#34;CLASH_URL=你的订�
 
 [Install]
 WantedBy=multi-user.target
+
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /当前用户目录/.config/clash/start-clash.sh
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
 </span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/start-clash.sh</span>
@@ -318,6 +319,7 @@ vim restart-clash.sh
 </code></pre></div><p>新增一条命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#/bin/sh</span>
 sudo systemctl restart clash.service
+
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x restart-clash.sh
 crontab -e
 <span style="color:#007f7f">#插入下面命令</span>
@@ -343,6 +345,7 @@ curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegra
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span>
 mkdir .docker
 vim  ~/.docker/config.json
+
 </code></pre></div><p>填入下面json</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
  <span style="font-weight:bold">&#34;proxies&#34;</span>:

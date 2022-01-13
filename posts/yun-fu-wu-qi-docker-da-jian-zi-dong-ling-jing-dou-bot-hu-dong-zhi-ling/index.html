@@ -7,18 +7,18 @@
 <meta name="robots" content="index, follow">
 <title>云服务器docker搭建自动领京豆bot互动指令 | Yong’s 网络日志</title>
 <meta name="keywords" content="docker, centos, 脚本, 京豆, 羊毛" />
-<meta name="description" content="快速用docker部署领京豆服务">
+<meta name="description" content="使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke">
 <meta name="author" content="
 作者:&nbsp;yongs">
-<link rel="canonical" href="https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/" />
+<link rel="canonical" href="https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://blog.yongs.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.yongs.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.yongs.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.yongs.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://yongs.ml/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://yongs.ml/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://yongs.ml/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://yongs.ml/apple-touch-icon.png">
+<link rel="mask-icon" href="https://yongs.ml/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.91.2" />
@@ -71,33 +71,33 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script><meta property="og:title" content="云服务器docker搭建自动领京豆bot互动指令" />
-<meta property="og:description" content="快速用docker部署领京豆服务" />
+<meta property="og:description" content="使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-30T22:49:08&#43;00:00" />
 <meta property="article:modified_time" content="2021-04-30T22:49:08&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云服务器docker搭建自动领京豆bot互动指令"/>
-<meta name="twitter:description" content="快速用docker部署领京豆服务"/>
+<meta name="twitter:description" content="使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke"/>
 
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.yongs.ml/posts/"
+      "item": "https://yongs.ml/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "云服务器docker搭建自动领京豆bot互动指令",
-      "item": "https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/"
+      "item": "https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/"
     }
   ]
 }
@@ -108,7 +108,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "云服务器docker搭建自动领京豆bot互动指令",
   "name": "云服务器docker搭建自动领京豆bot互动指令",
-  "description": "快速用docker部署领京豆服务",
+  "description": "使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke",
   "keywords": [
     "docker", "centos", "脚本", "京豆", "羊毛"
   ],
@@ -123,14 +123,14 @@ if (!doNotTrack) {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/"
+    "@id": "https://yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Yong’s 网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.yongs.ml/favicon.ico"
+      "url": "https://yongs.ml/favicon.ico"
     }
   }
 }
@@ -152,7 +152,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.yongs.ml" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
+            <a href="https://yongs.ml/" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -178,22 +178,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.yongs.ml/archives" title="归档">
+                <a href="https://yongs.ml/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.yongs.ml/tags" title="标签">
+                <a href="https://yongs.ml/tags" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.yongs.ml/about" title="关于">
+                <a href="https://yongs.ml/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -204,13 +204,10 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://yongs.ml/">主页</a>&nbsp;»&nbsp;<a href="https://yongs.ml/posts/">Posts</a></div>
     <h1 class="post-title">
       云服务器docker搭建自动领京豆bot互动指令
     </h1>
-    <div class="post-description">
-      快速用docker部署领京豆服务
-    </div>
     <div class="post-meta">
 
 
@@ -448,6 +445,7 @@ Environment=<span style="color:#0ff;font-weight:bold">&#34;CLASH_URL=你的订�
 
 [Install]
 WantedBy=multi-user.target
+
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /当前用户目录/.config/clash/start-clash.sh
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
 </span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/start-clash.sh</span>
@@ -482,6 +480,7 @@ vim restart-clash.sh
 </code></pre></div><p>新增一条命令</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#/bin/sh</span>
 sudo systemctl restart clash.service
+
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x restart-clash.sh
 crontab -e
 <span style="color:#007f7f">#插入下面命令</span>
@@ -507,6 +506,7 @@ curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegra
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span>
 mkdir .docker
 vim  ~/.docker/config.json
+
 </code></pre></div><p>填入下面json</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
  <span style="font-weight:bold">&#34;proxies&#34;</span>:
@@ -564,14 +564,14 @@ sudo journalctl -u clash.service -f
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.yongs.ml/tags/docker/">docker</a></li>
-      <li><a href="https://blog.yongs.ml/tags/centos/">centos</a></li>
-      <li><a href="https://blog.yongs.ml/tags/%E8%84%9A%E6%9C%AC/">脚本</a></li>
-      <li><a href="https://blog.yongs.ml/tags/%E4%BA%AC%E8%B1%86/">京豆</a></li>
-      <li><a href="https://blog.yongs.ml/tags/%E7%BE%8A%E6%AF%9B/">羊毛</a></li>
+      <li><a href="https://yongs.ml/tags/docker/">docker</a></li>
+      <li><a href="https://yongs.ml/tags/centos/">centos</a></li>
+      <li><a href="https://yongs.ml/tags/%E8%84%9A%E6%9C%AC/">脚本</a></li>
+      <li><a href="https://yongs.ml/tags/%E4%BA%AC%E8%B1%86/">京豆</a></li>
+      <li><a href="https://yongs.ml/tags/%E7%BE%8A%E6%AF%9B/">羊毛</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/">
+  <a class="prev" href="https://yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/">
     <span class="title">« 上一页</span>
     <br>
     <span>girde simple修改添加支持侧边栏目录</span>
@@ -581,7 +581,7 @@ sudo journalctl -u clash.service -f
   </footer>
 <div>
     <div class="pagination__title">
-        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
         <hr />
     </div>
     <div id="tcomment"></div>
@@ -596,11 +596,12 @@ sudo journalctl -u clash.service -f
         });
     </script>
 </div>
+
 </article>
     </main>
     
 <footer class="footer">
-    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></span>
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
