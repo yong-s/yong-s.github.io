@@ -7,13 +7,71 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 21 Jun 2021 23:26:34 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jan 2022 11:24:05 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Compose部署filebrowser</title>
+      <link>https://blog.yongs.ml/posts/docker-deploy-filebrowser/</link>
+      <pubDate>Fri, 21 Jan 2022 11:24:05 +0800</pubDate>
+      
+      <guid>https://blog.yongs.ml/posts/docker-deploy-filebrowser/</guid>
+      <description>docker快速搭建个人网盘</description>
+      <content:encoded><![CDATA[<p>在linuxserver服务器上安装</p>
+<p>环境：docker、docker- compose</p>
+<p>需要了解docker基本知识，不懂可以翻翻以前的博客或者搜下教程学习</p>
+<p><a href="https://filebrowser.org/installation">filebrowser</a>官网上给的是docker命令执行的，但用compose习惯了，所以转换了一下格式，但是这里有个坑，官网也提示了</p>
+<blockquote>
+<p>By default, we already have a <a href="https://github.com/filebrowser/filebrowser/blob/master/docker/root/defaults/settings.json">configuration file with some defaults</a> so you can just mount the root and the database. Although you can overwrite by mounting a directory with a new config file. If you don&rsquo;t already have a database file, make sure to create a new empty file under the path you specified. Otherwise, Docker will create an empty folder instead of an empty file, resulting in an error when mounting the database into the container.</p>
+</blockquote>
+<p>翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！</p>
+<h1 id="1创建docker-compose文件">1、创建docker-compose文件</h1>
+<p>内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+<span style="font-weight:bold">services</span>:     
+    <span style="font-weight:bold">filebrowser</span>:  
+        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
+        <span style="font-weight:bold">container_name</span>: filebrowser
+        <span style="font-weight:bold">volumes</span>:  
+            - ./root:/srv           
+            - ./database/filebrowser.db:/database/filebrowser.db 
+            - ./settings.json:/config/settings.json
+        <span style="font-weight:bold">environment</span>:
+            - PUID=0
+            - PGID=0
+        <span style="font-weight:bold">ports</span>: 
+            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
+        <span style="font-weight:bold">restart</span>: always
+</code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹</h1>
+<p>对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
+  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
+  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
+  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
+  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
+  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
+}
+</code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir database
+<span style="color:#fff;font-weight:bold">cd</span> database
+touch filebrowser.db
+</code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功</h1>
+<p>执行 docker- compose logs -f 看下日志是否报错</p>
+<p>需要其他机器访问记得防火墙 把端口打开，本例用的8080端口</p>
+<p>浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉</p>
+<blockquote>
+<p>参考：</p>
+<p>1、<a href="https://filebrowser.org">filebrowser官网</a></p>
+<p>2、<a href="https://www.liuhaolin.com/zhuanzai/906.html">filebrowser 一个跨平台的文件管理器的使用方法-森林的个人博客</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>docker 生成自己的镜像</title>
-      <link>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</link>
+      <link>https://blog.yongs.ml/posts/docker-generate-image/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/docker-sheng-cheng-zi-ji-de-jing-xiang/</guid>
+      <guid>https://blog.yongs.ml/posts/docker-generate-image/</guid>
       <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
@@ -36,10 +94,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
+      <link>https://blog.yongs.ml/posts/docker-build-jdbot/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
+      <guid>https://blog.yongs.ml/posts/docker-build-jdbot/</guid>
       <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->

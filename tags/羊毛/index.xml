@@ -10,10 +10,10 @@
     <lastBuildDate>Fri, 30 Apr 2021 22:49:08 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/%E7%BE%8A%E6%AF%9B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</link>
+      <link>https://blog.yongs.ml/posts/docker-build-jdbot/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/yun-fu-wu-qi-docker-da-jian-zi-dong-ling-jing-dou-bot-hu-dong-zhi-ling/</guid>
+      <guid>https://blog.yongs.ml/posts/docker-build-jdbot/</guid>
       <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->

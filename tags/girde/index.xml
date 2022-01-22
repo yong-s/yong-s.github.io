@@ -10,10 +10,10 @@
     <lastBuildDate>Sun, 06 Jun 2021 18:50:26 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/girde/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>girde simple修改添加支持侧边栏目录</title>
-      <link>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</link>
+      <link>https://blog.yongs.ml/posts/girde-simple-support-for-sidebar-directory/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/girde-simple-xiu-gai-tian-jia-zhi-chi-ce-bian-lan-mu-lu/</guid>
+      <guid>https://blog.yongs.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
       <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
