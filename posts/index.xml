@@ -7,7 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 21 Jan 2022 11:24:05 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jan 2022 21:34:31 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo 自动更新文章修改时间</title>
+      <link>https://blog.yongs.ml/posts/hugo-auto-update-lastmod/</link>
+      <pubDate>Sat, 22 Jan 2022 21:34:31 +0800</pubDate>
+      
+      <guid>https://blog.yongs.ml/posts/hugo-auto-update-lastmod/</guid>
+      <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交</description>
+      <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="font-weight:bold">frontmatter</span>:
+    <span style="font-weight:bold">lastmod</span>:
+        - lastmod
+        - :git
+        - :fileModTime
+        - :default
+</code></pre></div><p>依次取的顺序为：</p>
+<blockquote>
+<p>lastmod :最后提交时间</p>
+<p>:git: 根据git提交版本时间</p>
+<p>:fileModTime：文件修改时间</p>
+</blockquote>
+<p><a href="https://gohugo.io/getting-started/configuration/#configure-front-matter">Configure Hugo | Hugo</a> 写的都有,but是英文的🙃</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Docker Compose部署filebrowser</title>
       <link>https://blog.yongs.ml/posts/docker-deploy-filebrowser/</link>
