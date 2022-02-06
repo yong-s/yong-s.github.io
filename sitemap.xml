@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.yongs.ml/tags/docker/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.yongs.ml/posts/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.yongs.ml/tags/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.yongs.ml/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.yongs.ml/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.yongs.ml/tags/%E6%AF%94%E4%BB%B7/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.yongs.ml/posts/comparison-robot-building-for-docker/</loc>
+    <lastmod>2022-02-06T18:02:18+08:00</lastmod>
+  </url><url>
     <loc>https://blog.yongs.ml/tags/papermod%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2022-02-01T19:45:23+08:00</lastmod>
   </url><url>
@@ -10,18 +31,6 @@
   </url><url>
     <loc>https://blog.yongs.ml/tags/hugo%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2022-02-01T19:45:23+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.yongs.ml/posts/</loc>
-    <lastmod>2022-02-01T19:45:23+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.yongs.ml/tags/</loc>
-    <lastmod>2022-02-01T19:45:23+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.yongs.ml/</loc>
-    <lastmod>2022-02-01T19:45:23+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.yongs.ml/tags/docker/</loc>
-    <lastmod>2022-01-22T21:14:21+08:00</lastmod>
   </url><url>
     <loc>https://blog.yongs.ml/posts/docker-deploy-filebrowser/</loc>
     <lastmod>2022-01-22T21:14:21+08:00</lastmod>

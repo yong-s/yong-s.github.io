@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>机器人 on Yong’s 网络日志</title>
+    <link>https://blog.yongs.ml/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+    <description>Recent content in 机器人 on Yong’s 网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 06 Feb 2022 17:05:32 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>比价助手机器人docker快速部署</title>
+      <link>https://blog.yongs.ml/posts/comparison-robot-building-for-docker/</link>
+      <pubDate>Sun, 06 Feb 2022 17:05:32 +0800</pubDate>
+      
+      <guid>https://blog.yongs.ml/posts/comparison-robot-building-for-docker/</guid>
+      <description>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！</p>
+</blockquote>
+<h1 id="一部署傻妞助手bot">一、部署傻妞助手bot</h1>
+<p>项目地址：<a href="https://github.com/cdle/sillyGirl">GitHub - cdle/sillyGirl: 傻妞机器人</a></p>
+<h3 id="一键安装支持linux-arm64和amd64位">一键安装：支持linux arm64和amd64位</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#fff;font-weight:bold">cd</span> /opt
+s=sillyGirl;a=arm64;<span style="color:#fff;font-weight:bold">if</span> [[ <span style="color:#fff;font-weight:bold">$(</span>uname -a | grep <span style="color:#0ff;font-weight:bold">&#34;x86_64&#34;</span><span style="color:#fff;font-weight:bold">)</span> != <span style="color:#0ff;font-weight:bold">&#34;&#34;</span> ]];<span style="color:#fff;font-weight:bold">then</span> a=amd64;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">if</span> [ ! -d $s ];<span style="color:#fff;font-weight:bold">then</span> mkdir $s;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">cd</span> $s;wget https://github.com/cdle/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>/releases/download/main/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>_linux_$a -O $s &amp;&amp; chmod <span style="color:#ff0;font-weight:bold">777</span> $s;pkill -9 $s;<span style="color:#fff;font-weight:bold">$(</span><span style="color:#fff;font-weight:bold">pwd</span><span style="color:#fff;font-weight:bold">)</span>/$s
+
+</code></pre></div><p>在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置</p>
+<p>主要是配置管理员账号等，也可以通过对话配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">### 一些基础设置 ###
+# 傻妞机器人名
+set sillyGirl name 傻妞
+# 傻妞http服务端口
+set sillyGirl port 800
+
+
+# 傻妞消息撤回等待时间，单位秒
+set sillyGirl duration 5
+# 傻妞自动升级是否通知
+set sillyGirl update_notify true
+# 是否开启傻妞自动更新
+set sillyGirl auto_update false
+# 傻妞内置赞赏码
+set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg
+#是否启动http服务
+set sillyGirl enable_http_server true
+# 关闭守护模式，守护模式会导致没法自动升级
+#systemctl disable sillyGirl
+
+### 对接青龙的设置 ###
+# 设置青龙openapi的client_id参数
+#set qinglong client_id ?
+# 设置青龙openapi的client_secret参数
+#set qinglong client_secret ?
+# 青龙是否开启自动隐藏重复任务功能
+#set qinglong autoCronHideDuplicate true
+# 设置青龙面板地址
+#set qinglong host http://127.0.0.1:5700
+
+### 对接QQ的设置 ###
+# 设置qq登录账号
+#set qq uin ?
+# 设置qq登录密码
+#set qq password ?
+# 设置qq临时消息默认群号
+#set qq tempMessageGroupCode ?
+# 指定要监听的qq群
+#set qq onGroups g1&amp;g2&amp;g3...
+# 设置是否自动同意好友请求
+#set qq auto_friend false
+# 设置是否对监听自身消息
+#set qq onself true
+# 设置qq管理员
+#set qq masters q1&amp;q2&amp;q3...
+# 设置接受通知的qq账号
+#set qq notifier q1&amp;q2&amp;q3...
+# 设置qq设备信息(自动生成)
+#set qq device.json ?
+# 设置qq登录令牌(自动生成)
+#set qq session.token ?
+# 注销qqbot命令，重新运行扫码即可
+#delete qq session.token
+# 指定系统通知发送对象命令，如不设置默认发送给所有管理员。
+#set [im type] notifiers [accounts join by &#39;&amp;&#39;] 
+
+### 对接telegram的设置 ###
+# 设置telegram机器人token
+#set tg token ?
+# 设置telegram机器人代理
+#set tg http_proxy ?
+# 设置telegram机器人管理员
+#set tg masters t1&amp;t2&amp;t3...
+# 设置接受通知的telegram账号
+#set tg notifier t1&amp;t2&amp;t3...
+
+### 对接微信公众号的设置 ###
+# 设置微信公众平台app_id
+#set wxmp app_id ?
+# 设置微信公众平台app_secret
+#set wxmp app_secret ?
+# 设置微信公众平台token
+#set wxmp token ?
+# 设置微信公众平台encoding_aes_key
+#set wxmp encoding_aes_key ?
+# 设置微信公众平台管理员
+#set wxmp masters w1&amp;w2&amp;w3...
+# 设置公众号关注事件回复
+#set wxmp subscribe_reply 感谢关注！
+# 设置公众号默认回复
+#set wxmp default_reply 无法回复该消息
+
+### 对接微信号的设置 ###
+# 傻妞内置微信插件，依赖于可爱猫和http-sdk
+# 傻妞远程处理接口 /wx/receive
+# 设置插件调用地址，确保傻妞可以访问可爱猫端口
+#set wx api_url ?
+# 设置图片转发模式，否则可能会出现此图片来自xx未经允许不得使用的提示
+set wx relay_mode true
+# 设置指定转发地址，格式为 https://域名/relay?url=%s，不知道不用填
+#set wx relaier ?
+# 设置# 傻妞是否动态网络地址，适用于# 傻妞家庭宽带而可爱猫在云服务器的情况下
+#set wx sillyGirl_dynamic_ip true
+# 设置可爱猫是否动态网络地址，适用于可爱猫家庭宽带而# 傻妞在云服务器的情况下
+#set wx keaimao_dynamic_ip true
+# 设置可爱猫端口
+#set wx keaimao_port ?
+# 设置微信管理员
+#set wx masters ?
+# vlw的API调用地址
+#set wx vlw_addr http://ip:port
+# vlw的token
+#set wx vlw_token ?
+
+### 对接pushplus的设置 ###
+# 管理员推送绑定pushplus指令
+#set sillyGirl pushplus [token]
+
+# 关键词撤回功能，关键词支持正则表达式。
+#set sillyGirl recall 关键词1&amp;关键词2...
+# 关键词回复功能，第一个问号是支持正则的关键词，第二个问号是回复的内容。
+#set reply ? ?
+
+### 对接芝士的设置 ###
+# 资产推送定时，以九点为例，包括失效提醒。
+set jd_cookie asset_push 0 9 * * *
+
+# 设置阿东登录地址，例：set jd_cookie adong_addr 192.168.1.1:5702
+#set jd_cookie adong_addr 阿东ip:端口
+# 设置阿东qq机器人账号，这里的机器人qq账号，请务必和阿东go-cqhttp配置中config.yml里qq一样。
+#set jd_cookie selfQid 机器人qq账号
+# 设置登录坑位
+#set jd_cookie login_num ?
+
+#设置诺兰登陆地址
+#set jd_cookie nolan_addr http://诺兰ip:端口
+
+# 对接xdd，额外设置参数
+#set jd_cookie xdd_token ?
+
+### 对接小爱同学的设置 ###
+# 小爱同学，可以指定API，对小爱说对话模式即可开启连续对话模式，闭嘴可关闭。
+#set sillyGirl 小爱同学 http://81.70.100.130/api/xiaoai.php?msg=%s&amp;n=text #挂了就自己换
+#set sillyGirl 小爱同学 http://jiuli.xiaoapi.cn/i/xiaoai_tts.php?msg=%s #挂了就自己换
+# 处理json格式数据的小爱api，不填获取整个文本
+#set sillyGirl 小爱同学gjson text
+# 删除处理json格式数据的小爱api
+#silly delete 小爱同学gjson
+# 使用方法：
+#1、唤起小爱：发送“小爱+想说的话”，例如：小爱今天天气。
+#2、对话模式：发送“小爱对话模式”开启，发送“闭嘴”结束。
+#3、成语接龙：发送“成语接龙”开始。这个可应该不是小爱同学的功能，但我懒得单独写它了。
+
+### 对接短网址的设置 ###
+# 设置短网址服务地址，填傻妞对外的可以访问的地址。
+#set dwz address ?
+# 设置短网址服务前缀
+#set dwz prefix d
+# 使用方法
+#发送“短网址+你想要转换的网址“ #例：短网址 http://kejiwanjia.com/
+</code></pre></div><h3 id="启动命令">启动命令</h3>
+<p>配置完成后，在/opt/sillyGirl下执行 ./sillyGirl -t 查看是否运行成功</p>
+<p>输入  time</p>
+<p>成功后 执行 ./sillyGirl -d 后台运行</p>
+<h3 id="其他常用命令">其他常用命令</h3>
+<p>杀掉进程</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -A|grep sillyGirl
+<span style="color:#fff;font-weight:bold">kill</span> pid 
+</code></pre></div><p>查看端口是否开启</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">netstat -tlan
+</code></pre></div><h1 id="二部署node-onebot">二、部署node-onebot</h1>
+<blockquote>
+<p>傻妞开发者把内置qq登录给去掉了，需要自己对接qqbot</p>
+<p>官方给的是node安装的，需要安装node环境，太麻烦，改为用docker安装</p>
+</blockquote>
+<h3 id="1拉取代码">1、拉取代码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//国外机
+git clone https://github.com/takayama-lily/node-onebot
+
+//国内机
+
+git clone https://ghproxy.861443216.workers.dev/https://github.com/takayama-lily/node-onebot
+机
+</code></pre></div><h3 id="2修改dockerfile文件">2、修改Dockerfile文件</h3>
+<p>修改默认Dockerfile里面最后一行的QQ号成自己的bot账号</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM node:14-alpine
+WORKDIR /app
+COPY . .
+CMD [&#34;node&#34;, &#34;main&#34;,&#34;这里改为自己的bot账号&#34;]
+</code></pre></div><h3 id="3创建configjs文件">3、创建config.js文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp config.sample.js config.js
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#0ff;font-weight:bold">&#34;use strict&#34;</span>;
+<span style="color:#007f7f">// 将此文件更名为config.js才能生效哦
+</span><span style="color:#007f7f"></span>
+module.exports = {
+
+    <span style="color:#007f7f">//通用配置
+</span><span style="color:#007f7f"></span>    general: {
+        platform:           <span style="color:#ff0;font-weight:bold">5</span>,      <span style="color:#007f7f">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
+</span><span style="color:#007f7f"></span>        debug:              <span style="color:#fff;font-weight:bold">false</span>,  <span style="color:#007f7f">//开启debug
+</span><span style="color:#007f7f"></span>        use_cqhttp_notice:  <span style="color:#fff;font-weight:bold">true</span>,   <span style="color:#007f7f">//是否使用cqhttp标准的notice事件格式
+</span><span style="color:#007f7f"></span>
+        host:               <span style="color:#0ff;font-weight:bold">&#34;localhost&#34;</span>,  <span style="color:#007f7f">//监听主机名
+</span><span style="color:#007f7f"></span>        port:               <span style="color:#ff0;font-weight:bold">5700</span>,       <span style="color:#007f7f">//端口
+</span><span style="color:#007f7f"></span>        use_http:           <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用http
+</span><span style="color:#007f7f"></span>        use_ws:             <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用正向ws，和http使用相同地址和端口
+</span><span style="color:#007f7f"></span>        access_token:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//访问api的token
+</span><span style="color:#007f7f"></span>        secret:             <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//上报数据的sha1签名密钥
+</span><span style="color:#007f7f"></span>        post_timeout:       <span style="color:#ff0;font-weight:bold">30</span>,         <span style="color:#007f7f">//post超时时间(秒)
+</span><span style="color:#007f7f"></span>        post_message_format:<span style="color:#0ff;font-weight:bold">&#34;array&#34;</span>,    <span style="color:#007f7f">//&#34;string&#34;或&#34;array&#34;
+</span><span style="color:#007f7f"></span>        enable_cors:        <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否允许跨域请求
+</span><span style="color:#007f7f"></span>        enable_heartbeat:   <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否启用ws心跳
+</span><span style="color:#007f7f"></span>        heartbeat_interval: <span style="color:#ff0;font-weight:bold">15000</span>,      <span style="color:#007f7f">//ws心跳间隔(毫秒)
+</span><span style="color:#007f7f"></span>        rate_limit_interval:<span style="color:#ff0;font-weight:bold">500</span>,        <span style="color:#007f7f">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
+</span><span style="color:#007f7f"></span>        event_filter:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//json格式的事件过滤器文件路径
+</span><span style="color:#007f7f"></span>        post_url: [ <span style="color:#007f7f">//上报地址，可以添加多个url
+</span><span style="color:#007f7f"></span>            <span style="color:#007f7f">// &#34;http://your.address.com:80&#34;,
+</span><span style="color:#007f7f"></span>        ],
+        ws_reverse_url: [ <span style="color:#007f7f">//反向ws地址，可以添加多个url
+</span><span style="color:#007f7f"></span>            <span style="color:#0ff;font-weight:bold">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
+            <span style="color:#007f7f">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
+</span><span style="color:#007f7f"></span>        ],
+        ws_reverse_reconnect_interval: <span style="color:#ff0;font-weight:bold">3000</span>, <span style="color:#007f7f">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
+</span><span style="color:#007f7f"></span>        ws_reverse_reconnect_on_code_1000: <span style="color:#fff;font-weight:bold">true</span>, <span style="color:#007f7f">//反向ws是否在关闭状态码为1000的时候重连
+</span><span style="color:#007f7f"></span>    },
+
+    <span style="color:#007f7f">//每个账号的单独配置(用于覆盖通用配置)
+</span><span style="color:#007f7f"></span>    <span style="color:#ff0;font-weight:bold">147258369</span>: {
+
+    },
+};
+
+<span style="color:#007f7f">// 安全注意：
+</span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
+</span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
+</span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
+</span></code></pre></div><h3 id="4编译docker-image">4、编译docker image</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t yongs/node-onebot:latest .
+</code></pre></div><p>yongs自定义的，随便起，一定不要忘了 最后又个<u> . </u>表示在当前目录文件编译</p>
+<h3 id="5启动image">5、启动image</h3>
+<p>用的是docker-compose启动的，刚才拉的代码已经有yaml文件了，</p>
+<p>需要注意 image名字是刚才编译的名字，不知道可以用</p>
+<p>docker images 查看，修改image名字即可</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>
+<span style="font-weight:bold">services</span>:
+  <span style="font-weight:bold">miraiok</span>:
+    <span style="font-weight:bold">image</span>: yongs/node-onebot
+    <span style="font-weight:bold">restart</span>: always
+    <span style="font-weight:bold">network_mode</span>: <span style="color:#0ff;font-weight:bold">&#34;host&#34;</span>
+    <span style="font-weight:bold">volumes</span>:
+      - ./config.js:/root/config.js
+      - ./data:/root/data
+    <span style="font-weight:bold">stdin_open</span>: <span style="color:#fff;font-weight:bold">true</span>
+    <span style="font-weight:bold">tty</span>: <span style="color:#fff;font-weight:bold">true</span>
+    <span style="font-weight:bold">container_name</span>: docker-onebot
+</code></pre></div><h3 id="6查看日志扫码登录不能登录进入容器内扫码">6、查看日志，扫码登录，不能登录进入容器内扫码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#查看日志</span>
+docker logs -f docker-onebot
+<span style="color:#007f7f">#进入容器</span>
+docker <span style="color:#fff;font-weight:bold">exec</span> -it docker-onebot /bin/sh
+<span style="color:#007f7f">#执行登录</span>
+node main <span style="color:#0ff;font-weight:bold">&#34;botqq号&#34;</span>
+</code></pre></div><p>给小助手发送命令看是否成功，比如 发送 name</p>
+<p>发送 淘宝京豆拼多多链接看是否回复，回复即部署成功。</p>
+<p>登录成功后，重启docker即可</p>
+<p>这里的坑就是傻妞启动失败，导致onebot连接不上傻妞。</p>
+<blockquote>
+<p>参考链接：</p>
+<p>1、<a href="https://www.kejiwanjia.com/jiaocheng/zheteng/19778.html#node-onebotqqbot">群晖傻妞SillyGirl完整部署教程 12.13更新node-onebot - 科技玩家</a></p>
+<p>2、<a href="https://www.kejiwanjia.com/jiaocheng/51905.html">Docker编译node-onebot，傻妞又活了 - 科技玩家</a></p>
+<p>3、<a href="https://github.com/AboutCXJ/SillyGirlDockerDeploy">GitHub - AboutCXJ/SillyGirlDockerDeploy</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
