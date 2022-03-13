@@ -7,7 +7,139 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 06 Feb 2022 17:05:32 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Mar 2022 13:05:35 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>打破信息茧房</title>
+      <link>https://blog.yongs.ml/posts/rss-build/</link>
+      <pubDate>Sun, 13 Mar 2022 13:05:35 +0800</pubDate>
+      
+      <guid>https://blog.yongs.ml/posts/rss-build/</guid>
+      <description>RSS服务快速搭建</description>
+      <content:encoded><![CDATA[<p>何为信息茧房：</p>
+<blockquote>
+<p>哈佛大学凯斯·桑斯坦教授在《信息乌托邦》一书中提出，人类社会存在一种“信息茧房”现象。他认为，在信息传播中人们自身的信息需求并非全方位的，只会注意选择想要的或能使自己愉悦的信息，久而久之接触的信息就越来越局限，越来越窄，就像蚕吐出来的丝一样，细细密密地把自己包裹起来，最终像一个蚕宝宝一样被桎梏在“信息茧房”内，失去对其他不同事物的了解能力和接触机会。当时，他的这一观点还只是作为一种推论和预测，但随着网络信息和人工智能技术的飞速发展，这种“信息茧房”现象，正越来越多地发生在现实生活中和我们的身边。</p>
+</blockquote>
+<p>说人话就是：</p>
+<blockquote>
+<p>在现如今的生活中，人们接受信息的来源（主要指生活在大陆，国外也差不多），主要从微信、微博、抖音、快手等中心化的平台，各家相互关闭自己的开放接口，强迫用户留在自己平台上，有时候只关注某个大V的信息，却不得不安装一个app，就这样手机上装了很多app（这些app们平均一周更新一次，要吐了）再加上平台的推荐算法，只推荐你喜欢的（兼听则明，偏信则暗），这样下去，整个人的认知无法被提高</p>
+</blockquote>
+<p>经过一段时间的探索，搭建了RSS这套服务，RSS服务属于古老服务了，估计只有数字原住民才听说过，目前来说还可以，正在慢慢过渡，在此记录下搭建过程，方便下次迁移</p>
+<blockquote>
+<p><strong>RSS</strong>（英文全称：<a href="https://zh.wikipedia.org/wiki/Resource_Description_Framework" title="Resource Description Framework">RDF</a> Site Summary 或 Really Simple Syndication<a href="https://zh.wikipedia.org/wiki/RSS#cite_note-powers-2003-1-2">[2]</a>），中文译作<strong>简易信息聚合</strong><a href="https://zh.wikipedia.org/wiki/RSS#cite_note-3">[3]</a>，也称<strong>聚合内容</strong><a href="https://zh.wikipedia.org/wiki/RSS#cite_note-%E5%BC%A0%E9%94%902015-4">[4]</a>，是一种<a href="https://zh.wikipedia.org/wiki/%E6%B6%88%E6%81%AF%E4%BE%86%E6%BA%90" title="消息来源">消息来源</a>格式规范，用以聚合多个网站更新的内容并自动通知网站订阅者。使用 RSS 后，网站订阅者便无需再手动查看网站是否有新的内容，同时 RSS 可将多个网站更新的内容进行整合，以摘要的形式呈现，有助于订阅者快速获取重要信息，并选择性地点阅查看。</p>
+<p>                                                                                                             ——引用wikipedia</p>
+</blockquote>
+<p>准备：</p>
+<ul>
+<li>需要一台服务器，运行linux即可       </li>
+</ul>
+<blockquote>
+<p>配置不用太大，我用的是阿里云的服务器，生活在大陆，国内访问比较快</p>
+</blockquote>
+<p>用到的服务：</p>
+<blockquote>
+<p><a href="https://docs.rsshub.app/">RSSHub</a>：一个开源、简单易用、易于扩展的 RSS 生成器，可以给任何奇奇怪怪的内容生成 RSS 订阅源。</p>
+<p><a href="http://ttrss.henry.wang/">TTRSS</a>：一款基于 PHP 的免费开源 RSS 聚合阅读器。</p>
+</blockquote>
+<p>用rsshub生成官方没有的订阅源，ttrss来管理订阅源的阅读记录，支持各端同步</p>
+<h3 id="一部署rsshub">一、部署RSSHub</h3>
+<p>支持docker部署，不过，我是部署到 Vercel 上的，好处是免费、国外的机子，真正连接到互联网的，国内可访问。</p>
+<p>1、注册 <a href="https://vercel.com/import/project?template=https://github.com/DIYgod/RSSHub"> Vercel</a></p>
+<blockquote>
+<p>有帐户的直接可以登录部署</p>
+<p>没有的先注册，建议用GitHub账号登录注册，github账号邮箱建议用gmail等国外的，通过率高，如果提示失败，可以和官方人员发email解封，我的当时就直接被冻结了，发了email后，一会就解封了，态度超好👍</p>
+</blockquote>
+<p>2、成功后可以直接点去部署了，我是没有用官方的库部署，fork官方库后去授权部署的，效果一样，vercel 用默认的就行，等待一会，撒花，表示部署成功</p>
+<p>3、直接访问域名成功打开即部署成功</p>
+<p>4、rsshub配置环境可参考 <a href="https://docs.rsshub.app/install/#pei-zhi">部署 | RSSHub</a> 配置</p>
+<ul>
+<li>
+<p>用户认证</p>
+</li>
+<li>
+<p>日志配置</p>
+</li>
+<li>
+<p>其他一些服务需要的api-key</p>
+</li>
+</ul>
+<p>5、在vercel 配置完 重新部署服务，才生效</p>
+<h5 id="更新">更新</h5>
+<p>支持vercel自动拉取代码更新</p>
+<h3 id="二部署ttrss">二、部署TTRSS</h3>
+<p>部署到vps 阿里云上，支持docker、docker-composr即可</p>
+<h4 id="docker-compose部署">docker-compose部署</h4>
+<ol>
+<li>下载 <a href="https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml">docker-compose.yml</a>至任意目录。</li>
+<li>更改 <code>docker-compose.yml</code> 中的设置，请务必更改 postgres 用户密码。</li>
+<li>通过终端在同目录下运行 <code>docker-compose up -d</code> 后等待部署完成。</li>
+<li>默认通过 181 端口访问 TTRSS，默认账户：<code>admin</code> 密码：<code>password</code>，请第一时间更改。</li>
+<li><code>wangqiru/mercury-parser-api</code> 及 <code>wangqiru/opencc-api-server</code> 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。</li>
+</ol>
+<p>SELF_URL_PATH: TTRSS 实例地址。<strong>🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</strong></p>
+<p>这里说明一下，如果没有域名就要配置为 ip:端口号 的形式</p>
+<p>更多配置参考 <a href="http://ttrss.henry.wang/zh/#%E9%83%A8%E7%BD%B2">官方文档</a></p>
+<h4 id="更新-1">更新</h4>
+<p>推荐使用手动更新</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#007f7f">#自用</span>
+</span></span><span style="display:flex;"><span> docker-compose pull
+</span></span><span style="display:flex;"><span> <span style="color:#007f7f">#官方推荐</span>
+</span></span><span style="display:flex;"><span> docker pull wangqiru/ttrss:latest
+</span></span><span style="display:flex;"><span> <span style="color:#007f7f"># docker pull wangqiru/mercury-parser-api:latest</span>
+</span></span><span style="display:flex;"><span> <span style="color:#007f7f"># docker pull wangqiru/opencc-api-server:latest</span>
+</span></span><span style="display:flex;"><span> docker-compose up -d <span style="color:#007f7f"># 如果您没有使用 docker-compose，我确信您知道该怎么做。</span>
+</span></span></code></pre></div><h4 id="备份">备份</h4>
+<p>养成定期备份的习惯，有些订阅源很重要的资料可以永久保存，避免404</p>
+<ul>
+<li>
+<p>复制 Postgres 数据卷 <code>~/postgres/data/</code>（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！</p>
+</li>
+<li>
+<p>执行如下命令来导出所有数据：</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f">#docker exec postgres pg_dumpall -c -U 数据库用户名 &gt; export.sql</span>
+</span></span><span style="display:flex;"><span>docker <span style="color:#fff;font-weight:bold">exec</span> postgres pg_dumpall -c -U postgres &gt; export.sql
+</span></span></code></pre></div><ul>
+<li>执行如下命令来导入所有数据：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f">#cat export.sql | docker exec -i postgres psql -U 数据库用户名</span>
+</span></span><span style="display:flex;"><span>cat export.sql | docker <span style="color:#fff;font-weight:bold">exec</span> -i postgres psql -U postgres
+</span></span></code></pre></div><h3 id="三客户端推荐">三、客户端推荐</h3>
+<p>服务端都配置好了，接下来就是如何阅读了</p>
+<p>iOS/macOS：<a href="https://reederapp.com/">Reeder 5</a> 内置的 <a href="http://ttrss.henry.wang/zh/#fever-api">Fever API 模拟插件</a> 可以使用</p>
+<p>android：FeedMe</p>
+<p>Web：直接网页登录查看即可</p>
+<h3 id="四订阅源订阅小技巧">四、订阅源订阅小技巧</h3>
+<p>服务都搭建好了，下面就该订阅订阅源了，分享一些小技巧</p>
+<ul>
+<li>
+<p>微博的可以使用 <a href="https://rssfeed.today/weibo/">Weibo to RSS</a> 订阅</p>
+</li>
+<li>
+<p>微信的封锁严重，rsshub订阅有限，可以用 <a href="https://wechat2rss.xlab.app/posts/list/">公众号列表 | 微信公众号转RSS服务</a> 来订阅，如果没有想订阅的，可以提 <a href="https://github.com/ttttmr/wechat2rss/issues/7">提交新公众号前看这里 · Issue #7 · ttttmr/wechat2rss · GitHub</a></p>
+</li>
+<li>
+<p>blogspot的rsshub没有提供，可以用cf反代后订阅</p>
+</li>
+<li>
+<p>twitter 的开发者api太难申请了，可以用 <a href="https://nitter.net/">nitter</a> 输出的rss 访问困难再结合cf反代，完美</p>
+</li>
+</ul>
+<p>以上，一个低成本，服务稳定，数据可控RSS生态部署成功，尽情享用吧！🎉</p>
+<hr>
+<p>参考文档：</p>
+<blockquote>
+<p><a href="https://docs.rsshub.app">RSSHub</a></p>
+<p><a href="http://ttrss.henry.wang/zh/">🐋 Awesome TTRSS | 🐋 Awesome TTRSS</a></p>
+<p><a href="https://diygod.me/ohmyrss/">我有特别的 RSS 使用技巧</a></p>
+<p><a href="https://www.alpaca.plus/archives/my-rss-solution.html">我的RSS解决方案 - alpaca++</a></p>
+<p><a href="http://www.mod.gov.cn/jmsd/2021-03/15/content_4880922.htm">警惕陷入“信息茧房” - 中华人民共和国国防部</a></p>
+<p><a href="https://wiki.mbalib.com/wiki/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF">信息茧房 - MBA智库百科</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/RSS">RSS 维基百科</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>比价助手机器人docker快速部署</title>
       <link>https://blog.yongs.ml/posts/comparison-robot-building-for-docker/</link>
@@ -21,264 +153,263 @@
 <h1 id="一部署傻妞助手bot">一、部署傻妞助手bot</h1>
 <p>项目地址：<a href="https://github.com/cdle/sillyGirl">GitHub - cdle/sillyGirl: 傻妞机器人</a></p>
 <h3 id="一键安装支持linux-arm64和amd64位">一键安装：支持linux arm64和amd64位</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#fff;font-weight:bold">cd</span> /opt
-s=sillyGirl;a=arm64;<span style="color:#fff;font-weight:bold">if</span> [[ <span style="color:#fff;font-weight:bold">$(</span>uname -a | grep <span style="color:#0ff;font-weight:bold">&#34;x86_64&#34;</span><span style="color:#fff;font-weight:bold">)</span> != <span style="color:#0ff;font-weight:bold">&#34;&#34;</span> ]];<span style="color:#fff;font-weight:bold">then</span> a=amd64;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">if</span> [ ! -d $s ];<span style="color:#fff;font-weight:bold">then</span> mkdir $s;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">cd</span> $s;wget https://github.com/cdle/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>/releases/download/main/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>_linux_$a -O $s &amp;&amp; chmod <span style="color:#ff0;font-weight:bold">777</span> $s;pkill -9 $s;<span style="color:#fff;font-weight:bold">$(</span><span style="color:#fff;font-weight:bold">pwd</span><span style="color:#fff;font-weight:bold">)</span>/$s
-
-</code></pre></div><p>在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> /opt
+</span></span><span style="display:flex;"><span>s=sillyGirl;a=arm64;<span style="color:#fff;font-weight:bold">if</span> [[ <span style="color:#fff;font-weight:bold">$(</span>uname -a | grep <span style="color:#0ff;font-weight:bold">&#34;x86_64&#34;</span><span style="color:#fff;font-weight:bold">)</span> != <span style="color:#0ff;font-weight:bold">&#34;&#34;</span> ]];<span style="color:#fff;font-weight:bold">then</span> a=amd64;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">if</span> [ ! -d $s ];<span style="color:#fff;font-weight:bold">then</span> mkdir $s;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">cd</span> $s;wget https://github.com/cdle/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>/releases/download/main/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>_linux_$a -O $s &amp;&amp; chmod <span style="color:#ff0;font-weight:bold">777</span> $s;pkill -9 $s;<span style="color:#fff;font-weight:bold">$(</span><span style="color:#fff;font-weight:bold">pwd</span><span style="color:#fff;font-weight:bold">)</span>/$s
+</span></span></code></pre></div><p>在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置</p>
 <p>主要是配置管理员账号等，也可以通过对话配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">### 一些基础设置 ###
-# 傻妞机器人名
-set sillyGirl name 傻妞
-# 傻妞http服务端口
-set sillyGirl port 800
-
-
-# 傻妞消息撤回等待时间，单位秒
-set sillyGirl duration 5
-# 傻妞自动升级是否通知
-set sillyGirl update_notify true
-# 是否开启傻妞自动更新
-set sillyGirl auto_update false
-# 傻妞内置赞赏码
-set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg
-#是否启动http服务
-set sillyGirl enable_http_server true
-# 关闭守护模式，守护模式会导致没法自动升级
-#systemctl disable sillyGirl
-
-### 对接青龙的设置 ###
-# 设置青龙openapi的client_id参数
-#set qinglong client_id ?
-# 设置青龙openapi的client_secret参数
-#set qinglong client_secret ?
-# 青龙是否开启自动隐藏重复任务功能
-#set qinglong autoCronHideDuplicate true
-# 设置青龙面板地址
-#set qinglong host http://127.0.0.1:5700
-
-### 对接QQ的设置 ###
-# 设置qq登录账号
-#set qq uin ?
-# 设置qq登录密码
-#set qq password ?
-# 设置qq临时消息默认群号
-#set qq tempMessageGroupCode ?
-# 指定要监听的qq群
-#set qq onGroups g1&amp;g2&amp;g3...
-# 设置是否自动同意好友请求
-#set qq auto_friend false
-# 设置是否对监听自身消息
-#set qq onself true
-# 设置qq管理员
-#set qq masters q1&amp;q2&amp;q3...
-# 设置接受通知的qq账号
-#set qq notifier q1&amp;q2&amp;q3...
-# 设置qq设备信息(自动生成)
-#set qq device.json ?
-# 设置qq登录令牌(自动生成)
-#set qq session.token ?
-# 注销qqbot命令，重新运行扫码即可
-#delete qq session.token
-# 指定系统通知发送对象命令，如不设置默认发送给所有管理员。
-#set [im type] notifiers [accounts join by &#39;&amp;&#39;] 
-
-### 对接telegram的设置 ###
-# 设置telegram机器人token
-#set tg token ?
-# 设置telegram机器人代理
-#set tg http_proxy ?
-# 设置telegram机器人管理员
-#set tg masters t1&amp;t2&amp;t3...
-# 设置接受通知的telegram账号
-#set tg notifier t1&amp;t2&amp;t3...
-
-### 对接微信公众号的设置 ###
-# 设置微信公众平台app_id
-#set wxmp app_id ?
-# 设置微信公众平台app_secret
-#set wxmp app_secret ?
-# 设置微信公众平台token
-#set wxmp token ?
-# 设置微信公众平台encoding_aes_key
-#set wxmp encoding_aes_key ?
-# 设置微信公众平台管理员
-#set wxmp masters w1&amp;w2&amp;w3...
-# 设置公众号关注事件回复
-#set wxmp subscribe_reply 感谢关注！
-# 设置公众号默认回复
-#set wxmp default_reply 无法回复该消息
-
-### 对接微信号的设置 ###
-# 傻妞内置微信插件，依赖于可爱猫和http-sdk
-# 傻妞远程处理接口 /wx/receive
-# 设置插件调用地址，确保傻妞可以访问可爱猫端口
-#set wx api_url ?
-# 设置图片转发模式，否则可能会出现此图片来自xx未经允许不得使用的提示
-set wx relay_mode true
-# 设置指定转发地址，格式为 https://域名/relay?url=%s，不知道不用填
-#set wx relaier ?
-# 设置# 傻妞是否动态网络地址，适用于# 傻妞家庭宽带而可爱猫在云服务器的情况下
-#set wx sillyGirl_dynamic_ip true
-# 设置可爱猫是否动态网络地址，适用于可爱猫家庭宽带而# 傻妞在云服务器的情况下
-#set wx keaimao_dynamic_ip true
-# 设置可爱猫端口
-#set wx keaimao_port ?
-# 设置微信管理员
-#set wx masters ?
-# vlw的API调用地址
-#set wx vlw_addr http://ip:port
-# vlw的token
-#set wx vlw_token ?
-
-### 对接pushplus的设置 ###
-# 管理员推送绑定pushplus指令
-#set sillyGirl pushplus [token]
-
-# 关键词撤回功能，关键词支持正则表达式。
-#set sillyGirl recall 关键词1&amp;关键词2...
-# 关键词回复功能，第一个问号是支持正则的关键词，第二个问号是回复的内容。
-#set reply ? ?
-
-### 对接芝士的设置 ###
-# 资产推送定时，以九点为例，包括失效提醒。
-set jd_cookie asset_push 0 9 * * *
-
-# 设置阿东登录地址，例：set jd_cookie adong_addr 192.168.1.1:5702
-#set jd_cookie adong_addr 阿东ip:端口
-# 设置阿东qq机器人账号，这里的机器人qq账号，请务必和阿东go-cqhttp配置中config.yml里qq一样。
-#set jd_cookie selfQid 机器人qq账号
-# 设置登录坑位
-#set jd_cookie login_num ?
-
-#设置诺兰登陆地址
-#set jd_cookie nolan_addr http://诺兰ip:端口
-
-# 对接xdd，额外设置参数
-#set jd_cookie xdd_token ?
-
-### 对接小爱同学的设置 ###
-# 小爱同学，可以指定API，对小爱说对话模式即可开启连续对话模式，闭嘴可关闭。
-#set sillyGirl 小爱同学 http://81.70.100.130/api/xiaoai.php?msg=%s&amp;n=text #挂了就自己换
-#set sillyGirl 小爱同学 http://jiuli.xiaoapi.cn/i/xiaoai_tts.php?msg=%s #挂了就自己换
-# 处理json格式数据的小爱api，不填获取整个文本
-#set sillyGirl 小爱同学gjson text
-# 删除处理json格式数据的小爱api
-#silly delete 小爱同学gjson
-# 使用方法：
-#1、唤起小爱：发送“小爱+想说的话”，例如：小爱今天天气。
-#2、对话模式：发送“小爱对话模式”开启，发送“闭嘴”结束。
-#3、成语接龙：发送“成语接龙”开始。这个可应该不是小爱同学的功能，但我懒得单独写它了。
-
-### 对接短网址的设置 ###
-# 设置短网址服务地址，填傻妞对外的可以访问的地址。
-#set dwz address ?
-# 设置短网址服务前缀
-#set dwz prefix d
-# 使用方法
-#发送“短网址+你想要转换的网址“ #例：短网址 http://kejiwanjia.com/
-</code></pre></div><h3 id="启动命令">启动命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>### 一些基础设置 ###
+</span></span><span style="display:flex;"><span># 傻妞机器人名
+</span></span><span style="display:flex;"><span>set sillyGirl name 傻妞
+</span></span><span style="display:flex;"><span># 傻妞http服务端口
+</span></span><span style="display:flex;"><span>set sillyGirl port 800
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 傻妞消息撤回等待时间，单位秒
+</span></span><span style="display:flex;"><span>set sillyGirl duration 5
+</span></span><span style="display:flex;"><span># 傻妞自动升级是否通知
+</span></span><span style="display:flex;"><span>set sillyGirl update_notify true
+</span></span><span style="display:flex;"><span># 是否开启傻妞自动更新
+</span></span><span style="display:flex;"><span>set sillyGirl auto_update false
+</span></span><span style="display:flex;"><span># 傻妞内置赞赏码
+</span></span><span style="display:flex;"><span>set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg
+</span></span><span style="display:flex;"><span>#是否启动http服务
+</span></span><span style="display:flex;"><span>set sillyGirl enable_http_server true
+</span></span><span style="display:flex;"><span># 关闭守护模式，守护模式会导致没法自动升级
+</span></span><span style="display:flex;"><span>#systemctl disable sillyGirl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接青龙的设置 ###
+</span></span><span style="display:flex;"><span># 设置青龙openapi的client_id参数
+</span></span><span style="display:flex;"><span>#set qinglong client_id ?
+</span></span><span style="display:flex;"><span># 设置青龙openapi的client_secret参数
+</span></span><span style="display:flex;"><span>#set qinglong client_secret ?
+</span></span><span style="display:flex;"><span># 青龙是否开启自动隐藏重复任务功能
+</span></span><span style="display:flex;"><span>#set qinglong autoCronHideDuplicate true
+</span></span><span style="display:flex;"><span># 设置青龙面板地址
+</span></span><span style="display:flex;"><span>#set qinglong host http://127.0.0.1:5700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接QQ的设置 ###
+</span></span><span style="display:flex;"><span># 设置qq登录账号
+</span></span><span style="display:flex;"><span>#set qq uin ?
+</span></span><span style="display:flex;"><span># 设置qq登录密码
+</span></span><span style="display:flex;"><span>#set qq password ?
+</span></span><span style="display:flex;"><span># 设置qq临时消息默认群号
+</span></span><span style="display:flex;"><span>#set qq tempMessageGroupCode ?
+</span></span><span style="display:flex;"><span># 指定要监听的qq群
+</span></span><span style="display:flex;"><span>#set qq onGroups g1&amp;g2&amp;g3...
+</span></span><span style="display:flex;"><span># 设置是否自动同意好友请求
+</span></span><span style="display:flex;"><span>#set qq auto_friend false
+</span></span><span style="display:flex;"><span># 设置是否对监听自身消息
+</span></span><span style="display:flex;"><span>#set qq onself true
+</span></span><span style="display:flex;"><span># 设置qq管理员
+</span></span><span style="display:flex;"><span>#set qq masters q1&amp;q2&amp;q3...
+</span></span><span style="display:flex;"><span># 设置接受通知的qq账号
+</span></span><span style="display:flex;"><span>#set qq notifier q1&amp;q2&amp;q3...
+</span></span><span style="display:flex;"><span># 设置qq设备信息(自动生成)
+</span></span><span style="display:flex;"><span>#set qq device.json ?
+</span></span><span style="display:flex;"><span># 设置qq登录令牌(自动生成)
+</span></span><span style="display:flex;"><span>#set qq session.token ?
+</span></span><span style="display:flex;"><span># 注销qqbot命令，重新运行扫码即可
+</span></span><span style="display:flex;"><span>#delete qq session.token
+</span></span><span style="display:flex;"><span># 指定系统通知发送对象命令，如不设置默认发送给所有管理员。
+</span></span><span style="display:flex;"><span>#set [im type] notifiers [accounts join by &#39;&amp;&#39;] 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接telegram的设置 ###
+</span></span><span style="display:flex;"><span># 设置telegram机器人token
+</span></span><span style="display:flex;"><span>#set tg token ?
+</span></span><span style="display:flex;"><span># 设置telegram机器人代理
+</span></span><span style="display:flex;"><span>#set tg http_proxy ?
+</span></span><span style="display:flex;"><span># 设置telegram机器人管理员
+</span></span><span style="display:flex;"><span>#set tg masters t1&amp;t2&amp;t3...
+</span></span><span style="display:flex;"><span># 设置接受通知的telegram账号
+</span></span><span style="display:flex;"><span>#set tg notifier t1&amp;t2&amp;t3...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接微信公众号的设置 ###
+</span></span><span style="display:flex;"><span># 设置微信公众平台app_id
+</span></span><span style="display:flex;"><span>#set wxmp app_id ?
+</span></span><span style="display:flex;"><span># 设置微信公众平台app_secret
+</span></span><span style="display:flex;"><span>#set wxmp app_secret ?
+</span></span><span style="display:flex;"><span># 设置微信公众平台token
+</span></span><span style="display:flex;"><span>#set wxmp token ?
+</span></span><span style="display:flex;"><span># 设置微信公众平台encoding_aes_key
+</span></span><span style="display:flex;"><span>#set wxmp encoding_aes_key ?
+</span></span><span style="display:flex;"><span># 设置微信公众平台管理员
+</span></span><span style="display:flex;"><span>#set wxmp masters w1&amp;w2&amp;w3...
+</span></span><span style="display:flex;"><span># 设置公众号关注事件回复
+</span></span><span style="display:flex;"><span>#set wxmp subscribe_reply 感谢关注！
+</span></span><span style="display:flex;"><span># 设置公众号默认回复
+</span></span><span style="display:flex;"><span>#set wxmp default_reply 无法回复该消息
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接微信号的设置 ###
+</span></span><span style="display:flex;"><span># 傻妞内置微信插件，依赖于可爱猫和http-sdk
+</span></span><span style="display:flex;"><span># 傻妞远程处理接口 /wx/receive
+</span></span><span style="display:flex;"><span># 设置插件调用地址，确保傻妞可以访问可爱猫端口
+</span></span><span style="display:flex;"><span>#set wx api_url ?
+</span></span><span style="display:flex;"><span># 设置图片转发模式，否则可能会出现此图片来自xx未经允许不得使用的提示
+</span></span><span style="display:flex;"><span>set wx relay_mode true
+</span></span><span style="display:flex;"><span># 设置指定转发地址，格式为 https://域名/relay?url=%s，不知道不用填
+</span></span><span style="display:flex;"><span>#set wx relaier ?
+</span></span><span style="display:flex;"><span># 设置# 傻妞是否动态网络地址，适用于# 傻妞家庭宽带而可爱猫在云服务器的情况下
+</span></span><span style="display:flex;"><span>#set wx sillyGirl_dynamic_ip true
+</span></span><span style="display:flex;"><span># 设置可爱猫是否动态网络地址，适用于可爱猫家庭宽带而# 傻妞在云服务器的情况下
+</span></span><span style="display:flex;"><span>#set wx keaimao_dynamic_ip true
+</span></span><span style="display:flex;"><span># 设置可爱猫端口
+</span></span><span style="display:flex;"><span>#set wx keaimao_port ?
+</span></span><span style="display:flex;"><span># 设置微信管理员
+</span></span><span style="display:flex;"><span>#set wx masters ?
+</span></span><span style="display:flex;"><span># vlw的API调用地址
+</span></span><span style="display:flex;"><span>#set wx vlw_addr http://ip:port
+</span></span><span style="display:flex;"><span># vlw的token
+</span></span><span style="display:flex;"><span>#set wx vlw_token ?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接pushplus的设置 ###
+</span></span><span style="display:flex;"><span># 管理员推送绑定pushplus指令
+</span></span><span style="display:flex;"><span>#set sillyGirl pushplus [token]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 关键词撤回功能，关键词支持正则表达式。
+</span></span><span style="display:flex;"><span>#set sillyGirl recall 关键词1&amp;关键词2...
+</span></span><span style="display:flex;"><span># 关键词回复功能，第一个问号是支持正则的关键词，第二个问号是回复的内容。
+</span></span><span style="display:flex;"><span>#set reply ? ?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接芝士的设置 ###
+</span></span><span style="display:flex;"><span># 资产推送定时，以九点为例，包括失效提醒。
+</span></span><span style="display:flex;"><span>set jd_cookie asset_push 0 9 * * *
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 设置阿东登录地址，例：set jd_cookie adong_addr 192.168.1.1:5702
+</span></span><span style="display:flex;"><span>#set jd_cookie adong_addr 阿东ip:端口
+</span></span><span style="display:flex;"><span># 设置阿东qq机器人账号，这里的机器人qq账号，请务必和阿东go-cqhttp配置中config.yml里qq一样。
+</span></span><span style="display:flex;"><span>#set jd_cookie selfQid 机器人qq账号
+</span></span><span style="display:flex;"><span># 设置登录坑位
+</span></span><span style="display:flex;"><span>#set jd_cookie login_num ?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#设置诺兰登陆地址
+</span></span><span style="display:flex;"><span>#set jd_cookie nolan_addr http://诺兰ip:端口
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 对接xdd，额外设置参数
+</span></span><span style="display:flex;"><span>#set jd_cookie xdd_token ?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接小爱同学的设置 ###
+</span></span><span style="display:flex;"><span># 小爱同学，可以指定API，对小爱说对话模式即可开启连续对话模式，闭嘴可关闭。
+</span></span><span style="display:flex;"><span>#set sillyGirl 小爱同学 http://81.70.100.130/api/xiaoai.php?msg=%s&amp;n=text #挂了就自己换
+</span></span><span style="display:flex;"><span>#set sillyGirl 小爱同学 http://jiuli.xiaoapi.cn/i/xiaoai_tts.php?msg=%s #挂了就自己换
+</span></span><span style="display:flex;"><span># 处理json格式数据的小爱api，不填获取整个文本
+</span></span><span style="display:flex;"><span>#set sillyGirl 小爱同学gjson text
+</span></span><span style="display:flex;"><span># 删除处理json格式数据的小爱api
+</span></span><span style="display:flex;"><span>#silly delete 小爱同学gjson
+</span></span><span style="display:flex;"><span># 使用方法：
+</span></span><span style="display:flex;"><span>#1、唤起小爱：发送“小爱+想说的话”，例如：小爱今天天气。
+</span></span><span style="display:flex;"><span>#2、对话模式：发送“小爱对话模式”开启，发送“闭嘴”结束。
+</span></span><span style="display:flex;"><span>#3、成语接龙：发送“成语接龙”开始。这个可应该不是小爱同学的功能，但我懒得单独写它了。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### 对接短网址的设置 ###
+</span></span><span style="display:flex;"><span># 设置短网址服务地址，填傻妞对外的可以访问的地址。
+</span></span><span style="display:flex;"><span>#set dwz address ?
+</span></span><span style="display:flex;"><span># 设置短网址服务前缀
+</span></span><span style="display:flex;"><span>#set dwz prefix d
+</span></span><span style="display:flex;"><span># 使用方法
+</span></span><span style="display:flex;"><span>#发送“短网址+你想要转换的网址“ #例：短网址 http://kejiwanjia.com/
+</span></span></code></pre></div><h3 id="启动命令">启动命令</h3>
 <p>配置完成后，在/opt/sillyGirl下执行 ./sillyGirl -t 查看是否运行成功</p>
 <p>输入  time</p>
 <p>成功后 执行 ./sillyGirl -d 后台运行</p>
 <h3 id="其他常用命令">其他常用命令</h3>
 <p>杀掉进程</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -A|grep sillyGirl
-<span style="color:#fff;font-weight:bold">kill</span> pid 
-</code></pre></div><p>查看端口是否开启</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">netstat -tlan
-</code></pre></div><h1 id="二部署node-onebot">二、部署node-onebot</h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -A|grep sillyGirl
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">kill</span> pid 
+</span></span></code></pre></div><p>查看端口是否开启</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netstat -tlan
+</span></span></code></pre></div><h1 id="二部署node-onebot">二、部署node-onebot</h1>
 <blockquote>
 <p>傻妞开发者把内置qq登录给去掉了，需要自己对接qqbot</p>
 <p>官方给的是node安装的，需要安装node环境，太麻烦，改为用docker安装</p>
 </blockquote>
 <h3 id="1拉取代码">1、拉取代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//国外机
-git clone https://github.com/takayama-lily/node-onebot
-
-//国内机
-
-git clone https://ghproxy.861443216.workers.dev/https://github.com/takayama-lily/node-onebot
-机
-</code></pre></div><h3 id="2修改dockerfile文件">2、修改Dockerfile文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>//国外机
+</span></span><span style="display:flex;"><span>git clone https://github.com/takayama-lily/node-onebot
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>//国内机
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone https://ghproxy.861443216.workers.dev/https://github.com/takayama-lily/node-onebot
+</span></span><span style="display:flex;"><span>机
+</span></span></code></pre></div><h3 id="2修改dockerfile文件">2、修改Dockerfile文件</h3>
 <p>修改默认Dockerfile里面最后一行的QQ号成自己的bot账号</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM node:14-alpine
-WORKDIR /app
-COPY . .
-CMD [&#34;node&#34;, &#34;main&#34;,&#34;这里改为自己的bot账号&#34;]
-</code></pre></div><h3 id="3创建configjs文件">3、创建config.js文件</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp config.sample.js config.js
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#0ff;font-weight:bold">&#34;use strict&#34;</span>;
-<span style="color:#007f7f">// 将此文件更名为config.js才能生效哦
-</span><span style="color:#007f7f"></span>
-module.exports = {
-
-    <span style="color:#007f7f">//通用配置
-</span><span style="color:#007f7f"></span>    general: {
-        platform:           <span style="color:#ff0;font-weight:bold">5</span>,      <span style="color:#007f7f">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
-</span><span style="color:#007f7f"></span>        debug:              <span style="color:#fff;font-weight:bold">false</span>,  <span style="color:#007f7f">//开启debug
-</span><span style="color:#007f7f"></span>        use_cqhttp_notice:  <span style="color:#fff;font-weight:bold">true</span>,   <span style="color:#007f7f">//是否使用cqhttp标准的notice事件格式
-</span><span style="color:#007f7f"></span>
-        host:               <span style="color:#0ff;font-weight:bold">&#34;localhost&#34;</span>,  <span style="color:#007f7f">//监听主机名
-</span><span style="color:#007f7f"></span>        port:               <span style="color:#ff0;font-weight:bold">5700</span>,       <span style="color:#007f7f">//端口
-</span><span style="color:#007f7f"></span>        use_http:           <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用http
-</span><span style="color:#007f7f"></span>        use_ws:             <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用正向ws，和http使用相同地址和端口
-</span><span style="color:#007f7f"></span>        access_token:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//访问api的token
-</span><span style="color:#007f7f"></span>        secret:             <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//上报数据的sha1签名密钥
-</span><span style="color:#007f7f"></span>        post_timeout:       <span style="color:#ff0;font-weight:bold">30</span>,         <span style="color:#007f7f">//post超时时间(秒)
-</span><span style="color:#007f7f"></span>        post_message_format:<span style="color:#0ff;font-weight:bold">&#34;array&#34;</span>,    <span style="color:#007f7f">//&#34;string&#34;或&#34;array&#34;
-</span><span style="color:#007f7f"></span>        enable_cors:        <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否允许跨域请求
-</span><span style="color:#007f7f"></span>        enable_heartbeat:   <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否启用ws心跳
-</span><span style="color:#007f7f"></span>        heartbeat_interval: <span style="color:#ff0;font-weight:bold">15000</span>,      <span style="color:#007f7f">//ws心跳间隔(毫秒)
-</span><span style="color:#007f7f"></span>        rate_limit_interval:<span style="color:#ff0;font-weight:bold">500</span>,        <span style="color:#007f7f">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
-</span><span style="color:#007f7f"></span>        event_filter:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//json格式的事件过滤器文件路径
-</span><span style="color:#007f7f"></span>        post_url: [ <span style="color:#007f7f">//上报地址，可以添加多个url
-</span><span style="color:#007f7f"></span>            <span style="color:#007f7f">// &#34;http://your.address.com:80&#34;,
-</span><span style="color:#007f7f"></span>        ],
-        ws_reverse_url: [ <span style="color:#007f7f">//反向ws地址，可以添加多个url
-</span><span style="color:#007f7f"></span>            <span style="color:#0ff;font-weight:bold">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
-            <span style="color:#007f7f">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
-</span><span style="color:#007f7f"></span>        ],
-        ws_reverse_reconnect_interval: <span style="color:#ff0;font-weight:bold">3000</span>, <span style="color:#007f7f">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
-</span><span style="color:#007f7f"></span>        ws_reverse_reconnect_on_code_1000: <span style="color:#fff;font-weight:bold">true</span>, <span style="color:#007f7f">//反向ws是否在关闭状态码为1000的时候重连
-</span><span style="color:#007f7f"></span>    },
-
-    <span style="color:#007f7f">//每个账号的单独配置(用于覆盖通用配置)
-</span><span style="color:#007f7f"></span>    <span style="color:#ff0;font-weight:bold">147258369</span>: {
-
-    },
-};
-
-<span style="color:#007f7f">// 安全注意：
-</span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
-</span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
-</span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
-</span></code></pre></div><h3 id="4编译docker-image">4、编译docker image</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t yongs/node-onebot:latest .
-</code></pre></div><p>yongs自定义的，随便起，一定不要忘了 最后又个<u> . </u>表示在当前目录文件编译</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>FROM node:14-alpine
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>COPY . .
+</span></span><span style="display:flex;"><span>CMD [&#34;node&#34;, &#34;main&#34;,&#34;这里改为自己的bot账号&#34;]
+</span></span></code></pre></div><h3 id="3创建configjs文件">3、创建config.js文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp config.sample.js config.js
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">&#34;use strict&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 将此文件更名为config.js才能生效哦
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//通用配置
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    general: {
+</span></span><span style="display:flex;"><span>        platform:           <span style="color:#ff0;font-weight:bold">5</span>,      <span style="color:#007f7f">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        debug:              <span style="color:#fff;font-weight:bold">false</span>,  <span style="color:#007f7f">//开启debug
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_cqhttp_notice:  <span style="color:#fff;font-weight:bold">true</span>,   <span style="color:#007f7f">//是否使用cqhttp标准的notice事件格式
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span><span style="display:flex;"><span>        host:               <span style="color:#0ff;font-weight:bold">&#34;localhost&#34;</span>,  <span style="color:#007f7f">//监听主机名
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        port:               <span style="color:#ff0;font-weight:bold">5700</span>,       <span style="color:#007f7f">//端口
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_http:           <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用http
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_ws:             <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用正向ws，和http使用相同地址和端口
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        access_token:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//访问api的token
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        secret:             <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//上报数据的sha1签名密钥
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_timeout:       <span style="color:#ff0;font-weight:bold">30</span>,         <span style="color:#007f7f">//post超时时间(秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_message_format:<span style="color:#0ff;font-weight:bold">&#34;array&#34;</span>,    <span style="color:#007f7f">//&#34;string&#34;或&#34;array&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_cors:        <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否允许跨域请求
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_heartbeat:   <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否启用ws心跳
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        heartbeat_interval: <span style="color:#ff0;font-weight:bold">15000</span>,      <span style="color:#007f7f">//ws心跳间隔(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        rate_limit_interval:<span style="color:#ff0;font-weight:bold">500</span>,        <span style="color:#007f7f">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        event_filter:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//json格式的事件过滤器文件路径
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_url: [ <span style="color:#007f7f">//上报地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#007f7f">// &#34;http://your.address.com:80&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
+</span></span><span style="display:flex;"><span>        ws_reverse_url: [ <span style="color:#007f7f">//反向ws地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#0ff;font-weight:bold">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#007f7f">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
+</span></span><span style="display:flex;"><span>        ws_reverse_reconnect_interval: <span style="color:#ff0;font-weight:bold">3000</span>, <span style="color:#007f7f">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ws_reverse_reconnect_on_code_1000: <span style="color:#fff;font-weight:bold">true</span>, <span style="color:#007f7f">//反向ws是否在关闭状态码为1000的时候重连
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//每个账号的单独配置(用于覆盖通用配置)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#ff0;font-weight:bold">147258369</span>: {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 安全注意：
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
+</span></span></span></code></pre></div><h3 id="4编译docker-image">4、编译docker image</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t yongs/node-onebot:latest .
+</span></span></code></pre></div><p>yongs自定义的，随便起，一定不要忘了 最后又个<u> . </u>表示在当前目录文件编译</p>
 <h3 id="5启动image">5、启动image</h3>
 <p>用的是docker-compose启动的，刚才拉的代码已经有yaml文件了，</p>
 <p>需要注意 image名字是刚才编译的名字，不知道可以用</p>
 <p>docker images 查看，修改image名字即可</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>
-<span style="font-weight:bold">services</span>:
-  <span style="font-weight:bold">miraiok</span>:
-    <span style="font-weight:bold">image</span>: yongs/node-onebot
-    <span style="font-weight:bold">restart</span>: always
-    <span style="font-weight:bold">network_mode</span>: <span style="color:#0ff;font-weight:bold">&#34;host&#34;</span>
-    <span style="font-weight:bold">volumes</span>:
-      - ./config.js:/root/config.js
-      - ./data:/root/data
-    <span style="font-weight:bold">stdin_open</span>: <span style="color:#fff;font-weight:bold">true</span>
-    <span style="font-weight:bold">tty</span>: <span style="color:#fff;font-weight:bold">true</span>
-    <span style="font-weight:bold">container_name</span>: docker-onebot
-</code></pre></div><h3 id="6查看日志扫码登录不能登录进入容器内扫码">6、查看日志，扫码登录，不能登录进入容器内扫码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#查看日志</span>
-docker logs -f docker-onebot
-<span style="color:#007f7f">#进入容器</span>
-docker <span style="color:#fff;font-weight:bold">exec</span> -it docker-onebot /bin/sh
-<span style="color:#007f7f">#执行登录</span>
-node main <span style="color:#0ff;font-weight:bold">&#34;botqq号&#34;</span>
-</code></pre></div><p>给小助手发送命令看是否成功，比如 发送 name</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">miraiok</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">image</span>: yongs/node-onebot
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">restart</span>: always
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">network_mode</span>: <span style="color:#0ff;font-weight:bold">&#34;host&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./config.js:/root/config.js
+</span></span><span style="display:flex;"><span>      - ./data:/root/data
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">stdin_open</span>: <span style="color:#fff;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">tty</span>: <span style="color:#fff;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">container_name</span>: docker-onebot
+</span></span></code></pre></div><h3 id="6查看日志扫码登录不能登录进入容器内扫码">6、查看日志，扫码登录，不能登录进入容器内扫码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
+</span></span><span style="display:flex;"><span>docker logs -f docker-onebot
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#进入容器</span>
+</span></span><span style="display:flex;"><span>docker <span style="color:#fff;font-weight:bold">exec</span> -it docker-onebot /bin/sh
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#执行登录</span>
+</span></span><span style="display:flex;"><span>node main <span style="color:#0ff;font-weight:bold">&#34;botqq号&#34;</span>
+</span></span></code></pre></div><p>给小助手发送命令看是否成功，比如 发送 name</p>
 <p>发送 淘宝京豆拼多多链接看是否回复，回复即部署成功。</p>
 <p>登录成功后，重启docker即可</p>
 <p>这里的坑就是傻妞启动失败，导致onebot连接不上傻妞。</p>
@@ -308,36 +439,36 @@ node main <span style="color:#0ff;font-weight:bold">&#34;botqq号&#34;</span>
 <p>翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！</p>
 <h1 id="1创建docker-compose文件">1、创建docker-compose文件</h1>
 <p>内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-<span style="font-weight:bold">services</span>:     
-    <span style="font-weight:bold">filebrowser</span>:  
-        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
-        <span style="font-weight:bold">container_name</span>: filebrowser
-        <span style="font-weight:bold">volumes</span>:  
-            - ./root:/srv           
-            - ./database/filebrowser.db:/database/filebrowser.db 
-            - ./settings.json:/config/settings.json
-        <span style="font-weight:bold">environment</span>:
-            - PUID=0
-            - PGID=0
-        <span style="font-weight:bold">ports</span>: 
-            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
-        <span style="font-weight:bold">restart</span>: always
-</code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹</h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - ./root:/srv           
+</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
+</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>            - PUID=0
+</span></span><span style="display:flex;"><span>            - PGID=0
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹</h1>
 <p>对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
-  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
-  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
-  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
-  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
-  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
-}
-</code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir database
-<span style="color:#fff;font-weight:bold">cd</span> database
-touch filebrowser.db
-</code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功</h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir database
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> database
+</span></span><span style="display:flex;"><span>touch filebrowser.db
+</span></span></code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功</h1>
 <p>执行 docker- compose logs -f 看下日志是否报错</p>
 <p>需要其他机器访问记得防火墙 把端口打开，本例用的8080端口</p>
 <p>浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉</p>
@@ -407,13 +538,13 @@ Docker —— 从入门到实践</a></p>
 <h3 id="2安装jd_scripts">2、安装jd_scripts</h3>
 <p>创建一个目录<code>jd_scripts</code>用于存放备份配置等数据，迁移重装的时候只需要备份整个jd_scripts目录即可</p>
 <p>需要新建的目录文件结构参考如下:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">jd_scripts
-├── logs
-│   ├── XXXX.log
-│   └── XXXX.log
-├── my_crontab_list.sh
-└── docker-compose.yml
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>jd_scripts
+</span></span><span style="display:flex;"><span>├── logs
+</span></span><span style="display:flex;"><span>│   ├── XXXX.log
+</span></span><span style="display:flex;"><span>│   └── XXXX.log
+</span></span><span style="display:flex;"><span>├── my_crontab_list.sh
+</span></span><span style="display:flex;"><span>└── docker-compose.yml
+</span></span></code></pre></div><ul>
 <li><code>jd_scripts/logs</code>建一个空文件夹就行</li>
 <li><code>jd_scripts/docker-compose.yml</code> 参考内容如下(自己动手能力不行搞不定请使用默认配置)：</li>
 </ul>
@@ -435,151 +566,148 @@ Docker —— 从入门到实践</a></p>
 <h5 id="2安装clash">2、安装clash</h5>
 <p>一直在使用clash，直接网上搜索clash<a href="https://github.com/Dreamacro/clash/releases">下载</a>，找到对应版本下载，博主用的是centos，下载linux-amd64的</p>
 <p>1、下载clash，最新版本可去官网找</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz
-</code></pre></div><p>2、解压</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gzip -d clash-linux-amd64-v0.19.0.gz
-</code></pre></div><p>3、移动至usr/bin/clash并重命名为clash</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo mv clash-linux-amd64-v0.19.0 /usr/bin/clash
-</code></pre></div><p>4、赋予clash运行权限</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo chmod +x /usr/bin/clash
-</code></pre></div><p>5、检查是否安装成功</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">clash -v 
-</code></pre></div><h5 id="3创建配置文件安装控制面板">3、创建配置文件、安装控制面板</h5>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz
+</span></span></code></pre></div><p>2、解压</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gzip -d clash-linux-amd64-v0.19.0.gz
+</span></span></code></pre></div><p>3、移动至usr/bin/clash并重命名为clash</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mv clash-linux-amd64-v0.19.0 /usr/bin/clash
+</span></span></code></pre></div><p>4、赋予clash运行权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chmod +x /usr/bin/clash
+</span></span></code></pre></div><p>5、检查是否安装成功</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>clash -v 
+</span></span></code></pre></div><h5 id="3创建配置文件安装控制面板">3、创建配置文件、安装控制面板</h5>
 <p>1.创建配置文件目录</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /etc/clash/
-</code></pre></div><p>2.进入目录</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span> /etc/clash/
-</code></pre></div><p>3.创建配置文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim config.yaml
-</code></pre></div><p>4.手动编辑很麻烦，可用winscp上传</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /etc/clash/
+</span></span></code></pre></div><p>2.进入目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> /etc/clash/
+</span></span></code></pre></div><p>3.创建配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim config.yaml
+</span></span></code></pre></div><p>4.手动编辑很麻烦，可用winscp上传</p>
 <p>配置参数自行查找</p>
 <p>5.下载前端代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/Dreamacro/clash-dashboard/tree/gh-pages
-</code></pre></div><p>6.解压</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">unzip gh-pages.zip
-</code></pre></div><p>7.修改目录名,这里的目录名是上面配置文件里的 external-ui: dashboard</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mv clash-dashboard-gh-pages dashboard
-</code></pre></div><p><a href="http://clash.razord.top/">可用这个面板远程控制</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/Dreamacro/clash-dashboard/tree/gh-pages
+</span></span></code></pre></div><p>6.解压</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>unzip gh-pages.zip
+</span></span></code></pre></div><p>7.修改目录名,这里的目录名是上面配置文件里的 external-ui: dashboard</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mv clash-dashboard-gh-pages dashboard
+</span></span></code></pre></div><p><a href="http://clash.razord.top/">可用这个面板远程控制</a></p>
 <h5 id="4设置clash开机启动">4、设置clash开机启动</h5>
 <p>1.创建service文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo vim /usr/lib/systemd/system/clash.service
-</code></pre></div><p>2.输入下面代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">[Unit]
-Description=clash proxy
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/clash -d /etc/clash
-
-[Install]
-WantedBy=multi-user.target
-</code></pre></div><p>3.重新加载 systemd 模块</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
-</code></pre></div><p>4.启动Clash</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl start clash.service
-</code></pre></div><p>5.设置Clash开机自启动</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl <span style="color:#fff;font-weight:bold">enable</span> clash.service
-</code></pre></div><p>6.判断是否成功开启代理</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -I https://www.google.com
-</code></pre></div><p>返回200即表示代理已经成功</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo vim /usr/lib/systemd/system/clash.service
+</span></span></code></pre></div><p>2.输入下面代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>[Unit]
+</span></span><span style="display:flex;"><span>Description=clash proxy
+</span></span><span style="display:flex;"><span>After=network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Service]
+</span></span><span style="display:flex;"><span>Type=simple
+</span></span><span style="display:flex;"><span>ExecStart=/usr/bin/clash -d /etc/clash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Install]
+</span></span><span style="display:flex;"><span>WantedBy=multi-user.target
+</span></span></code></pre></div><p>3.重新加载 systemd 模块</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span></code></pre></div><p>4.启动Clash</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl start clash.service
+</span></span></code></pre></div><p>5.设置Clash开机自启动</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl <span style="color:#fff;font-weight:bold">enable</span> clash.service
+</span></span></code></pre></div><p>6.判断是否成功开启代理</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -I https://www.google.com
+</span></span></code></pre></div><p>返回200即表示代理已经成功</p>
 <h5 id="5自动更新订阅配置文件">5、自动更新订阅配置文件</h5>
 <blockquote>
 <p>通过shell脚本自动更新Clash在线配置</p>
 </blockquote>
 <p>通过systemctl来管理Clash的进程，对应<code>clash.service</code>文件，通过两个脚本<code>start-clash.sh</code>和<code>stop-clash.sh</code>来管理Clash的启停：</p>
 <p>把上面的配置文件修改下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /usr/lib/systemd/system/clash.service
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">[Unit]
-Description=clash proxy
-After=network.target
-
-[Service]
-WorkingDirectory=/当前用户目录/.config/clash
-Type=simple
-ExecStart=/当前用户目录/.config/clash/start-clash.sh
-ExecStop=/当前用户目录/.config/clash/stop-clash.sh
-Environment=<span style="color:#0ff;font-weight:bold">&#34;HOME=/当前用户目录&#34;</span>
-Environment=<span style="color:#0ff;font-weight:bold">&#34;CLASH_URL=你的订阅链接&#34;</span>
-
-[Install]
-WantedBy=multi-user.target
-
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /当前用户目录/.config/clash/start-clash.sh
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/start-clash.sh</span>
-
-<span style="color:#007f7f"># save pid file</span>
-<span style="color:#fff;font-weight:bold">echo</span> $$ &gt; <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid
-
-diff <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml &lt;(curl -s <span style="color:#0ff;font-weight:bold">${</span>CLASH_URL<span style="color:#0ff;font-weight:bold">}</span>)
-<span style="color:#fff;font-weight:bold">if</span> [ <span style="color:#0ff;font-weight:bold">&#34;</span>$?<span style="color:#0ff;font-weight:bold">&#34;</span> == <span style="color:#ff0;font-weight:bold">0</span> ]
-<span style="color:#fff;font-weight:bold">then</span>
-    /usr/bin/clash
-<span style="color:#fff;font-weight:bold">else</span>
-    TIME=<span style="color:#0ff;font-weight:bold">`</span>date <span style="color:#0ff;font-weight:bold">&#39;+%Y-%m-%d %H:%M:%S&#39;</span><span style="color:#0ff;font-weight:bold">`</span>
-    cp <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/.config/clash/config.yaml.bak</span><span style="color:#0ff;font-weight:bold">${</span>TIME<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-    curl -L -o <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml <span style="color:#0ff;font-weight:bold">${</span>CLASH_URL<span style="color:#0ff;font-weight:bold">}</span>
-    /usr/bin/clash
-<span style="color:#fff;font-weight:bold">fi</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /当前用户目录/.config/clash/stop-clash.sh
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/stop-clash.sh</span>
-
-<span style="color:#007f7f"># read pid file</span>
-PID=<span style="color:#0ff;font-weight:bold">`</span>cat <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid<span style="color:#0ff;font-weight:bold">`</span>
-<span style="color:#fff;font-weight:bold">kill</span> -9 <span style="color:#0ff;font-weight:bold">${</span>PID<span style="color:#0ff;font-weight:bold">}</span>
-rm <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid
-</code></pre></div><p>配置添加完成后，如果你的clash 正在运行中，需要重新加载配置文件并重启</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ systemctl daemon-reload
-$ sudo systemctl restart clash.service
-</code></pre></div><p>这样每次启动clash时就会自动更新配置文件了，接下来通过crontab 自动重启 clash.service实现自动更新节点</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#新建shell文件</span>
-vim restart-clash.sh
-</code></pre></div><p>新增一条命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#/bin/sh</span>
-sudo systemctl restart clash.service
-
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x restart-clash.sh
-crontab -e
-<span style="color:#007f7f">#插入下面命令</span>
-<span style="color:#007f7f">#每3小时重启一次</span>
-<span style="color:#ff0;font-weight:bold">0</span> */3 * * * restart-clash.sh
-<span style="color:#007f7f">#每分钟重启一次</span>
-* * * * * restart-clash.sh
-</code></pre></div><p>大功告成，可通过<code>tail -500f /var/log/cron</code>查看定时任务是否执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /usr/lib/systemd/system/clash.service
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>[Unit]
+</span></span><span style="display:flex;"><span>Description=clash proxy
+</span></span><span style="display:flex;"><span>After=network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Service]
+</span></span><span style="display:flex;"><span>WorkingDirectory=/当前用户目录/.config/clash
+</span></span><span style="display:flex;"><span>Type=simple
+</span></span><span style="display:flex;"><span>ExecStart=/当前用户目录/.config/clash/start-clash.sh
+</span></span><span style="display:flex;"><span>ExecStop=/当前用户目录/.config/clash/stop-clash.sh
+</span></span><span style="display:flex;"><span>Environment=<span style="color:#0ff;font-weight:bold">&#34;HOME=/当前用户目录&#34;</span>
+</span></span><span style="display:flex;"><span>Environment=<span style="color:#0ff;font-weight:bold">&#34;CLASH_URL=你的订阅链接&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Install]
+</span></span><span style="display:flex;"><span>WantedBy=multi-user.target
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /当前用户目录/.config/clash/start-clash.sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/start-clash.sh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f"># save pid file</span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">echo</span> $$ &gt; <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>diff <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml &lt;(curl -s <span style="color:#0ff;font-weight:bold">${</span>CLASH_URL<span style="color:#0ff;font-weight:bold">}</span>)
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">if</span> [ <span style="color:#0ff;font-weight:bold">&#34;</span>$?<span style="color:#0ff;font-weight:bold">&#34;</span> == <span style="color:#ff0;font-weight:bold">0</span> ]
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>    /usr/bin/clash
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>    TIME=<span style="color:#0ff;font-weight:bold">`</span>date <span style="color:#0ff;font-weight:bold">&#39;+%Y-%m-%d %H:%M:%S&#39;</span><span style="color:#0ff;font-weight:bold">`</span>
+</span></span><span style="display:flex;"><span>    cp <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/.config/clash/config.yaml.bak</span><span style="color:#0ff;font-weight:bold">${</span>TIME<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+</span></span><span style="display:flex;"><span>    curl -L -o <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/config.yaml <span style="color:#0ff;font-weight:bold">${</span>CLASH_URL<span style="color:#0ff;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    /usr/bin/clash
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">fi</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /当前用户目录/.config/clash/stop-clash.sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span><span style="color:#007f7f"># save this file to ${HOME}/.config/clash/stop-clash.sh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f"># read pid file</span>
+</span></span><span style="display:flex;"><span>PID=<span style="color:#0ff;font-weight:bold">`</span>cat <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid<span style="color:#0ff;font-weight:bold">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">kill</span> -9 <span style="color:#0ff;font-weight:bold">${</span>PID<span style="color:#0ff;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>rm <span style="color:#0ff;font-weight:bold">${</span>HOME<span style="color:#0ff;font-weight:bold">}</span>/.config/clash/clash.pid
+</span></span></code></pre></div><p>配置添加完成后，如果你的clash 正在运行中，需要重新加载配置文件并重启</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ systemctl daemon-reload
+</span></span><span style="display:flex;"><span>$ sudo systemctl restart clash.service
+</span></span></code></pre></div><p>这样每次启动clash时就会自动更新配置文件了，接下来通过crontab 自动重启 clash.service实现自动更新节点</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#新建shell文件</span>
+</span></span><span style="display:flex;"><span>vim restart-clash.sh
+</span></span></code></pre></div><p>新增一条命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#/bin/sh</span>
+</span></span><span style="display:flex;"><span>sudo systemctl restart clash.service
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x restart-clash.sh
+</span></span><span style="display:flex;"><span>crontab -e
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#插入下面命令</span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#每3小时重启一次</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0;font-weight:bold">0</span> */3 * * * restart-clash.sh
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#每分钟重启一次</span>
+</span></span><span style="display:flex;"><span>* * * * * restart-clash.sh
+</span></span></code></pre></div><p>大功告成，可通过<code>tail -500f /var/log/cron</code>查看定时任务是否执行</p>
 <p><code>sudo systemctl status clash.service</code>  查看是否重启成功</p>
 <h3 id="4docker内开代理">4、docker内开代理</h3>
 <p>由于主要用来使用tg-bot，故只检测tgapi即可</p>
 <p>1、判断宿主机可连接tgapi</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegram.org/bot&#39;&#39;&#39;Your Token&#39;&#39;&#39;/sendMessage&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#34;chat_id=&#34;</span>Some Chat id<span style="color:#0ff;font-weight:bold">&#34;&amp;text=hello&#34;</span>
-
-curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegram.org/botxxxxxxxxugt5A/sendMessage&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#34;chat_id=48xxxxxx&amp;text=hello&#34;</span>
-</code></pre></div><p>如果返回成功，即表示成功</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegram.org/bot&#39;&#39;&#39;Your Token&#39;&#39;&#39;/sendMessage&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#34;chat_id=&#34;</span>Some Chat id<span style="color:#0ff;font-weight:bold">&#34;&amp;text=hello&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl -sX POST <span style="color:#0ff;font-weight:bold">&#34;https://api.telegram.org/botxxxxxxxxugt5A/sendMessage&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#34;chat_id=48xxxxxx&amp;text=hello&#34;</span>
+</span></span></code></pre></div><p>如果返回成功，即表示成功</p>
 <p>2、进入容器</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker <span style="color:#fff;font-weight:bold">exec</span> -it jd_scripts /bin/sh
-</code></pre></div><p>执行步骤1命令，如若响应时间长或失败，则需要配置代理</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker <span style="color:#fff;font-weight:bold">exec</span> -it jd_scripts /bin/sh
+</span></span></code></pre></div><p>执行步骤1命令，如若响应时间长或失败，则需要配置代理</p>
 <p>3、配置容器代理走宿主机</p>
 <p><a href="https://docs.docker.com/network/proxy/#use-environment-variables">docker官方有教程</a></p>
 <p>docker版本大于 17.07以上可用下面的方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span>
-mkdir .docker
-vim  ~/.docker/config.json
-
-</code></pre></div><p>填入下面json</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
- <span style="font-weight:bold">&#34;proxies&#34;</span>:
- {
-   <span style="font-weight:bold">&#34;default&#34;</span>:
-   {
-     <span style="font-weight:bold">&#34;httpProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;http://172.17.0.1:7890&#34;</span>,
-     <span style="font-weight:bold">&#34;httpsProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;http://172.17.0.1:7890&#34;</span>,
-     <span style="font-weight:bold">&#34;noProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;localhost,127.0.0.1&#34;</span>
-<span style="color:#f00">&#34;</span>
-   }
- }
-}
-</code></pre></div><p>保存文件<strong>创建或者启动新容器时才生效</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span>
+</span></span><span style="display:flex;"><span>mkdir .docker
+</span></span><span style="display:flex;"><span>vim  ~/.docker/config.json
+</span></span></code></pre></div><p>填入下面json</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">&#34;proxies&#34;</span>:
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>   <span style="font-weight:bold">&#34;default&#34;</span>:
+</span></span><span style="display:flex;"><span>   {
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">&#34;httpProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;http://172.17.0.1:7890&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">&#34;httpsProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;http://172.17.0.1:7890&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">&#34;noProxy&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;localhost,127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f00">&#34;</span>
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>保存文件<strong>创建或者启动新容器时才生效</strong></p>
 <p>这里有个大坑，搞了一天，就是</p>
 <p><strong>代理的ip一定要写对！</strong></p>
 <p><strong>代理的ip一定要写对！</strong></p>
@@ -589,22 +717,22 @@ vim  ~/.docker/config.json
 </blockquote>
 <p>4、删除容器，重新启用</p>
 <p>接下来在jd_scripts 目录内</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker-compose down
-docker-compose up -d
-</code></pre></div><p>启动成功后，tgbot即可收到成功的消息，尽情享用吧！</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose down
+</span></span><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div><p>启动成功后，tgbot即可收到成功的消息，尽情享用吧！</p>
 <h3 id="clash相关的管理命令">Clash相关的管理命令</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#007f7f">## 启动Clash ##</span>
-sudo systemctl start clash.service
-
-<span style="color:#007f7f">## 重启Clash ##</span>
-sudo systemctl restart clash.service
-
-<span style="color:#007f7f">## 查看Clash运行状态 ##</span>
-sudo systemctl status clash.service
-
-<span style="color:#007f7f">## 实时滚动状态 ##</span>
-sudo journalctl -u clash.service -f
-</code></pre></div><h3 id="docker相关命令">docker相关命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f">## 启动Clash ##</span>
+</span></span><span style="display:flex;"><span>sudo systemctl start clash.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">## 重启Clash ##</span>
+</span></span><span style="display:flex;"><span>sudo systemctl restart clash.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">## 查看Clash运行状态 ##</span>
+</span></span><span style="display:flex;"><span>sudo systemctl status clash.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">## 实时滚动状态 ##</span>
+</span></span><span style="display:flex;"><span>sudo journalctl -u clash.service -f
+</span></span></code></pre></div><h3 id="docker相关命令">docker相关命令</h3>
 <p><code>docker exec -it jd_scripts /bin/sh -c 'git -C /scripts pull &amp;&amp; node /scripts/jd_bean_change.js'</code>  手动运行一脚本</p>
 <p><code>docker exec -it jd_scripts /bin/sh -c 'env'</code>  查看设置的环境变量</p>
 <p><code>docker exec -it jd_scripts /bin/sh -c 'crontab -l'</code>  查看已生效的crontab_list定时器任务</p>

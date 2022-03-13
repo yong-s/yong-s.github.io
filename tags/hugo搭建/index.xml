@@ -16,13 +16,13 @@
       <guid>https://blog.yongs.ml/posts/hugo-auto-update-lastmod/</guid>
       <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交</description>
       <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="font-weight:bold">frontmatter</span>:
-    <span style="font-weight:bold">lastmod</span>:
-        - lastmod
-        - :git
-        - :fileModTime
-        - :default
-</code></pre></div><p>依次取的顺序为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">frontmatter</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">lastmod</span>:
+</span></span><span style="display:flex;"><span>        - lastmod
+</span></span><span style="display:flex;"><span>        - :git
+</span></span><span style="display:flex;"><span>        - :fileModTime
+</span></span><span style="display:flex;"><span>        - :default
+</span></span></code></pre></div><p>依次取的顺序为：</p>
 <blockquote>
 <p>lastmod :最后提交时间</p>
 <p>:git: 根据git提交版本时间</p>

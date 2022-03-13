@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>打破信息茧房 | Yong’s 网络日志</title>
+<meta name="keywords" content="RSS, RSSHub, docker, 信息茧房" />
+<meta name="description" content="RSS服务快速搭建">
+<meta name="author" content="
+作者:&nbsp;yongs">
+<link rel="canonical" href="https://blog.yongs.ml/posts/rss-build/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://blog.yongs.ml/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.yongs.ml/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.yongs.ml/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.yongs.ml/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.94.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-175460382-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="打破信息茧房" />
+<meta property="og:description" content="RSS服务快速搭建" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yongs.ml/posts/rss-build/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-13T13:05:35&#43;08:00" />
+<meta property="article:modified_time" content="2022-03-13T19:04:42&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="打破信息茧房"/>
+<meta name="twitter:description" content="RSS服务快速搭建"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.yongs.ml/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "打破信息茧房",
+      "item": "https://blog.yongs.ml/posts/rss-build/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "打破信息茧房",
+  "name": "打破信息茧房",
+  "description": "RSS服务快速搭建",
+  "keywords": [
+    "RSS", "RSSHub", "docker", "信息茧房"
+  ],
+  "articleBody": "何为信息茧房：\n 哈佛大学凯斯·桑斯坦教授在《信息乌托邦》一书中提出，人类社会存在一种“信息茧房”现象。他认为，在信息传播中人们自身的信息需求并非全方位的，只会注意选择想要的或能使自己愉悦的信息，久而久之接触的信息就越来越局限，越来越窄，就像蚕吐出来的丝一样，细细密密地把自己包裹起来，最终像一个蚕宝宝一样被桎梏在“信息茧房”内，失去对其他不同事物的了解能力和接触机会。当时，他的这一观点还只是作为一种推论和预测，但随着网络信息和人工智能技术的飞速发展，这种“信息茧房”现象，正越来越多地发生在现实生活中和我们的身边。\n 说人话就是：\n 在现如今的生活中，人们接受信息的来源（主要指生活在大陆，国外也差不多），主要从微信、微博、抖音、快手等中心化的平台，各家相互关闭自己的开放接口，强迫用户留在自己平台上，有时候只关注某个大V的信息，却不得不安装一个app，就这样手机上装了很多app（这些app们平均一周更新一次，要吐了）再加上平台的推荐算法，只推荐你喜欢的（兼听则明，偏信则暗），这样下去，整个人的认知无法被提高\n 经过一段时间的探索，搭建了RSS这套服务，RSS服务属于古老服务了，估计只有数字原住民才听说过，目前来说还可以，正在慢慢过渡，在此记录下搭建过程，方便下次迁移\n RSS（英文全称：RDF Site Summary 或 Really Simple Syndication[2]），中文译作简易信息聚合[3]，也称聚合内容[4]，是一种消息来源格式规范，用以聚合多个网站更新的内容并自动通知网站订阅者。使用 RSS 后，网站订阅者便无需再手动查看网站是否有新的内容，同时 RSS 可将多个网站更新的内容进行整合，以摘要的形式呈现，有助于订阅者快速获取重要信息，并选择性地点阅查看。\n ——引用wikipedia\n 准备：\n 需要一台服务器，运行linux即可    配置不用太大，我用的是阿里云的服务器，生活在大陆，国内访问比较快\n 用到的服务：\n RSSHub：一个开源、简单易用、易于扩展的 RSS 生成器，可以给任何奇奇怪怪的内容生成 RSS 订阅源。\nTTRSS：一款基于 PHP 的免费开源 RSS 聚合阅读器。\n 用rsshub生成官方没有的订阅源，ttrss来管理订阅源的阅读记录，支持各端同步\n一、部署RSSHub 支持docker部署，不过，我是部署到 Vercel 上的，好处是免费、国外的机子，真正连接到互联网的，国内可访问。\n1、注册 Vercel\n 有帐户的直接可以登录部署\n没有的先注册，建议用GitHub账号登录注册，github账号邮箱建议用gmail等国外的，通过率高，如果提示失败，可以和官方人员发email解封，我的当时就直接被冻结了，发了email后，一会就解封了，态度超好👍\n 2、成功后可以直接点去部署了，我是没有用官方的库部署，fork官方库后去授权部署的，效果一样，vercel 用默认的就行，等待一会，撒花，表示部署成功\n3、直接访问域名成功打开即部署成功\n4、rsshub配置环境可参考 部署 | RSSHub 配置\n  用户认证\n  日志配置\n  其他一些服务需要的api-key\n  5、在vercel 配置完 重新部署服务，才生效\n更新 支持vercel自动拉取代码更新\n二、部署TTRSS 部署到vps 阿里云上，支持docker、docker-composr即可\ndocker-compose部署  下载 docker-compose.yml至任意目录。 更改 docker-compose.yml 中的设置，请务必更改 postgres 用户密码。 通过终端在同目录下运行 docker-compose up -d 后等待部署完成。 默认通过 181 端口访问 TTRSS，默认账户：admin 密码：password，请第一时间更改。 wangqiru/mercury-parser-api 及 wangqiru/opencc-api-server 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。  SELF_URL_PATH: TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。\n这里说明一下，如果没有域名就要配置为 ip:端口号 的形式\n更多配置参考 官方文档\n更新 推荐使用手动更新\n #自用  docker-compose pull  #官方推荐  docker pull wangqiru/ttrss:latest  # docker pull wangqiru/mercury-parser-api:latest  # docker pull wangqiru/opencc-api-server:latest  docker-compose up -d # 如果您没有使用 docker-compose，我确信您知道该怎么做。 备份 养成定期备份的习惯，有些订阅源很重要的资料可以永久保存，避免404\n  复制 Postgres 数据卷 ~/postgres/data/（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！\n  执行如下命令来导出所有数据：\n  #docker exec postgres pg_dumpall -c -U 数据库用户名  export.sql docker exec postgres pg_dumpall -c -U postgres  export.sql  执行如下命令来导入所有数据：  #cat export.sql | docker exec -i postgres psql -U 数据库用户名 cat export.sql | docker exec -i postgres psql -U postgres 三、客户端推荐 服务端都配置好了，接下来就是如何阅读了\niOS/macOS：Reeder 5 内置的 Fever API 模拟插件 可以使用\nandroid：FeedMe\nWeb：直接网页登录查看即可\n四、订阅源订阅小技巧 服务都搭建好了，下面就该订阅订阅源了，分享一些小技巧\n  微博的可以使用 Weibo to RSS 订阅\n  微信的封锁严重，rsshub订阅有限，可以用 公众号列表 | 微信公众号转RSS服务 来订阅，如果没有想订阅的，可以提 提交新公众号前看这里 · Issue #7 · ttttmr/wechat2rss · GitHub\n  blogspot的rsshub没有提供，可以用cf反代后订阅\n  twitter 的开发者api太难申请了，可以用 nitter 输出的rss 访问困难再结合cf反代，完美\n  以上，一个低成本，服务稳定，数据可控RSS生态部署成功，尽情享用吧！🎉\n 参考文档：\n RSSHub\n🐋 Awesome TTRSS | 🐋 Awesome TTRSS\n我有特别的 RSS 使用技巧\n我的RSS解决方案 - alpaca++\n警惕陷入“信息茧房” - 中华人民共和国国防部\n信息茧房 - MBA智库百科\nRSS 维基百科\n ",
+  "wordCount" : "2150",
+  "inLanguage": "zh",
+  "datePublished": "2022-03-13T13:05:35+08:00",
+  "dateModified": "2022-03-13T19:04:42.500465594+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "yongs"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.yongs.ml/posts/rss-build/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yong’s 网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.yongs.ml/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.yongs.ml/" accesskey="h" title="Yong’s 网络日志 (Alt + H)">Yong’s 网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.yongs.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.yongs.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.yongs.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.yongs.ml/posts/">Posts</a></div>
+    <h1 class="post-title">
+      打破信息茧房
+    </h1>
+    <div class="post-description">
+      RSS服务快速搭建
+    </div>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2022-03-13 13:05:35 +0800 CST'>2022-03-13</span>&nbsp;|&nbsp;更新:&nbsp;2022-03-13&nbsp;|&nbsp;字数:&nbsp;2150字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;
+作者:&nbsp;yongs
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%b8%80%e9%83%a8%e7%bd%b2rsshub" aria-label="一、部署RSSHub">一、部署RSSHub</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e6%9b%b4%e6%96%b0" aria-label="更新">更新</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%ba%8c%e9%83%a8%e7%bd%b2ttrss" aria-label="二、部署TTRSS">二、部署TTRSS</a><ul>
+                            
+                    <li>
+                        <a href="#docker-compose%e9%83%a8%e7%bd%b2" aria-label="docker-compose部署">docker-compose部署</a></li>
+                    <li>
+                        <a href="#%e6%9b%b4%e6%96%b0-1" aria-label="更新">更新</a></li>
+                    <li>
+                        <a href="#%e5%a4%87%e4%bb%bd" aria-label="备份">备份</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%b8%89%e5%ae%a2%e6%88%b7%e7%ab%af%e6%8e%a8%e8%8d%90" aria-label="三、客户端推荐">三、客户端推荐</a></li>
+                    <li>
+                        <a href="#%e5%9b%9b%e8%ae%a2%e9%98%85%e6%ba%90%e8%ae%a2%e9%98%85%e5%b0%8f%e6%8a%80%e5%b7%a7" aria-label="四、订阅源订阅小技巧">四、订阅源订阅小技巧</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>何为信息茧房：</p>
+<blockquote>
+<p>哈佛大学凯斯·桑斯坦教授在《信息乌托邦》一书中提出，人类社会存在一种“信息茧房”现象。他认为，在信息传播中人们自身的信息需求并非全方位的，只会注意选择想要的或能使自己愉悦的信息，久而久之接触的信息就越来越局限，越来越窄，就像蚕吐出来的丝一样，细细密密地把自己包裹起来，最终像一个蚕宝宝一样被桎梏在“信息茧房”内，失去对其他不同事物的了解能力和接触机会。当时，他的这一观点还只是作为一种推论和预测，但随着网络信息和人工智能技术的飞速发展，这种“信息茧房”现象，正越来越多地发生在现实生活中和我们的身边。</p>
+</blockquote>
+<p>说人话就是：</p>
+<blockquote>
+<p>在现如今的生活中，人们接受信息的来源（主要指生活在大陆，国外也差不多），主要从微信、微博、抖音、快手等中心化的平台，各家相互关闭自己的开放接口，强迫用户留在自己平台上，有时候只关注某个大V的信息，却不得不安装一个app，就这样手机上装了很多app（这些app们平均一周更新一次，要吐了）再加上平台的推荐算法，只推荐你喜欢的（兼听则明，偏信则暗），这样下去，整个人的认知无法被提高</p>
+</blockquote>
+<p>经过一段时间的探索，搭建了RSS这套服务，RSS服务属于古老服务了，估计只有数字原住民才听说过，目前来说还可以，正在慢慢过渡，在此记录下搭建过程，方便下次迁移</p>
+<blockquote>
+<p><strong>RSS</strong>（英文全称：<a href="https://zh.wikipedia.org/wiki/Resource_Description_Framework" title="Resource Description Framework">RDF</a> Site Summary 或 Really Simple Syndication<a href="https://zh.wikipedia.org/wiki/RSS#cite_note-powers-2003-1-2">[2]</a>），中文译作<strong>简易信息聚合</strong><a href="https://zh.wikipedia.org/wiki/RSS#cite_note-3">[3]</a>，也称<strong>聚合内容</strong><a href="https://zh.wikipedia.org/wiki/RSS#cite_note-%E5%BC%A0%E9%94%902015-4">[4]</a>，是一种<a href="https://zh.wikipedia.org/wiki/%E6%B6%88%E6%81%AF%E4%BE%86%E6%BA%90" title="消息来源">消息来源</a>格式规范，用以聚合多个网站更新的内容并自动通知网站订阅者。使用 RSS 后，网站订阅者便无需再手动查看网站是否有新的内容，同时 RSS 可将多个网站更新的内容进行整合，以摘要的形式呈现，有助于订阅者快速获取重要信息，并选择性地点阅查看。</p>
+<p>                                                                                                             ——引用wikipedia</p>
+</blockquote>
+<p>准备：</p>
+<ul>
+<li>需要一台服务器，运行linux即可       </li>
+</ul>
+<blockquote>
+<p>配置不用太大，我用的是阿里云的服务器，生活在大陆，国内访问比较快</p>
+</blockquote>
+<p>用到的服务：</p>
+<blockquote>
+<p><a href="https://docs.rsshub.app/">RSSHub</a>：一个开源、简单易用、易于扩展的 RSS 生成器，可以给任何奇奇怪怪的内容生成 RSS 订阅源。</p>
+<p><a href="http://ttrss.henry.wang/">TTRSS</a>：一款基于 PHP 的免费开源 RSS 聚合阅读器。</p>
+</blockquote>
+<p>用rsshub生成官方没有的订阅源，ttrss来管理订阅源的阅读记录，支持各端同步</p>
+<h3 id="一部署rsshub">一、部署RSSHub<a hidden class="anchor" aria-hidden="true" href="#一部署rsshub">#</a></h3>
+<p>支持docker部署，不过，我是部署到 Vercel 上的，好处是免费、国外的机子，真正连接到互联网的，国内可访问。</p>
+<p>1、注册 <a href="https://vercel.com/import/project?template=https://github.com/DIYgod/RSSHub"> Vercel</a></p>
+<blockquote>
+<p>有帐户的直接可以登录部署</p>
+<p>没有的先注册，建议用GitHub账号登录注册，github账号邮箱建议用gmail等国外的，通过率高，如果提示失败，可以和官方人员发email解封，我的当时就直接被冻结了，发了email后，一会就解封了，态度超好👍</p>
+</blockquote>
+<p>2、成功后可以直接点去部署了，我是没有用官方的库部署，fork官方库后去授权部署的，效果一样，vercel 用默认的就行，等待一会，撒花，表示部署成功</p>
+<p>3、直接访问域名成功打开即部署成功</p>
+<p>4、rsshub配置环境可参考 <a href="https://docs.rsshub.app/install/#pei-zhi">部署 | RSSHub</a> 配置</p>
+<ul>
+<li>
+<p>用户认证</p>
+</li>
+<li>
+<p>日志配置</p>
+</li>
+<li>
+<p>其他一些服务需要的api-key</p>
+</li>
+</ul>
+<p>5、在vercel 配置完 重新部署服务，才生效</p>
+<h5 id="更新">更新<a hidden class="anchor" aria-hidden="true" href="#更新">#</a></h5>
+<p>支持vercel自动拉取代码更新</p>
+<h3 id="二部署ttrss">二、部署TTRSS<a hidden class="anchor" aria-hidden="true" href="#二部署ttrss">#</a></h3>
+<p>部署到vps 阿里云上，支持docker、docker-composr即可</p>
+<h4 id="docker-compose部署">docker-compose部署<a hidden class="anchor" aria-hidden="true" href="#docker-compose部署">#</a></h4>
+<ol>
+<li>下载 <a href="https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml">docker-compose.yml</a>至任意目录。</li>
+<li>更改 <code>docker-compose.yml</code> 中的设置，请务必更改 postgres 用户密码。</li>
+<li>通过终端在同目录下运行 <code>docker-compose up -d</code> 后等待部署完成。</li>
+<li>默认通过 181 端口访问 TTRSS，默认账户：<code>admin</code> 密码：<code>password</code>，请第一时间更改。</li>
+<li><code>wangqiru/mercury-parser-api</code> 及 <code>wangqiru/opencc-api-server</code> 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。</li>
+</ol>
+<p>SELF_URL_PATH: TTRSS 实例地址。<strong>🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</strong></p>
+<p>这里说明一下，如果没有域名就要配置为 ip:端口号 的形式</p>
+<p>更多配置参考 <a href="http://ttrss.henry.wang/zh/#%E9%83%A8%E7%BD%B2">官方文档</a></p>
+<h4 id="更新-1">更新<a hidden class="anchor" aria-hidden="true" href="#更新-1">#</a></h4>
+<p>推荐使用手动更新</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#007f7f">#自用</span>
+</span></span><span style="display:flex;"><span> docker-compose pull
+</span></span><span style="display:flex;"><span> <span style="color:#007f7f">#官方推荐</span>
+</span></span><span style="display:flex;"><span> docker pull wangqiru/ttrss:latest
+</span></span><span style="display:flex;"><span> <span style="color:#007f7f"># docker pull wangqiru/mercury-parser-api:latest</span>
+</span></span><span style="display:flex;"><span> <span style="color:#007f7f"># docker pull wangqiru/opencc-api-server:latest</span>
+</span></span><span style="display:flex;"><span> docker-compose up -d <span style="color:#007f7f"># 如果您没有使用 docker-compose，我确信您知道该怎么做。</span>
+</span></span></code></pre></div><h4 id="备份">备份<a hidden class="anchor" aria-hidden="true" href="#备份">#</a></h4>
+<p>养成定期备份的习惯，有些订阅源很重要的资料可以永久保存，避免404</p>
+<ul>
+<li>
+<p>复制 Postgres 数据卷 <code>~/postgres/data/</code>（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！</p>
+</li>
+<li>
+<p>执行如下命令来导出所有数据：</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f">#docker exec postgres pg_dumpall -c -U 数据库用户名 &gt; export.sql</span>
+</span></span><span style="display:flex;"><span>docker <span style="color:#fff;font-weight:bold">exec</span> postgres pg_dumpall -c -U postgres &gt; export.sql
+</span></span></code></pre></div><ul>
+<li>执行如下命令来导入所有数据：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f">#cat export.sql | docker exec -i postgres psql -U 数据库用户名</span>
+</span></span><span style="display:flex;"><span>cat export.sql | docker <span style="color:#fff;font-weight:bold">exec</span> -i postgres psql -U postgres
+</span></span></code></pre></div><h3 id="三客户端推荐">三、客户端推荐<a hidden class="anchor" aria-hidden="true" href="#三客户端推荐">#</a></h3>
+<p>服务端都配置好了，接下来就是如何阅读了</p>
+<p>iOS/macOS：<a href="https://reederapp.com/">Reeder 5</a> 内置的 <a href="http://ttrss.henry.wang/zh/#fever-api">Fever API 模拟插件</a> 可以使用</p>
+<p>android：FeedMe</p>
+<p>Web：直接网页登录查看即可</p>
+<h3 id="四订阅源订阅小技巧">四、订阅源订阅小技巧<a hidden class="anchor" aria-hidden="true" href="#四订阅源订阅小技巧">#</a></h3>
+<p>服务都搭建好了，下面就该订阅订阅源了，分享一些小技巧</p>
+<ul>
+<li>
+<p>微博的可以使用 <a href="https://rssfeed.today/weibo/">Weibo to RSS</a> 订阅</p>
+</li>
+<li>
+<p>微信的封锁严重，rsshub订阅有限，可以用 <a href="https://wechat2rss.xlab.app/posts/list/">公众号列表 | 微信公众号转RSS服务</a> 来订阅，如果没有想订阅的，可以提 <a href="https://github.com/ttttmr/wechat2rss/issues/7">提交新公众号前看这里 · Issue #7 · ttttmr/wechat2rss · GitHub</a></p>
+</li>
+<li>
+<p>blogspot的rsshub没有提供，可以用cf反代后订阅</p>
+</li>
+<li>
+<p>twitter 的开发者api太难申请了，可以用 <a href="https://nitter.net/">nitter</a> 输出的rss 访问困难再结合cf反代，完美</p>
+</li>
+</ul>
+<p>以上，一个低成本，服务稳定，数据可控RSS生态部署成功，尽情享用吧！🎉</p>
+<hr>
+<p>参考文档：</p>
+<blockquote>
+<p><a href="https://docs.rsshub.app">RSSHub</a></p>
+<p><a href="http://ttrss.henry.wang/zh/">🐋 Awesome TTRSS | 🐋 Awesome TTRSS</a></p>
+<p><a href="https://diygod.me/ohmyrss/">我有特别的 RSS 使用技巧</a></p>
+<p><a href="https://www.alpaca.plus/archives/my-rss-solution.html">我的RSS解决方案 - alpaca++</a></p>
+<p><a href="http://www.mod.gov.cn/jmsd/2021-03/15/content_4880922.htm">警惕陷入“信息茧房” - 中华人民共和国国防部</a></p>
+<p><a href="https://wiki.mbalib.com/wiki/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF">信息茧房 - MBA智库百科</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/RSS">RSS 维基百科</a></p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.yongs.ml/tags/rss/">RSS</a></li>
+      <li><a href="https://blog.yongs.ml/tags/rsshub/">RSSHub</a></li>
+      <li><a href="https://blog.yongs.ml/tags/docker/">docker</a></li>
+      <li><a href="https://blog.yongs.ml/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/">信息茧房</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.yongs.ml/posts/linux-unset-proxy/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Linux设置代理</span>
+  </a>
+</nav>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.15/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-6zxgsh84q-yongs.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            
+            path: 'window.TWIKOO_MAGIC_PATH||window.location.pathname',
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

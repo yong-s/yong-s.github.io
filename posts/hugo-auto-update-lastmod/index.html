@@ -12,7 +12,7 @@
 作者:&nbsp;yongs">
 <link rel="canonical" href="https://blog.yongs.ml/posts/hugo-auto-update-lastmod/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://blog.yongs.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/favicon-16x16.png">
@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://blog.yongs.ml/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.1" />
+<meta name="generator" content="Hugo 0.94.1" />
 <noscript>
     <style>
         #theme-toggle,
@@ -112,7 +112,7 @@ if (!doNotTrack) {
   "keywords": [
     "hugo搭建", " PaperMod主题"
   ],
-  "articleBody": "config配置文件里加上如下参数：\nfrontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为：\n lastmod :最后提交时间\n:git: 根据git提交版本时间\n:fileModTime：文件修改时间\n Configure Hugo | Hugo 写的都有,but是英文的🙃\n",
+  "articleBody": "config配置文件里加上如下参数：\nfrontmatter:  lastmod:  - lastmod  - :git  - :fileModTime  - :default 依次取的顺序为：\n lastmod :最后提交时间\n:git: 根据git提交版本时间\n:fileModTime：文件修改时间\n Configure Hugo | Hugo 写的都有,but是英文的🙃\n",
   "wordCount" : "92",
   "inLanguage": "zh",
   "datePublished": "2022-01-22T21:34:31+08:00",
@@ -225,13 +225,13 @@ if (!doNotTrack) {
 </div>
   </header> 
   <div class="post-content"><p>config配置文件里加上如下参数：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="font-weight:bold">frontmatter</span>:
-    <span style="font-weight:bold">lastmod</span>:
-        - lastmod
-        - :git
-        - :fileModTime
-        - :default
-</code></pre></div><p>依次取的顺序为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">frontmatter</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">lastmod</span>:
+</span></span><span style="display:flex;"><span>        - lastmod
+</span></span><span style="display:flex;"><span>        - :git
+</span></span><span style="display:flex;"><span>        - :fileModTime
+</span></span><span style="display:flex;"><span>        - :default
+</span></span></code></pre></div><p>依次取的顺序为：</p>
 <blockquote>
 <p>lastmod :最后提交时间</p>
 <p>:git: 根据git提交版本时间</p>

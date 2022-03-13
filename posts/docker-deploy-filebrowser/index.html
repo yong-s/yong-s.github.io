@@ -12,7 +12,7 @@
 作者:&nbsp;yongs">
 <link rel="canonical" href="https://blog.yongs.ml/posts/docker-deploy-filebrowser/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://blog.yongs.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.yongs.ml/favicon-16x16.png">
@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://blog.yongs.ml/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.1" />
+<meta name="generator" content="Hugo 0.94.1" />
 <noscript>
     <style>
         #theme-toggle,
@@ -112,7 +112,7 @@ if (!doNotTrack) {
   "keywords": [
     "docker", "docker-compose", "filebrowser", "个人网盘"
   ],
-  "articleBody": "在linuxserver服务器上安装\n环境：docker、docker- compose\n需要了解docker基本知识，不懂可以翻翻以前的博客或者搜下教程学习\nfilebrowser官网上给的是docker命令执行的，但用compose习惯了，所以转换了一下格式，但是这里有个坑，官网也提示了\n By default, we already have a configuration file with some defaults so you can just mount the root and the database. Although you can overwrite by mounting a directory with a new config file. If you don’t already have a database file, make sure to create a new empty file under the path you specified. Otherwise, Docker will create an empty folder instead of an empty file, resulting in an error when mounting the database into the container.\n 翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！\n1、创建docker-compose文件 内容如下：\nversion: '3.3' services: filebrowser: image: filebrowser/filebrowser:s6 container_name: filebrowser volumes: - ./root:/srv - ./database/filebrowser.db:/database/filebrowser.db - ./settings.json:/config/settings.json environment: - PUID=0 - PGID=0 ports: - '8080:80' restart: always 2、创建默认文件和文件夹 对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：\n{ \"port\": 80, \"baseURL\": \"\", \"address\": \"0.0.0.0\", \"log\": \"stdout\", \"database\": \"/database/filebrowser.db\", \"root\": \"/srv\" } 在当前目录创建 database/filebrowser.db 文件夹和文件\nmkdir database cd database touch filebrowser.db 3、运行测试是否成功 执行 docker- compose logs -f 看下日志是否报错\n需要其他机器访问记得防火墙 把端口打开，本例用的8080端口\n浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉\n 参考：\n1、filebrowser官网\n2、filebrowser 一个跨平台的文件管理器的使用方法-森林的个人博客\n ",
+  "articleBody": "在linuxserver服务器上安装\n环境：docker、docker- compose\n需要了解docker基本知识，不懂可以翻翻以前的博客或者搜下教程学习\nfilebrowser官网上给的是docker命令执行的，但用compose习惯了，所以转换了一下格式，但是这里有个坑，官网也提示了\n By default, we already have a configuration file with some defaults so you can just mount the root and the database. Although you can overwrite by mounting a directory with a new config file. If you don’t already have a database file, make sure to create a new empty file under the path you specified. Otherwise, Docker will create an empty folder instead of an empty file, resulting in an error when mounting the database into the container.\n 翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！\n1、创建docker-compose文件 内容如下：\nversion: '3.3' services:  filebrowser:  image: filebrowser/filebrowser:s6  container_name: filebrowser  volumes:  - ./root:/srv  - ./database/filebrowser.db:/database/filebrowser.db  - ./settings.json:/config/settings.json  environment:  - PUID=0  - PGID=0  ports:  - '8080:80'  restart: always 2、创建默认文件和文件夹 对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：\n{  \"port\": 80,  \"baseURL\": \"\",  \"address\": \"0.0.0.0\",  \"log\": \"stdout\",  \"database\": \"/database/filebrowser.db\",  \"root\": \"/srv\" } 在当前目录创建 database/filebrowser.db 文件夹和文件\nmkdir database cd database touch filebrowser.db 3、运行测试是否成功 执行 docker- compose logs -f 看下日志是否报错\n需要其他机器访问记得防火墙 把端口打开，本例用的8080端口\n浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉\n 参考：\n1、filebrowser官网\n2、filebrowser 一个跨平台的文件管理器的使用方法-森林的个人博客\n ",
   "wordCount" : "570",
   "inLanguage": "zh",
   "datePublished": "2022-01-21T11:24:05+08:00",
@@ -316,36 +316,36 @@ if (!doNotTrack) {
 <p>翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！</p>
 <h1 id="1创建docker-compose文件">1、创建docker-compose文件<a hidden class="anchor" aria-hidden="true" href="#1创建docker-compose文件">#</a></h1>
 <p>内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-<span style="font-weight:bold">services</span>:     
-    <span style="font-weight:bold">filebrowser</span>:  
-        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
-        <span style="font-weight:bold">container_name</span>: filebrowser
-        <span style="font-weight:bold">volumes</span>:  
-            - ./root:/srv           
-            - ./database/filebrowser.db:/database/filebrowser.db 
-            - ./settings.json:/config/settings.json
-        <span style="font-weight:bold">environment</span>:
-            - PUID=0
-            - PGID=0
-        <span style="font-weight:bold">ports</span>: 
-            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
-        <span style="font-weight:bold">restart</span>: always
-</code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹<a hidden class="anchor" aria-hidden="true" href="#2创建默认文件和文件夹">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - ./root:/srv           
+</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
+</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>            - PUID=0
+</span></span><span style="display:flex;"><span>            - PGID=0
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹<a hidden class="anchor" aria-hidden="true" href="#2创建默认文件和文件夹">#</a></h1>
 <p>对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
-  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
-  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
-  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
-  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
-  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
-}
-</code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir database
-<span style="color:#fff;font-weight:bold">cd</span> database
-touch filebrowser.db
-</code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功<a hidden class="anchor" aria-hidden="true" href="#3运行测试是否成功">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir database
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> database
+</span></span><span style="display:flex;"><span>touch filebrowser.db
+</span></span></code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功<a hidden class="anchor" aria-hidden="true" href="#3运行测试是否成功">#</a></h1>
 <p>执行 docker- compose logs -f 看下日志是否报错</p>
 <p>需要其他机器访问记得防火墙 把端口打开，本例用的8080端口</p>
 <p>浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉</p>
