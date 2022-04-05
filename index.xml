@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Yong’s 网络日志</title>
-    <link>https://blog.yongs.ml/</link>
-    <description>Recent content on Yong’s 网络日志</description>
+    <title>张三的网络日志</title>
+    <link>https://blog.zsan.ml/</link>
+    <description>Recent content on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 13 Mar 2022 13:05:35 +0800</lastBuildDate><atom:link href="https://blog.yongs.ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Mar 2022 13:05:35 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>打破信息茧房</title>
-      <link>https://blog.yongs.ml/posts/rss-build/</link>
+      <link>https://blog.zsan.ml/posts/rss-build/</link>
       <pubDate>Sun, 13 Mar 2022 13:05:35 +0800</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/rss-build/</guid>
+      <guid>https://blog.zsan.ml/posts/rss-build/</guid>
       <description>RSS服务快速搭建</description>
       <content:encoded><![CDATA[<p>何为信息茧房：</p>
 <blockquote>
@@ -142,10 +142,10 @@
     
     <item>
       <title>Linux设置代理</title>
-      <link>https://blog.yongs.ml/posts/linux-unset-proxy/</link>
+      <link>https://blog.zsan.ml/posts/linux-unset-proxy/</link>
       <pubDate>Fri, 18 Feb 2022 18:04:50 +0800</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/linux-unset-proxy/</guid>
+      <guid>https://blog.zsan.ml/posts/linux-unset-proxy/</guid>
       <description>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来</description>
       <content:encoded><![CDATA[<blockquote>
 <p>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来感觉用的不爽，就给卸载了，服务也去了，但是proxy代理经常会自动设置，有时候手动给取消了，下次再用又有了，这次终于忍不了了，就搜了一下给解决了</p>
@@ -159,10 +159,10 @@
     
     <item>
       <title>比价助手机器人docker快速部署</title>
-      <link>https://blog.yongs.ml/posts/comparison-robot-building-for-docker/</link>
+      <link>https://blog.zsan.ml/posts/comparison-robot-building-for-docker/</link>
       <pubDate>Sun, 06 Feb 2022 17:05:32 +0800</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/comparison-robot-building-for-docker/</guid>
+      <guid>https://blog.zsan.ml/posts/comparison-robot-building-for-docker/</guid>
       <description>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商</description>
       <content:encoded><![CDATA[<blockquote>
 <p>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！</p>
@@ -441,10 +441,10 @@
     
     <item>
       <title>Hugo 自动更新文章修改时间</title>
-      <link>https://blog.yongs.ml/posts/hugo-auto-update-lastmod/</link>
+      <link>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</link>
       <pubDate>Sat, 22 Jan 2022 21:34:31 +0800</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/hugo-auto-update-lastmod/</guid>
+      <guid>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</guid>
       <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交</description>
       <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">frontmatter</span>:
@@ -465,10 +465,10 @@
     
     <item>
       <title>Docker Compose部署filebrowser</title>
-      <link>https://blog.yongs.ml/posts/docker-deploy-filebrowser/</link>
+      <link>https://blog.zsan.ml/posts/docker-deploy-filebrowser/</link>
       <pubDate>Fri, 21 Jan 2022 11:24:05 +0800</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/docker-deploy-filebrowser/</guid>
+      <guid>https://blog.zsan.ml/posts/docker-deploy-filebrowser/</guid>
       <description>docker快速搭建个人网盘</description>
       <content:encoded><![CDATA[<p>在linuxserver服务器上安装</p>
 <p>环境：docker、docker- compose</p>
@@ -523,10 +523,10 @@
     
     <item>
       <title>About</title>
-      <link>https://blog.yongs.ml/about/</link>
+      <link>https://blog.zsan.ml/about/</link>
       <pubDate>Thu, 13 Jan 2022 20:56:38 +0800</pubDate>
       
-      <guid>https://blog.yongs.ml/about/</guid>
+      <guid>https://blog.zsan.ml/about/</guid>
       <description>欢迎来到我的小站呀，很高兴遇见你！🤝 🏠 关于本站 这里主要记录一些平常遇到的一些技术坑，</description>
       <content:encoded><![CDATA[<blockquote>
 <p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
@@ -537,18 +537,18 @@
 <p>来到2021年，经常在网上看大佬们的blog，时间有点空，就想把blog给拾起来，接触的技术也多了，也想记录下一些笔记，方便后面随时翻阅，正好在推上看到大佬们推荐<a href="https://github.com/getgridea/gridea">gridea: ✍️ A static blog writing client (一个静态博客写作客户端)</a></p>
 <p>傻瓜式操作，根据界面提示设置就行了，专注于写作，当时就下下来用了一段时间，也有比较鸡肋的地方，比如主题太少，自定义空间太小，还有就是windows7上不太稳定，有时会卡，可能我电脑垃圾吧，主题太少，有的主题不支持侧边目录栏，当时搜了好多文章，才改了一下主题，具体看<a href="../posts/girde-simple-support-for-sidebar-directory/">这篇</a>，还有就是，作者好久不更新了，专注于搞web端了，所以就在换了Mac后就换了到hugo上</p>
 <p><a href="https://gohugo.io/">hugo</a>用go开发的，据说生成文章非常快，相比hexo来说，hugo在Mac上用命令也很舒服，主题也很多，所以就果断换了上来，专注写作，主题用的<a href="https://git.io/hugopapermod">papermod</a>，这是国外开发者开发的，中文资料太少，不过，搜了好多大佬的文章，基本上调试ok；还是用github做仓库来提供服务，用markdown来写文章，vs code来配置文件，在<a href="https://www.freenom.com/">freenom</a>上白嫖的一年域名，用脚本自动监控，到期提示；用cf来做域名解析和缓存服务。</p>
-<h2 id="-博主是谁">👨‍💻 博主是谁</h2>
-<p>匆匆的蚂蚁</p>
+<h2 id="-张三是谁">👨‍💻 张三是谁</h2>
+<p>孤独时代的蚂蚁</p>
 <p>克莱登大学毕业</p>
 ]]></content:encoded>
     </item>
     
     <item>
       <title>docker 生成自己的镜像</title>
-      <link>https://blog.yongs.ml/posts/docker-generate-image/</link>
+      <link>https://blog.zsan.ml/posts/docker-generate-image/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/docker-generate-image/</guid>
+      <guid>https://blog.zsan.ml/posts/docker-generate-image/</guid>
       <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
@@ -571,10 +571,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>girde simple修改添加支持侧边栏目录</title>
-      <link>https://blog.yongs.ml/posts/girde-simple-support-for-sidebar-directory/</link>
+      <link>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
+      <guid>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
       <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
@@ -692,10 +692,10 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.yongs.ml/posts/docker-build-jdbot/</link>
+      <link>https://blog.zsan.ml/posts/docker-build-jdbot/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/docker-build-jdbot/</guid>
+      <guid>https://blog.zsan.ml/posts/docker-build-jdbot/</guid>
       <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->

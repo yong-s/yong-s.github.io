@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>simple on Yong’s 网络日志</title>
-    <link>https://blog.yongs.ml/tags/simple/</link>
-    <description>Recent content in simple on Yong’s 网络日志</description>
+    <title>simple on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/simple/</link>
+    <description>Recent content in simple on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 18:50:26 +0000</lastBuildDate><atom:link href="https://blog.yongs.ml/tags/simple/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Jun 2021 18:50:26 +0000</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/simple/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>girde simple修改添加支持侧边栏目录</title>
-      <link>https://blog.yongs.ml/posts/girde-simple-support-for-sidebar-directory/</link>
+      <link>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://blog.yongs.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
+      <guid>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
       <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
