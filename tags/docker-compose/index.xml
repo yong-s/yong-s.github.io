@@ -7,7 +7,68 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 21 Jan 2022 11:24:05 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Apr 2022 16:23:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker 部署 Nginx服务</title>
+      <link>https://blog.zsan.ml/posts/docker-build-nginx/</link>
+      <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/docker-build-nginx/</guid>
+      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠</p>
+</blockquote>
+<h2 id="1创建docker-nginx目录">1、创建docker-nginx目录</h2>
+<p>新建 docker-compose.yml 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir docekr-nginx
+</span></span><span style="display:flex;"><span>mkdir nginx
+</span></span><span style="display:flex;"><span>mkdir log
+</span></span><span style="display:flex;"><span>mkdir html
+</span></span><span style="display:flex;"><span>vim docker-compose.yml
+</span></span></code></pre></div><h2 id="2docker-composeyml">2、docker-compose.yml</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">web</span>:
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">image</span>: nginx:latest
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">container_name</span>: nginx
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>     - ./nginx:/etc/nginx
+</span></span><span style="display:flex;"><span>     - ./log:/var/log/nginx
+</span></span><span style="display:flex;"><span>     - ./html:/usr/share/nginx/html  //网站放置目录
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">ports</span>:
+</span></span><span style="display:flex;"><span>     - <span style="color:#0ff;font-weight:bold">&#34;8081:80&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>     - NGINX_HOST=&#34;192.168.116.10&#34; //访问地址/域名
+</span></span><span style="display:flex;"><span>     - NGINX_PORT=&#34;80&#34; //访问端口
+</span></span><span style="display:flex;"><span>     - TZ=&#34;Asia/Shanghai&#34; //时区
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><h2 id="3手动cp配置文件">3、手动cp配置文件</h2>
+<p>由于官方image没有默认映射外部文件，需要手动把配置文件cp出来</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 运行官方命令创建默认容器</span>
+</span></span><span style="display:flex;"><span>docker run --name nginx -p 8080:80 -d nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#配置文件复制到nginx里,其他文件可用复制</span>
+</span></span><span style="display:flex;"><span>docker cp nginx:/etc/nginx/ .nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#删除默认容器</span>
+</span></span><span style="display:flex;"><span>docekr stop nginx &amp;&amp; docekr rm nginx
+</span></span></code></pre></div><h2 id="4修改nginx配置文件">4、修改nginx配置文件</h2>
+<p>端口号、域名，ssl等和以前配置一样，不再赘述</p>
+<h2 id="5运行测试">5、运行&amp;测试</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docekr-compose up -d
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
+</span></span><span style="display:flex;"><span>docekr-compose logs -f     
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#浏览器输入IP或域名查看是否可以访问</span>
+</span></span></code></pre></div><hr>
+<p>参考文档：</p>
+<blockquote>
+<p>1、<a href="https://hub.docker.com/_/nginx">Docker Hub-nginx</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Docker Compose部署filebrowser</title>
       <link>https://blog.zsan.ml/posts/docker-deploy-filebrowser/</link>
@@ -58,6 +119,32 @@
 <p>执行 docker- compose logs -f 看下日志是否报错</p>
 <p>需要其他机器访问记得防火墙 把端口打开，本例用的8080端口</p>
 <p>浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉</p>
+<h1 id="4n1小钢炮安装">4、n1小钢炮安装</h1>
+<blockquote>
+<p>灯大魔改的好久没更新了，功能好多不支持了，今天给升级（踩坑）了一下</p>
+</blockquote>
+<p>1、docker-compose需要改下配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - /media:/srv           
+</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
+</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
+</span></span><span style="display:flex;"><span>            - /etc/timezone:/etc/timezone    <span style="color:#007f7f">#时区 cst</span>
+</span></span><span style="display:flex;"><span>            - /etc/localtime:/etc/localtime  <span style="color:#007f7f">#时区 cst</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>            - PUID=1002
+</span></span><span style="display:flex;"><span>            - PGID=100
+</span></span><span style="display:flex;"><span>              <span style="color:#007f7f"># - TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8081:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><p>2、灯大版的移除，执行这个即可</p>
+<p>两个小坑，1、镜像要用laster的 2、时区设置用挂载的</p>
 <blockquote>
 <p>参考：</p>
 <p>1、<a href="https://filebrowser.org">filebrowser官网</a></p>

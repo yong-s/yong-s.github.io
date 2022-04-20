@@ -7,7 +7,68 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 13 Mar 2022 13:05:35 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Apr 2022 16:23:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker 部署 Nginx服务</title>
+      <link>https://blog.zsan.ml/posts/docker-build-nginx/</link>
+      <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/docker-build-nginx/</guid>
+      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠</p>
+</blockquote>
+<h2 id="1创建docker-nginx目录">1、创建docker-nginx目录</h2>
+<p>新建 docker-compose.yml 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir docekr-nginx
+</span></span><span style="display:flex;"><span>mkdir nginx
+</span></span><span style="display:flex;"><span>mkdir log
+</span></span><span style="display:flex;"><span>mkdir html
+</span></span><span style="display:flex;"><span>vim docker-compose.yml
+</span></span></code></pre></div><h2 id="2docker-composeyml">2、docker-compose.yml</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">web</span>:
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">image</span>: nginx:latest
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">container_name</span>: nginx
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>     - ./nginx:/etc/nginx
+</span></span><span style="display:flex;"><span>     - ./log:/var/log/nginx
+</span></span><span style="display:flex;"><span>     - ./html:/usr/share/nginx/html  //网站放置目录
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">ports</span>:
+</span></span><span style="display:flex;"><span>     - <span style="color:#0ff;font-weight:bold">&#34;8081:80&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>     - NGINX_HOST=&#34;192.168.116.10&#34; //访问地址/域名
+</span></span><span style="display:flex;"><span>     - NGINX_PORT=&#34;80&#34; //访问端口
+</span></span><span style="display:flex;"><span>     - TZ=&#34;Asia/Shanghai&#34; //时区
+</span></span><span style="display:flex;"><span> <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><h2 id="3手动cp配置文件">3、手动cp配置文件</h2>
+<p>由于官方image没有默认映射外部文件，需要手动把配置文件cp出来</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 运行官方命令创建默认容器</span>
+</span></span><span style="display:flex;"><span>docker run --name nginx -p 8080:80 -d nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#配置文件复制到nginx里,其他文件可用复制</span>
+</span></span><span style="display:flex;"><span>docker cp nginx:/etc/nginx/ .nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#删除默认容器</span>
+</span></span><span style="display:flex;"><span>docekr stop nginx &amp;&amp; docekr rm nginx
+</span></span></code></pre></div><h2 id="4修改nginx配置文件">4、修改nginx配置文件</h2>
+<p>端口号、域名，ssl等和以前配置一样，不再赘述</p>
+<h2 id="5运行测试">5、运行&amp;测试</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docekr-compose up -d
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
+</span></span><span style="display:flex;"><span>docekr-compose logs -f     
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#浏览器输入IP或域名查看是否可以访问</span>
+</span></span></code></pre></div><hr>
+<p>参考文档：</p>
+<blockquote>
+<p>1、<a href="https://hub.docker.com/_/nginx">Docker Hub-nginx</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>打破信息茧房</title>
       <link>https://blog.zsan.ml/posts/rss-build/</link>
@@ -345,7 +406,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>//国内机
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>git clone https://ghproxy.861443216.workers.dev/https://github.com/takayama-lily/node-onebot
+</span></span><span style="display:flex;"><span>git clone https://ghproxy.realproxy.workers.dev/https://github.com/takayama-lily/node-onebot
 </span></span><span style="display:flex;"><span>机
 </span></span></code></pre></div><h3 id="2修改dockerfile文件">2、修改Dockerfile文件</h3>
 <p>修改默认Dockerfile里面最后一行的QQ号成自己的bot账号</p>
@@ -400,9 +461,55 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
+</span></span></span></code></pre></div><p>终极防风控：</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">&#34;use strict&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 将此文件更名为config.js才能生效哦
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//通用配置
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    general: {
+</span></span><span style="display:flex;"><span>        platform:           <span style="color:#ff0;font-weight:bold">3</span>,      <span style="color:#007f7f">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        debug:              <span style="color:#fff;font-weight:bold">false</span>,  <span style="color:#007f7f">//开启debug
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_cqhttp_notice:  <span style="color:#fff;font-weight:bold">true</span>,   <span style="color:#007f7f">//是否使用cqhttp标准的notice事件格式
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
+</span></span><span style="display:flex;"><span>        host:               <span style="color:#0ff;font-weight:bold">&#34;localhost&#34;</span>,  <span style="color:#007f7f">//监听主机名
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        port:               <span style="color:#ff0;font-weight:bold">5700</span>,       <span style="color:#007f7f">//端口
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_http:           <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用http
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_ws:             <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用正向ws，和http使用相同地址和端口
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        access_token:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//访问api的token
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        secret:             <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//上报数据的sha1签名密钥
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_timeout:       <span style="color:#ff0;font-weight:bold">30</span>,         <span style="color:#007f7f">//post超时时间(秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_message_format:<span style="color:#0ff;font-weight:bold">&#34;array&#34;</span>,    <span style="color:#007f7f">//&#34;string&#34;或&#34;array&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_cors:        <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否允许跨域请求
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_heartbeat:   <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否启用ws心跳
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        heartbeat_interval: <span style="color:#ff0;font-weight:bold">15000</span>,      <span style="color:#007f7f">//ws心跳间隔(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        rate_limit_interval:<span style="color:#ff0;font-weight:bold">500</span>,        <span style="color:#007f7f">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        event_filter:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//json格式的事件过滤器文件路径
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_url: [ <span style="color:#007f7f">//上报地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#007f7f">// &#34;http://your.address.com:80&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
+</span></span><span style="display:flex;"><span>        ws_reverse_url: [ <span style="color:#007f7f">//反向ws地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#0ff;font-weight:bold">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#007f7f">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
+</span></span><span style="display:flex;"><span>        ws_reverse_reconnect_interval: <span style="color:#ff0;font-weight:bold">3000</span>, <span style="color:#007f7f">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ws_reverse_reconnect_on_code_1000: <span style="color:#fff;font-weight:bold">true</span>, <span style="color:#007f7f">//反向ws是否在关闭状态码为1000的时候重连
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//每个账号的单独配置(用于覆盖通用配置)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#ff0;font-weight:bold">147258369</span>: {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 安全注意：
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
 </span></span></span></code></pre></div><h3 id="4编译docker-image">4、编译docker image</h3>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t yongs/node-onebot:latest .
-</span></span></code></pre></div><p>yongs自定义的，随便起，一定不要忘了 最后又个<u> . </u>表示在当前目录文件编译</p>
+</span></span></code></pre></div><p>yongs自定义的，随便起，一定不要忘了 最后有个<u> . </u>表示在当前目录文件编译</p>
 <h3 id="5启动image">5、启动image</h3>
 <p>用的是docker-compose启动的，刚才拉的代码已经有yaml文件了，</p>
 <p>需要注意 image名字是刚才编译的名字，不知道可以用</p>
@@ -415,13 +522,14 @@
 </span></span><span style="display:flex;"><span>    <span style="font-weight:bold">network_mode</span>: <span style="color:#0ff;font-weight:bold">&#34;host&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="font-weight:bold">volumes</span>:
 </span></span><span style="display:flex;"><span>      - ./config.js:/root/config.js
-</span></span><span style="display:flex;"><span>      - ./data:/root/data
+</span></span><span style="display:flex;"><span>      - ./data:/app/data
 </span></span><span style="display:flex;"><span>    <span style="font-weight:bold">stdin_open</span>: <span style="color:#fff;font-weight:bold">true</span>
 </span></span><span style="display:flex;"><span>    <span style="font-weight:bold">tty</span>: <span style="color:#fff;font-weight:bold">true</span>
 </span></span><span style="display:flex;"><span>    <span style="font-weight:bold">container_name</span>: docker-onebot
-</span></span></code></pre></div><h3 id="6查看日志扫码登录不能登录进入容器内扫码">6、查看日志，扫码登录，不能登录进入容器内扫码</h3>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div><h3 id="6查看日志扫码登录不能登录进入容器内扫码">6、查看日志，<del>扫码登录，不能登录进入容器内扫码</del></h3>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
-</span></span><span style="display:flex;"><span>docker logs -f docker-onebot
+</span></span><span style="display:flex;"><span>docker logs -f -n <span style="color:#ff0;font-weight:bold">500</span> docker-onebot
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#进入容器</span>
 </span></span><span style="display:flex;"><span>docker <span style="color:#fff;font-weight:bold">exec</span> -it docker-onebot /bin/sh
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#执行登录</span>
@@ -430,6 +538,25 @@
 <p>发送 淘宝京豆拼多多链接看是否回复，回复即部署成功。</p>
 <p>登录成功后，重启docker即可</p>
 <p>这里的坑就是傻妞启动失败，导致onebot连接不上傻妞。</p>
+<h3 id="7群被风控的解决办法">7、群被风控的解决办法</h3>
+<p>参考了大佬的解决办法<a href="https://github.com/Mrs4s/go-cqhttp/issues/958#issuecomment-890430577">风控解除最终版</a></p>
+<ol>
+<li>
+<p>开启设备锁，账号设置里面的</p>
+</li>
+<li>
+<p>删除session.token 我是直接把整个账号文件夹删了</p>
+</li>
+<li>
+<p>切换安卓协议  1或者3 我用的3</p>
+</li>
+<li>
+<p>填写密码登陆</p>
+</li>
+<li>
+<p>需要验证信息，根据提示一步一步操作即可（链接推荐在Chrome里打开查找）</p>
+</li>
+</ol>
 <blockquote>
 <p>参考链接：</p>
 <p>1、<a href="https://www.kejiwanjia.com/jiaocheng/zheteng/19778.html#node-onebotqqbot">群晖傻妞SillyGirl完整部署教程 12.13更新node-onebot - 科技玩家</a></p>
@@ -513,6 +640,32 @@
 <p>执行 docker- compose logs -f 看下日志是否报错</p>
 <p>需要其他机器访问记得防火墙 把端口打开，本例用的8080端口</p>
 <p>浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉</p>
+<h1 id="4n1小钢炮安装">4、n1小钢炮安装</h1>
+<blockquote>
+<p>灯大魔改的好久没更新了，功能好多不支持了，今天给升级（踩坑）了一下</p>
+</blockquote>
+<p>1、docker-compose需要改下配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - /media:/srv           
+</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
+</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
+</span></span><span style="display:flex;"><span>            - /etc/timezone:/etc/timezone    <span style="color:#007f7f">#时区 cst</span>
+</span></span><span style="display:flex;"><span>            - /etc/localtime:/etc/localtime  <span style="color:#007f7f">#时区 cst</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>            - PUID=1002
+</span></span><span style="display:flex;"><span>            - PGID=100
+</span></span><span style="display:flex;"><span>              <span style="color:#007f7f"># - TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8081:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><p>2、灯大版的移除，执行这个即可</p>
+<p>两个小坑，1、镜像要用laster的 2、时区设置用挂载的</p>
 <blockquote>
 <p>参考：</p>
 <p>1、<a href="https://filebrowser.org">filebrowser官网</a></p>
