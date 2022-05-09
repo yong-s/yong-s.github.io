@@ -7,7 +7,67 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 08 Apr 2022 16:23:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 May 2022 21:05:31 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【躺赚】docker部署网心云容器魔方</title>
+      <link>https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/</link>
+      <pubDate>Mon, 09 May 2022 21:05:31 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/</guid>
+      <description>N1盒子外挂硬盘跑网心云赚钱</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>设备：N1</p>
+<p>硬盘：400g ssd</p>
+<p>已安装服务：docker、docker-compose</p>
+</blockquote>
+<p>开干！</p>
+<h3 id="一挂载ssd挂载过直接跳到第二步">一、挂载ssd（挂载过直接跳到第二步）</h3>
+<p>硬盘插到N1上</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk   <span style="color:#007f7f">#查看当前磁盘情况</span>
+</span></span><span style="display:flex;"><span>disk -l <span style="color:#007f7f">#查看当前未挂载的磁盘</span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#假设磁盘名为 dev/sda</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#创建分区</span>
+</span></span><span style="display:flex;"><span>dfisk  dev/sda
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#输入n, p, 1, 两次回车，wq</span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#新建一个主分区，大小整个磁盘，保存写入</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#写入文件格式</span>
+</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/sda  <span style="color:#007f7f">#ext4格式</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#挂载</span>
+</span></span><span style="display:flex;"><span>mount /dev/sda /media/data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看文件</span>
+</span></span><span style="display:flex;"><span>df -lh    <span style="color:#007f7f">#查看到刚才挂载的硬盘</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#设置开机自动挂载</span>
+</span></span><span style="display:flex;"><span>vim /etc/fstab
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f"># 在最后新增一行</span>
+</span></span><span style="display:flex;"><span>/dev/sdb   /media/data    ext4   defaults   <span style="color:#ff0;font-weight:bold">0</span>   <span style="color:#ff0;font-weight:bold">0</span>
+</span></span></code></pre></div><h3 id="二部署">二、部署</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir wxedge
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> wxedge
+</span></span><span style="display:flex;"><span>vim docker-compose.yml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">wxedge</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: wxedge
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">privileged</span>: <span style="color:#fff;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">network_mode</span>: host
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">tmpfs</span>: 
+</span></span><span style="display:flex;"><span>            - /run
+</span></span><span style="display:flex;"><span>            - /tmp
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;/media/data/wxedge:/storage:rw&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: onething1/wxedge
+</span></span></code></pre></div><p>ip:18888 打开 成功🎉🎉🎉</p>
+<p>躺着赚钱吧！</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Docker 部署 Nginx服务</title>
       <link>https://blog.zsan.ml/posts/docker-build-nginx/</link>
