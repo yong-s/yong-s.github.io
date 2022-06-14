@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.99.1" />
+<meta name="generator" content="Hugo 0.100.2" />
 <noscript>
     <style>
         #theme-toggle,
@@ -111,7 +111,7 @@ if (!doNotTrack) {
   "keywords": [
     "docker", "网心云", "wxedge"
   ],
-  "articleBody": " 设备：N1\n硬盘：400g ssd\n已安装服务：docker、docker-compose\n 开干！\n一、挂载ssd（挂载过直接跳到第二步） 硬盘插到N1上\nlsblk #查看当前磁盘情况 disk -l #查看当前未挂载的磁盘 #假设磁盘名为 dev/sda  #创建分区 dfisk dev/sda #输入n, p, 1, 两次回车，wq #新建一个主分区，大小整个磁盘，保存写入  #写入文件格式 mkfs.ext4 /dev/sda #ext4格式  #挂载 mount /dev/sda /media/data  #查看文件 df -lh #查看到刚才挂载的硬盘  #设置开机自动挂载 vim /etc/fstab  # 在最后新增一行 /dev/sdb /media/data ext4 defaults 0 0 二、部署 mkdir wxedge cd wxedge vim docker-compose.yml version: '3.3' services:  wxedge:  container_name: wxedge  restart: always  privileged: true  network_mode: host  tmpfs:  - /run  - /tmp  volumes:  - '/media/data/wxedge:/storage:rw'  image: onething1/wxedge ip:18888 打开 成功🎉🎉🎉\n躺着赚钱吧！\n",
+  "articleBody": " 设备：N1\n硬盘：400g ssd\n已安装服务：docker、docker-compose\n开干！\n一、挂载ssd（挂载过直接跳到第二步） 硬盘插到N1上\nlsblk #查看当前磁盘情况 disk -l #查看当前未挂载的磁盘 #假设磁盘名为 dev/sda #创建分区 dfisk dev/sda #输入n, p, 1, 两次回车，wq #新建一个主分区，大小整个磁盘，保存写入 #写入文件格式 mkfs.ext4 /dev/sda #ext4格式 #挂载 mount /dev/sda /media/data #查看文件 df -lh #查看到刚才挂载的硬盘 #设置开机自动挂载 vim /etc/fstab # 在最后新增一行 /dev/sdb /media/data ext4 defaults 0 0 二、部署 mkdir wxedge cd wxedge vim docker-compose.yml version: '3.3' services: wxedge: container_name: wxedge restart: always privileged: true network_mode: host tmpfs: - /run - /tmp volumes: - '/media/data/wxedge:/storage:rw' image: onething1/wxedge ip:18888 打开 成功🎉🎉🎉\n躺着赚钱吧！\n",
   "wordCount" : "252",
   "inLanguage": "zh",
   "datePublished": "2022-05-09T21:05:31+08:00",
@@ -381,7 +381,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.5.0/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.yongs.ml/",  
+            envId: "https://twikoo.zsan.ml/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

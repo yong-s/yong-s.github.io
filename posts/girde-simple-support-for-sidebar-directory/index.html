@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.99.1" />
+<meta name="generator" content="Hugo 0.100.2" />
 <noscript>
     <style>
         #theme-toggle,
@@ -111,7 +111,7 @@ if (!doNotTrack) {
   "keywords": [
     "girde", "simple"
   ],
-  "articleBody": "修改主题文件支持侧边栏目录\nsimple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。\n1、修改post.ejs文件 head新增\n\n搜索复制一下代码覆盖copy\ndiv class=\"post-content-wrapper\"  div class=\"post-content\" v-pre  %- post.content %  div  div class=\"toc-container\"  %- post.toc %  div div 新增高亮js\n  hljs.initHighlightingOnLoad()   let mainNavLinks = document.querySelectorAll(\".markdownIt-TOC a\");   // This should probably be throttled.  // Especially because it triggers during smooth scrolling.  // https://lodash.com/docs/4.17.10#throttle  // You could do like...  // window.addEventListener(\"scroll\", () = {  // _.throttle(doThatStuff, 100);  // });  // Only not doing it here to keep this Pen dependency-free.   window.addEventListener(\"scroll\", event = {  let fromTop = window.scrollY;   mainNavLinks.forEach((link, index) = {  let section = document.getElementById(decodeURI(link.hash).substring(1));  let nextSection = null  if (mainNavLinks[index + 1]) {  nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));  }  if (section.offsetTop  if (nextSection) {  if (nextSection.offsetTop  fromTop) {  link.classList.add(\"current\");  } else {  link.classList.remove(\"current\");  }  } else {  link.classList.add(\"current\");  }  } else {  link.classList.remove(\"current\");  }  });  });   /script 2、客户端新增自定义css .toc-container .markdownIt-TOC {  position: sticky;  top: 32px;  width: 200px;  font-size: 12px;  list-style: none;  padding-left: 0;  padding: 16px 8px;  } .toc-container .markdownIt-TOC:before {  content: \"\";  position: absolute;  top: 0;  left: 8px;  bottom: 0;  width: 1px;  background-color: #ebedef;  opacity: .5;  } .toc-container ul {  list-style: none;  } .toc-container li {  padding-left: 16px; } .toc-container li a {  color: #868e96;  padding: 4px;  display: block;  transition: all 0.3s;  } .toc-container li a:hover {  background: #cddbef;  } .toc-container li a.current {  color: #006CFF;  background: #fafafa;  } .post-content-wrapper { display: flex; } .post-content { width: 100%; margin-right: 20px; } @media (max-width: 1150px) {  .toc-container {  display: none;  } } 3、修改main.css文件 搜索.post-detail 修改margin: 0 auto;为\nmargin: 0 20px;\n重新渲染网页即可尽情享用吧！\n",
+  "articleBody": "修改主题文件支持侧边栏目录\nsimple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。\n1、修改post.ejs文件 head新增\n搜索\u003c%- post.content %\u003e复制一下代码覆盖copy\n\u003cdiv class=\"post-content-wrapper\"\u003e \u003cdiv class=\"post-content\" v-pre\u003e \u003c%- post.content %\u003e \u003c/div\u003e \u003cdiv class=\"toc-container\"\u003e \u003c%- post.toc %\u003e \u003c/div\u003e \u003c/div\u003e 新增高亮js\n",
   "wordCount" : "458",
   "inLanguage": "zh",
   "datePublished": "2021-06-06T18:50:26Z",
@@ -445,7 +445,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.5.0/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.yongs.ml/",  
+            envId: "https://twikoo.zsan.ml/",  
             el: "#tcomment",
             lang: 'zh-CN',
             
