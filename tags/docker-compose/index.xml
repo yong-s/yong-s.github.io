@@ -48,7 +48,8 @@
 </span></span><span style="display:flex;"><span>docker run --name nginx -p 8080:80 -d nginx
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#配置文件复制到nginx里,其他文件可用复制</span>
-</span></span><span style="display:flex;"><span>docker cp nginx:/etc/nginx/ .nginx
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#是个坑，路径必须是全路径</span>
+</span></span><span style="display:flex;"><span>docker cp nginx:/etc/nginx /opt/docker-nginx
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#删除默认容器</span>
 </span></span><span style="display:flex;"><span>docekr stop nginx &amp;&amp; docekr rm nginx
