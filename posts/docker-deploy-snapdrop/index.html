@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>【躺赚】docker部署网心云容器魔方 | 张三的网络日志</title>
-<meta name="keywords" content="docker, 网心云, wxedge" />
-<meta name="description" content="N1盒子外挂硬盘跑网心云赚钱">
+<title>Docker 部署 Snapdrop | 张三的网络日志</title>
+<meta name="keywords" content="snapdrop, docker, 文件传输" />
+<meta name="description" content="好用的跨平台文件传输工具（无需下载安装、打开网页即可使用）">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/" />
+<link rel="canonical" href="https://blog.zsan.ml/posts/docker-deploy-snapdrop/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -69,16 +69,16 @@ if (!doNotTrack) {
 	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="【躺赚】docker部署网心云容器魔方" />
-<meta property="og:description" content="N1盒子外挂硬盘跑网心云赚钱" />
+<meta property="og:title" content="Docker 部署 Snapdrop" />
+<meta property="og:description" content="好用的跨平台文件传输工具（无需下载安装、打开网页即可使用）" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-09T21:05:31&#43;08:00" />
-<meta property="article:modified_time" content="2022-05-09T21:45:03&#43;08:00" />
+<meta property="og:url" content="https://blog.zsan.ml/posts/docker-deploy-snapdrop/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-19T17:44:20&#43;08:00" />
+<meta property="article:modified_time" content="2022-06-19T18:02:11&#43;08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="【躺赚】docker部署网心云容器魔方"/>
-<meta name="twitter:description" content="N1盒子外挂硬盘跑网心云赚钱"/>
+<meta name="twitter:title" content="Docker 部署 Snapdrop"/>
+<meta name="twitter:description" content="好用的跨平台文件传输工具（无需下载安装、打开网页即可使用）"/>
 
 
 <script type="application/ld+json">
@@ -95,8 +95,8 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "【躺赚】docker部署网心云容器魔方",
-      "item": "https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/"
+      "name": "Docker 部署 Snapdrop",
+      "item": "https://blog.zsan.ml/posts/docker-deploy-snapdrop/"
     }
   ]
 }
@@ -105,24 +105,24 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "【躺赚】docker部署网心云容器魔方",
-  "name": "【躺赚】docker部署网心云容器魔方",
-  "description": "N1盒子外挂硬盘跑网心云赚钱",
+  "headline": "Docker 部署 Snapdrop",
+  "name": "Docker 部署 Snapdrop",
+  "description": "好用的跨平台文件传输工具（无需下载安装、打开网页即可使用）",
   "keywords": [
-    "docker", "网心云", "wxedge"
+    "snapdrop", "docker", "文件传输"
   ],
-  "articleBody": " 设备：N1\n硬盘：400g ssd\n已安装服务：docker、docker-compose\n开干！\n一、挂载ssd（挂载过直接跳到第二步） 硬盘插到N1上\nlsblk #查看当前磁盘情况 disk -l #查看当前未挂载的磁盘 #假设磁盘名为 dev/sda #创建分区 dfisk dev/sda #输入n, p, 1, 两次回车，wq #新建一个主分区，大小整个磁盘，保存写入 #写入文件格式 mkfs.ext4 /dev/sda #ext4格式 #挂载 mount /dev/sda /media/data #查看文件 df -lh #查看到刚才挂载的硬盘 #设置开机自动挂载 vim /etc/fstab # 在最后新增一行 /dev/sdb /media/data ext4 defaults 0 0 二、部署 mkdir wxedge cd wxedge vim docker-compose.yml version: '3.3' services: wxedge: container_name: wxedge restart: always privileged: true network_mode: host tmpfs: - /run - /tmp volumes: - '/media/data/wxedge:/storage:rw' image: onething1/wxedge ip:18888 打开 成功🎉🎉🎉\n躺着赚钱吧！\n",
-  "wordCount" : "252",
+  "articleBody": " Snapdrop 是一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件\n官网有demo，but不稳定，自部署一套稳定可靠可控\n#git clone 下载 git clone https://github.com/RobinLinus/snapdrop.git cd snapdrop #国内服务需换源 cd docker vim nginx-with-openssl.Dockerfile #RUN apk add --no-cache openssl 上方添加命令 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories #保存 启动 docker-compose up -d 常见问题：\n1、启动后日志里报\nnpm ERR! Error: EACCES: permission denied, access '/home/node/app' npm ERR! { Error: EACCES: permission denied, access '/home/node/app' npm ERR! stack: 'Error: EACCES: permission denied, access \\'/home/node/app\\'', npm ERR! errno: -13, npm ERR! code: 'EACCES', npm ERR! syscall: 'access', npm ERR! path: '/home/node/app' } 权限 user的坑，我默认是root用户，yml里node启动为node用户，导致权限过低，启动失败\n此时只需要把docker-compose.yml 里的user: “node” 注释即可\nvim docker-compose #user: \"node” ",
+  "wordCount" : "312",
   "inLanguage": "zh",
-  "datePublished": "2022-05-09T21:05:31+08:00",
-  "dateModified": "2022-05-09T21:45:03.231340925+08:00",
+  "datePublished": "2022-06-19T17:44:20+08:00",
+  "dateModified": "2022-06-19T18:02:11.249633141+08:00",
   "author":[{
     "@type": "Person",
     "name": "张三"
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/"
+    "@id": "https://blog.zsan.ml/posts/docker-deploy-snapdrop/"
   },
   "publisher": {
     "@type": "Organization",
@@ -205,10 +205,10 @@ if (!doNotTrack) {
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
     <h1 class="post-title">
-      【躺赚】docker部署网心云容器魔方
+      Docker 部署 Snapdrop
     </h1>
     <div class="post-description">
-      N1盒子外挂硬盘跑网心云赚钱
+      好用的跨平台文件传输工具（无需下载安装、打开网页即可使用）
     </div>
     <div class="post-meta">
 
@@ -221,158 +221,57 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-05-09 21:05:31 +0800 CST'>2022-05-09</span>&nbsp;|&nbsp;更新:&nbsp;2022-05-09&nbsp;|&nbsp;字数:&nbsp;252字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-06-19 17:44:20 +0800 CST'>2022-06-19</span>&nbsp;|&nbsp;更新:&nbsp;2022-06-19&nbsp;|&nbsp;字数:&nbsp;312字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
-
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e4%b8%80%e6%8c%82%e8%bd%bdssd%e6%8c%82%e8%bd%bd%e8%bf%87%e7%9b%b4%e6%8e%a5%e8%b7%b3%e5%88%b0%e7%ac%ac%e4%ba%8c%e6%ad%a5" aria-label="一、挂载ssd（挂载过直接跳到第二步）">一、挂载ssd（挂载过直接跳到第二步）</a></li>
-                    <li>
-                        <a href="#%e4%ba%8c%e9%83%a8%e7%bd%b2" aria-label="二、部署">二、部署</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
-
+  </header> 
   <div class="post-content"><blockquote>
-<p>设备：N1</p>
-<p>硬盘：400g ssd</p>
-<p>已安装服务：docker、docker-compose</p>
+<p>Snapdrop 是一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件</p>
+<p>官网有demo，but不稳定，自部署一套稳定可靠可控</p>
 </blockquote>
-<p>开干！</p>
-<h3 id="一挂载ssd挂载过直接跳到第二步">一、挂载ssd（挂载过直接跳到第二步）<a hidden class="anchor" aria-hidden="true" href="#一挂载ssd挂载过直接跳到第二步">#</a></h3>
-<p>硬盘插到N1上</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk   <span style="color:#007f7f">#查看当前磁盘情况</span>
-</span></span><span style="display:flex;"><span>disk -l <span style="color:#007f7f">#查看当前未挂载的磁盘</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#假设磁盘名为 dev/sda</span>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#git clone 下载</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/RobinLinus/snapdrop.git
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#创建分区</span>
-</span></span><span style="display:flex;"><span>dfisk  dev/sda
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#输入n, p, 1, 两次回车，wq</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#新建一个主分区，大小整个磁盘，保存写入</span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> snapdrop
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#写入文件格式</span>
-</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/sda  <span style="color:#007f7f">#ext4格式</span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#国内服务需换源</span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> docker
+</span></span><span style="display:flex;"><span>vim nginx-with-openssl.Dockerfile
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#挂载</span>
-</span></span><span style="display:flex;"><span>mount /dev/sda /media/data
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#RUN apk add --no-cache openssl 上方添加命令</span>
+</span></span><span style="display:flex;"><span>RUN sed -i <span style="color:#0ff;font-weight:bold">&#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39;</span> /etc/apk/repositories
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看文件</span>
-</span></span><span style="display:flex;"><span>df -lh    <span style="color:#007f7f">#查看到刚才挂载的硬盘</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#设置开机自动挂载</span>
-</span></span><span style="display:flex;"><span>vim /etc/fstab
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f"># 在最后新增一行</span>
-</span></span><span style="display:flex;"><span>/dev/sdb   /media/data    ext4   defaults   <span style="color:#ff0;font-weight:bold">0</span>   <span style="color:#ff0;font-weight:bold">0</span>
-</span></span></code></pre></div><h3 id="二部署">二、部署<a hidden class="anchor" aria-hidden="true" href="#二部署">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir wxedge
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> wxedge
-</span></span><span style="display:flex;"><span>vim docker-compose.yml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">wxedge</span>:
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: wxedge
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">privileged</span>: <span style="color:#fff;font-weight:bold">true</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">network_mode</span>: host
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">tmpfs</span>: 
-</span></span><span style="display:flex;"><span>            - /run
-</span></span><span style="display:flex;"><span>            - /tmp
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;/media/data/wxedge:/storage:rw&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: onething1/wxedge
-</span></span></code></pre></div><p>ip:18888 打开 成功🎉🎉🎉</p>
-<p>躺着赚钱吧！</p>
-
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#保存 启动</span>
+</span></span><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div><p>常见问题：</p>
+<p>    1、启动后日志里报</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>npm ERR! <span style="color:#fff;font-weight:bold">Error</span>: EACCES: permission denied, access <span style="color:#0ff;font-weight:bold">&#39;/home/node/app&#39;</span>
+</span></span><span style="display:flex;"><span>npm ERR!  { <span style="color:#fff;font-weight:bold">Error</span>: EACCES: permission denied, access <span style="color:#0ff;font-weight:bold">&#39;/home/node/app&#39;</span>
+</span></span><span style="display:flex;"><span>npm ERR!   stack: <span style="color:#0ff;font-weight:bold">&#39;Error: EACCES: permission denied, access \&#39;/home/node/app\&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   errno: -<span style="color:#ff0;font-weight:bold">13</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   code: <span style="color:#0ff;font-weight:bold">&#39;EACCES&#39;</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   syscall: <span style="color:#0ff;font-weight:bold">&#39;access&#39;</span>,
+</span></span><span style="display:flex;"><span>npm ERR!   path: <span style="color:#0ff;font-weight:bold">&#39;/home/node/app&#39;</span> }
+</span></span></code></pre></div><p>权限 user的坑，我默认是root用户，yml里node启动为node用户，导致权限过低，启动失败</p>
+<p>此时只需要把docker-compose.yml 里的user: &ldquo;node” 注释即可</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim docker-compose
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#user: &#34;node”</span>
+</span></span></code></pre></div>
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://blog.zsan.ml/tags/snapdrop/">snapdrop</a></li>
       <li><a href="https://blog.zsan.ml/tags/docker/">docker</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E7%BD%91%E5%BF%83%E4%BA%91/">网心云</a></li>
-      <li><a href="https://blog.zsan.ml/tags/wxedge/">wxedge</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/">文件传输</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/docker-deploy-snapdrop/">
-    <span class="title">« 上一页</span>
-    <br>
-    <span>Docker 部署 Snapdrop</span>
-  </a>
-  <a class="next" href="https://blog.zsan.ml/posts/docker-build-nginx/">
+  <a class="next" href="https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/">
     <span class="title">下一页 »</span>
     <br>
-    <span>Docker 部署 Nginx服务</span>
+    <span>【躺赚】docker部署网心云容器魔方</span>
   </a>
 </nav>
 
