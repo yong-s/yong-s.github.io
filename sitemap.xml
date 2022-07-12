@@ -3,25 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.zsan.ml/tags/docker/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
+    <lastmod>2022-07-12T23:20:28+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/posts/docker-deploy-snapdrop/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
+    <loc>https://blog.zsan.ml/tags/hugo/</loc>
+    <lastmod>2022-07-12T23:20:28+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/podcast/</loc>
+    <lastmod>2022-07-12T23:20:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/posts/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/snapdrop/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
+    <loc>https://blog.zsan.ml/posts/how-to-make-podcast/</loc>
+    <lastmod>2022-07-12T23:20:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/</loc>
-    <lastmod>2022-06-19T18:02:11+08:00</lastmod>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/softtest/</loc>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/tester/</loc>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/test-notes/</loc>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
+    <lastmod>2022-07-12T23:22:28+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/docker-deploy-snapdrop/</loc>
+    <lastmod>2022-06-19T18:17:44+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/snapdrop/</loc>
+    <lastmod>2022-06-19T18:17:44+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</loc>
+    <lastmod>2022-06-19T18:17:44+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/</loc>
     <lastmod>2022-05-09T21:45:03+08:00</lastmod>

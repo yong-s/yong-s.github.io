@@ -7,7 +7,98 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 19 Jun 2022 17:44:20 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 22:04:47 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>低成本搭建高质量播客发布服务</title>
+      <link>https://blog.zsan.ml/posts/how-to-make-podcast/</link>
+      <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/how-to-make-podcast/</guid>
+      <description>用播客在iPhone上听那些自己喜欢的歌曲</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；</p>
+<p>在寻找解决方案时发现用自建播客来实现下载音乐方案可行，于是就有了下面的教程</p>
+</blockquote>
+<h2 id="what">What</h2>
+<p>播客（podcast）创作者将音频或视频上传至<a href="https://zh.wikipedia.org/wiki/RSS" title="RSS">RSS</a>或在线播客平台，听众或观众则通过<a href="https://zh.wikipedia.org/wiki/%E8%BB%9F%E4%BB%B6" title="软件">软件</a>获取节目更新。</p>
+<h2 id="how">How</h2>
+<p>制作过程不说了，来谈谈发布过程，很简单，一个支持RSS的网站发布音频信息供用户拉取，一个音频托管平台存放音频</p>
+<ul>
+<li>网站直接Hugo搭建，用zen主题支持podcast，放在GitHub page上，域名可以在freedom上注册，用cloudflare DNS解析和加速</li>
+</ul>
+<p>hugo 搭建播客</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#新建网站</span>
+</span></span><span style="display:flex;"><span>hugo new site podcast
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#安装 zen主题</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/frjo/hugo-theme-zen.git themes/zen
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#在content内新建podcast文件夹，此页面内新增音频</span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> content
+</span></span><span style="display:flex;"><span>mkdir podcast
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#podcast的一些设置</span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#podcast 音频下面显示链接，如何取消</span>
+</span></span><span style="display:flex;"><span>vim layouts/partials/podcast.html
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">#注释掉下面行</span>
+</span></span><span style="display:flex;"><span>&lt;figcaption&gt;&lt;a href=<span style="color:#0ff;font-weight:bold">&#34;{{ </span>$src<span style="color:#0ff;font-weight:bold"> }}&#34;</span>&gt;{{ .Title }}&lt;/a&gt;&lt;/figcaption&gt;
+</span></span></code></pre></div><p>podcast 配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#007f7f">#文章顶部新增参数</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">podcast</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">mp3</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">duration</span>:
+</span></span></code></pre></div><ul>
+<li>音频托管平台自建minin服务存储音频</li>
+</ul>
+<p>minio服务很强大，感兴趣可以了解一下</p>
+<p>docker 部署</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">minio</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">image</span>: quay.io/minio/minio
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">container_name</span>: minio1
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ff0;font-weight:bold">9090</span>:<span style="color:#ff0;font-weight:bold">9090</span>   <span style="color:#007f7f">#控制台端口</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ff0;font-weight:bold">9000</span>:<span style="color:#ff0;font-weight:bold">9000</span>   <span style="color:#007f7f">#API端口</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#0ff;font-weight:bold">&#39;./data:/data&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#0ff;font-weight:bold">&#39;./config:/root/.minio&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">MINIO_ROOT_USER</span>: admin     <span style="color:#007f7f">#管理用户名</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">MINIO_ROOT_PASSWORD</span>: admin   <span style="color:#007f7f">#管理密码</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">command</span>: server /data --console-address &#39;:9090&#39;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">restart</span>: always
+</span></span></code></pre></div><p>部署成功，ip:9090访问登录</p>
+<p>控制台操作</p>
+<p>1、创建存储桶</p>
+<p>create bucket</p>
+<p>2、点击manage，Access Rules</p>
+<p>add rule</p>
+<div>
+prefix：*.* </br>
+access:readonly
+</div>
+<p>3、上传音频</p>
+<p>4、分享文件，链接地址 复制出来，前面ip换成外部ip即可</p>
+<p>把地址贴在上面podcast 参数 mp3 的地方</p>
+<h2 id="enjoy">enjoy</h2>
+<p>这样算下来，除了用了一台服务器外，其他全部费用为零，总费用百元不到</p>
+<p>部署全部完成，点击RSS链接放到订阅的地方，尽情享用吧！🎉</p>
+<blockquote>
+<p>参考：</p>
+<p><a href="https://themes.gohugo.io/themes/hugo-theme-zen/">Zen | Hugo Themes</a></p>
+<p><a href="https://github.com/frjo/hugo-theme-zen">GitHub - frjo/hugo-theme-zen: A fast and clean Hugo base theme with css-grid and Hugo pipes support.</a></p>
+<p><a href="https://liujiacai.net/blog/2022/01/08/how-to-make-podcast/#headline-7">如何零成本开始一档新播客 - Keep Coding</a></p>
+<p><a href="https://help.apple.com/itc/podcasts_connect/#/">苹果博客指南</a></p>
+<p><a href="https://github.com/minio/minio">GitHub - minio/minio: Multi-Cloud Object Storage</a></p>
+<p><a href="https://docs.min.io/docs/minio-quickstart-guide.html">MinIO | The MinIO Quickstart Guide</a></p>
+<p><a href="https://blog.foundme.top/archives/154">自建对象存储Minio - 博客小站</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Docker 部署 Snapdrop</title>
       <link>https://blog.zsan.ml/posts/docker-deploy-snapdrop/</link>

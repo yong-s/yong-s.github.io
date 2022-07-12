@@ -7,13 +7,63 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 19 Jun 2022 17:44:20 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 22:04:47 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker</title>
       <link>https://blog.zsan.ml/tags/docker/</link>
-      <pubDate>Sun, 19 Jun 2022 17:44:20 +0800</pubDate>
+      <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/tags/docker/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://blog.zsan.ml/tags/hugo/</link>
+      <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/tags/hugo/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>podcast</title>
+      <link>https://blog.zsan.ml/tags/podcast/</link>
+      <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/tags/podcast/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>softtest</title>
+      <link>https://blog.zsan.ml/tags/softtest/</link>
+      <pubDate>Sun, 26 Jun 2022 13:52:23 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/tags/softtest/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>tester</title>
+      <link>https://blog.zsan.ml/tags/tester/</link>
+      <pubDate>Sun, 26 Jun 2022 13:52:23 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/tags/tester/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>测试工程师</title>
+      <link>https://blog.zsan.ml/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88/</link>
+      <pubDate>Sun, 26 Jun 2022 13:52:23 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>

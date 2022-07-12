@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>测试笔记 | 张三的网络日志</title>
+<meta name="keywords" content="softtest, tester, 测试工程师" />
+<meta name="description" content="关于测试的一些笔记">
+<meta name="author" content="
+作者:&nbsp;张三">
+<link rel="canonical" href="https://blog.zsan.ml/posts/test-notes/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.e85ad0406048e8176e1c7661b25d5c69297ddfe41dc4124cf75ecb99a4f7b3d1.js" integrity="sha256-6FrQQGBI6BduHHZhsl1caSl93&#43;QdxBJM917LmaT3s9E="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.101.0" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2X66ETNYD8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="测试笔记" />
+<meta property="og:description" content="关于测试的一些笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zsan.ml/posts/test-notes/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-26T13:52:23&#43;08:00" />
+<meta property="article:modified_time" content="2022-07-12T23:22:28&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="测试笔记"/>
+<meta name="twitter:description" content="关于测试的一些笔记"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.zsan.ml/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "测试笔记",
+      "item": "https://blog.zsan.ml/posts/test-notes/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "测试笔记",
+  "name": "测试笔记",
+  "description": "关于测试的一些笔记",
+  "keywords": [
+    "softtest", "tester", "测试工程师"
+  ],
+  "articleBody": " 关于测试的一些笔记（道）\n道是心法，是最难考察的\n术是工具，是可以简单考察出来的\n目前公司JD还都是偏向术方面的\n门槛低，导致测试的地位低下，还希望同行们共同努力💪呀\n1、测试技术领域最难的技术应该是测试分析和设计\n测试最重要的是什么？\n有人说 我会 自动化测试，什么selenium，appium，python，玩的飞溜🙄️\n而却忘了 最重要的输入——测试用例\n一个系统，只要输入是错的，他再聪明、快速，那输出的也是错的\n2、测试价值的体现最主要还是保障自己组织开发的软件在关键应用时不要出故障，给组织造成商业损失。\n3、测试分析和设计的深度及系统化，以及掌握广泛的专项测试类型。\n4、测试工程师技术水平\n5、快速编写测试用例\n1、根据用户行为习惯编写一套case\n2、根据需求功能编写一套case\n3、探索性测试编写一套case\n如何用最通俗的方式给非测试者描述测试者存在的价值，\n例如：给老板讲、给项目经理讲、给开发经理讲、给产品总负责人讲：\n1、减少遗漏给用户的严重质量问题 （测试者在发布前尽可能发现影响用户体验的问题）\n2、减少产品的研发和维护成本 （减少开发人员定位问题和修复问题的成本，减少产品售后维护成本）\n3、缩短产品研发的周期 （帮助缺陷预防，尽早发现问题，复现问题，缩短开发修复和定位问题的成本)\n参考文档：\n1、架构师Jack\n",
+  "wordCount" : "547",
+  "inLanguage": "zh",
+  "datePublished": "2022-06-26T13:52:23+08:00",
+  "dateModified": "2022-07-12T23:22:28.851229365+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "张三"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.zsan.ml/posts/test-notes/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "张三的网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.zsan.ml/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <h1 class="post-title">
+      测试笔记
+    </h1>
+    <div class="post-description">
+      关于测试的一些笔记
+    </div>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2022-06-26 13:52:23 +0800 CST'>2022-06-26</span>&nbsp;|&nbsp;更新:&nbsp;2022-07-12&nbsp;|&nbsp;字数:&nbsp;547字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
+作者:&nbsp;张三
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>关于测试的一些笔记（道）</p>
+<p>道是心法，是最难考察的</p>
+<p>术是工具，是可以简单考察出来的</p>
+<p>目前公司JD还都是偏向术方面的</p>
+<p>门槛低，导致测试的地位低下，还希望同行们共同努力💪呀</p>
+</blockquote>
+<p>1、测试技术领域最难的技术应该是测试分析和设计</p>
+<blockquote>
+<p>测试最重要的是什么？</p>
+<p>有人说 我会 自动化测试，什么selenium，appium，python，玩的飞溜🙄️</p>
+<p>而却忘了 最重要的输入——测试用例</p>
+<p>一个系统，只要输入是错的，他再聪明、快速，那输出的也是错的</p>
+</blockquote>
+<p>2、测试价值的体现最主要还是保障自己组织开发的软件在关键应用时不要出故障，给组织造成商业损失。</p>
+<p>3、测试分析和设计的深度及系统化，以及掌握广泛的专项测试类型。</p>
+<p>4、测试工程师技术水平</p>
+<p>5、快速编写测试用例</p>
+<blockquote>
+<p>1、根据用户行为习惯编写一套case</p>
+<p>2、根据需求功能编写一套case</p>
+<p>3、探索性测试编写一套case</p>
+</blockquote>
+<hr>
+<p>如何用最通俗的方式给非测试者描述测试者存在的价值，</p>
+<p>例如：给老板讲、给项目经理讲、给开发经理讲、给产品总负责人讲：</p>
+<p>1、减少遗漏给用户的严重质量问题 （测试者在发布前尽可能发现影响用户体验的问题）</p>
+<p>2、减少产品的研发和维护成本 （减少开发人员定位问题和修复问题的成本，减少产品售后维护成本）</p>
+<p>3、缩短产品研发的周期 （帮助缺陷预防，尽早发现问题，复现问题，缩短开发修复和定位问题的成本)</p>
+<p>参考文档：</p>
+<blockquote>
+<p>1、<a href="http://www.51testing.com/html/57/293557.html">架构师Jack</a></p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.zsan.ml/tags/softtest/">softtest</a></li>
+      <li><a href="https://blog.zsan.ml/tags/tester/">tester</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88/">测试工程师</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.zsan.ml/posts/how-to-make-podcast/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>低成本搭建高质量播客发布服务</span>
+  </a>
+  <a class="next" href="https://blog.zsan.ml/posts/docker-deploy-snapdrop/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Docker 部署 Snapdrop</span>
+  </a>
+</nav>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.5.0/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo.zsan.ml/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            
+            path: 'window.TWIKOO_MAGIC_PATH||window.location.pathname',
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
