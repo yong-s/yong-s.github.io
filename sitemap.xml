@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.zsan.ml/tags/brew/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/mac/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/mac-brew-tab/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/zsh/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/</loc>
+    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
+  </url><url>
     <loc>https://blog.zsan.ml/tags/docker/</loc>
     <lastmod>2022-07-13T21:18:20+08:00</lastmod>
   </url><url>
@@ -11,17 +35,8 @@
     <loc>https://blog.zsan.ml/tags/podcast/</loc>
     <lastmod>2022-07-13T21:18:20+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/posts/</loc>
-    <lastmod>2022-07-17T14:41:33+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/</loc>
-    <lastmod>2022-07-17T14:41:33+08:00</lastmod>
-  </url><url>
     <loc>https://blog.zsan.ml/posts/how-to-make-podcast/</loc>
     <lastmod>2022-07-13T21:18:20+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/</loc>
-    <lastmod>2022-07-17T14:41:33+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/autojs/</loc>
     <lastmod>2022-07-17T14:41:33+08:00</lastmod>

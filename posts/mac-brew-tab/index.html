@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Mac Brew Tab 命令自动补全 | 张三的网络日志</title>
+<meta name="keywords" content="brew, mac, zsh, 玩机" />
+<meta name="description" content="Mac系统下brew 按tab命令 自动补全">
+<meta name="author" content="
+作者:&nbsp;张三">
+<link rel="canonical" href="https://blog.zsan.ml/posts/mac-brew-tab/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.e85ad0406048e8176e1c7661b25d5c69297ddfe41dc4124cf75ecb99a4f7b3d1.js" integrity="sha256-6FrQQGBI6BduHHZhsl1caSl93&#43;QdxBJM917LmaT3s9E="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.101.0" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2X66ETNYD8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Mac Brew Tab 命令自动补全" />
+<meta property="og:description" content="Mac系统下brew 按tab命令 自动补全" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zsan.ml/posts/mac-brew-tab/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-26T22:17:56&#43;08:00" />
+<meta property="article:modified_time" content="2022-07-26T22:42:09&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mac Brew Tab 命令自动补全"/>
+<meta name="twitter:description" content="Mac系统下brew 按tab命令 自动补全"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.zsan.ml/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Mac Brew Tab 命令自动补全",
+      "item": "https://blog.zsan.ml/posts/mac-brew-tab/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mac Brew Tab 命令自动补全",
+  "name": "Mac Brew Tab 命令自动补全",
+  "description": "Mac系统下brew 按tab命令 自动补全",
+  "keywords": [
+    "brew", "mac", "zsh", "玩机"
+  ],
+  "articleBody": " mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下，给解决了\n用的 Oh My Zsh，官方文档里写的很详细，不过是英文的，这里给翻译记录下\n1、在 ~/.zshrc 里添加下面code\nif type brew \u0026\u003e/dev/null then FPATH=\"$(brew --prefix)/share/zsh/site-functions:${FPATH}\" autoload -Uz compinit compinit fi 2、在 ~/.zprofile 里添加下面code\nFPATH=\"$(brew --prefix)/share/zsh/site-functions:${FPATH}\" 3、强制重建zcompdump\nrm -f ~/.zcompdump; compinit 4、如果出现 zsh compinit: insecure directory 警告\nchmod -R go-w \"$(brew --prefix)/share\" 参考：\nHomebrew Shell Completion — Homebrew Documentation\n",
+  "wordCount" : "166",
+  "inLanguage": "zh",
+  "datePublished": "2022-07-26T22:17:56+08:00",
+  "dateModified": "2022-07-26T22:42:09.76235891+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "张三"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.zsan.ml/posts/mac-brew-tab/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "张三的网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.zsan.ml/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Mac Brew Tab 命令自动补全
+    </h1>
+    <div class="post-description">
+      Mac系统下brew 按tab命令 自动补全
+    </div>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2022-07-26 22:17:56 +0800 CST'>2022-07-26</span>&nbsp;|&nbsp;更新:&nbsp;2022-07-26&nbsp;|&nbsp;字数:&nbsp;166字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;张三
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下，给解决了</p>
+<p>用的 Oh My Zsh，官方文档里写的很详细，不过是英文的，这里给翻译记录下</p>
+</blockquote>
+<p>1、在 ~/.zshrc 里添加下面code</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">if</span> <span style="color:#fff;font-weight:bold">type</span> brew &amp;&gt;/dev/null
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>  FPATH=<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#fff;font-weight:bold">$(</span>brew --prefix<span style="color:#fff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">/share/zsh/site-functions:</span><span style="color:#0ff;font-weight:bold">${</span>FPATH<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  autoload -Uz compinit
+</span></span><span style="display:flex;"><span>  compinit
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">fi</span>
+</span></span></code></pre></div><p>2、在 ~/.zprofile 里添加下面code</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FPATH=<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#fff;font-weight:bold">$(</span>brew --prefix<span style="color:#fff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">/share/zsh/site-functions:</span><span style="color:#0ff;font-weight:bold">${</span>FPATH<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+</span></span></code></pre></div><p>3、强制重建<code>zcompdump</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -f ~/.zcompdump; compinit
+</span></span></code></pre></div><p>4、如果出现 zsh compinit: insecure directory 警告</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chmod -R go-w <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#fff;font-weight:bold">$(</span>brew --prefix<span style="color:#fff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">/share&#34;</span>
+</span></span></code></pre></div><p>参考：</p>
+<blockquote>
+<p><a href="https://docs.brew.sh/Shell-Completion">Homebrew Shell Completion — Homebrew Documentation</a></p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.zsan.ml/tags/brew/">brew</a></li>
+      <li><a href="https://blog.zsan.ml/tags/mac/">mac</a></li>
+      <li><a href="https://blog.zsan.ml/tags/zsh/">zsh</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/">玩机</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.zsan.ml/posts/how-to-make-podcast/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>低成本搭建高质量播客发布服务</span>
+  </a>
+</nav>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.5.0/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo.zsan.ml/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            
+            path: 'window.TWIKOO_MAGIC_PATH||window.location.pathname',
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
