@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.zsan.ml/tags/301/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/cloudflare/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/forwarding/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/cloudflare-301-set/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</loc>
+    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
+  </url><url>
     <loc>https://blog.zsan.ml/tags/brew/</loc>
     <lastmod>2022-07-26T22:42:09+08:00</lastmod>
   </url><url>
@@ -11,23 +35,14 @@
     <loc>https://blog.zsan.ml/posts/mac-brew-tab/</loc>
     <lastmod>2022-07-26T22:42:09+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/posts/</loc>
-    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/</loc>
-    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
-  </url><url>
     <loc>https://blog.zsan.ml/tags/zsh/</loc>
     <lastmod>2022-07-26T22:42:09+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/</loc>
     <lastmod>2022-07-26T22:42:09+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/</loc>
-    <lastmod>2022-07-26T22:42:09+08:00</lastmod>
-  </url><url>
     <loc>https://blog.zsan.ml/tags/docker/</loc>
-    <lastmod>2022-07-13T21:18:20+08:00</lastmod>
+    <lastmod>2022-07-28T00:20:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/hugo/</loc>
     <lastmod>2022-07-13T21:18:20+08:00</lastmod>
@@ -72,13 +87,13 @@
     <lastmod>2022-06-19T18:17:44+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/</loc>
-    <lastmod>2022-05-09T21:45:03+08:00</lastmod>
+    <lastmod>2022-07-28T00:20:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/wxedge/</loc>
-    <lastmod>2022-05-09T21:45:03+08:00</lastmod>
+    <lastmod>2022-07-28T00:20:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/%E7%BD%91%E5%BF%83%E4%BA%91/</loc>
-    <lastmod>2022-05-09T21:45:03+08:00</lastmod>
+    <lastmod>2022-07-28T00:20:28+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/posts/docker-build-nginx/</loc>
     <lastmod>2022-06-17T22:07:23+08:00</lastmod>

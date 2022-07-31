@@ -7,7 +7,50 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 26 Jul 2022 22:17:56 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jul 2022 19:54:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在Cloudflare 设置域名 301 重定向</title>
+      <link>https://blog.zsan.ml/posts/cloudflare-301-set/</link>
+      <pubDate>Sun, 31 Jul 2022 19:54:01 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/cloudflare-301-set/</guid>
+      <description>在Cloudflare 设置域名 301 重定向 有点小坑</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>很久以前遇到的问题了，用cloudflare 设置有大坑，今天来记录下</p>
+<p>之前网站的域名需要更换，blog等域名也需要从旧域名到新域名</p>
+</blockquote>
+<p>旧域名：olddona.com</p>
+<p>新域名：newdona.com</p>
+<p>现在需要访问 olddona.com 时跳转到 newdona.com</p>
+<p>1、clourflare 上 dns 解析 olddona.com</p>
+<p>登录clourflare、点击 dns、点击添加一条a记录</p>
+<blockquote>
+<p>类型：A</p>
+<p>名称：olddona.com</p>
+<p>ipv4地址：8.8.8.8</p>
+</blockquote>
+<p>ps：ipv4 地址一定要填一个可用的，这是个坑</p>
+<p>2、cloudflare 添加重定向</p>
+<ol>
+<li>
+<p>点击规则</p>
+</li>
+<li>
+<p>点击创建页面规则</p>
+</li>
+<li>
+<blockquote>
+<p>url: olddona.com/*</p>
+<p>选取设置：转发URL、301永久</p>
+<p>输入目标URL：https://newdona.com/$1</p>
+</blockquote>
+</li>
+</ol>
+<p>保存之后，去访问olddona.com 可以跳到 newdona.com 成功🎉</p>
+<p>也可以试下olddona.com/* 是否成功跳转即可</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Mac Brew Tab 命令自动补全</title>
       <link>https://blog.zsan.ml/posts/mac-brew-tab/</link>
@@ -318,11 +361,11 @@ access:readonly
 <h3 id="一挂载ssd挂载过直接跳到第二步">一、挂载ssd（挂载过直接跳到第二步）</h3>
 <p>硬盘插到N1上</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk   <span style="color:#007f7f">#查看当前磁盘情况</span>
-</span></span><span style="display:flex;"><span>disk -l <span style="color:#007f7f">#查看当前未挂载的磁盘</span>
+</span></span><span style="display:flex;"><span>fdisk -l <span style="color:#007f7f">#查看当前未挂载的磁盘</span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#假设磁盘名为 dev/sda</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#创建分区</span>
-</span></span><span style="display:flex;"><span>dfisk  dev/sda
+</span></span><span style="display:flex;"><span>fdisk  dev/sda
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#输入n, p, 1, 两次回车，wq</span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#新建一个主分区，大小整个磁盘，保存写入</span>
 </span></span><span style="display:flex;"><span>

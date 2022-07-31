@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>cloudflare on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/cloudflare/</link>
+    <description>Recent content in cloudflare on 张三的网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 31 Jul 2022 19:54:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/cloudflare/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在Cloudflare 设置域名 301 重定向</title>
+      <link>https://blog.zsan.ml/posts/cloudflare-301-set/</link>
+      <pubDate>Sun, 31 Jul 2022 19:54:01 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/cloudflare-301-set/</guid>
+      <description>在Cloudflare 设置域名 301 重定向 有点小坑</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>很久以前遇到的问题了，用cloudflare 设置有大坑，今天来记录下</p>
+<p>之前网站的域名需要更换，blog等域名也需要从旧域名到新域名</p>
+</blockquote>
+<p>旧域名：olddona.com</p>
+<p>新域名：newdona.com</p>
+<p>现在需要访问 olddona.com 时跳转到 newdona.com</p>
+<p>1、clourflare 上 dns 解析 olddona.com</p>
+<p>登录clourflare、点击 dns、点击添加一条a记录</p>
+<blockquote>
+<p>类型：A</p>
+<p>名称：olddona.com</p>
+<p>ipv4地址：8.8.8.8</p>
+</blockquote>
+<p>ps：ipv4 地址一定要填一个可用的，这是个坑</p>
+<p>2、cloudflare 添加重定向</p>
+<ol>
+<li>
+<p>点击规则</p>
+</li>
+<li>
+<p>点击创建页面规则</p>
+</li>
+<li>
+<blockquote>
+<p>url: olddona.com/*</p>
+<p>选取设置：转发URL、301永久</p>
+<p>输入目标URL：https://newdona.com/$1</p>
+</blockquote>
+</li>
+</ol>
+<p>保存之后，去访问olddona.com 可以跳到 newdona.com 成功🎉</p>
+<p>也可以试下olddona.com/* 是否成功跳转即可</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
