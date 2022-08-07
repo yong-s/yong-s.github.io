@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.zsan.ml/tags/workbox/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/pwa/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/web/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/pwa-retrofitting/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/</loc>
+    <lastmod>2022-08-07T17:15:21+08:00</lastmod>
+  </url><url>
     <loc>https://blog.zsan.ml/tags/301/</loc>
     <lastmod>2022-07-31T20:49:48+08:00</lastmod>
   </url><url>
@@ -11,16 +32,7 @@
     <loc>https://blog.zsan.ml/tags/forwarding/</loc>
     <lastmod>2022-07-31T20:49:48+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/posts/</loc>
-    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/</loc>
-    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
-  </url><url>
     <loc>https://blog.zsan.ml/posts/cloudflare-301-set/</loc>
-    <lastmod>2022-07-31T20:49:48+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/</loc>
     <lastmod>2022-07-31T20:49:48+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</loc>
@@ -102,9 +114,6 @@
     <lastmod>2022-06-17T22:07:23+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/nginx/</loc>
-    <lastmod>2022-06-17T22:07:23+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/web/</loc>
     <lastmod>2022-06-17T22:07:23+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</loc>
