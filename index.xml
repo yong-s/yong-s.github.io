@@ -1318,7 +1318,7 @@ access:readonly
 <p>        本站最开始是2019年就搭建了，当时用的hexo构建，部署在github，用netlify缓存服务，无奈当时穷，用的还是Windows本，命令敲的太不爽了，导致写文章没什么激情，基本断更🤣</p>
 <p>来到2021年，经常在网上看大佬们的blog，时间有点空，就想把blog给拾起来，接触的技术也多了，也想记录下一些笔记，方便后面随时翻阅，正好在推上看到大佬们推荐<a href="https://github.com/getgridea/gridea">gridea: ✍️ A static blog writing client (一个静态博客写作客户端)</a></p>
 <p>        傻瓜式操作，根据界面提示设置就行了，专注于写作，当时就下下来用了一段时间，也有比较鸡肋的地方，比如主题太少，自定义空间太小，还有就是windows7上不太稳定，有时会卡，可能我电脑垃圾吧，主题太少，有的主题不支持侧边目录栏，当时搜了好多文章，才改了一下主题，具体看<a href="../posts/girde-simple-support-for-sidebar-directory/">这篇</a>，还有就是，作者好久不更新了，专注于搞web端了，所以就在换了Mac后就换到了hugo上😄</p>
-<p>        <a href="https://gohugo.io/">hugo</a>用go开发的，据说生成文章非常快，相比hexo来说，hugo在Mac上用命令也很舒服，主题也很多，所以就果断换了上来，专注写作，主题用的<a href="https://git.io/hugopapermod">papermod</a>，这是国外开发者开发的，中文资料太少，不过，搜了好多大佬的文章，基本上调试ok；还是用github做仓库来提供服务，用markdown来写文章，vs code来配置文件，在<a href="https://www.freenom.com/">freenom</a>上白嫖的一年域名，用脚本自动监控，到期提示；用cf来做域名解析和缓存服务。</p>
+<p>        <a href="https://gohugo.io/">hugo</a>用go开发的，据说生成文章非常快，相比hexo来说，hugo在Mac上用命令也很舒服，主题也很多，所以就果断换了上来，专注写作，主题用的<a href="https://git.io/hugopapermod">papermod</a>，这是国外开发者开发的，中文资料太少，不过，搜了好多大佬的文章，基本上调试ok；还是用github做仓库来提供服务，用markdown来写文章，vs code来配置文件，在<a href="https://www.freenom.com/">freenom</a>上白嫖的一年域名，用脚本自动监控，到期提示；用cf来做域名解析和缓存服务。🎉</p>
 <h2 id="-张三是谁">👨‍💻 张三是谁</h2>
 <p>🐜孤独时代的蚂蚁</p>
 <p>🏫克莱登大学毕业</p>
