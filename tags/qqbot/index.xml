@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>qqBot on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/qqbot/</link>
+    <description>Recent content in qqBot on 张三的网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 31 Aug 2022 14:03:46 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/qqbot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SillyGril&amp;QQbot一键部署</title>
+      <link>https://blog.zsan.ml/posts/sillygril-qqbot-deploy/</link>
+      <pubDate>Wed, 31 Aug 2022 14:03:46 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/sillygril-qqbot-deploy/</guid>
+      <description>一、docker-compose 编排文件 创建docker-compose.yaml文</description>
+      <content:encoded><![CDATA[<h3 id="一docker-compose-编排文件">一、docker-compose 编排文件</h3>
+<p>创建<code>docker-compose.yaml</code>文件并拷贝下面内容</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">go-cqhttp</span>:
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">image</span>: mzzsfy/go-cqhttp:latest
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">container_name</span>: go-cqhttp
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>       - ./data:/data
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">restart</span>: always
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">#    - token=$Yourtoken #替换为自己生成的token</span>
+</span></span><span style="display:flex;"><span>       - ws_url=&#39;ws://sillygirl:8080/qq/receive&#39;
+</span></span><span style="display:flex;"><span>       - TZ=Asia/Shanghai
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">networks</span>:
+</span></span><span style="display:flex;"><span>      - sillygirl
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">depends_on</span>:
+</span></span><span style="display:flex;"><span>       - sillygirl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sillygirl</span>:
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">image</span>: mzzsfy/sillygirl:latest
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">container_name</span>: sillygirl   
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">volumes</span>:
+</span></span><span style="display:flex;"><span>       - ./sillyGirl:/etc/sillyGirl
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">restart</span>: always
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">#    - set__qq__token=$Yourtoken #替换为自己生成的token</span>
+</span></span><span style="display:flex;"><span>       - TZ=Asia/Shanghai
+</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">networks</span>:
+</span></span><span style="display:flex;"><span>      - sillygirl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">networks</span>:
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sillygirl</span>:
+</span></span></code></pre></div><p><code>docker-compsoe up -d</code> 启动</p>
+<p><code>docker-compose logs -f</code> 查看日志</p>
+<h3 id="二faq">二、FAQ</h3>
+<h4 id="1go-cqhttp-扫码失败-问题解决-云服务器导致">1、go-cqhttp 扫码失败 问题解决 云服务器导致</h4>
+<p>可以在本地服务器（与手机qq扫码在同一局域网内）启动服务，生成session.token 复制到云服务器相同目录下</p>
+<p><a href="https://github.com/Mrs4s/go-cqhttp/issues/1469">看这里解决</a></p>
+<h4 id="2go-cqhttp-建议修改为手表登录">2、go-cqhttp 建议修改为手表登录</h4>
+<p>首先运行一下，会生成<code>device.json</code></p>
+<p>找到<code>protocol</code>字段修改为2</p>
+<hr>
+<blockquote>
+<p>你可能会用到的一些资料</p>
+<p><a href="https://hub.docker.com/r/mzzsfy/sillygirl">https://hub.docker.com/r/mzzsfy/sillygirl</a></p>
+<p><a href="https://hub.docker.com/r/mzzsfy/go-cqhttp">https://hub.docker.com/r/mzzsfy/go-cqhttp</a></p>
+<p><a href="https://docs.go-cqhttp.org/guide/config.html#%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF">go-cqhttp配置</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
