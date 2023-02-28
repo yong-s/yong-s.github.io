@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>云服务器docker搭建自动领京豆bot互动指令 | 张三的网络日志</title>
-<meta name="keywords" content="docker, centos, 脚本, 京豆, 羊毛" />
+<meta name="keywords" content="docker, centos, 脚本, 京豆, 羊毛">
 <meta name="description" content="使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/docker-build-jdbot/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7bdb1411b29ec9fed2b6395a081eabcb3262e7311bda855249d433c8b30a926e.css" integrity="sha256-e9sUEbKeyf7StjlaCB6ryzJi5zEb2oVSSdQzyLMKkm4=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+<link rel="canonical" href="https://blog.zsan.ml/posts/docker-build-jdbot/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.91878544bf12eff7264ad26d4f0fb0042685fb6175cde15a81106e717a404494.css" integrity="sha256-kYeFRL8S7/cmStJtTw&#43;wBCaF&#43;2F1zeFagRBucXpARJQ=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
@@ -21,7 +21,6 @@
 <link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.110.0">
 <noscript>
     <style>
         #theme-toggle,
@@ -73,8 +72,8 @@ if (!doNotTrack) {
 <meta property="og:description" content="使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zsan.ml/posts/docker-build-jdbot/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-30T22:49:08&#43;00:00" />
-<meta property="article:modified_time" content="2022-04-05T13:40:24&#43;08:00" />
+<meta property="article:published_time" content="2021-04-30T22:49:08+00:00" />
+<meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云服务器docker搭建自动领京豆bot互动指令"/>
@@ -115,7 +114,7 @@ if (!doNotTrack) {
   "wordCount" : "2667",
   "inLanguage": "zh",
   "datePublished": "2021-04-30T22:49:08Z",
-  "dateModified": "2022-04-05T13:40:24.277499236+08:00",
+  "dateModified": "2023-02-01T13:14:22.896533655+08:00",
   "author":{
     "@type": "Person",
     "name": "张三"
@@ -152,14 +151,14 @@ if (!doNotTrack) {
     <nav class="nav">
         <div class="logo">
             <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
-            <span class="logo-switches">
+            <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -173,7 +172,7 @@ if (!doNotTrack) {
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -218,7 +217,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2021-04-30 22:49:08 +0000 UTC'>2021-04-30</span>&nbsp;|&nbsp;更新:&nbsp;2022-04-05&nbsp;|&nbsp;字数:&nbsp;2667字&nbsp;|&nbsp;时长: 6分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2021-04-30 22:49:08 +0000 UTC'>2021-04-30</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;2667字&nbsp;|&nbsp;时长: 6分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -601,7 +600,7 @@ if (!doNotTrack) {
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
@@ -670,12 +669,12 @@ if (!doNotTrack) {
 
         const copybutton = document.createElement('button');
         copybutton.classList.add('copy-code');
-        copybutton.innerText = '复制';
+        copybutton.innerHTML = '复制';
 
         function copyingDone() {
-            copybutton.innerText = '已复制！';
+            copybutton.innerHTML = '已复制！';
             setTimeout(() => {
-                copybutton.innerText = '复制';
+                copybutton.innerHTML = '复制';
             }, 2000);
         }
 
