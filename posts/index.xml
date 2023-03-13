@@ -33,6 +33,10 @@
 <p>通过上面的步骤，克隆的卡可以进入小区大门，但是对于楼栋的电梯门，是没办法刷的，对比了门禁卡和卡贴，发现卡贴的id和门禁卡不同的，因此我们再做一个克隆uid操作。</p>
 <p>在首页<code>写标签</code>进入后，选择<code>克隆uid</code>，然后贴上我们的门禁卡，此时发现克隆的UID的id发生变化了，然后选择<code>计算0并克隆UID</code>，然后贴上卡贴，之后就可以啦。</p>
 <p>可以拿着去门口试试了</p>
+<blockquote>
+<p>参考：</p>
+<p><a href="https://yanke.info/?id=171">nfc卡贴模拟门禁卡</a></p>
+</blockquote>
 ]]></content:encoded>
     </item>
     
