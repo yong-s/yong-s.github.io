@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 13 Mar 2023 13:03:17 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E9%97%A8%E7%A6%81%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Mar 2023 13:35:25 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E9%97%A8%E7%A6%81%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NFC 复制模拟门禁卡</title>
       <link>https://blog.zsan.ml/posts/nfc-card-simulation-access-control/</link>
-      <pubDate>Mon, 13 Mar 2023 13:03:17 +0800</pubDate>
+      <pubDate>Mon, 13 Mar 2023 13:35:25 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/nfc-card-simulation-access-control/</guid>
       <description>iOS手机用卡贴支持模拟门禁</description>
@@ -22,7 +22,7 @@
 <h1 id="1买卡贴">1、买卡贴</h1>
 <p>拼夕夕买CUID卡就行了，大多数可以用</p>
 <h1 id="2克隆">2、克隆</h1>
-<p>Android 下载 <a href="https://github.com/ikarus23/MifareClassicTool">Mifare Classic Tool</a></p>
+<p>Android 下载 <a href="https://github.com/ikarus23/MifareClassicTool">Mifare Classic Tool</a></p>
 <p>关键操作步骤：</p>
 <p>1、读标签</p>
 <p>选择<code>读标签</code>，然后把门卡贴在手机nfc位置，之后点<code>开始映射并读取标签</code>，就可以读取到了，至于key，可以全选或者选择一个试试就行了。</p>

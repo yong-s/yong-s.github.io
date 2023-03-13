@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 13 Mar 2023 13:03:17 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Mar 2023 13:35:25 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NFC 复制模拟门禁卡</title>
       <link>https://blog.zsan.ml/posts/nfc-card-simulation-access-control/</link>
-      <pubDate>Mon, 13 Mar 2023 13:03:17 +0800</pubDate>
+      <pubDate>Mon, 13 Mar 2023 13:35:25 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/nfc-card-simulation-access-control/</guid>
       <description>iOS手机用卡贴支持模拟门禁</description>
@@ -22,7 +22,7 @@
 <h1 id="1买卡贴">1、买卡贴</h1>
 <p>拼夕夕买CUID卡就行了，大多数可以用</p>
 <h1 id="2克隆">2、克隆</h1>
-<p>Android 下载 <a href="https://github.com/ikarus23/MifareClassicTool">Mifare Classic Tool</a></p>
+<p>Android 下载 <a href="https://github.com/ikarus23/MifareClassicTool">Mifare Classic Tool</a></p>
 <p>关键操作步骤：</p>
 <p>1、读标签</p>
 <p>选择<code>读标签</code>，然后把门卡贴在手机nfc位置，之后点<code>开始映射并读取标签</code>，就可以读取到了，至于key，可以全选或者选择一个试试就行了。</p>
@@ -680,7 +680,7 @@ access:readonly
 </blockquote>
 <h2 id="1创建docker-nginx目录">1、创建docker-nginx目录</h2>
 <p>新建 docker-compose.yml 文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir docker-nginx
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir docekr-nginx
 </span></span><span style="display:flex;"><span>mkdir nginx
 </span></span><span style="display:flex;"><span>mkdir log
 </span></span><span style="display:flex;"><span>mkdir html
@@ -712,14 +712,14 @@ access:readonly
 </span></span><span style="display:flex;"><span>docker cp nginx:/etc/nginx /opt/docker-nginx
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#删除默认容器</span>
-</span></span><span style="display:flex;"><span>docker stop nginx &amp;&amp; docker rm nginx
+</span></span><span style="display:flex;"><span>docekr stop nginx &amp;&amp; docekr rm nginx
 </span></span></code></pre></div><h2 id="4修改nginx配置文件">4、修改nginx配置文件</h2>
 <p>端口号、域名，ssl等和以前配置一样，不再赘述</p>
 <h2 id="5运行测试">5、运行&amp;测试</h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose up -d
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docekr-compose up -d
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
-</span></span><span style="display:flex;"><span>docker-compose logs -f     
+</span></span><span style="display:flex;"><span>docekr-compose logs -f     
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">#浏览器输入IP或域名查看是否可以访问</span>
 </span></span></code></pre></div><hr>
