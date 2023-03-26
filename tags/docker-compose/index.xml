@@ -20,48 +20,48 @@
 </blockquote>
 <h2 id="1创建docker-nginx目录">1、创建docker-nginx目录</h2>
 <p>新建 docker-compose.yml 文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir docker-nginx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir docker-nginx
 </span></span><span style="display:flex;"><span>mkdir nginx
 </span></span><span style="display:flex;"><span>mkdir log
 </span></span><span style="display:flex;"><span>mkdir html
 </span></span><span style="display:flex;"><span>vim docker-compose.yml
 </span></span></code></pre></div><h2 id="2docker-composeyml">2、docker-compose.yml</h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">web</span>:
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">image</span>: nginx:latest
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">container_name</span>: nginx
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>     - ./nginx:/etc/nginx
-</span></span><span style="display:flex;"><span>     - ./log:/var/log/nginx
-</span></span><span style="display:flex;"><span>     - ./html:/usr/share/nginx/html  //网站放置目录
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">ports</span>:
-</span></span><span style="display:flex;"><span>     - <span style="color:#0ff;font-weight:bold">&#34;8081:80&#34;</span>
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>     - NGINX_HOST=&#34;192.168.116.10&#34; //访问地址/域名
-</span></span><span style="display:flex;"><span>     - NGINX_PORT=&#34;80&#34; //访问端口
-</span></span><span style="display:flex;"><span>     - TZ=&#34;Asia/Shanghai&#34; //时区
-</span></span><span style="display:flex;"><span> <span style="font-weight:bold">restart</span>: always
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:latest</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>     - <span style="color:#ae81ff">./nginx:/etc/nginx</span>
+</span></span><span style="display:flex;"><span>     - <span style="color:#ae81ff">./log:/var/log/nginx</span>
+</span></span><span style="display:flex;"><span>     - <span style="color:#ae81ff">./html:/usr/share/nginx/html  //网站放置目录</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>     - <span style="color:#e6db74">&#34;8081:80&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>     - <span style="color:#ae81ff">NGINX_HOST=&#34;192.168.116.10&#34; //访问地址/域名</span>
+</span></span><span style="display:flex;"><span>     - <span style="color:#ae81ff">NGINX_PORT=&#34;80&#34; //访问端口</span>
+</span></span><span style="display:flex;"><span>     - <span style="color:#ae81ff">TZ=&#34;Asia/Shanghai&#34; //时区</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><h2 id="3手动cp配置文件">3、手动cp配置文件</h2>
 <p>由于官方image没有默认映射外部文件，需要手动把配置文件cp出来</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#007f7f"># 运行官方命令创建默认容器</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 运行官方命令创建默认容器</span>
 </span></span><span style="display:flex;"><span>docker run --name nginx -p 8080:80 -d nginx
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#配置文件复制到nginx里,其他文件可用复制</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#是个坑，路径必须是全路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#配置文件复制到nginx里,其他文件可用复制</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#是个坑，路径必须是全路径</span>
 </span></span><span style="display:flex;"><span>docker cp nginx:/etc/nginx /opt/docker-nginx
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#删除默认容器</span>
-</span></span><span style="display:flex;"><span>docker stop nginx &amp;&amp; docker rm nginx
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#删除默认容器</span>
+</span></span><span style="display:flex;"><span>docker stop nginx <span style="color:#f92672">&amp;&amp;</span> docker rm nginx
 </span></span></code></pre></div><h2 id="4修改nginx配置文件">4、修改nginx配置文件</h2>
 <p>端口号、域名，ssl等和以前配置一样，不再赘述</p>
 <h2 id="5运行测试">5、运行&amp;测试</h2>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose up -d
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose up -d
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查看日志</span>
 </span></span><span style="display:flex;"><span>docker-compose logs -f     
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#浏览器输入IP或域名查看是否可以访问</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#浏览器输入IP或域名查看是否可以访问</span>
 </span></span></code></pre></div><hr>
 <p>参考文档：</p>
 <blockquote>
@@ -87,34 +87,34 @@
 <p>翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！</p>
 <h1 id="1创建docker-compose文件">1、创建docker-compose文件</h1>
 <p>内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
-</span></span><span style="display:flex;"><span>            - ./root:/srv           
-</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
-</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>            - PUID=0
-</span></span><span style="display:flex;"><span>            - PGID=0
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
-</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">filebrowser/filebrowser:s6</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">filebrowser</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./root:/srv           </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./database/filebrowser.db:/database/filebrowser.db </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./settings.json:/config/settings.json</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PUID=0</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PGID=0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;8080:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹</h1>
 <p>对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">80</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;log&#34;</span>: <span style="color:#e6db74">&#34;stdout&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;database&#34;</span>: <span style="color:#e6db74">&#34;/database/filebrowser.db&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;root&#34;</span>: <span style="color:#e6db74">&#34;/srv&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir database
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> database
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir database
+</span></span><span style="display:flex;"><span>cd database
 </span></span><span style="display:flex;"><span>touch filebrowser.db
 </span></span></code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功</h1>
 <p>执行 docker- compose logs -f 看下日志是否报错</p>
@@ -125,25 +125,25 @@
 <p>灯大魔改的好久没更新了，功能好多不支持了，今天给升级（踩坑）了一下</p>
 </blockquote>
 <p>1、docker-compose需要改下配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
-</span></span><span style="display:flex;"><span>            - /media:/srv           
-</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
-</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
-</span></span><span style="display:flex;"><span>            - /etc/timezone:/etc/timezone    <span style="color:#007f7f">#时区 cst</span>
-</span></span><span style="display:flex;"><span>            - /etc/localtime:/etc/localtime  <span style="color:#007f7f">#时区 cst</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">filebrowser/filebrowser</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">filebrowser</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/media:/srv           </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./database/filebrowser.db:/database/filebrowser.db </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./settings.json:/config/settings.json</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/etc/timezone:/etc/timezone   </span> <span style="color:#75715e">#时区 cst</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/etc/localtime:/etc/localtime </span> <span style="color:#75715e">#时区 cst</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>            - PUID=1002
-</span></span><span style="display:flex;"><span>            - PGID=100
-</span></span><span style="display:flex;"><span>              <span style="color:#007f7f"># - TZ=Asia/Shanghai</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
-</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8081:80&#39;</span>         
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PUID=1002</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PGID=100</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#75715e"># - TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;8081:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><p>2、灯大版的移除，执行这个即可</p>
 <p>两个小坑，1、镜像要用laster的 2、时区设置用挂载的</p>
 <blockquote>

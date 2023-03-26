@@ -21,7 +21,7 @@
 <h2 id="1添加自定义模版">1、添加自定义模版</h2>
 <p>Hugo根目录创建<code>layouts\partials\outdated_warning.html</code></p>
 <p>复制下面代码到 <code>outdated_warning.html</code>内</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false)) }}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false)) }}
 </span></span><span style="display:flex;"><span>{{- $daysAgo := div (sub now.Unix $.Page.Params.Lastmod.Unix) 86400 }}
 </span></span><span style="display:flex;"><span>{{- $hintThreshold := .Site.Params.outdatedInfoWarning.hint | default 30 }}
 </span></span><span style="display:flex;"><span>{{- $warnThreshold := .Site.Params.outdatedInfoWarning.warn | default 180 }}
@@ -29,71 +29,76 @@
 </span></span><span style="display:flex;"><span>{{- $updateTime := $.Page.Params.Lastmod }}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>{{- if gt $daysAgo $hintThreshold }}
-</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-outdated&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-outdated&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- if gt $daysAgo $warnThreshold }}
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;warn&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;warn&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- else }}
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;hint&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hint&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- end }}
-</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">p</span>&gt;{{ i18n &#34;outdatedInfoWarningBefore&#34; .}}
-</span></span><span style="display:flex;"><span>      &lt;<span style="font-weight:bold">span</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;timeago&#34;</span> <span style="color:#007f7f">datetime</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ dateFormat &#34;</span><span style="color:#007f7f">2006-01-02T15:04:05</span><span style="color:#f00">&#34;</span> <span style="color:#f00">$</span><span style="color:#007f7f">updateTime</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">title</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ dateFormat &#34;</span><span style="color:#007f7f">January</span> <span style="color:#007f7f">2</span><span style="color:#f00">,</span> <span style="color:#007f7f">2006</span><span style="color:#f00">&#34;</span> <span style="color:#f00">$</span><span style="color:#007f7f">updateTime</span> <span style="color:#f00">}}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;{{ i18n &#34;outdatedInfoWarningBefore&#34; .}}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;timeago&#34;</span> <span style="color:#a6e22e">datetime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ dateFormat &#34;</span><span style="color:#a6e22e">2006-01-02T15:04:05</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">updateTime</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ dateFormat &#34;</span><span style="color:#a6e22e">January</span> <span style="color:#a6e22e">2</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">2006</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">updateTime</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>      {{- dateFormat &#34;January 2, 2006&#34; $updateTime -}}
-</span></span><span style="display:flex;"><span>      &lt;/<span style="font-weight:bold">span</span>&gt;{{ i18n &#34;outdatedInfoWarningAfter&#34; .}}
-</span></span><span style="display:flex;"><span>    &lt;/<span style="font-weight:bold">p</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">div</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">span</span>&gt;{{ i18n &#34;outdatedInfoWarningAfter&#34; .}}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>{{- end -}}
 </span></span><span style="display:flex;"><span>{{- end -}}
 </span></span></code></pre></div><h2 id="2添加到文章模版内">2、添加到文章模版内</h2>
 <p>Hugo根目录创建<code>layouts/_default/single.html</code></p>
 <p>在目录下方或者文章上方添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ partial &#34;outdated_warning.html&#34; . }}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ partial &#34;outdated_warning.html&#34; . }}
 </span></span><span style="display:flex;"><span>{{- if .Content }}
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-content&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>    {{- if not (.Param &#34;disableAnchoredHeadings&#34;) }}
 </span></span><span style="display:flex;"><span>    {{- partial &#34;anchored_headings.html&#34; .Content -}}
 </span></span><span style="display:flex;"><span>    {{- else }}{{ .Content }}{{ end }}
-</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- end }}
 </span></span></code></pre></div><h2 id="3添加内容提醒css">3、添加内容提醒css</h2>
 <p>Hugo根目录创建<code>assets/css/extended/blank.css</code></p>
 <p>添加下列代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.post-outdated .hint {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">relative</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-top</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-bottom</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">5</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#ff0;font-weight:bold">10</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-left</span>: <span style="color:#ff0;font-weight:bold">4</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#fff;font-weight:bold">solid</span> <span style="color:#fff;font-weight:bold">rgb</span>(<span style="color:#ff0;font-weight:bold">66</span>, <span style="color:#ff0;font-weight:bold">172</span>, <span style="color:#ff0;font-weight:bold">243</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">background-color</span>: <span style="color:#fff;font-weight:bold">rgb</span>(<span style="color:#ff0;font-weight:bold">239</span>, <span style="color:#ff0;font-weight:bold">245</span>, <span style="color:#ff0;font-weight:bold">255</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-color</span>: <span style="color:#fff;font-weight:bold">rgb</span>(<span style="color:#ff0;font-weight:bold">66</span>, <span style="color:#ff0;font-weight:bold">172</span>, <span style="color:#ff0;font-weight:bold">243</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">post-outdated</span> .<span style="color:#a6e22e">hint</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-left</span>: <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> rgb(<span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">172</span>, <span style="color:#ae81ff">243</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: rgb(<span style="color:#ae81ff">239</span>, <span style="color:#ae81ff">245</span>, <span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-color</span>: rgb(<span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">172</span>, <span style="color:#ae81ff">243</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.post-outdated <span style="font-weight:bold">p</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin</span>: <span style="color:#fff;font-weight:bold">initial</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">color</span>: <span style="color:#ff0;font-weight:bold">#CCCCCC</span>;
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">post-outdated</span> <span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#66d9ef">initial</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.post-outdated .warn {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">relative</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-top</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-bottom</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">5</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#ff0;font-weight:bold">10</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-left</span>: <span style="color:#ff0;font-weight:bold">4</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#fff;font-weight:bold">solid</span> <span style="color:#ff0;font-weight:bold">#f9cf63</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">background-color</span>: <span style="color:#ff0;font-weight:bold">#FFF1AB</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-color</span>: <span style="color:#ff0;font-weight:bold">#f9cf63</span>;
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">post-outdated</span> .<span style="color:#a6e22e">warn</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">1.5</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#fff7d0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-left</span>: <span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">rem</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#e7c000</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#6b5900</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">align-self</span>: <span style="color:#66d9ef">stretch</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">em</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="4添加配置参数">4、添加配置参数</h2>
 <p><code>config.yml</code>内添加下列参数</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">params</span>:
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">    outdatedInfoWarning</span>:
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">    enable</span>: <span style="color:#fff;font-weight:bold">true</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">    hint</span>: <span style="color:#ff0;font-weight:bold">30</span>                <span style="color:#007f7f"># 如果文章最后更新于这天数之前，显示提醒</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">    warn</span>: <span style="color:#ff0;font-weight:bold">180</span>    <span style="color:#007f7f"># 如果文章最后更新于这天数之前，显示警告</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">    outdatedInfoWarning</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    hint</span>: <span style="color:#ae81ff">30</span>                <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示提醒</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    warn</span>: <span style="color:#ae81ff">180</span>    <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示警告</span>
 </span></span></code></pre></div><h2 id="5文章单独配置开关">5、文章单独配置开关</h2>
 <p>文章开头增加<code>enableOutdatedInfoWarning: true #内容过时提醒</code></p>
 <p>也可把上述代码添加到<code>archetypes/default.md</code></p>
-<blockquote>
+<h2 id="6添加提示文字">6、添加提示文字</h2>
+<p>Hugo根目录创建<code>i18n</code> 内复制主题下复制<code>zh.yaml</code>进来，添加下列代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">id</span>: <span style="color:#ae81ff">outdatedInfoWarningBefore</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">translation</span>: <span style="color:#e6db74">&#34;【注意】最后更新于 &#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">id</span>: <span style="color:#ae81ff">outdatedInfoWarningAfter</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">translation</span>: <span style="color:#e6db74">&#34;，文中内容可能已过时，请谨慎使用。&#34;</span>
+</span></span></code></pre></div><blockquote>
 <p>ps:借助ChatGPT的强大功能做了代码的编辑操作，未来已来🎉</p>
 </blockquote>
 <hr>
@@ -125,49 +130,49 @@
 <li>网站直接Hugo搭建，用zen主题支持podcast，放在GitHub page上，域名可以在freedom上注册，用cloudflare DNS解析和加速</li>
 </ul>
 <p>hugo 搭建播客</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#新建网站</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#新建网站</span>
 </span></span><span style="display:flex;"><span>hugo new site podcast
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#安装 zen主题</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#安装 zen主题</span>
 </span></span><span style="display:flex;"><span>git clone https://github.com/frjo/hugo-theme-zen.git themes/zen
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#在content内新建podcast文件夹，此页面内新增音频</span>
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> content
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#在content内新建podcast文件夹，此页面内新增音频</span>
+</span></span><span style="display:flex;"><span>cd content
 </span></span><span style="display:flex;"><span>mkdir podcast
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#podcast的一些设置</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#podcast的一些设置</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#podcast 音频下面显示链接，如何取消</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#podcast 音频下面显示链接，如何取消</span>
 </span></span><span style="display:flex;"><span>vim layouts/partials/podcast.html
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#注释掉下面行</span>
-</span></span><span style="display:flex;"><span>&lt;figcaption&gt;&lt;a href=<span style="color:#0ff;font-weight:bold">&#34;{{ </span>$src<span style="color:#0ff;font-weight:bold"> }}&#34;</span>&gt;{{ .Title }}&lt;/a&gt;&lt;/figcaption&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#注释掉下面行</span>
+</span></span><span style="display:flex;"><span>&lt;figcaption&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ </span>$src<span style="color:#e6db74"> }}&#34;</span>&gt;<span style="color:#f92672">{{</span> .Title <span style="color:#f92672">}}</span>&lt;/a&gt;&lt;/figcaption&gt;
 </span></span></code></pre></div><p>podcast 配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#007f7f">#文章顶部新增参数</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">podcast</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">mp3</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">duration</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#文章顶部新增参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">podcast</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mp3</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">duration</span>:
 </span></span></code></pre></div><ul>
 <li>音频托管平台自建minin服务存储音频</li>
 </ul>
 <p>minio服务很强大，感兴趣可以了解一下</p>
 <p>docker 部署</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">minio</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">image</span>: quay.io/minio/minio
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">container_name</span>: minio1
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">ports</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#ff0;font-weight:bold">9090</span>:<span style="color:#ff0;font-weight:bold">9090</span>   <span style="color:#007f7f">#控制台端口</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ff0;font-weight:bold">9000</span>:<span style="color:#ff0;font-weight:bold">9000</span>   <span style="color:#007f7f">#API端口</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#0ff;font-weight:bold">&#39;./data:/data&#39;</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#0ff;font-weight:bold">&#39;./config:/root/.minio&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">MINIO_ROOT_USER</span>: admin     <span style="color:#007f7f">#管理用户名</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">MINIO_ROOT_PASSWORD</span>: admin   <span style="color:#007f7f">#管理密码</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">command</span>: server /data --console-address &#39;:9090&#39;
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">restart</span>: always
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">minio</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">quay.io/minio/minio</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">minio1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">9090</span>:<span style="color:#ae81ff">9090</span>   <span style="color:#75715e">#控制台端口</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">9000</span>:<span style="color:#ae81ff">9000</span>   <span style="color:#75715e">#API端口</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;./data:/data&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;./config:/root/.minio&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">MINIO_ROOT_USER</span>: <span style="color:#ae81ff">admin    </span> <span style="color:#75715e">#管理用户名</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">MINIO_ROOT_PASSWORD</span>: <span style="color:#ae81ff">admin  </span> <span style="color:#75715e">#管理密码</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">server /data --console-address &#39;:9090&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><p>部署成功，ip:9090访问登录</p>
 <p>控制台操作</p>
 <p>1、创建存储桶</p>

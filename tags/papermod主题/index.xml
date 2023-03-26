@@ -16,12 +16,12 @@
       <guid>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</guid>
       <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交</description>
       <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">frontmatter</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">lastmod</span>:
-</span></span><span style="display:flex;"><span>        - lastmod
-</span></span><span style="display:flex;"><span>        - :git
-</span></span><span style="display:flex;"><span>        - :fileModTime
-</span></span><span style="display:flex;"><span>        - :default
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">frontmatter</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">lastmod</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">lastmod</span>
+</span></span><span style="display:flex;"><span>        - :<span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>        - :<span style="color:#ae81ff">fileModTime</span>
+</span></span><span style="display:flex;"><span>        - :<span style="color:#ae81ff">default</span>
 </span></span></code></pre></div><p>依次取的顺序为：</p>
 <blockquote>
 <p>lastmod :最后提交时间</p>

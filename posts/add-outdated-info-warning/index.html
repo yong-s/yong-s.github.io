@@ -11,9 +11,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/posts/add-outdated-info-warning/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7953d850267de3ad5760a191a6c9ce3e48933008c75e63d0290a98329b8d0783.css" integrity="sha256-eVPYUCZ9461XYKGRpsnOPkiTMAjHXmPQKQqYMpuNB4M=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f5231b555ab2c17e74d4c0d8c9129738b873255e869390a08e9569026e292b93.css" integrity="sha256-9SMbVVqywX501MDYyRKXOLhzJV6Gk5CgjpVpAm4pK5M=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -73,7 +71,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zsan.ml/posts/add-outdated-info-warning/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-26T11:40:12+08:00" />
-<meta property="article:modified_time" content="2023-03-26T12:52:15+08:00" />
+<meta property="article:modified_time" content="2023-03-26T19:11:51+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PaperMod文章添加过时提醒"/>
@@ -110,11 +108,11 @@ if (!doNotTrack) {
   "keywords": [
     "hugo", "PaperMod", "过时提醒", "ChatGPT"
   ],
-  "articleBody": "技术性文章没有内容提醒怎么行的，技术快速迭代，今天可以的方法明天可能就不行了\n网上搜了一圈，对应主题的没找到现成的，只能魔改了\n只针对PaperMod主题的，其他自己魔改，大同小异\n1、添加自定义模版 Hugo根目录创建layouts\\partials\\outdated_warning.html\n复制下面代码到 outdated_warning.html内\n{{- if or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false)) }} {{- $daysAgo := div (sub now.Unix $.Page.Params.Lastmod.Unix) 86400 }} {{- $hintThreshold := .Site.Params.outdatedInfoWarning.hint | default 30 }} {{- $warnThreshold := .Site.Params.outdatedInfoWarning.warn | default 180 }} {{- $updateTime := $.Page.Params.Lastmod }} {{- if gt $daysAgo $hintThreshold }} \u003cdiv class=\"post-outdated\"\u003e {{- if gt $daysAgo $warnThreshold }} \u003cdiv class=\"warn\"\u003e {{- else }} \u003cdiv class=\"hint\"\u003e {{- end }} \u003cp\u003e{{ i18n \"outdatedInfoWarningBefore\" .}} \u003cspan class=\"timeago\" datetime=\"{{ dateFormat \"2006-01-02T15:04:05\" $updateTime }}\" title=\"{{ dateFormat \"January 2, 2006\" $updateTime }}\"\u003e {{- dateFormat \"January 2, 2006\" $updateTime -}} \u003c/span\u003e{{ i18n \"outdatedInfoWarningAfter\" .}} \u003c/p\u003e \u003c/div\u003e \u003c/div\u003e {{- end -}} {{- end -}} 2、添加到文章模版内 Hugo根目录创建layouts/_default/single.html\n在目录下方或者文章上方添加\n{{ partial \"outdated_warning.html\" . }} {{- if .Content }} \u003cdiv class=\"post-content\"\u003e {{- if not (.Param \"disableAnchoredHeadings\") }} {{- partial \"anchored_headings.html\" .Content -}} {{- else }}{{ .Content }}{{ end }} \u003c/div\u003e {{- end }} 3、添加内容提醒css Hugo根目录创建assets/css/extended/blank.css\n添加下列代码\n.post-outdated .hint { position: relative; margin-top: 20px; margin-bottom: 20px; padding: 5px 10px; border-left: 4px solid rgb(66, 172, 243); background-color: rgb(239, 245, 255); border-color: rgb(66, 172, 243); } .post-outdated p { margin: initial; color: #CCCCCC; } .post-outdated .warn { position: relative; margin-top: 20px; margin-bottom: 20px; padding: 5px 10px; border-left: 4px solid #f9cf63; background-color: #FFF1AB; border-color: #f9cf63; } 4、添加配置参数 config.yml内添加下列参数\nparams: outdatedInfoWarning: enable: true hint: 30 # 如果文章最后更新于这天数之前，显示提醒 warn: 180 # 如果文章最后更新于这天数之前，显示警告 5、文章单独配置开关 文章开头增加enableOutdatedInfoWarning: true #内容过时提醒\n也可把上述代码添加到archetypes/default.md\nps:借助ChatGPT的强大功能做了代码的编辑操作，未来已来🎉\n参考：\n在 MemE 主题文章开头添加过时提醒 | 荷戟独彷徨\nhugo-theme\nChatGPT\n",
-  "wordCount" : "690",
+  "articleBody": "技术性文章没有内容提醒怎么行的，技术快速迭代，今天可以的方法明天可能就不行了\n网上搜了一圈，对应主题的没找到现成的，只能魔改了\n只针对PaperMod主题的，其他自己魔改，大同小异\n1、添加自定义模版 Hugo根目录创建layouts\\partials\\outdated_warning.html\n复制下面代码到 outdated_warning.html内\n{{- if or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false)) }} {{- $daysAgo := div (sub now.Unix $.Page.Params.Lastmod.Unix) 86400 }} {{- $hintThreshold := .Site.Params.outdatedInfoWarning.hint | default 30 }} {{- $warnThreshold := .Site.Params.outdatedInfoWarning.warn | default 180 }} {{- $updateTime := $.Page.Params.Lastmod }} {{- if gt $daysAgo $hintThreshold }} \u003cdiv class=\"post-outdated\"\u003e {{- if gt $daysAgo $warnThreshold }} \u003cdiv class=\"warn\"\u003e {{- else }} \u003cdiv class=\"hint\"\u003e {{- end }} \u003cp\u003e{{ i18n \"outdatedInfoWarningBefore\" .}} \u003cspan class=\"timeago\" datetime=\"{{ dateFormat \"2006-01-02T15:04:05\" $updateTime }}\" title=\"{{ dateFormat \"January 2, 2006\" $updateTime }}\"\u003e {{- dateFormat \"January 2, 2006\" $updateTime -}} \u003c/span\u003e{{ i18n \"outdatedInfoWarningAfter\" .}} \u003c/p\u003e \u003c/div\u003e \u003c/div\u003e {{- end -}} {{- end -}} 2、添加到文章模版内 Hugo根目录创建layouts/_default/single.html\n在目录下方或者文章上方添加\n{{ partial \"outdated_warning.html\" . }} {{- if .Content }} \u003cdiv class=\"post-content\"\u003e {{- if not (.Param \"disableAnchoredHeadings\") }} {{- partial \"anchored_headings.html\" .Content -}} {{- else }}{{ .Content }}{{ end }} \u003c/div\u003e {{- end }} 3、添加内容提醒css Hugo根目录创建assets/css/extended/blank.css\n添加下列代码\n.post-outdated .hint { position: relative; margin-top: 20px; margin-bottom: 20px; padding: 5px 10px; border-left: 4px solid rgb(66, 172, 243); background-color: rgb(239, 245, 255); border-color: rgb(66, 172, 243); } .post-outdated p { margin: initial; } .post-outdated .warn { padding: 1rem 1.5rem; background-color: #fff7d0; border-left: 0.5rem solid #e7c000; color: #6b5900; align-self: stretch; margin-bottom: 1em; } 4、添加配置参数 config.yml内添加下列参数\nparams: outdatedInfoWarning: enable: true hint: 30 # 如果文章最后更新于这天数之前，显示提醒 warn: 180 # 如果文章最后更新于这天数之前，显示警告 5、文章单独配置开关 文章开头增加enableOutdatedInfoWarning: true #内容过时提醒\n也可把上述代码添加到archetypes/default.md\n6、添加提示文字 Hugo根目录创建i18n 内复制主题下复制zh.yaml进来，添加下列代码\n- id: outdatedInfoWarningBefore translation: \"【注意】最后更新于 \" - id: outdatedInfoWarningAfter translation: \"，文中内容可能已过时，请谨慎使用。\" ps:借助ChatGPT的强大功能做了代码的编辑操作，未来已来🎉\n参考：\n在 MemE 主题文章开头添加过时提醒 | 荷戟独彷徨\nhugo-theme\nChatGPT\n",
+  "wordCount" : "781",
   "inLanguage": "zh",
   "datePublished": "2023-03-26T11:40:12+08:00",
-  "dateModified": "2023-03-26T12:52:15.407423344+08:00",
+  "dateModified": "2023-03-26T19:11:51.496836353+08:00",
   "author":[{
     "@type": "Person",
     "name": "张三"
@@ -220,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-03-26 11:40:12 +0800 CST'>2023-03-26</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-26&nbsp;|&nbsp;字数:&nbsp;690字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-03-26 11:40:12 +0800 CST'>2023-03-26</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-26&nbsp;|&nbsp;字数:&nbsp;781字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -241,7 +239,9 @@ if (!doNotTrack) {
                     <li>
                         <a href="#4%e6%b7%bb%e5%8a%a0%e9%85%8d%e7%bd%ae%e5%8f%82%e6%95%b0" aria-label="4、添加配置参数">4、添加配置参数</a></li>
                     <li>
-                        <a href="#5%e6%96%87%e7%ab%a0%e5%8d%95%e7%8b%ac%e9%85%8d%e7%bd%ae%e5%bc%80%e5%85%b3" aria-label="5、文章单独配置开关">5、文章单独配置开关</a>
+                        <a href="#5%e6%96%87%e7%ab%a0%e5%8d%95%e7%8b%ac%e9%85%8d%e7%bd%ae%e5%bc%80%e5%85%b3" aria-label="5、文章单独配置开关">5、文章单独配置开关</a></li>
+                    <li>
+                        <a href="#6%e6%b7%bb%e5%8a%a0%e6%8f%90%e7%a4%ba%e6%96%87%e5%ad%97" aria-label="6、添加提示文字">6、添加提示文字</a>
                     </li>
                 </ul>
             </div>
@@ -316,7 +316,7 @@ if (!doNotTrack) {
 <h2 id="1添加自定义模版">1、添加自定义模版<a hidden class="anchor" aria-hidden="true" href="#1添加自定义模版">#</a></h2>
 <p>Hugo根目录创建<code>layouts\partials\outdated_warning.html</code></p>
 <p>复制下面代码到 <code>outdated_warning.html</code>内</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false)) }}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false)) }}
 </span></span><span style="display:flex;"><span>{{- $daysAgo := div (sub now.Unix $.Page.Params.Lastmod.Unix) 86400 }}
 </span></span><span style="display:flex;"><span>{{- $hintThreshold := .Site.Params.outdatedInfoWarning.hint | default 30 }}
 </span></span><span style="display:flex;"><span>{{- $warnThreshold := .Site.Params.outdatedInfoWarning.warn | default 180 }}
@@ -324,71 +324,76 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>{{- $updateTime := $.Page.Params.Lastmod }}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>{{- if gt $daysAgo $hintThreshold }}
-</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-outdated&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-outdated&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- if gt $daysAgo $warnThreshold }}
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;warn&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;warn&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- else }}
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;hint&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hint&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- end }}
-</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">p</span>&gt;{{ i18n &#34;outdatedInfoWarningBefore&#34; .}}
-</span></span><span style="display:flex;"><span>      &lt;<span style="font-weight:bold">span</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;timeago&#34;</span> <span style="color:#007f7f">datetime</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ dateFormat &#34;</span><span style="color:#007f7f">2006-01-02T15:04:05</span><span style="color:#f00">&#34;</span> <span style="color:#f00">$</span><span style="color:#007f7f">updateTime</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">title</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ dateFormat &#34;</span><span style="color:#007f7f">January</span> <span style="color:#007f7f">2</span><span style="color:#f00">,</span> <span style="color:#007f7f">2006</span><span style="color:#f00">&#34;</span> <span style="color:#f00">$</span><span style="color:#007f7f">updateTime</span> <span style="color:#f00">}}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;{{ i18n &#34;outdatedInfoWarningBefore&#34; .}}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;timeago&#34;</span> <span style="color:#a6e22e">datetime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ dateFormat &#34;</span><span style="color:#a6e22e">2006-01-02T15:04:05</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">updateTime</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ dateFormat &#34;</span><span style="color:#a6e22e">January</span> <span style="color:#a6e22e">2</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">2006</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">updateTime</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>      {{- dateFormat &#34;January 2, 2006&#34; $updateTime -}}
-</span></span><span style="display:flex;"><span>      &lt;/<span style="font-weight:bold">span</span>&gt;{{ i18n &#34;outdatedInfoWarningAfter&#34; .}}
-</span></span><span style="display:flex;"><span>    &lt;/<span style="font-weight:bold">p</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">div</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">span</span>&gt;{{ i18n &#34;outdatedInfoWarningAfter&#34; .}}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>{{- end -}}
 </span></span><span style="display:flex;"><span>{{- end -}}
 </span></span></code></pre></div><h2 id="2添加到文章模版内">2、添加到文章模版内<a hidden class="anchor" aria-hidden="true" href="#2添加到文章模版内">#</a></h2>
 <p>Hugo根目录创建<code>layouts/_default/single.html</code></p>
 <p>在目录下方或者文章上方添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ partial &#34;outdated_warning.html&#34; . }}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ partial &#34;outdated_warning.html&#34; . }}
 </span></span><span style="display:flex;"><span>{{- if .Content }}
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;post-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-content&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>    {{- if not (.Param &#34;disableAnchoredHeadings&#34;) }}
 </span></span><span style="display:flex;"><span>    {{- partial &#34;anchored_headings.html&#34; .Content -}}
 </span></span><span style="display:flex;"><span>    {{- else }}{{ .Content }}{{ end }}
-</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>  {{- end }}
 </span></span></code></pre></div><h2 id="3添加内容提醒css">3、添加内容提醒css<a hidden class="anchor" aria-hidden="true" href="#3添加内容提醒css">#</a></h2>
 <p>Hugo根目录创建<code>assets/css/extended/blank.css</code></p>
 <p>添加下列代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.post-outdated .hint {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">relative</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-top</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-bottom</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">5</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#ff0;font-weight:bold">10</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-left</span>: <span style="color:#ff0;font-weight:bold">4</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#fff;font-weight:bold">solid</span> <span style="color:#fff;font-weight:bold">rgb</span>(<span style="color:#ff0;font-weight:bold">66</span>, <span style="color:#ff0;font-weight:bold">172</span>, <span style="color:#ff0;font-weight:bold">243</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">background-color</span>: <span style="color:#fff;font-weight:bold">rgb</span>(<span style="color:#ff0;font-weight:bold">239</span>, <span style="color:#ff0;font-weight:bold">245</span>, <span style="color:#ff0;font-weight:bold">255</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-color</span>: <span style="color:#fff;font-weight:bold">rgb</span>(<span style="color:#ff0;font-weight:bold">66</span>, <span style="color:#ff0;font-weight:bold">172</span>, <span style="color:#ff0;font-weight:bold">243</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">post-outdated</span> .<span style="color:#a6e22e">hint</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-left</span>: <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> rgb(<span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">172</span>, <span style="color:#ae81ff">243</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: rgb(<span style="color:#ae81ff">239</span>, <span style="color:#ae81ff">245</span>, <span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-color</span>: rgb(<span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">172</span>, <span style="color:#ae81ff">243</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.post-outdated <span style="font-weight:bold">p</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin</span>: <span style="color:#fff;font-weight:bold">initial</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">color</span>: <span style="color:#ff0;font-weight:bold">#CCCCCC</span>;
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">post-outdated</span> <span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin</span>: <span style="color:#66d9ef">initial</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.post-outdated .warn {
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">position</span>: <span style="color:#fff;font-weight:bold">relative</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-top</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">margin-bottom</span>: <span style="color:#ff0;font-weight:bold">20</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">padding</span>: <span style="color:#ff0;font-weight:bold">5</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#ff0;font-weight:bold">10</span><span style="color:#fff;font-weight:bold">px</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-left</span>: <span style="color:#ff0;font-weight:bold">4</span><span style="color:#fff;font-weight:bold">px</span> <span style="color:#fff;font-weight:bold">solid</span> <span style="color:#ff0;font-weight:bold">#f9cf63</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">background-color</span>: <span style="color:#ff0;font-weight:bold">#FFF1AB</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">border-color</span>: <span style="color:#ff0;font-weight:bold">#f9cf63</span>;
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">post-outdated</span> .<span style="color:#a6e22e">warn</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">1.5</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#fff7d0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border-left</span>: <span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">rem</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#e7c000</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#6b5900</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">align-self</span>: <span style="color:#66d9ef">stretch</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">em</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="4添加配置参数">4、添加配置参数<a hidden class="anchor" aria-hidden="true" href="#4添加配置参数">#</a></h2>
 <p><code>config.yml</code>内添加下列参数</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">params</span>:
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">    outdatedInfoWarning</span>:
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">    enable</span>: <span style="color:#fff;font-weight:bold">true</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">    hint</span>: <span style="color:#ff0;font-weight:bold">30</span>                <span style="color:#007f7f"># 如果文章最后更新于这天数之前，显示提醒</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">    warn</span>: <span style="color:#ff0;font-weight:bold">180</span>    <span style="color:#007f7f"># 如果文章最后更新于这天数之前，显示警告</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">    outdatedInfoWarning</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    hint</span>: <span style="color:#ae81ff">30</span>                <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示提醒</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    warn</span>: <span style="color:#ae81ff">180</span>    <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示警告</span>
 </span></span></code></pre></div><h2 id="5文章单独配置开关">5、文章单独配置开关<a hidden class="anchor" aria-hidden="true" href="#5文章单独配置开关">#</a></h2>
 <p>文章开头增加<code>enableOutdatedInfoWarning: true #内容过时提醒</code></p>
 <p>也可把上述代码添加到<code>archetypes/default.md</code></p>
-<blockquote>
+<h2 id="6添加提示文字">6、添加提示文字<a hidden class="anchor" aria-hidden="true" href="#6添加提示文字">#</a></h2>
+<p>Hugo根目录创建<code>i18n</code> 内复制主题下复制<code>zh.yaml</code>进来，添加下列代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">id</span>: <span style="color:#ae81ff">outdatedInfoWarningBefore</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">translation</span>: <span style="color:#e6db74">&#34;【注意】最后更新于 &#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">id</span>: <span style="color:#ae81ff">outdatedInfoWarningAfter</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">translation</span>: <span style="color:#e6db74">&#34;，文中内容可能已过时，请谨慎使用。&#34;</span>
+</span></span></code></pre></div><blockquote>
 <p>ps:借助ChatGPT的强大功能做了代码的编辑操作，未来已来🎉</p>
 </blockquote>
 <hr>

@@ -11,9 +11,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/posts/docker-deploy-filebrowser/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7953d850267de3ad5760a191a6c9ce3e48933008c75e63d0290a98329b8d0783.css" integrity="sha256-eVPYUCZ9461XYKGRpsnOPkiTMAjHXmPQKQqYMpuNB4M=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f5231b555ab2c17e74d4c0d8c9129738b873255e869390a08e9569026e292b93.css" integrity="sha256-9SMbVVqywX501MDYyRKXOLhzJV6Gk5CgjpVpAm4pK5M=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -325,34 +323,34 @@ if (!doNotTrack) {
 <p>翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！</p>
 <h1 id="1创建docker-compose文件">1、创建docker-compose文件<a hidden class="anchor" aria-hidden="true" href="#1创建docker-compose文件">#</a></h1>
 <p>内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser:s6
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
-</span></span><span style="display:flex;"><span>            - ./root:/srv           
-</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
-</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>            - PUID=0
-</span></span><span style="display:flex;"><span>            - PGID=0
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
-</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8080:80&#39;</span>         
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">filebrowser/filebrowser:s6</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">filebrowser</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./root:/srv           </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./database/filebrowser.db:/database/filebrowser.db </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./settings.json:/config/settings.json</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PUID=0</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PGID=0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;8080:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><h1 id="2创建默认文件和文件夹">2、创建默认文件和文件夹<a hidden class="anchor" aria-hidden="true" href="#2创建默认文件和文件夹">#</a></h1>
 <p>对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;port&#34;</span>: <span style="color:#ff0;font-weight:bold">80</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;baseURL&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;address&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.0.0.0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;log&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;stdout&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;database&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/database/filebrowser.db&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">&#34;root&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;/srv&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">80</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;log&#34;</span>: <span style="color:#e6db74">&#34;stdout&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;database&#34;</span>: <span style="color:#e6db74">&#34;/database/filebrowser.db&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;root&#34;</span>: <span style="color:#e6db74">&#34;/srv&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>在当前目录创建 database/filebrowser.db 文件夹和文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir database
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> database
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir database
+</span></span><span style="display:flex;"><span>cd database
 </span></span><span style="display:flex;"><span>touch filebrowser.db
 </span></span></code></pre></div><h1 id="3运行测试是否成功">3、运行测试是否成功<a hidden class="anchor" aria-hidden="true" href="#3运行测试是否成功">#</a></h1>
 <p>执行 docker- compose logs -f 看下日志是否报错</p>
@@ -363,25 +361,25 @@ if (!doNotTrack) {
 <p>灯大魔改的好久没更新了，功能好多不支持了，今天给升级（踩坑）了一下</p>
 </blockquote>
 <p>1、docker-compose需要改下配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span> 
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:     
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">filebrowser</span>:  
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: filebrowser/filebrowser
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: filebrowser
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:  
-</span></span><span style="display:flex;"><span>            - /media:/srv           
-</span></span><span style="display:flex;"><span>            - ./database/filebrowser.db:/database/filebrowser.db 
-</span></span><span style="display:flex;"><span>            - ./settings.json:/config/settings.json
-</span></span><span style="display:flex;"><span>            - /etc/timezone:/etc/timezone    <span style="color:#007f7f">#时区 cst</span>
-</span></span><span style="display:flex;"><span>            - /etc/localtime:/etc/localtime  <span style="color:#007f7f">#时区 cst</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:     
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filebrowser</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">filebrowser/filebrowser</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">filebrowser</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumes</span>:  
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/media:/srv           </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./database/filebrowser.db:/database/filebrowser.db </span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">./settings.json:/config/settings.json</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/etc/timezone:/etc/timezone   </span> <span style="color:#75715e">#时区 cst</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/etc/localtime:/etc/localtime </span> <span style="color:#75715e">#时区 cst</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>            - PUID=1002
-</span></span><span style="display:flex;"><span>            - PGID=100
-</span></span><span style="display:flex;"><span>              <span style="color:#007f7f"># - TZ=Asia/Shanghai</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ports</span>: 
-</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;8081:80&#39;</span>         
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PUID=1002</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">PGID=100</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#75715e"># - TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;8081:80&#39;</span>         
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><p>2、灯大版的移除，执行这个即可</p>
 <p>两个小坑，1、镜像要用laster的 2、时区设置用挂载的</p>
 <blockquote>

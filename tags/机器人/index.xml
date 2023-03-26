@@ -21,11 +21,11 @@
 <h1 id="一部署傻妞助手bot">一、部署傻妞助手bot</h1>
 <p>项目地址：<a href="https://github.com/cdle/sillyGirl">GitHub - cdle/sillyGirl: 傻妞机器人</a></p>
 <h3 id="一键安装支持linux-arm64和amd64位">一键安装：支持linux arm64和amd64位</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> /opt
-</span></span><span style="display:flex;"><span>s=sillyGirl;a=arm64;<span style="color:#fff;font-weight:bold">if</span> [[ <span style="color:#fff;font-weight:bold">$(</span>uname -a | grep <span style="color:#0ff;font-weight:bold">&#34;x86_64&#34;</span><span style="color:#fff;font-weight:bold">)</span> != <span style="color:#0ff;font-weight:bold">&#34;&#34;</span> ]];<span style="color:#fff;font-weight:bold">then</span> a=amd64;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">if</span> [ ! -d $s ];<span style="color:#fff;font-weight:bold">then</span> mkdir $s;<span style="color:#fff;font-weight:bold">fi</span> ;<span style="color:#fff;font-weight:bold">cd</span> $s;wget https://github.com/cdle/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>/releases/download/main/<span style="color:#0ff;font-weight:bold">${</span>s<span style="color:#0ff;font-weight:bold">}</span>_linux_$a -O $s &amp;&amp; chmod <span style="color:#ff0;font-weight:bold">777</span> $s;pkill -9 $s;<span style="color:#fff;font-weight:bold">$(</span><span style="color:#fff;font-weight:bold">pwd</span><span style="color:#fff;font-weight:bold">)</span>/$s
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /opt
+</span></span><span style="display:flex;"><span>s<span style="color:#f92672">=</span>sillyGirl;a<span style="color:#f92672">=</span>arm64;<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#66d9ef">$(</span>uname -a | grep <span style="color:#e6db74">&#34;x86_64&#34;</span><span style="color:#66d9ef">)</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span> a<span style="color:#f92672">=</span>amd64;<span style="color:#66d9ef">fi</span> ;<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d $s <span style="color:#f92672">]</span>;<span style="color:#66d9ef">then</span> mkdir $s;<span style="color:#66d9ef">fi</span> ;cd $s;wget https://github.com/cdle/<span style="color:#e6db74">${</span>s<span style="color:#e6db74">}</span>/releases/download/main/<span style="color:#e6db74">${</span>s<span style="color:#e6db74">}</span>_linux_$a -O $s <span style="color:#f92672">&amp;&amp;</span> chmod <span style="color:#ae81ff">777</span> $s;pkill -9 $s;<span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/$s
 </span></span></code></pre></div><p>在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置</p>
 <p>主要是配置管理员账号等，也可以通过对话配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>### 一些基础设置 ###
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>### 一些基础设置 ###
 </span></span><span style="display:flex;"><span># 傻妞机器人名
 </span></span><span style="display:flex;"><span>set sillyGirl name 傻妞
 </span></span><span style="display:flex;"><span># 傻妞http服务端口
@@ -181,17 +181,17 @@
 <p>成功后 执行 ./sillyGirl -d 后台运行</p>
 <h3 id="其他常用命令">其他常用命令</h3>
 <p>杀掉进程</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -A|grep sillyGirl
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">kill</span> pid 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -A|grep sillyGirl
+</span></span><span style="display:flex;"><span>kill pid 
 </span></span></code></pre></div><p>查看端口是否开启</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netstat -tlan
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netstat -tlan
 </span></span></code></pre></div><h1 id="二部署node-onebot">二、部署node-onebot</h1>
 <blockquote>
 <p>傻妞开发者把内置qq登录给去掉了，需要自己对接qqbot</p>
 <p>官方给的是node安装的，需要安装node环境，太麻烦，改为用docker安装</p>
 </blockquote>
 <h3 id="1拉取代码">1、拉取代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>//国外机
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>//国外机
 </span></span><span style="display:flex;"><span>git clone https://github.com/takayama-lily/node-onebot
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>//国内机
@@ -200,130 +200,130 @@
 </span></span><span style="display:flex;"><span>机
 </span></span></code></pre></div><h3 id="2修改dockerfile文件">2、修改Dockerfile文件</h3>
 <p>修改默认Dockerfile里面最后一行的QQ号成自己的bot账号</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>FROM node:14-alpine
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>FROM node:14-alpine
 </span></span><span style="display:flex;"><span>WORKDIR /app
 </span></span><span style="display:flex;"><span>COPY . .
 </span></span><span style="display:flex;"><span>CMD [&#34;node&#34;, &#34;main&#34;,&#34;这里改为自己的bot账号&#34;]
 </span></span></code></pre></div><h3 id="3创建configjs文件">3、创建config.js文件</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp config.sample.js config.js
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">&#34;use strict&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 将此文件更名为config.js才能生效哦
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
-</span></span><span style="display:flex;"><span>module.exports = {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp config.sample.js config.js
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;use strict&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将此文件更名为config.js才能生效哦
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//通用配置
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    general: {
-</span></span><span style="display:flex;"><span>        platform:           <span style="color:#ff0;font-weight:bold">5</span>,      <span style="color:#007f7f">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        debug:              <span style="color:#fff;font-weight:bold">false</span>,  <span style="color:#007f7f">//开启debug
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_cqhttp_notice:  <span style="color:#fff;font-weight:bold">true</span>,   <span style="color:#007f7f">//是否使用cqhttp标准的notice事件格式
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
-</span></span><span style="display:flex;"><span>        host:               <span style="color:#0ff;font-weight:bold">&#34;localhost&#34;</span>,  <span style="color:#007f7f">//监听主机名
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        port:               <span style="color:#ff0;font-weight:bold">5700</span>,       <span style="color:#007f7f">//端口
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_http:           <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用http
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_ws:             <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用正向ws，和http使用相同地址和端口
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        access_token:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//访问api的token
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        secret:             <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//上报数据的sha1签名密钥
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_timeout:       <span style="color:#ff0;font-weight:bold">30</span>,         <span style="color:#007f7f">//post超时时间(秒)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_message_format:<span style="color:#0ff;font-weight:bold">&#34;array&#34;</span>,    <span style="color:#007f7f">//&#34;string&#34;或&#34;array&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_cors:        <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否允许跨域请求
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_heartbeat:   <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否启用ws心跳
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        heartbeat_interval: <span style="color:#ff0;font-weight:bold">15000</span>,      <span style="color:#007f7f">//ws心跳间隔(毫秒)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        rate_limit_interval:<span style="color:#ff0;font-weight:bold">500</span>,        <span style="color:#007f7f">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        event_filter:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//json格式的事件过滤器文件路径
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_url: [ <span style="color:#007f7f">//上报地址，可以添加多个url
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#007f7f">// &#34;http://your.address.com:80&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
-</span></span><span style="display:flex;"><span>        ws_reverse_url: [ <span style="color:#007f7f">//反向ws地址，可以添加多个url
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#0ff;font-weight:bold">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#007f7f">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
-</span></span><span style="display:flex;"><span>        ws_reverse_reconnect_interval: <span style="color:#ff0;font-weight:bold">3000</span>, <span style="color:#007f7f">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ws_reverse_reconnect_on_code_1000: <span style="color:#fff;font-weight:bold">true</span>, <span style="color:#007f7f">//反向ws是否在关闭状态码为1000的时候重连
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//通用配置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">general</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">platform</span><span style="color:#f92672">:</span>           <span style="color:#ae81ff">5</span>,      <span style="color:#75715e">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">debug</span><span style="color:#f92672">:</span>              <span style="color:#66d9ef">false</span>,  <span style="color:#75715e">//开启debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use_cqhttp_notice</span><span style="color:#f92672">:</span>  <span style="color:#66d9ef">true</span>,   <span style="color:#75715e">//是否使用cqhttp标准的notice事件格式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span>               <span style="color:#e6db74">&#34;localhost&#34;</span>,  <span style="color:#75715e">//监听主机名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">port</span><span style="color:#f92672">:</span>               <span style="color:#ae81ff">5700</span>,       <span style="color:#75715e">//端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use_http</span><span style="color:#f92672">:</span>           <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//启用http
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use_ws</span><span style="color:#f92672">:</span>             <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//启用正向ws，和http使用相同地址和端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">access_token</span><span style="color:#f92672">:</span>       <span style="color:#e6db74">&#34;&#34;</span>,         <span style="color:#75715e">//访问api的token
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">secret</span><span style="color:#f92672">:</span>             <span style="color:#e6db74">&#34;&#34;</span>,         <span style="color:#75715e">//上报数据的sha1签名密钥
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">post_timeout</span><span style="color:#f92672">:</span>       <span style="color:#ae81ff">30</span>,         <span style="color:#75715e">//post超时时间(秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">post_message_format</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;array&#34;</span>,    <span style="color:#75715e">//&#34;string&#34;或&#34;array&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">enable_cors</span><span style="color:#f92672">:</span>        <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//是否允许跨域请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">enable_heartbeat</span><span style="color:#f92672">:</span>   <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//是否启用ws心跳
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">heartbeat_interval</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15000</span>,      <span style="color:#75715e">//ws心跳间隔(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">rate_limit_interval</span><span style="color:#f92672">:</span><span style="color:#ae81ff">500</span>,        <span style="color:#75715e">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">event_filter</span><span style="color:#f92672">:</span>       <span style="color:#e6db74">&#34;&#34;</span>,         <span style="color:#75715e">//json格式的事件过滤器文件路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">post_url</span><span style="color:#f92672">:</span> [ <span style="color:#75715e">//上报地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// &#34;http://your.address.com:80&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ws_reverse_url</span><span style="color:#f92672">:</span> [ <span style="color:#75715e">//反向ws地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ws_reverse_reconnect_interval</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>, <span style="color:#75715e">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">ws_reverse_reconnect_on_code_1000</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">//反向ws是否在关闭状态码为1000的时候重连
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    },
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//每个账号的单独配置(用于覆盖通用配置)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#ff0;font-weight:bold">147258369</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//每个账号的单独配置(用于覆盖通用配置)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">147258369</span><span style="color:#f92672">:</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 安全注意：
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 安全注意：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
 </span></span></span></code></pre></div><p>终极防风控：</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#0ff;font-weight:bold">&#34;use strict&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 将此文件更名为config.js才能生效哦
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
-</span></span><span style="display:flex;"><span>module.exports = {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;use strict&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将此文件更名为config.js才能生效哦
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//通用配置
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    general: {
-</span></span><span style="display:flex;"><span>        platform:           <span style="color:#ff0;font-weight:bold">3</span>,      <span style="color:#007f7f">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        debug:              <span style="color:#fff;font-weight:bold">false</span>,  <span style="color:#007f7f">//开启debug
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_cqhttp_notice:  <span style="color:#fff;font-weight:bold">true</span>,   <span style="color:#007f7f">//是否使用cqhttp标准的notice事件格式
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>
-</span></span><span style="display:flex;"><span>        host:               <span style="color:#0ff;font-weight:bold">&#34;localhost&#34;</span>,  <span style="color:#007f7f">//监听主机名
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        port:               <span style="color:#ff0;font-weight:bold">5700</span>,       <span style="color:#007f7f">//端口
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_http:           <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用http
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        use_ws:             <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//启用正向ws，和http使用相同地址和端口
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        access_token:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//访问api的token
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        secret:             <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//上报数据的sha1签名密钥
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_timeout:       <span style="color:#ff0;font-weight:bold">30</span>,         <span style="color:#007f7f">//post超时时间(秒)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_message_format:<span style="color:#0ff;font-weight:bold">&#34;array&#34;</span>,    <span style="color:#007f7f">//&#34;string&#34;或&#34;array&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_cors:        <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否允许跨域请求
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        enable_heartbeat:   <span style="color:#fff;font-weight:bold">false</span>,      <span style="color:#007f7f">//是否启用ws心跳
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        heartbeat_interval: <span style="color:#ff0;font-weight:bold">15000</span>,      <span style="color:#007f7f">//ws心跳间隔(毫秒)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        rate_limit_interval:<span style="color:#ff0;font-weight:bold">500</span>,        <span style="color:#007f7f">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        event_filter:       <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>,         <span style="color:#007f7f">//json格式的事件过滤器文件路径
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        post_url: [ <span style="color:#007f7f">//上报地址，可以添加多个url
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#007f7f">// &#34;http://your.address.com:80&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
-</span></span><span style="display:flex;"><span>        ws_reverse_url: [ <span style="color:#007f7f">//反向ws地址，可以添加多个url
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>            <span style="color:#0ff;font-weight:bold">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#007f7f">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ],
-</span></span><span style="display:flex;"><span>        ws_reverse_reconnect_interval: <span style="color:#ff0;font-weight:bold">3000</span>, <span style="color:#007f7f">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>        ws_reverse_reconnect_on_code_1000: <span style="color:#fff;font-weight:bold">true</span>, <span style="color:#007f7f">//反向ws是否在关闭状态码为1000的时候重连
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//通用配置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">general</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">platform</span><span style="color:#f92672">:</span>           <span style="color:#ae81ff">3</span>,      <span style="color:#75715e">//1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">debug</span><span style="color:#f92672">:</span>              <span style="color:#66d9ef">false</span>,  <span style="color:#75715e">//开启debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use_cqhttp_notice</span><span style="color:#f92672">:</span>  <span style="color:#66d9ef">true</span>,   <span style="color:#75715e">//是否使用cqhttp标准的notice事件格式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span>               <span style="color:#e6db74">&#34;localhost&#34;</span>,  <span style="color:#75715e">//监听主机名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">port</span><span style="color:#f92672">:</span>               <span style="color:#ae81ff">5700</span>,       <span style="color:#75715e">//端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use_http</span><span style="color:#f92672">:</span>           <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//启用http
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">use_ws</span><span style="color:#f92672">:</span>             <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//启用正向ws，和http使用相同地址和端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">access_token</span><span style="color:#f92672">:</span>       <span style="color:#e6db74">&#34;&#34;</span>,         <span style="color:#75715e">//访问api的token
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">secret</span><span style="color:#f92672">:</span>             <span style="color:#e6db74">&#34;&#34;</span>,         <span style="color:#75715e">//上报数据的sha1签名密钥
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">post_timeout</span><span style="color:#f92672">:</span>       <span style="color:#ae81ff">30</span>,         <span style="color:#75715e">//post超时时间(秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">post_message_format</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;array&#34;</span>,    <span style="color:#75715e">//&#34;string&#34;或&#34;array&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">enable_cors</span><span style="color:#f92672">:</span>        <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//是否允许跨域请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">enable_heartbeat</span><span style="color:#f92672">:</span>   <span style="color:#66d9ef">false</span>,      <span style="color:#75715e">//是否启用ws心跳
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">heartbeat_interval</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15000</span>,      <span style="color:#75715e">//ws心跳间隔(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">rate_limit_interval</span><span style="color:#f92672">:</span><span style="color:#ae81ff">500</span>,        <span style="color:#75715e">//使用_rate_limited后缀限速调用api的排队间隔时间(毫秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">event_filter</span><span style="color:#f92672">:</span>       <span style="color:#e6db74">&#34;&#34;</span>,         <span style="color:#75715e">//json格式的事件过滤器文件路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">post_url</span><span style="color:#f92672">:</span> [ <span style="color:#75715e">//上报地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// &#34;http://your.address.com:80&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ws_reverse_url</span><span style="color:#f92672">:</span> [ <span style="color:#75715e">//反向ws地址，可以添加多个url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#34;ws://127.0.0.1:8080/qq/receive&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ws_reverse_reconnect_interval</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>, <span style="color:#75715e">//反向ws断线重连间隔(毫秒)，设为负数直接不重连
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">ws_reverse_reconnect_on_code_1000</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">//反向ws是否在关闭状态码为1000的时候重连
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    },
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">//每个账号的单独配置(用于覆盖通用配置)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#ff0;font-weight:bold">147258369</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//每个账号的单独配置(用于覆盖通用配置)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">147258369</span><span style="color:#f92672">:</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// 安全注意：
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 安全注意：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。
 </span></span></span></code></pre></div><h3 id="4编译docker-image">4、编译docker image</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t yongs/node-onebot:latest .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t yongs/node-onebot:latest .
 </span></span></code></pre></div><p>yongs自定义的，随便起，一定不要忘了 最后有个<u> . </u>表示在当前目录文件编译</p>
 <h3 id="5启动image">5、启动image</h3>
 <p>用的是docker-compose启动的，刚才拉的代码已经有yaml文件了，</p>
 <p>需要注意 image名字是刚才编译的名字，不知道可以用</p>
 <p>docker images 查看，修改image名字即可</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">miraiok</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">image</span>: yongs/node-onebot
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">restart</span>: always
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">network_mode</span>: <span style="color:#0ff;font-weight:bold">&#34;host&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>      - ./config.js:/root/config.js
-</span></span><span style="display:flex;"><span>      - ./data:/app/data
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">stdin_open</span>: <span style="color:#fff;font-weight:bold">true</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">tty</span>: <span style="color:#fff;font-weight:bold">true</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">container_name</span>: docker-onebot
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose up -d
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">miraiok</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">yongs/node-onebot</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">network_mode</span>: <span style="color:#e6db74">&#34;host&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./config.js:/root/config.js</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./data:/app/data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">stdin_open</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tty</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">docker-onebot</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose up -d
 </span></span></code></pre></div><h3 id="6查看日志扫码登录不能登录进入容器内扫码">6、查看日志，<del>扫码登录，不能登录进入容器内扫码</del></h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#查看日志</span>
-</span></span><span style="display:flex;"><span>docker logs -f -n <span style="color:#ff0;font-weight:bold">500</span> docker-onebot
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#进入容器</span>
-</span></span><span style="display:flex;"><span>docker <span style="color:#fff;font-weight:bold">exec</span> -it docker-onebot /bin/sh
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#执行登录</span>
-</span></span><span style="display:flex;"><span>node main <span style="color:#0ff;font-weight:bold">&#34;botqq号&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#查看日志</span>
+</span></span><span style="display:flex;"><span>docker logs -f -n <span style="color:#ae81ff">500</span> docker-onebot
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#进入容器</span>
+</span></span><span style="display:flex;"><span>docker exec -it docker-onebot /bin/sh
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#执行登录</span>
+</span></span><span style="display:flex;"><span>node main <span style="color:#e6db74">&#34;botqq号&#34;</span>
 </span></span></code></pre></div><p>给小助手发送命令看是否成功，比如 发送 name</p>
 <p>发送 淘宝京豆拼多多链接看是否回复，回复即部署成功。</p>
 <p>登录成功后，重启docker即可</p>

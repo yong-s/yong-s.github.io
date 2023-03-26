@@ -17,38 +17,38 @@
       <description>一、docker-compose 编排文件 创建docker-compose.yaml文</description>
       <content:encoded><![CDATA[<h3 id="一docker-compose-编排文件">一、docker-compose 编排文件</h3>
 <p>创建<code>docker-compose.yaml</code>文件并拷贝下面内容</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">go-cqhttp</span>:
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">image</span>: mzzsfy/go-cqhttp:latest
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">container_name</span>: go-cqhttp
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>       - ./data:/data
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">restart</span>: always
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">#    - token=$Yourtoken #替换为自己生成的token</span>
-</span></span><span style="display:flex;"><span>       - ws_url=&#39;ws://sillygirl:8080/qq/receive&#39;
-</span></span><span style="display:flex;"><span>       - TZ=Asia/Shanghai
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">networks</span>:
-</span></span><span style="display:flex;"><span>      - sillygirl
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">depends_on</span>:
-</span></span><span style="display:flex;"><span>       - sillygirl
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">go-cqhttp</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mzzsfy/go-cqhttp:latest</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">go-cqhttp</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">./data:/data</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    - token=$Yourtoken #替换为自己生成的token</span>
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">ws_url=&#39;ws://sillygirl:8080/qq/receive&#39;</span>
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">sillygirl</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">sillygirl</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sillygirl</span>:
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">image</span>: mzzsfy/sillygirl:latest
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">container_name</span>: sillygirl   
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>       - ./sillyGirl:/etc/sillyGirl
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">restart</span>: always
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">#    - set__qq__token=$Yourtoken #替换为自己生成的token</span>
-</span></span><span style="display:flex;"><span>       - TZ=Asia/Shanghai
-</span></span><span style="display:flex;"><span>     <span style="font-weight:bold">networks</span>:
-</span></span><span style="display:flex;"><span>      - sillygirl
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sillygirl</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mzzsfy/sillygirl:latest</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">sillygirl   </span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">./sillyGirl:/etc/sillyGirl</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    - set__qq__token=$Yourtoken #替换为自己生成的token</span>
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">sillygirl</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">networks</span>:
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">sillygirl</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sillygirl</span>:
 </span></span></code></pre></div><p><code>docker-compsoe up -d</code> 启动</p>
 <p><code>docker-compose logs -f</code> 查看日志</p>
 <h3 id="二faq">二、FAQ</h3>

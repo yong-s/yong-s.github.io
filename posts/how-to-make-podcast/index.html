@@ -11,9 +11,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/posts/how-to-make-podcast/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7953d850267de3ad5760a191a6c9ce3e48933008c75e63d0290a98329b8d0783.css" integrity="sha256-eVPYUCZ9461XYKGRpsnOPkiTMAjHXmPQKQqYMpuNB4M=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f5231b555ab2c17e74d4c0d8c9129738b873255e869390a08e9569026e292b93.css" integrity="sha256-9SMbVVqywX501MDYyRKXOLhzJV6Gk5CgjpVpAm4pK5M=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -110,7 +108,7 @@ if (!doNotTrack) {
   "keywords": [
     "podcast", "docker", "hugo"
   ],
-  "articleBody": " 引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；\n在寻找解决方案时发现用自建播客来实现下载音乐方案可行，于是就有了下面的教程\nWhat 播客（podcast）创作者将音频或视频上传至RSS或在线播客平台，听众或观众则通过软件获取节目更新。\nHow 制作过程不说了，来谈谈发布过程，很简单，一个支持RSS的网站发布音频信息供用户拉取，一个音频托管平台存放音频\n网站直接Hugo搭建，用zen主题支持podcast，放在GitHub page上，域名可以在freedom上注册，用cloudflare DNS解析和加速 hugo 搭建播客\n#新建网站 hugo new site podcast #安装 zen主题 git clone https://github.com/frjo/hugo-theme-zen.git themes/zen #在content内新建podcast文件夹，此页面内新增音频 cd content mkdir podcast #podcast的一些设置 #设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可 #podcast 音频下面显示链接，如何取消 vim layouts/partials/podcast.html #注释掉下面行 \"{{ $src }}\"\u003e{{ .Title }} podcast 配置\n#文章顶部新增参数 podcast: mp3: duration: 音频托管平台自建minin服务存储音频 minio服务很强大，感兴趣可以了解一下\ndocker 部署\nversion: '3.3' services: minio: image: quay.io/minio/minio container_name: minio1 ports: - 9090:9090 #控制台端口 - 9000:9000 #API端口 volumes: - './data:/data' - './config:/root/.minio' environment: MINIO_ROOT_USER: admin #管理用户名 MINIO_ROOT_PASSWORD: admin #管理密码 command: server /data --console-address ':9090' restart: always 部署成功，ip:9090访问登录\n控制台操作\n1、创建存储桶\ncreate bucket\n2、点击manage，Access Rules\nadd rule\nprefix：*.* access:readonly 3、上传音频\n4、分享文件，链接地址 复制出来，前面ip换成外部ip即可\n把地址贴在上面podcast 参数 mp3 的地方\nenjoy 这样算下来，除了用了一台服务器外，其他全部费用为零，总费用百元不到\n部署全部完成，点击RSS链接放到订阅的地方，尽情享用吧！🎉\n参考：\nZen | Hugo Themes\nGitHub - frjo/hugo-theme-zen: A fast and clean Hugo base theme with css-grid and Hugo pipes support.\n如何零成本开始一档新播客 - Keep Coding\n苹果博客指南\nGitHub - minio/minio: Multi-Cloud Object Storage\nMinIO | The MinIO Quickstart Guide\n自建对象存储Minio - 博客小站\n",
+  "articleBody": " 引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；\n在寻找解决方案时发现用自建播客来实现下载音乐方案可行，于是就有了下面的教程\nWhat 播客（podcast）创作者将音频或视频上传至RSS或在线播客平台，听众或观众则通过软件获取节目更新。\nHow 制作过程不说了，来谈谈发布过程，很简单，一个支持RSS的网站发布音频信息供用户拉取，一个音频托管平台存放音频\n网站直接Hugo搭建，用zen主题支持podcast，放在GitHub page上，域名可以在freedom上注册，用cloudflare DNS解析和加速 hugo 搭建播客\n#新建网站 hugo new site podcast #安装 zen主题 git clone https://github.com/frjo/hugo-theme-zen.git themes/zen #在content内新建podcast文件夹，此页面内新增音频 cd content mkdir podcast #podcast的一些设置 #设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可 #podcast 音频下面显示链接，如何取消 vim layouts/partials/podcast.html #注释掉下面行 ",
   "wordCount" : "776",
   "inLanguage": "zh",
   "datePublished": "2022-07-12T22:04:47+08:00",
@@ -325,49 +323,49 @@ if (!doNotTrack) {
 <li>网站直接Hugo搭建，用zen主题支持podcast，放在GitHub page上，域名可以在freedom上注册，用cloudflare DNS解析和加速</li>
 </ul>
 <p>hugo 搭建播客</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#007f7f">#新建网站</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#新建网站</span>
 </span></span><span style="display:flex;"><span>hugo new site podcast
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#安装 zen主题</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#安装 zen主题</span>
 </span></span><span style="display:flex;"><span>git clone https://github.com/frjo/hugo-theme-zen.git themes/zen
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#在content内新建podcast文件夹，此页面内新增音频</span>
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> content
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#在content内新建podcast文件夹，此页面内新增音频</span>
+</span></span><span style="display:flex;"><span>cd content
 </span></span><span style="display:flex;"><span>mkdir podcast
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#podcast的一些设置</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#podcast的一些设置</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#podcast 音频下面显示链接，如何取消</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#podcast 音频下面显示链接，如何取消</span>
 </span></span><span style="display:flex;"><span>vim layouts/partials/podcast.html
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#注释掉下面行</span>
-</span></span><span style="display:flex;"><span>&lt;figcaption&gt;&lt;a href=<span style="color:#0ff;font-weight:bold">&#34;{{ </span>$src<span style="color:#0ff;font-weight:bold"> }}&#34;</span>&gt;{{ .Title }}&lt;/a&gt;&lt;/figcaption&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#注释掉下面行</span>
+</span></span><span style="display:flex;"><span>&lt;figcaption&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ </span>$src<span style="color:#e6db74"> }}&#34;</span>&gt;<span style="color:#f92672">{{</span> .Title <span style="color:#f92672">}}</span>&lt;/a&gt;&lt;/figcaption&gt;
 </span></span></code></pre></div><p>podcast 配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#007f7f">#文章顶部新增参数</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">podcast</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">mp3</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">duration</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#文章顶部新增参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">podcast</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mp3</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">duration</span>:
 </span></span></code></pre></div><ul>
 <li>音频托管平台自建minin服务存储音频</li>
 </ul>
 <p>minio服务很强大，感兴趣可以了解一下</p>
 <p>docker 部署</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">minio</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">image</span>: quay.io/minio/minio
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">container_name</span>: minio1
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">ports</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#ff0;font-weight:bold">9090</span>:<span style="color:#ff0;font-weight:bold">9090</span>   <span style="color:#007f7f">#控制台端口</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ff0;font-weight:bold">9000</span>:<span style="color:#ff0;font-weight:bold">9000</span>   <span style="color:#007f7f">#API端口</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#0ff;font-weight:bold">&#39;./data:/data&#39;</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#0ff;font-weight:bold">&#39;./config:/root/.minio&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">environment</span>:
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">MINIO_ROOT_USER</span>: admin     <span style="color:#007f7f">#管理用户名</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">MINIO_ROOT_PASSWORD</span>: admin   <span style="color:#007f7f">#管理密码</span>
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">command</span>: server /data --console-address &#39;:9090&#39;
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">restart</span>: always
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">minio</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">quay.io/minio/minio</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">minio1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">9090</span>:<span style="color:#ae81ff">9090</span>   <span style="color:#75715e">#控制台端口</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">9000</span>:<span style="color:#ae81ff">9000</span>   <span style="color:#75715e">#API端口</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;./data:/data&#39;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#39;./config:/root/.minio&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">MINIO_ROOT_USER</span>: <span style="color:#ae81ff">admin    </span> <span style="color:#75715e">#管理用户名</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">MINIO_ROOT_PASSWORD</span>: <span style="color:#ae81ff">admin  </span> <span style="color:#75715e">#管理密码</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">server /data --console-address &#39;:9090&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
 </span></span></code></pre></div><p>部署成功，ip:9090访问登录</p>
 <p>控制台操作</p>
 <p>1、创建存储桶</p>

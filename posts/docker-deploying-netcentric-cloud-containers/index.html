@@ -11,9 +11,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7953d850267de3ad5760a191a6c9ce3e48933008c75e63d0290a98329b8d0783.css" integrity="sha256-eVPYUCZ9461XYKGRpsnOPkiTMAjHXmPQKQqYMpuNB4M=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f5231b555ab2c17e74d4c0d8c9129738b873255e869390a08e9569026e292b93.css" integrity="sha256-9SMbVVqywX501MDYyRKXOLhzJV6Gk5CgjpVpAm4pK5M=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -319,46 +317,46 @@ if (!doNotTrack) {
 <p>开干！</p>
 <h3 id="一挂载ssd挂载过直接跳到第二步">一、挂载ssd（挂载过直接跳到第二步）<a hidden class="anchor" aria-hidden="true" href="#一挂载ssd挂载过直接跳到第二步">#</a></h3>
 <p>硬盘插到N1上</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk   <span style="color:#007f7f">#查看当前磁盘情况</span>
-</span></span><span style="display:flex;"><span>fdisk -l <span style="color:#007f7f">#查看当前未挂载的磁盘</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#假设磁盘名为 dev/sda</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk   <span style="color:#75715e">#查看当前磁盘情况</span>
+</span></span><span style="display:flex;"><span>fdisk -l <span style="color:#75715e">#查看当前未挂载的磁盘</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#假设磁盘名为 dev/sda</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#创建分区</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#创建分区</span>
 </span></span><span style="display:flex;"><span>fdisk  dev/sda
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#输入n, p, 1, 两次回车，wq</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#新建一个主分区，大小整个磁盘，保存写入</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#输入n, p, 1, 两次回车，wq</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#新建一个主分区，大小整个磁盘，保存写入</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#写入文件格式</span>
-</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/sda  <span style="color:#007f7f">#ext4格式</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#写入文件格式</span>
+</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/sda  <span style="color:#75715e">#ext4格式</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#挂载</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#挂载</span>
 </span></span><span style="display:flex;"><span>mount /dev/sda /media/data
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#查看文件</span>
-</span></span><span style="display:flex;"><span>df -lh    <span style="color:#007f7f">#查看到刚才挂载的硬盘</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查看文件</span>
+</span></span><span style="display:flex;"><span>df -lh    <span style="color:#75715e">#查看到刚才挂载的硬盘</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">#设置开机自动挂载</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#设置开机自动挂载</span>
 </span></span><span style="display:flex;"><span>vim /etc/fstab
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f"># 在最后新增一行</span>
-</span></span><span style="display:flex;"><span>/dev/sdb   /media/data    ext4   defaults   <span style="color:#ff0;font-weight:bold">0</span>   <span style="color:#ff0;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在最后新增一行</span>
+</span></span><span style="display:flex;"><span>/dev/sdb   /media/data    ext4   defaults   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><h3 id="二部署">二、部署<a hidden class="anchor" aria-hidden="true" href="#二部署">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir wxedge
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">cd</span> wxedge
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir wxedge
+</span></span><span style="display:flex;"><span>cd wxedge
 </span></span><span style="display:flex;"><span>vim docker-compose.yml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#39;3.3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">services</span>:
-</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">wxedge</span>:
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">container_name</span>: wxedge
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">restart</span>: always
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">privileged</span>: <span style="color:#fff;font-weight:bold">true</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">network_mode</span>: host
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">tmpfs</span>: 
-</span></span><span style="display:flex;"><span>            - /run
-</span></span><span style="display:flex;"><span>            - /tmp
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">volumes</span>:
-</span></span><span style="display:flex;"><span>            - <span style="color:#0ff;font-weight:bold">&#39;/media/data/wxedge:/storage:rw&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">image</span>: onething1/wxedge
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">wxedge</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">wxedge</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">privileged</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">network_mode</span>: <span style="color:#ae81ff">host</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tmpfs</span>: 
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/run</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#ae81ff">/tmp</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#39;/media/data/wxedge:/storage:rw&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">onething1/wxedge</span>
 </span></span></code></pre></div><p>ip:18888 打开 成功🎉🎉🎉</p>
 <p>躺着赚钱吧！</p>
 
