@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>内网穿透 on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+    <description>Recent content in 内网穿透 on 张三的网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 14 Mar 2023 21:12:45 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建 frp 内网穿透服务</title>
+      <link>https://blog.zsan.ml/posts/building-frp-intranet-penetration-service/</link>
+      <pubDate>Tue, 14 Mar 2023 21:12:45 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/building-frp-intranet-penetration-service/</guid>
+      <description>简单搭建frps 内网穿透服务</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>必需：有公网IP的服务器一台</p>
+</blockquote>
+<h2 id="服务端部署">服务端部署</h2>
+<p>在具有公网 IP 的机器上部署</p>
+<p>采用<a href="https://github.com/MvsCode/frps-onekey">一键部署脚本安装</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">700</span> ./install-frps.sh
+</span></span><span style="display:flex;"><span>./install-frps.sh install
+</span></span></code></pre></div><p>简单用法</p>
+<p><code> Usage: /etc/init.d/frps {start|stop|restart|status|config|version}</code></p>
+<h2 id="客户端部署">客户端部署</h2>
+<p>下载<a href="https://github.com/fatedier/frp/releases">Releases · fatedier/frp · GitHub</a></p>
+<p>解压缩下载的压缩包，将其中的 frpc 拷贝到内网服务所在的机器上</p>
+<h2 id="配置">配置</h2>
+<p>这里可以下载配置文件<a href="https://github.com/fatedier/frp/tree/dev/conf">frp/conf at dev · fatedier/frp · GitHub</a>)</p>
+<h3 id="服务端配置">服务端配置</h3>
+<p>下面是服务端的最全配置，一些配置都是可以不用配置的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#75715e"># [common] is integral section</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[common]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A literal address or host name for IPv6 must be enclosed</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># in square brackets, as in &#34;[::1]:80&#34;, &#34;[ipv6-host]:http&#34; or &#34;[ipv6-host%zone]:80&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For single &#34;bind_addr&#34; field, no need square brackets, like &#34;bind_addr = ::&#34;.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bind_addr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0.0.0.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bind_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">7000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># udp port to help make udp hole to penetrate nat</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bind_udp_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">7001</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># udp port used for kcp protocol, it can be same with &#39;bind_port&#39;.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if not set, kcp is disabled in frps.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">kcp_bind_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">7000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># udp port used for quic protocol.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if not set, quic is disabled in frps.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># quic_bind_port = 7002</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># quic protocol options</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># quic_keepalive_period = 10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># quic_max_idle_timeout = 30</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># quic_max_incoming_streams = 100000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># specify which address proxy will listen for, default value is same with bind_addr</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># proxy_bind_addr = 127.0.0.1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if you want to support virtual host, you must set the http port for listening (optional)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Note: http port and https port can be same with bind_port</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vhost_http_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vhost_https_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">443</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># response header timeout(seconds) for vhost http server, default is 60s</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># vhost_http_timeout = 60</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcpmux_httpconnect_port specifies the port that the server listens for TCP</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HTTP CONNECT requests. If the value is 0, the server will not multiplex TCP</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># requests on one single port. If it&#39;s not - it will listen on this value for</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HTTP CONNECT requests. By default, this value is 0.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcpmux_httpconnect_port = 1337</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If tcpmux_passthrough is true, frps won&#39;t do any update on traffic.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcpmux_passthrough = false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># set dashboard_addr and dashboard_port to view dashboard of frps</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard_addr&#39;s default value is same with bind_addr</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard is available only if dashboard_port is set</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 管理面板</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dashboard_addr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0.0.0.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dashboard_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">7500</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard user and passwd for basic auth protect</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dashboard_user</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">admin</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dashboard_pwd</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">admin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard TLS mode</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dashboard_tls_mode</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard_tls_cert_file = server.crt</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard_tls_key_file = server.key</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># enable_prometheus will export prometheus metrics on {dashboard_addr}:{dashboard_port} in /metrics api.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">enable_prometheus</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dashboard assets directory(only for debug mode)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># assets_dir = ./static</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># console or real logFile path like ./frps.log</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log_file</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">./frps.log</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># trace, debug, info, warn, error</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log_level</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">info</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">log_max_days</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># disable log colors when log_file is console, default is false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">disable_log_color</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DetailedErrorsToClient defines whether to send the specific error (with debug info) to frpc. By default, this value is true.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">detailed_errors_to_client</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># authentication_method specifies what authentication method to use authenticate frpc with frps.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If &#34;token&#34; is specified - token will be read into login message.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If &#34;oidc&#34; is specified - OIDC (Open ID Connect) token will be issued using OIDC settings. By default, this value is &#34;token&#34;.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authentication_method</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">token</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># authenticate_heartbeats specifies whether to include authentication token in heartbeats sent to frps. By default, this value is false.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authenticate_heartbeats</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># AuthenticateNewWorkConns specifies whether to include authentication token in new work connections sent to frps. By default, this value is false.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authenticate_new_work_conns</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># auth token</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">12345678</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># oidc_issuer specifies the issuer to verify OIDC tokens with.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># By default, this value is &#34;&#34;.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oidc_issuer</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># oidc_audience specifies the audience OIDC tokens should contain when validated.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># By default, this value is &#34;&#34;.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oidc_audience</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># oidc_skip_expiry_check specifies whether to skip checking if the OIDC token is expired.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># By default, this value is false.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oidc_skip_expiry_check</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># oidc_skip_issuer_check specifies whether to skip checking if the OIDC token&#39;s issuer claim matches the issuer specified in OidcIssuer.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># By default, this value is false.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oidc_skip_issuer_check</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># heartbeat configure, it&#39;s not recommended to modify the default value</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># the default value of heartbeat_timeout is 90. Set negative value to disable it.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># heartbeat_timeout = 90</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># user_conn_timeout configure, it&#39;s not recommended to modify the default value</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># the default value of user_conn_timeout is 10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># user_conn_timeout = 10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># only allow frpc to bind ports you list, if you set nothing, there won&#39;t be any limit</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allow_ports</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2000-3000,3001,3003,4000-50000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pool_count in each proxy will change to max_pool_count if they exceed the maximum value</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">max_pool_count</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># max ports can be used for each client, default value is 0 means no limit</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">max_ports_per_client</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tls_only specifies whether to only accept TLS-encrypted connections. By default, the value is false.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tls_only</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tls_cert_file = server.crt</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tls_key_file = server.key</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tls_trusted_ca_file = ca.crt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if subdomain_host is not empty, you can set subdomain when type is http or https in frpc&#39;s configure file</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># when subdomain is test, the host used by routing is test.frps.com</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">subdomain_host</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">frps.com</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if tcp stream multiplexing is used, default is true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcp_mux = true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># specify keep alive interval for tcp mux.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># only valid if tcp_mux is true.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcp_mux_keepalive_interval = 60</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcp_keepalive specifies the interval between keep-alive probes for an active network connection between frpc and frps.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If negative, keep-alive probes are disabled.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcp_keepalive = 7200</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># custom 404 page for HTTP requests</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># custom_404_page = /path/to/404.html</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># specify udp packet size, unit is byte. If not set, the default value is 1500.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This parameter should be same between client and server.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># It affects the udp and sudp proxy.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">udp_packet_size</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1500</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable golang pprof handlers in dashboard listener.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Dashboard port must be set first</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pprof_enable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[plugin.user-manager]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">addr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">127.0.0.1:9000</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/handler</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ops</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Login</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[plugin.port-manager]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">addr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">127.0.0.1:9001</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/handler</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ops</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">NewProxy</span>
+</span></span></code></pre></div><p>配置完成之后</p>
+<p><code>/etc/init.d/frps start</code></p>
+<p><code>公网IP:dashboard_port</code>访问管理面板</p>
+<h3 id="客户端配置">客户端配置</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[common]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server_addr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">服务端公网IP #服务端bind_addr</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">7000 #服务端bind_port</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">服务端auth_token</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[服务名字]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 远程访问端口</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">remote_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8888</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">tcp</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">local_ip</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.1.9</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">local_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8888</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[服务名字]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 远程访问端口</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">remote_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8889</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">tcp</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">local_ip</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">192.168.1.77</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">local_port</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8889</span>
+</span></span></code></pre></div><p>启动</p>
+<p><code>./frpc -c ./frpc.ini</code></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
