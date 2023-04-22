@@ -132,7 +132,7 @@
 <p>下载<a href="https://github.com/fatedier/frp/releases">Releases · fatedier/frp · GitHub</a></p>
 <p>解压缩下载的压缩包，将其中的 frpc 拷贝到内网服务所在的机器上</p>
 <h2 id="配置">配置</h2>
-<p>这里可以下载配置文件<a href="https://github.com/fatedier/frp/tree/dev/conf">frp/conf at dev · fatedier/frp · GitHub</a>)</p>
+<p>这里可以下载配置文件<a href="https://github.com/fatedier/frp/tree/dev/conf">frp/conf at dev · fatedier/frp · GitHub</a></p>
 <h3 id="服务端配置">服务端配置</h3>
 <p>下面是服务端的最全配置，一些配置都是可以不用配置的</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#75715e"># [common] is integral section</span>
