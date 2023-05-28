@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>存储服务 on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 存储服务 on 张三的网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 14 Mar 2023 21:25:47 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建 MinIO 高性能对象存储</title>
+      <link>https://blog.zsan.ml/posts/minio-service-deployment/</link>
+      <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/minio-service-deployment/</guid>
+      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存</description>
+      <content:encoded><![CDATA[<blockquote>
+<p><strong>MinIO</strong> 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
+</blockquote>
+<p>前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自己搭建一个对象存储服务，然后就了解了<strong>MinIO</strong>，搭建很简单，直接docker部署</p>
+<p>放一个中文的教程<a href="https://yeasy.gitbook.io/docker_practice/appendix/repo/minio">Minio - Docker — 从入门到实践</a>，方便后面来翻阅</p>
+<p><a href="https://min.io/docs/minio/container/index.html">MinIO Object Storage for Container — MinIO Object Storage for Container</a></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

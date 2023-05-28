@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.zsan.ml/tags/docker/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/fireflyiii/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/firefly-iii-install/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E8%AE%B0%E8%B4%A6/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E7%90%86%E8%B4%A2/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E9%A2%84%E7%AE%97/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/</loc>
+    <lastmod>2023-05-28T19:00:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/personalfinance/</loc>
+    <lastmod>2023-05-28T18:48:05+08:00</lastmod>
+  </url><url>
     <loc>https://blog.zsan.ml/tags/chatgpt/</loc>
     <lastmod>2023-03-26T22:08:39+08:00</lastmod>
   </url><url>
@@ -14,17 +44,17 @@
     <loc>https://blog.zsan.ml/posts/add-outdated-info-warning/</loc>
     <lastmod>2023-03-26T22:08:39+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/posts/</loc>
-    <lastmod>2023-05-01T18:32:44+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/</loc>
-    <lastmod>2023-05-01T18:32:44+08:00</lastmod>
-  </url><url>
     <loc>https://blog.zsan.ml/tags/%E8%BF%87%E6%97%B6%E6%8F%90%E9%86%92/</loc>
     <lastmod>2023-03-26T22:08:39+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/</loc>
-    <lastmod>2023-05-01T18:32:44+08:00</lastmod>
+    <loc>https://blog.zsan.ml/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</loc>
+    <lastmod>2023-05-28T17:46:24+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/minio-service-deployment/</loc>
+    <lastmod>2023-05-28T17:46:24+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</loc>
+    <lastmod>2023-05-28T17:46:24+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/nezha/</loc>
     <lastmod>2023-05-01T18:32:44+08:00</lastmod>
@@ -115,9 +145,6 @@
   </url><url>
     <loc>https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/</loc>
     <lastmod>2023-02-01T13:14:22+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/docker/</loc>
-    <lastmod>2023-03-13T13:52:59+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/podcast/</loc>
     <lastmod>2023-02-01T13:14:22+08:00</lastmod>

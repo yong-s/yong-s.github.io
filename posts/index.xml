@@ -7,7 +7,219 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 26 Mar 2023 11:40:12 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 May 2023 18:09:34 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人理财工具-Firefly Iii安装</title>
+      <link>https://blog.zsan.ml/posts/firefly-iii-install/</link>
+      <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/firefly-iii-install/</guid>
+      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux 省流版 docker一把过 1、</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>⚠️：你必须准备</p>
+<p>域名：国内可能需要备案</p>
+<p>服务器：Linux</p>
+</blockquote>
+<h2 id="省流版">省流版</h2>
+<h3 id="docker一把过">docker一把过</h3>
+<p>1、首先新建文件夹，比如<strong>fireflyiii</strong></p>
+<p><code>cd fireflyiii</code>，创建<code>docker-compose.yml</code></p>
+<p>拷贝下面,把<code>{{}}</code>内的改为自己的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">nginx-proxy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginxproxy/nginx-proxy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">nginx-proxy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;80:80&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;443:443&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/var/run/docker.sock:/tmp/docker.sock:ro</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./certs:/etc/nginx/certs:ro</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./vhost:/etc/nginx/vhost.d</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./html:/usr/share/nginx/html</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">nginx-proxy-acme</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginxproxy/acme-companion</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">nginx-proxy-acme</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/var/run/docker.sock:/var/run/docker.sock:ro</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./acme:/etc/acme.sh</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./certs:/etc/nginx/certs</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./vhost:/etc/nginx/vhost.d</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./html:/usr/share/nginx/html</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 警告接收email地址</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DEFAULT_EMAIL={{acme@fireflyiii.com}}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">NGINX_PROXY_CONTAINER=nginx-proxy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">nginx-proxy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">app</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">fireflyiii/core:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">firefly_app</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./firefly_iii_upload:/var/www/html/storage/upload</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env_file</span>: <span style="color:#ae81ff">.env</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expose</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8080&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 这里要改为自己的域名</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">VIRTUAL_HOST={{fireflyiii.com}}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">VIRTUAL_PORT=8080</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">LETSENCRYPT_HOST={{fireflyiii.com}}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">LETSENCRYPT_EMAIL={{acme@fireflyiii.com}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># docker 20.10.10 以上使用最新</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mariadb:latest </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># image: mariadb:10.7.8-focal</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">firefly_db</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">fireflyiiidb</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 和下面.env 配置文件内一致</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_RANDOM_ROOT_PASSWORD=yes</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_USER=firefly</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_PASSWORD={{.env内的}}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_DATABASE=firefly</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./firefly_iii_db:/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cron</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">alpine</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">firefly_cron</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用登录之后的选项--命令行令牌的</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">sh -c &#34;echo \&#34;0 3 * * * wget -qO- http://app:8080/api/v1/cron/{{登录之后的选项--命令行令牌获取}}\&#34; | crontab - &amp;&amp; crond -f -L /dev/stdout&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">redis</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">redis:6.0.9</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">redis</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>: 
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./redis/data:/data</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./redis/logs:/var/log/redis</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./redis/conf/redis.conf:/etc/redis/redis.conf</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/etc/localtime:/etc/localtime:ro</span> <span style="color:#75715e"># 设置容器时区与宿主机保持一致</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">TZ=Asia/Shanghai</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">LANG=en_US.UTF-8</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">redis-server /etc/redis/redis.conf</span> <span style="color:#75715e"># 启动redis命令</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">firefly_iii_upload</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">firefly_iii_db</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">certs</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">vhost</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">html</span>:
+</span></span></code></pre></div><p>2、修改配置文件</p>
+<h4 id="fireflyiii配置文件">fireflyiii配置文件</h4>
+<p>下载<code>wget https://raw.githubusercontent.com/firefly-iii/firefly-iii/v6.0.11/.env.example</code></p>
+<p><code>cp .env.example .env</code></p>
+<p>根据自己需要自行修改即可，简单记下配置redis</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># If you&#39;re looking for performance improvements, you could install memcached or redis
+</span></span><span style="display:flex;"><span>CACHE_DRIVER=redis
+</span></span><span style="display:flex;"><span>SESSION_DRIVER=redis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># If you set either of the options above to &#39;redis&#39;, you might want to update these settings too
+</span></span><span style="display:flex;"><span># If you use Docker or similar, you can set REDIS_HOST_FILE, REDIS_PASSWORD_FILE or
+</span></span><span style="display:flex;"><span># REDIS_PORT_FILE to set the value from a file instead of from an environment variable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># can be tcp, unix or http
+</span></span><span style="display:flex;"><span>REDIS_SCHEME=tcp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># use only when using &#39;unix&#39; for REDIS_SCHEME. Leave empty otherwise.
+</span></span><span style="display:flex;"><span>REDIS_PATH=
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># use only when using &#39;tcp&#39; or &#39;http&#39; for REDIS_SCHEME. Leave empty otherwise.
+</span></span><span style="display:flex;"><span>REDIS_HOST=redis
+</span></span><span style="display:flex;"><span>REDIS_PORT=6379
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Use only with Redis 6+ with proper ACL set. Leave empty otherwise.
+</span></span><span style="display:flex;"><span>REDIS_USERNAME=
+</span></span><span style="display:flex;"><span>REDIS_PASSWORD=
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># always use quotes and make sure redis db &#34;0&#34; and &#34;1&#34; exists. Otherwise change accordingly.
+</span></span><span style="display:flex;"><span>REDIS_DB=&#34;0&#34;
+</span></span><span style="display:flex;"><span>REDIS_CACHE_DB=&#34;1&#34;
+</span></span></code></pre></div><h4 id="redis-配置文件">redis 配置文件</h4>
+<p>下载<code>wget https://raw.githubusercontent.com/redis/redis/unstable/redis.conf</code></p>
+<p>根据自己需要自行修改即可</p>
+<p>最后<code>docker-compose up -d</code>启动</p>
+<p><code>docker-compose logs -f --tail=500</code> 查看日志</p>
+<p>现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎</p>
+<p>浏览器输入域名即可，英文不好，点击<code>选项-偏好设定</code>修改语言为中文</p>
+<h2 id="详细版">详细版</h2>
+<p>空了再写吧！🤣</p>
+<h2 id="备份">备份</h2>
+<p>财务数据特别重要，所以一定要备份</p>
+<h3 id="下载sh">下载sh</h3>
+<p><a href="https://gist.github.com/dawid-czarnecki/8fa3420531f88b2b2631250854e23381#file-firefly-iii-backuper-sh">Script to backup Firefly III database, uploads and config files installed with docker-compose · GitHub</a></p>
+<p>这个shell 根据命令执行即可备份</p>
+<h3 id="添加为定时任务">添加为定时任务</h3>
+<p>新建backup.sh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#本地备份</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;开始备份&#34;</span>
+</span></span><span style="display:flex;"><span>bash /path/to/fireflyiii/firefly-iii-backuper.sh backup /path/to/fireflyiii/backup/firefly-<span style="color:#66d9ef">$(</span>date <span style="color:#e6db74">&#39;+%F&#39;</span><span style="color:#66d9ef">)</span>.tar
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;备份完成&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#备份到tg群里,不要删掉即可</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define variables</span>
+</span></span><span style="display:flex;"><span>token<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>chat_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>message_thread_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>file_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/path/to/fireflyiii/backup/firefly-</span><span style="color:#66d9ef">$(</span>date <span style="color:#e6db74">&#39;+%F&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.tar&#34;</span>
+</span></span><span style="display:flex;"><span>text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;备份成功&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Send file to telegram</span>
+</span></span><span style="display:flex;"><span>curl -F chat_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$chat_id<span style="color:#e6db74">&#34;</span> -F message_thread_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$message_thread_id<span style="color:#e6db74">&#34;</span> -F document<span style="color:#f92672">=</span>@<span style="color:#e6db74">&#34;</span>$file_path<span style="color:#e6db74">&#34;</span> https://api.telegram.org/bot$token/sendDocument
+</span></span></code></pre></div><p>添加到cron内</p>
+<p><code>3 1 * * * bash /path/to/fireflyiii/backup.sh</code></p>
+<p>参考</p>
+<blockquote>
+<p><a href="https://docs.firefly-iii.org/firefly-iii/installation/docker/?mtm_campaign=docu-internal&amp;mtm_kwd=docker">Docker - Firefly III documentation</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>个人理财</title>
+      <link>https://blog.zsan.ml/posts/personalfinance/</link>
+      <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/personalfinance/</guid>
+      <description>关于个人理财，我们共同成长</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>预算是您财务基础的基石。有好的预算才能知道💰花哪里了</p>
+</blockquote>
+<h2 id="503020-预算法则">50/30/20 预算法则</h2>
+<p>50/30/20 预算法则是一种简单的预算策略，可以帮助您优先考虑财务目标：</p>
+<p>50% 用于必需品：将收入的 50% 用于支付基本生活费用，如住房、水电费、日常食品购买和交通费。</p>
+<p>30% 用于愿望：将收入的 30% 用于自由支配花费和非必需开销，如外出就餐、娱乐、爱好和购物。</p>
+<p>20% 用于储蓄和债务偿还：将收入的 20% 用于储蓄、投资和偿还债务。</p>
+<p>这个体系的目的是确保您的基本需求得到满足，有一定的自由支配费用空间，并优先为未来储蓄和管理债务。</p>
+<p>这些百分比并非一成不变。如果资金紧张，您可能需要将收入的更高比例用于支付必需品。如果您的债务很大，您可以选择分配超过 20% 的收入用于债务偿还，以加快进度。同样，如果您的储蓄目标雄心勃勃，可以将更高的比例分配给储蓄。</p>
+<h3 id="工具">工具</h3>
+<p><a href="https://blog.zsan.ml/posts/firefly-iii-install/">个人理财工具-Firefly Iii安装 | 张三的网络日志</a></p>
+<blockquote>
+<p>理财是非常系统的，个人方面也是，我会通过自己不断的输入来输出关于理财的普通人的系统框架，慢慢来，不着急🍵</p>
+</blockquote>
+<p>参考：</p>
+<blockquote>
+<p><a href="https://www.reddit.com/r/personalfinance/wiki/budgeting/">Personal Finance wiki</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>PaperMod文章添加过时提醒</title>
       <link>https://blog.zsan.ml/posts/add-outdated-info-warning/</link>
@@ -107,6 +319,22 @@
 <p><a href="https://github.com/olOwOlo/hugo-theme-even/blob/master/layouts/partials/post/outdated-info-warning.html">hugo-theme</a></p>
 <p><a href="https://chat.openai.com/">ChatGPT</a></p>
 </blockquote>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>搭建 MinIO 高性能对象存储</title>
+      <link>https://blog.zsan.ml/posts/minio-service-deployment/</link>
+      <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/minio-service-deployment/</guid>
+      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存</description>
+      <content:encoded><![CDATA[<blockquote>
+<p><strong>MinIO</strong> 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
+</blockquote>
+<p>前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自己搭建一个对象存储服务，然后就了解了<strong>MinIO</strong>，搭建很简单，直接docker部署</p>
+<p>放一个中文的教程<a href="https://yeasy.gitbook.io/docker_practice/appendix/repo/minio">Minio - Docker — 从入门到实践</a>，方便后面来翻阅</p>
+<p><a href="https://min.io/docs/minio/container/index.html">MinIO Object Storage for Container — MinIO Object Storage for Container</a></p>
 ]]></content:encoded>
     </item>
     
