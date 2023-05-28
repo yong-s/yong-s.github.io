@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>hugo更换404公益页面 | 张三的网络日志</title>
+<meta name="keywords" content="404, 公益">
+<meta name="description" content="layouts文件夹，新建404.html &lt;!-- console.error(&#34;4">
+<meta name="author" content="
+作者:&nbsp;张三">
+<link rel="canonical" href="https://blog.zsan.ml/posts/404public-interest/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.81d291b5bc5da0ffa35066fdfd1ad72fce6ceba3c1990d0831362f7a4aadf938.css" integrity="sha256-gdKRtbxdoP&#43;jUGb9/RrXL85s66PBmQ0IMTYvekqt&#43;Tg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2X66ETNYD8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="hugo更换404公益页面" />
+<meta property="og:description" content="layouts文件夹，新建404.html &lt;!-- console.error(&#34;4" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zsan.ml/posts/404public-interest/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-28T19:49:45+08:00" />
+<meta property="article:modified_time" content="2023-05-28T19:52:24+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hugo更换404公益页面"/>
+<meta name="twitter:description" content="layouts文件夹，新建404.html &lt;!-- console.error(&#34;4"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.zsan.ml/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "hugo更换404公益页面",
+      "item": "https://blog.zsan.ml/posts/404public-interest/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "hugo更换404公益页面",
+  "name": "hugo更换404公益页面",
+  "description": "layouts文件夹，新建404.html \u0026lt;!-- console.error(\u0026#34;4",
+  "keywords": [
+    "404", "公益"
+  ],
+  "articleBody": "layouts文件夹，新建404.html\n\u003c!DOCTYPE HTML\u003e \u003chtml\u003e \u003chead\u003e \u003cmeta charset=\"UTF-8\" /\u003e \u003cmeta name=\"description\" content=\"公益404页面是由腾讯公司员工志愿者自主发起的互联网公益活动。\" /\u003e \u003clink rel=\"icon\" href=\"data:image/gif;base64,R0lGODdhIAAgANUAAAAAAAgFBgYICAwMDBAPDxAQDxQTFBUYFxcaGRwcHCQkJCQoJykqKTQ0ND09PUJCQktMTFZWVltcXF1hYGNjY2doaGpqanNzc3d5eHp6eoODg4uLi5eXl5mamqOjo62tra+wr7S0tLe5uLu7u7/AwMPEw83NzdbX1tfa2dra2uTk5Ovr6+/w7/T09Pj39/f4+P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAADEALAAAAAAgACAAAAb/QJhwOGyZOpIGQ6FgNCQcU4tIrcJaIwlgy+1uJaOplZqydBOSzGaTkSS6lNN4ONoOAJRQajV0rVAgFF0jcyEAbw9hc1cjD4cAIVZ1DAAXKotEKxkAlIREJ48bYphFGwAKAHJCLWaVo6RFF1sWYnUDDpewVSoOd4QtWgCeMCmXLaqfUyopdF9GWxRiKQAVKh3CRHUdKhQEzFeCAEdbH6uOh28A3ypbCQhbEGIfWx2CCd8wJhB2CpFDIQvuAIBgYkiKN0kASOAzRJYjBwyFrGgAwNGFTFqUAMjwYogpA1woMFwRDgDIDUQ2LQGAcoiGLRr2QRgp8yUADURMMWFJRYMH3BglJOQSwq0EDA84c56ilOGVLisqKUaISKVFihIjRJRI4XTIiggAGggygKxICAoguSDI0/UEyAnXAJTLJMtLlwxUYcwD0MEEtIgtBKGi0OHDh3qn8IwKvEVKuGHXGAwI8apFCAOUOvxzBqNOAVzgthi1UgKasl7YrtS9MMXI6DEjpKieNWoaSA1dF7V4+QafkNKoLOlSIQsVCUkmATgYwWIRCxEOAByANKc0AAEAJnzYI6bFihQfBAUQjSlF3S0GIqjZgCFC2i0XfM/BUtJuSEVPjdRTwsQJYdljBAEAOw==\"\u003e \u003ctitle\u003e404 您访问的页面搞丢了\u003c/title\u003e \u003c/head\u003e \u003cbody\u003e \u003cscript\u003e let s = document.createElement(\"script\"); s.src=\"//volunteer.cdn-go.cn/404/latest/404.js\" s.crossorigin=\"anonymous\" document.getElementsByTagName(\"head\")[0].appendChild(s); \u003c/script\u003e \u003c/body\u003e \u003c/html\u003e ",
+  "wordCount" : "216",
+  "inLanguage": "zh",
+  "datePublished": "2023-05-28T19:49:45+08:00",
+  "dateModified": "2023-05-28T19:52:24.17576538+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "张三"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.zsan.ml/posts/404public-interest/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "张三的网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.zsan.ml/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <h1 class="post-title">
+      hugo更换404公益页面
+    </h1>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-05-28 19:49:45 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-28&nbsp;|&nbsp;字数:&nbsp;216字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;张三
+
+</div>
+  </header> 
+
+  
+  <div class="post-content"><p>layouts文件夹，新建<code>404.html</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">console.error(&#34;404，您访问的脚本 &#34;+document.currentScript.src+&#34; 搞丢了！&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">((s)=&gt;{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	s.src=&#34;https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	s.referrerScript=document.currentScript.src
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	s.onload=()=&gt;{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		(new Aegis({id:&#39;aorgLlJTLfQVrxAwGe&#39;,uin:&#39;&#39;,reportApiSpeed: true,reportAssetSpeed: true})).report(&#34;网页 &#34;+location.href+&#34; 引用 &#34;+s.referrerScript+&#34; 脚本触发了404&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	document.getElementsByTagName(&#34;head&#34;)[0].appendChild(s)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">})(document.createElement(&#34;script&#34;))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/*--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE HTML&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;description&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;公益404页面是由腾讯公司员工志愿者自主发起的互联网公益活动。&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;icon&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data:image/gif;base64,R0lGODdhIAAgANUAAAAAAAgFBgYICAwMDBAPDxAQDxQTFBUYFxcaGRwcHCQkJCQoJykqKTQ0ND09PUJCQktMTFZWVltcXF1hYGNjY2doaGpqanNzc3d5eHp6eoODg4uLi5eXl5mamqOjo62tra+wr7S0tLe5uLu7u7/AwMPEw83NzdbX1tfa2dra2uTk5Ovr6+/w7/T09Pj39/f4+P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAADEALAAAAAAgACAAAAb/QJhwOGyZOpIGQ6FgNCQcU4tIrcJaIwlgy+1uJaOplZqydBOSzGaTkSS6lNN4ONoOAJRQajV0rVAgFF0jcyEAbw9hc1cjD4cAIVZ1DAAXKotEKxkAlIREJ48bYphFGwAKAHJCLWaVo6RFF1sWYnUDDpewVSoOd4QtWgCeMCmXLaqfUyopdF9GWxRiKQAVKh3CRHUdKhQEzFeCAEdbH6uOh28A3ypbCQhbEGIfWx2CCd8wJhB2CpFDIQvuAIBgYkiKN0kASOAzRJYjBwyFrGgAwNGFTFqUAMjwYogpA1woMFwRDgDIDUQ2LQGAcoiGLRr2QRgp8yUADURMMWFJRYMH3BglJOQSwq0EDA84c56ilOGVLisqKUaISKVFihIjRJRI4XTIiggAGggygKxICAoguSDI0/UEyAnXAJTLJMtLlwxUYcwD0MEEtIgtBKGi0OHDh3qn8IwKvEVKuGHXGAwI8apFCAOUOvxzBqNOAVzgthi1UgKasl7YrtS9MMXI6DEjpKieNWoaSA1dF7V4+QafkNKoLOlSIQsVCUkmATgYwWIRCxEOAByANKc0AAEAJnzYI6bFihQfBAUQjSlF3S0GIqjZgCFC2i0XfM/BUtJuSEVPjdRTwsQJYdljBAEAOw==&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">title</span>&gt;404 您访问的页面搞丢了&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;script&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//volunteer.cdn-go.cn/404/latest/404.js&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#34;head&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">s</span>);
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- */ //--&gt;</span>
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.zsan.ml/tags/404/">404</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E5%85%AC%E7%9B%8A/">公益</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.zsan.ml/posts/firefly-iii-install/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>个人理财工具-Firefly Iii安装</span>
+  </a>
+</nav>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo.zsan.ml/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            
+            path: 'window.TWIKOO_MAGIC_PATH||window.location.pathname',
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
