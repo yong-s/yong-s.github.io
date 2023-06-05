@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>保护您的服务器 | 张三的网络日志</title>
+<meta name="keywords" content="安全, 保护, 服务器">
+<meta name="description" content="新买的服务器通常需要一系列保护措施">
+<meta name="author" content="
+作者:&nbsp;张三">
+<link rel="canonical" href="https://blog.zsan.ml/posts/set-up-and-secure/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.81d291b5bc5da0ffa35066fdfd1ad72fce6ceba3c1990d0831362f7a4aadf938.css" integrity="sha256-gdKRtbxdoP&#43;jUGb9/RrXL85s66PBmQ0IMTYvekqt&#43;Tg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2X66ETNYD8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="保护您的服务器" />
+<meta property="og:description" content="新买的服务器通常需要一系列保护措施" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zsan.ml/posts/set-up-and-secure/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-04T16:59:21+08:00" />
+<meta property="article:modified_time" content="2023-06-05T20:18:10+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="保护您的服务器"/>
+<meta name="twitter:description" content="新买的服务器通常需要一系列保护措施"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.zsan.ml/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "保护您的服务器",
+      "item": "https://blog.zsan.ml/posts/set-up-and-secure/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "保护您的服务器",
+  "name": "保护您的服务器",
+  "description": "新买的服务器通常需要一系列保护措施",
+  "keywords": [
+    "安全", "保护", "服务器"
+  ],
+  "articleBody": "执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。\nUbuntu、Debian 和 Kali Linux apt update \u0026\u0026 apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora\ndnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。\n大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。\n使用 timedatectl 输出可用时区列表\ntimedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。\n使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。\ntimedatectl set-timezone 'America/New_York' Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata\n打开 tzdata 工具\ndpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter\n使用箭头键选择您所在的地区，然后按 Enter\n检查时间 使用 date 命令根据您的服务器查看当前日期和时间\nroot@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。\n简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。\n大多数发行版 将 example-hostname 替换为您的选择之一\nhostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析\n在文本编辑器（例如 Nano）中打开 hosts 文件\nnano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.example.com 是 FQDN\n127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行\n127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname 由于这里并没有配置FQDN所以只修改了127.0.1.1\n添加受限用户账户 到目前为止，您已经以 root 用户的身份访问了您的计算实例，该用户拥有无限的权限并且可以执行任何命令——甚至是可能会意外中断您的服务器的命令。我们建议创建一个受限用户帐户并始终使用该帐户。管理任务将使用 sudo 来临时提升您的受限用户的权限，以便您可以管理您的服务器。稍后，当您想要限制用户的 sudo 访问权限时，请参阅 Linux 用户和组。\nUbuntu 和 Debian 创建用户，用你想要的用户名替换 example_user 。然后，系统会要求您为用户分配一个密码：\nadduser example_user 将用户添加到 sudo 组，以便您拥有管理权限：\nadduser example_user sudo CentOS/RHEL Stream 和 Fedora 创建用户，用你想要的用户名替换 example_user ，并指定一个密码：\nuseradd example_user \u0026\u0026 passwd example_user 将用户添加到 wheel 组以获得 sudo 权限：\nusermod -aG wheel example_user 以新用户身份登录 创建受限用户后，断开与计算实例的连接：\nexit 以您的新用户身份重新登录。将 example_user 替换为您的用户名，将示例 IP 地址替换为您实例的 IP 地址：\nssh example_user@192.0.2.1 现在您可以从您的新用户帐户而不是 root 管理您的计算实例。几乎所有超级用户命令都可以使用 sudo （例如： sudo iptables -L -nv ）执行，这些命令将被记录到 /var/log/auth.log 安全访问ssh 默认情况下，密码身份验证用于通过 SSH 连接到您的计算实例。加密密钥对更安全，因为私钥取代了密码，而密码通常更难通过暴力解密。在本节中，我们将创建一个密钥对并将您的系统配置为不接受 SSH 登录的密码。\n创建身份密钥对ssh-key 命令创建\nssh-keygen -b 4096 公钥上传到您的服务器\nLinux 从您的本地计算机：\nssh-copy-id example_user@192.0.2.1 macOS scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys 最后，您需要为公钥目录和密钥文件本身设置权限\nsudo chmod -R 700 ~/.ssh \u0026\u0026 chmod 600 ~/.ssh/authorized_keys 现在退出并重新登录到您的计算实例\nssh守护进程设置 使用 Linux 文本编辑器（例如 nano 或 vim）打开计算实例上的 SSH 配置文件：\nsudo nano /etc/ssh/sshd_config 禁止通过 SSH 进行 root 登录。这要求所有 SSH 连接都由非 root 用户进行。一旦连接了受限用户帐户，就可以通过使用 sudo 或使用 su - 更改为root shell 来访问管理权限。\n# Authentication: ... PermitRootLogin no 禁用 SSH 密码验证。这要求所有通过 SSH 连接的用户都使用密钥身份验证。根据 Linux 发行版，可能需要添加行 PasswordAuthentication ，或者通过删除前导 # 来取消注释。\n# Change to no to disable tunnelled clear text passwords PasswordAuthentication no 只监听一种互联网协议。默认情况下，SSH 守护程序监听通过 IPv4 和 IPv6 的传入连接。除非您需要使用这两种协议通过 SSH 连接到您的计算实例，否则请禁用您不需要的任何一个。这不会在系统范围内禁用该协议，它仅适用于 SSH 守护进程。根据 Linux 发行版，可能需要添加行 AddressFamily ，或者通过删除前导 # 取消注释\nUse the option: 使用选项：\nAddressFamily inet 仅在 IPv4 上侦听。\nAddressFamily inet6 仅在 IPv6 上侦听。\n# Port 22 AddressFamily inet 重新启动 SSH 服务以加载新配置 如果您使用的是使用 systemd 的 Linux 发行版（CentOS 7、Debian 8、Fedora、Ubuntu 15.10+）\nsudo systemctl restart sshd 如果您的初始化系统是 SystemV 或 Upstart（CentOS 6、Debian 7、Ubuntu 14.04）：\nsudo service sshd restart 使用Fail2Ban保护ssh登录 Fail2Ban 是一个应用程序，它可以在登录尝试失败次数过多后禁止 IP 地址登录您的服务器。由于合法登录通常不会超过三次尝试成功（并且使用 SSH 密钥，最多不会超过一次），因此服务器被不成功登录的垃圾邮件表明试图进行恶意访问\nFail2Ban 可以监控多种协议，包括 SSH、HTTP 和 SMTP。默认情况下，Fail2Ban 仅监控 SSH，并且对任何服务器都是一种有用的安全威慑，因为 SSH 守护程序通常配置为持续运行并侦听来自任何远程 IP 地址的连接\n具体可参考这篇\n参考：\n大部分是摘抄下文并做了汉化，国内这些资料太少了😢\nGuides - Setting Up and Securing a Compute Instance\n",
+  "wordCount" : "2248",
+  "inLanguage": "zh",
+  "datePublished": "2023-06-04T16:59:21+08:00",
+  "dateModified": "2023-06-05T20:18:10.304783049+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "张三"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.zsan.ml/posts/set-up-and-secure/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "张三的网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.zsan.ml/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.ml/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <h1 class="post-title">
+      保护您的服务器
+    </h1>
+    <div class="post-description">
+      新买的服务器通常需要一系列保护措施
+    </div>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-06-04 16:59:21 +0800 CST'>2023-06-04</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-05&nbsp;|&nbsp;字数:&nbsp;2248字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;
+作者:&nbsp;张三
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e6%89%a7%e8%a1%8c%e7%b3%bb%e7%bb%9f%e6%9b%b4%e6%96%b0" aria-label="执行系统更新">执行系统更新</a><ul>
+                            
+                    <li>
+                        <a href="#ubuntudebian-%e5%92%8c-kali-linux" aria-label="Ubuntu、Debian 和 Kali Linux">Ubuntu、Debian 和 Kali Linux</a></li>
+                    <li>
+                        <a href="#centosrhel-stream-%e5%92%8c-fedora" aria-label="CentOS/RHEL Stream 和 Fedora">CentOS/RHEL Stream 和 Fedora</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba" aria-label="设置时区">设置时区</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%a4%a7%e5%a4%9a%e6%95%b0%e5%8f%91%e8%a1%8c%e7%89%88" aria-label="大多数发行版">大多数发行版</a></li>
+                    <li>
+                        <a href="#ubuntu-debian-%e5%92%8c-kali-linux" aria-label="Ubuntu, Debian 和 Kali Linux">Ubuntu, Debian 和 Kali Linux</a></li>
+                    <li>
+                        <a href="#%e6%a3%80%e6%9f%a5%e6%97%b6%e9%97%b4" aria-label="检查时间">检查时间</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e9%85%8d%e7%bd%ae%e8%87%aa%e5%ae%9a%e4%b9%89%e4%b8%bb%e6%9c%ba%e5%90%8d" aria-label="配置自定义主机名">配置自定义主机名</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%a4%a7%e5%a4%9a%e6%95%b0%e5%8f%91%e8%a1%8c%e7%89%88-1" aria-label="大多数发行版">大多数发行版</a></li>
+                    <li>
+                        <a href="#%e6%9b%b4%e6%96%b0%e7%b3%bb%e7%bb%9f%e7%9a%84hosts%e6%96%87%e4%bb%b6" aria-label="更新系统的hosts文件">更新系统的<code>hosts</code>文件</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%b7%bb%e5%8a%a0%e5%8f%97%e9%99%90%e7%94%a8%e6%88%b7%e8%b4%a6%e6%88%b7" aria-label="添加受限用户账户">添加受限用户账户</a><ul>
+                            
+                    <li>
+                        <a href="#ubuntu-%e5%92%8c-debian" aria-label="Ubuntu 和 Debian">Ubuntu 和 Debian</a></li>
+                    <li>
+                        <a href="#centosrhel-stream-%e5%92%8c-fedora-1" aria-label="CentOS/RHEL Stream 和 Fedora">CentOS/RHEL Stream 和 Fedora</a></li>
+                    <li>
+                        <a href="#%e4%bb%a5%e6%96%b0%e7%94%a8%e6%88%b7%e8%ba%ab%e4%bb%bd%e7%99%bb%e5%bd%95" aria-label="以新用户身份登录">以新用户身份登录</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%ae%89%e5%85%a8%e8%ae%bf%e9%97%aessh" aria-label="安全访问ssh">安全访问ssh</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%88%9b%e5%bb%ba%e8%ba%ab%e4%bb%bd%e5%af%86%e9%92%a5%e5%af%b9ssh-key" aria-label="创建身份密钥对ssh-key">创建身份密钥对ssh-key</a></li>
+                    <li>
+                        <a href="#ssh%e5%ae%88%e6%8a%a4%e8%bf%9b%e7%a8%8b%e8%ae%be%e7%bd%ae" aria-label="ssh守护进程设置">ssh守护进程设置</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8fail2ban%e4%bf%9d%e6%8a%a4ssh%e7%99%bb%e5%bd%95" aria-label="使用Fail2Ban保护ssh登录">使用Fail2Ban保护ssh登录</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+
+  
+  <div class="post-content"><h2 id="执行系统更新">执行系统更新<a hidden class="anchor" aria-hidden="true" href="#执行系统更新">#</a></h2>
+<p>经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。</p>
+<h3 id="ubuntudebian-和-kali-linux">Ubuntu、Debian 和 Kali Linux<a hidden class="anchor" aria-hidden="true" href="#ubuntudebian-和-kali-linux">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt update <span style="color:#f92672">&amp;&amp;</span> apt upgrade
+</span></span></code></pre></div><h3 id="centosrhel-stream-和-fedora">CentOS/RHEL Stream 和 Fedora<a hidden class="anchor" aria-hidden="true" href="#centosrhel-stream-和-fedora">#</a></h3>
+<p>包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf upgrade
+</span></span></code></pre></div><h2 id="设置时区">设置时区<a hidden class="anchor" aria-hidden="true" href="#设置时区">#</a></h2>
+<p>默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。</p>
+<h3 id="大多数发行版">大多数发行版<a hidden class="anchor" aria-hidden="true" href="#大多数发行版">#</a></h3>
+<p>包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。</p>
+<ol>
+<li>
+<p>使用 <code>timedatectl</code> 输出可用时区列表</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>timedatectl list-timezones
+</span></span></code></pre></div></li>
+<li>
+<p>使用箭头键、 <code>Page Up</code> 和 <code>Page Down</code> 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。</p>
+</li>
+<li>
+<p>使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>timedatectl set-timezone <span style="color:#e6db74">&#39;America/New_York&#39;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="ubuntu-debian-和-kali-linux">Ubuntu, Debian 和 Kali Linux<a hidden class="anchor" aria-hidden="true" href="#ubuntu-debian-和-kali-linux">#</a></h3>
+<p>Ubuntu 和 Debian 都带有一个更友好的工具，称为 <code>tzdata</code></p>
+<ol>
+<li>
+<p>打开 <code>tzdata</code> 工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dpkg-reconfigure tzdata
+</span></span></code></pre></div></li>
+<li>
+<p>使用箭头键选择您选择的大陆，然后按 Enter</p>
+</li>
+<li>
+<p>使用箭头键选择您所在的地区，然后按 Enter</p>
+</li>
+</ol>
+<h3 id="检查时间">检查时间<a hidden class="anchor" aria-hidden="true" href="#检查时间">#</a></h3>
+<p>使用 <code>date</code> 命令根据您的服务器查看当前日期和时间</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@localhost:~# date
+</span></span><span style="display:flex;"><span>Thu Feb <span style="color:#ae81ff">16</span> 12:17:52 EST <span style="color:#ae81ff">2018</span>
+</span></span></code></pre></div><h2 id="配置自定义主机名">配置自定义主机名<a hidden class="anchor" aria-hidden="true" href="#配置自定义主机名">#</a></h2>
+<p>主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。</p>
+<p>简单点就是默认有 <code>locahost</code>变为你设置的新的<code>web-app</code>名字，还可用作系统的 FQDN（完全限定域名）的一部分。</p>
+<h3 id="大多数发行版-1">大多数发行版<a hidden class="anchor" aria-hidden="true" href="#大多数发行版-1">#</a></h3>
+<p>将 <code>example-hostname</code> 替换为您的选择之一</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hostnamectl set-hostname example-hostname
+</span></span></code></pre></div><h3 id="更新系统的hosts文件">更新系统的<code>hosts</code>文件<a hidden class="anchor" aria-hidden="true" href="#更新系统的hosts文件">#</a></h3>
+<p><code>hosts</code> 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析</p>
+<ol>
+<li>
+<p>在文本编辑器（例如 Nano）中打开 <code>hosts</code> 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /etc/hosts
+</span></span></code></pre></div></li>
+<li>
+<p>为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， <code>203.0.113.10</code> 是公共 IP 地址， <code>example-hostname</code> 是本地主机名， <code>example-hostname.example.com</code> 是 FQDN</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>127.0.0.1 localhost.localdomain localhost 
+</span></span><span style="display:flex;"><span>203.0.113.10 example-hostname.example.com example-hostname
+</span></span></code></pre></div></li>
+<li>
+<p>为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>127.0.0.1 localhost.localdomain localhost
+</span></span><span style="display:flex;"><span>203.0.113.10 example-hostname.example.com example-hostname
+</span></span><span style="display:flex;"><span>2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
+</span></span></code></pre></div></li>
+</ol>
+<p>由于这里并没有配置<code>FQDN</code>所以只修改了<code>127.0.1.1</code></p>
+<h2 id="添加受限用户账户">添加受限用户账户<a hidden class="anchor" aria-hidden="true" href="#添加受限用户账户">#</a></h2>
+<p>到目前为止，您已经以 <code>root</code> 用户的身份访问了您的计算实例，该用户拥有无限的权限并且可以执行任何命令——甚至是可能会意外中断您的服务器的命令。我们建议创建一个受限用户帐户并始终使用该帐户。管理任务将使用 <code>sudo</code> 来临时提升您的受限用户的权限，以便您可以管理您的服务器。稍后，当您想要限制用户的 sudo 访问权限时，请参阅 Linux 用户和组。</p>
+<h3 id="ubuntu-和-debian">Ubuntu 和 Debian<a hidden class="anchor" aria-hidden="true" href="#ubuntu-和-debian">#</a></h3>
+<ol>
+<li>
+<p>创建用户，用你想要的用户名替换 <code>example_user</code> 。然后，系统会要求您为用户分配一个密码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adduser example_user
+</span></span></code></pre></div></li>
+<li>
+<p>将用户添加到 <code>sudo</code> 组，以便您拥有管理权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adduser example_user sudo
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="centosrhel-stream-和-fedora-1">CentOS/RHEL Stream 和 Fedora<a hidden class="anchor" aria-hidden="true" href="#centosrhel-stream-和-fedora-1">#</a></h3>
+<ol>
+<li>
+<p>创建用户，用你想要的用户名替换 <code>example_user</code> ，并指定一个密码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>useradd example_user <span style="color:#f92672">&amp;&amp;</span> passwd example_user
+</span></span></code></pre></div></li>
+<li>
+<p>将用户添加到 <code>wheel</code> 组以获得 sudo 权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>usermod -aG wheel example_user
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="以新用户身份登录">以新用户身份登录<a hidden class="anchor" aria-hidden="true" href="#以新用户身份登录">#</a></h3>
+<ol>
+<li>
+<p>创建受限用户后，断开与计算实例的连接：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>exit
+</span></span></code></pre></div></li>
+<li>
+<p>以您的新用户身份重新登录。将 <code>example_user</code> 替换为您的用户名，将示例 IP 地址替换为您实例的 IP 地址：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh example_user@192.0.2.1
+</span></span></code></pre></div></li>
+</ol>
+<p>现在您可以从您的新用户帐户而不是 <code>root</code> 管理您的计算实例。几乎所有超级用户命令都可以使用 <code>sudo</code> （例如： <code>sudo iptables -L -nv</code> ）执行，这些命令将被记录到 <code>/var/log/auth.log</code> </p>
+<h2 id="安全访问ssh">安全访问ssh<a hidden class="anchor" aria-hidden="true" href="#安全访问ssh">#</a></h2>
+<p>默认情况下，密码身份验证用于通过 SSH 连接到您的计算实例。加密密钥对更安全，因为私钥取代了密码，而密码通常更难通过暴力解密。在本节中，我们将创建一个密钥对并将您的系统配置为不接受 SSH 登录的密码。</p>
+<h3 id="创建身份密钥对ssh-key">创建身份密钥对ssh-key<a hidden class="anchor" aria-hidden="true" href="#创建身份密钥对ssh-key">#</a></h3>
+<ol>
+<li>
+<p>命令创建</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -b <span style="color:#ae81ff">4096</span>
+</span></span></code></pre></div></li>
+<li>
+<p>公钥上传到您的服务器</p>
+<ul>
+<li><strong>Linux</strong></li>
+</ul>
+<p>从您的本地计算机：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-copy-id example_user@192.0.2.1
+</span></span></code></pre></div><ul>
+<li><strong>macOS</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
+</span></span></code></pre></div></li>
+<li>
+<p>最后，您需要为公钥目录和密钥文件本身设置权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">700</span> ~/.ssh <span style="color:#f92672">&amp;&amp;</span> chmod <span style="color:#ae81ff">600</span> ~/.ssh/authorized_keys
+</span></span></code></pre></div></li>
+<li>
+<p>现在退出并重新登录到您的计算实例</p>
+</li>
+</ol>
+<h3 id="ssh守护进程设置">ssh守护进程设置<a hidden class="anchor" aria-hidden="true" href="#ssh守护进程设置">#</a></h3>
+<ol>
+<li>
+<p>使用 Linux 文本编辑器（例如 nano 或 vim）打开计算实例上的 SSH 配置文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/ssh/sshd_config
+</span></span></code></pre></div></li>
+<li>
+<p>禁止通过 SSH 进行 root 登录。这要求所有 SSH 连接都由非 root 用户进行。一旦连接了受限用户帐户，就可以通过使用 <code>sudo</code> 或使用 <code>su -</code> 更改为root shell 来访问管理权限。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Authentication:</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>PermitRootLogin no
+</span></span></code></pre></div></li>
+<li>
+<p>禁用 SSH 密码验证。这要求所有通过 SSH 连接的用户都使用密钥身份验证。根据 Linux 发行版，可能需要添加行 <code>PasswordAuthentication</code> ，或者通过删除前导 <code>#</code> 来取消注释。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Change to no to disable tunnelled clear text passwords</span>
+</span></span><span style="display:flex;"><span>PasswordAuthentication no
+</span></span></code></pre></div></li>
+<li>
+<p>只监听一种互联网协议。默认情况下，SSH 守护程序监听通过 IPv4 和 IPv6 的传入连接。除非您需要使用这两种协议通过 SSH 连接到您的计算实例，否则请禁用您不需要的任何一个。这不会在系统范围内禁用该协议，它仅适用于 SSH 守护进程。根据 Linux 发行版，可能需要添加行 <code>AddressFamily</code> ，或者通过删除前导 <code>#</code> 取消注释</p>
+</li>
+</ol>
+<p>   Use the option: 使用选项：</p>
+<p>      <code>AddressFamily inet</code> 仅在 IPv4 上侦听。</p>
+<p>      <code>AddressFamily inet6</code> 仅在 IPv6 上侦听。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Port 22</span>
+</span></span><span style="display:flex;"><span> AddressFamily inet
+</span></span></code></pre></div><ol start="5">
+<li>重新启动 SSH 服务以加载新配置</li>
+</ol>
+<ul>
+<li>
+<p>如果您使用的是使用 systemd 的 Linux 发行版（CentOS 7、Debian 8、Fedora、Ubuntu 15.10+）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart sshd
+</span></span></code></pre></div></li>
+<li>
+<p>如果您的初始化系统是 SystemV 或 Upstart（CentOS 6、Debian 7、Ubuntu 14.04）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service sshd restart
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="使用fail2ban保护ssh登录">使用Fail2Ban保护ssh登录<a hidden class="anchor" aria-hidden="true" href="#使用fail2ban保护ssh登录">#</a></h3>
+<p>Fail2Ban 是一个应用程序，它可以在登录尝试失败次数过多后禁止 IP 地址登录您的服务器。由于合法登录通常不会超过三次尝试成功（并且使用 SSH 密钥，最多不会超过一次），因此服务器被不成功登录的垃圾邮件表明试图进行恶意访问</p>
+<p>Fail2Ban 可以监控多种协议，包括 SSH、HTTP 和 SMTP。默认情况下，Fail2Ban 仅监控 SSH，并且对任何服务器都是一种有用的安全威慑，因为 SSH 守护程序通常配置为持续运行并侦听来自任何远程 IP 地址的连接</p>
+<p>具体可参考<a href="https://www.linode.com/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/">这篇</a></p>
+<p>参考：</p>
+<blockquote>
+<p>大部分是摘抄下文并做了汉化，国内这些资料太少了😢</p>
+<p><a href="https://www.linode.com/docs/products/compute/compute-instances/guides/set-up-and-secure/">Guides - Setting Up and Securing a Compute Instance</a></p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.zsan.ml/tags/%E5%AE%89%E5%85%A8/">安全</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E4%BF%9D%E6%8A%A4/">保护</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.zsan.ml/posts/404public-interest/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>hugo更换404公益页面</span>
+  </a>
+</nav>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo.zsan.ml/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            
+            path: 'window.TWIKOO_MAGIC_PATH||window.location.pathname',
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

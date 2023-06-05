@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.zsan.ml/posts/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E4%BF%9D%E6%8A%A4/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/posts/set-up-and-secure/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.zsan.ml/</loc>
+    <lastmod>2023-06-05T20:18:10+08:00</lastmod>
+  </url><url>
     <loc>https://blog.zsan.ml/tags/404/</loc>
     <lastmod>2023-05-28T19:52:24+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/posts/404public-interest/</loc>
     <lastmod>2023-05-28T19:52:24+08:00</lastmod>
   </url><url>
-    <loc>https://blog.zsan.ml/posts/</loc>
-    <lastmod>2023-05-28T19:52:24+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/tags/</loc>
-    <lastmod>2023-05-28T19:52:24+08:00</lastmod>
-  </url><url>
     <loc>https://blog.zsan.ml/tags/%E5%85%AC%E7%9B%8A/</loc>
-    <lastmod>2023-05-28T19:52:24+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.zsan.ml/</loc>
     <lastmod>2023-05-28T19:52:24+08:00</lastmod>
   </url><url>
     <loc>https://blog.zsan.ml/tags/docker/</loc>

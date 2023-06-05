@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>保护 on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/%E4%BF%9D%E6%8A%A4/</link>
+    <description>Recent content in 保护 on 张三的网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 04 Jun 2023 16:59:21 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E4%BF%9D%E6%8A%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>保护您的服务器</title>
+      <link>https://blog.zsan.ml/posts/set-up-and-secure/</link>
+      <pubDate>Sun, 04 Jun 2023 16:59:21 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/set-up-and-secure/</guid>
+      <description>新买的服务器通常需要一系列保护措施</description>
+      <content:encoded><![CDATA[<h2 id="执行系统更新">执行系统更新</h2>
+<p>经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。</p>
+<h3 id="ubuntudebian-和-kali-linux">Ubuntu、Debian 和 Kali Linux</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt update <span style="color:#f92672">&amp;&amp;</span> apt upgrade
+</span></span></code></pre></div><h3 id="centosrhel-stream-和-fedora">CentOS/RHEL Stream 和 Fedora</h3>
+<p>包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf upgrade
+</span></span></code></pre></div><h2 id="设置时区">设置时区</h2>
+<p>默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。</p>
+<h3 id="大多数发行版">大多数发行版</h3>
+<p>包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。</p>
+<ol>
+<li>
+<p>使用 <code>timedatectl</code> 输出可用时区列表</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>timedatectl list-timezones
+</span></span></code></pre></div></li>
+<li>
+<p>使用箭头键、 <code>Page Up</code> 和 <code>Page Down</code> 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。</p>
+</li>
+<li>
+<p>使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>timedatectl set-timezone <span style="color:#e6db74">&#39;America/New_York&#39;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="ubuntu-debian-和-kali-linux">Ubuntu, Debian 和 Kali Linux</h3>
+<p>Ubuntu 和 Debian 都带有一个更友好的工具，称为 <code>tzdata</code></p>
+<ol>
+<li>
+<p>打开 <code>tzdata</code> 工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dpkg-reconfigure tzdata
+</span></span></code></pre></div></li>
+<li>
+<p>使用箭头键选择您选择的大陆，然后按 Enter</p>
+</li>
+<li>
+<p>使用箭头键选择您所在的地区，然后按 Enter</p>
+</li>
+</ol>
+<h3 id="检查时间">检查时间</h3>
+<p>使用 <code>date</code> 命令根据您的服务器查看当前日期和时间</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@localhost:~# date
+</span></span><span style="display:flex;"><span>Thu Feb <span style="color:#ae81ff">16</span> 12:17:52 EST <span style="color:#ae81ff">2018</span>
+</span></span></code></pre></div><h2 id="配置自定义主机名">配置自定义主机名</h2>
+<p>主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。</p>
+<p>简单点就是默认有 <code>locahost</code>变为你设置的新的<code>web-app</code>名字，还可用作系统的 FQDN（完全限定域名）的一部分。</p>
+<h3 id="大多数发行版-1">大多数发行版</h3>
+<p>将 <code>example-hostname</code> 替换为您的选择之一</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hostnamectl set-hostname example-hostname
+</span></span></code></pre></div><h3 id="更新系统的hosts文件">更新系统的<code>hosts</code>文件</h3>
+<p><code>hosts</code> 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析</p>
+<ol>
+<li>
+<p>在文本编辑器（例如 Nano）中打开 <code>hosts</code> 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /etc/hosts
+</span></span></code></pre></div></li>
+<li>
+<p>为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， <code>203.0.113.10</code> 是公共 IP 地址， <code>example-hostname</code> 是本地主机名， <code>example-hostname.example.com</code> 是 FQDN</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>127.0.0.1 localhost.localdomain localhost 
+</span></span><span style="display:flex;"><span>203.0.113.10 example-hostname.example.com example-hostname
+</span></span></code></pre></div></li>
+<li>
+<p>为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>127.0.0.1 localhost.localdomain localhost
+</span></span><span style="display:flex;"><span>203.0.113.10 example-hostname.example.com example-hostname
+</span></span><span style="display:flex;"><span>2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
+</span></span></code></pre></div></li>
+</ol>
+<p>由于这里并没有配置<code>FQDN</code>所以只修改了<code>127.0.1.1</code></p>
+<h2 id="添加受限用户账户">添加受限用户账户</h2>
+<p>到目前为止，您已经以 <code>root</code> 用户的身份访问了您的计算实例，该用户拥有无限的权限并且可以执行任何命令——甚至是可能会意外中断您的服务器的命令。我们建议创建一个受限用户帐户并始终使用该帐户。管理任务将使用 <code>sudo</code> 来临时提升您的受限用户的权限，以便您可以管理您的服务器。稍后，当您想要限制用户的 sudo 访问权限时，请参阅 Linux 用户和组。</p>
+<h3 id="ubuntu-和-debian">Ubuntu 和 Debian</h3>
+<ol>
+<li>
+<p>创建用户，用你想要的用户名替换 <code>example_user</code> 。然后，系统会要求您为用户分配一个密码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adduser example_user
+</span></span></code></pre></div></li>
+<li>
+<p>将用户添加到 <code>sudo</code> 组，以便您拥有管理权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adduser example_user sudo
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="centosrhel-stream-和-fedora-1">CentOS/RHEL Stream 和 Fedora</h3>
+<ol>
+<li>
+<p>创建用户，用你想要的用户名替换 <code>example_user</code> ，并指定一个密码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>useradd example_user <span style="color:#f92672">&amp;&amp;</span> passwd example_user
+</span></span></code></pre></div></li>
+<li>
+<p>将用户添加到 <code>wheel</code> 组以获得 sudo 权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>usermod -aG wheel example_user
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="以新用户身份登录">以新用户身份登录</h3>
+<ol>
+<li>
+<p>创建受限用户后，断开与计算实例的连接：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>exit
+</span></span></code></pre></div></li>
+<li>
+<p>以您的新用户身份重新登录。将 <code>example_user</code> 替换为您的用户名，将示例 IP 地址替换为您实例的 IP 地址：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh example_user@192.0.2.1
+</span></span></code></pre></div></li>
+</ol>
+<p>现在您可以从您的新用户帐户而不是 <code>root</code> 管理您的计算实例。几乎所有超级用户命令都可以使用 <code>sudo</code> （例如： <code>sudo iptables -L -nv</code> ）执行，这些命令将被记录到 <code>/var/log/auth.log</code> </p>
+<h2 id="安全访问ssh">安全访问ssh</h2>
+<p>默认情况下，密码身份验证用于通过 SSH 连接到您的计算实例。加密密钥对更安全，因为私钥取代了密码，而密码通常更难通过暴力解密。在本节中，我们将创建一个密钥对并将您的系统配置为不接受 SSH 登录的密码。</p>
+<h3 id="创建身份密钥对ssh-key">创建身份密钥对ssh-key</h3>
+<ol>
+<li>
+<p>命令创建</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -b <span style="color:#ae81ff">4096</span>
+</span></span></code></pre></div></li>
+<li>
+<p>公钥上传到您的服务器</p>
+<ul>
+<li><strong>Linux</strong></li>
+</ul>
+<p>从您的本地计算机：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-copy-id example_user@192.0.2.1
+</span></span></code></pre></div><ul>
+<li><strong>macOS</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
+</span></span></code></pre></div></li>
+<li>
+<p>最后，您需要为公钥目录和密钥文件本身设置权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">700</span> ~/.ssh <span style="color:#f92672">&amp;&amp;</span> chmod <span style="color:#ae81ff">600</span> ~/.ssh/authorized_keys
+</span></span></code></pre></div></li>
+<li>
+<p>现在退出并重新登录到您的计算实例</p>
+</li>
+</ol>
+<h3 id="ssh守护进程设置">ssh守护进程设置</h3>
+<ol>
+<li>
+<p>使用 Linux 文本编辑器（例如 nano 或 vim）打开计算实例上的 SSH 配置文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/ssh/sshd_config
+</span></span></code></pre></div></li>
+<li>
+<p>禁止通过 SSH 进行 root 登录。这要求所有 SSH 连接都由非 root 用户进行。一旦连接了受限用户帐户，就可以通过使用 <code>sudo</code> 或使用 <code>su -</code> 更改为root shell 来访问管理权限。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Authentication:</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>PermitRootLogin no
+</span></span></code></pre></div></li>
+<li>
+<p>禁用 SSH 密码验证。这要求所有通过 SSH 连接的用户都使用密钥身份验证。根据 Linux 发行版，可能需要添加行 <code>PasswordAuthentication</code> ，或者通过删除前导 <code>#</code> 来取消注释。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Change to no to disable tunnelled clear text passwords</span>
+</span></span><span style="display:flex;"><span>PasswordAuthentication no
+</span></span></code></pre></div></li>
+<li>
+<p>只监听一种互联网协议。默认情况下，SSH 守护程序监听通过 IPv4 和 IPv6 的传入连接。除非您需要使用这两种协议通过 SSH 连接到您的计算实例，否则请禁用您不需要的任何一个。这不会在系统范围内禁用该协议，它仅适用于 SSH 守护进程。根据 Linux 发行版，可能需要添加行 <code>AddressFamily</code> ，或者通过删除前导 <code>#</code> 取消注释</p>
+</li>
+</ol>
+<p>   Use the option: 使用选项：</p>
+<p>      <code>AddressFamily inet</code> 仅在 IPv4 上侦听。</p>
+<p>      <code>AddressFamily inet6</code> 仅在 IPv6 上侦听。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Port 22</span>
+</span></span><span style="display:flex;"><span> AddressFamily inet
+</span></span></code></pre></div><ol start="5">
+<li>重新启动 SSH 服务以加载新配置</li>
+</ol>
+<ul>
+<li>
+<p>如果您使用的是使用 systemd 的 Linux 发行版（CentOS 7、Debian 8、Fedora、Ubuntu 15.10+）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart sshd
+</span></span></code></pre></div></li>
+<li>
+<p>如果您的初始化系统是 SystemV 或 Upstart（CentOS 6、Debian 7、Ubuntu 14.04）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service sshd restart
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="使用fail2ban保护ssh登录">使用Fail2Ban保护ssh登录</h3>
+<p>Fail2Ban 是一个应用程序，它可以在登录尝试失败次数过多后禁止 IP 地址登录您的服务器。由于合法登录通常不会超过三次尝试成功（并且使用 SSH 密钥，最多不会超过一次），因此服务器被不成功登录的垃圾邮件表明试图进行恶意访问</p>
+<p>Fail2Ban 可以监控多种协议，包括 SSH、HTTP 和 SMTP。默认情况下，Fail2Ban 仅监控 SSH，并且对任何服务器都是一种有用的安全威慑，因为 SSH 守护程序通常配置为持续运行并侦听来自任何远程 IP 地址的连接</p>
+<p>具体可参考<a href="https://www.linode.com/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/">这篇</a></p>
+<p>参考：</p>
+<blockquote>
+<p>大部分是摘抄下文并做了汉化，国内这些资料太少了😢</p>
+<p><a href="https://www.linode.com/docs/products/compute/compute-instances/guides/set-up-and-secure/">Guides - Setting Up and Securing a Compute Instance</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
