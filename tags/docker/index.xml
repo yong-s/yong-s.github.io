@@ -309,6 +309,17 @@ access:readonly
 <p>Snapdrop 是一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件</p>
 <p>官网有demo，but不稳定，自部署一套稳定可靠可控</p>
 </blockquote>
+<p>官方已经上传<code>image</code> 了，所以下面手动下载的可以不用看了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">node</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">linuxserver/snapdrop</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># user: &#34;node&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">snapdrop</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>       - <span style="color:#ae81ff">80</span>:<span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><hr>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#git clone 下载</span>
 </span></span><span style="display:flex;"><span>git clone https://github.com/RobinLinus/snapdrop.git
 </span></span><span style="display:flex;"><span>
