@@ -14,17 +14,18 @@
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/firefly-iii-install/</guid>
-      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux 省流版 docker一把过 1、</description>
+      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定</description>
       <content:encoded><![CDATA[<blockquote>
 <p>⚠️：你必须准备</p>
 <p>域名：国内可能需要备案</p>
 <p>服务器：Linux</p>
+<p>‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考<a href="https://blog.zsan.ml/posts/set-up-and-secure/">保护您的服务器 | 张三的网络日志</a></p>
 </blockquote>
 <h2 id="省流版">省流版</h2>
 <h3 id="docker一把过">docker一把过</h3>
-<p>1、首先新建文件夹，比如<strong>fireflyiii</strong></p>
+<p>1、首先新建文件夹，比如<code>fireflyiii</code></p>
 <p><code>cd fireflyiii</code>，创建<code>docker-compose.yml</code></p>
-<p>拷贝下面,把<code>{{}}</code>内的改为自己的</p>
+<p>拷贝下面,把<code>{{}}</code>内的改为自己的，不要<code>{{}}</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
@@ -123,7 +124,7 @@
 <h4 id="fireflyiii配置文件">fireflyiii配置文件</h4>
 <p>下载<code>wget https://raw.githubusercontent.com/firefly-iii/firefly-iii/v6.0.11/.env.example</code></p>
 <p><code>cp .env.example .env</code></p>
-<p>根据自己需要自行修改即可，简单记下配置redis</p>
+<p>根据自己需要自行修改即可，简单说下配置redis</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># If you&#39;re looking for performance improvements, you could install memcached or redis
 </span></span><span style="display:flex;"><span>CACHE_DRIVER=redis
 </span></span><span style="display:flex;"><span>SESSION_DRIVER=redis
@@ -154,8 +155,8 @@
 <p>根据自己需要自行修改即可</p>
 <p>最后<code>docker-compose up -d</code>启动</p>
 <p><code>docker-compose logs -f --tail=500</code> 查看日志</p>
-<p>现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎</p>
-<p>浏览器输入域名即可，英文不好，点击<code>选项-偏好设定</code>修改语言为中文</p>
+<p>现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎<a href="http://localhost:1313/posts/personalfinance/">Firefly Iii使用 | 张三的网络日志</a></p>
+<p>浏览器输入域名访问即可，英文不好，点击<code>选项-偏好设定</code>修改语言为中文</p>
 <h2 id="详细版">详细版</h2>
 <p>空了再写吧！🤣</p>
 <h2 id="备份">备份</h2>
@@ -184,7 +185,7 @@
 </span></span><span style="display:flex;"><span>curl -F chat_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$chat_id<span style="color:#e6db74">&#34;</span> -F message_thread_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$message_thread_id<span style="color:#e6db74">&#34;</span> -F document<span style="color:#f92672">=</span>@<span style="color:#e6db74">&#34;</span>$file_path<span style="color:#e6db74">&#34;</span> https://api.telegram.org/bot$token/sendDocument
 </span></span></code></pre></div><p>添加到cron内</p>
 <p><code>3 1 * * * bash /path/to/fireflyiii/backup.sh</code></p>
-<p>参考</p>
+<h2 id="参考">参考</h2>
 <blockquote>
 <p><a href="https://docs.firefly-iii.org/firefly-iii/installation/docker/?mtm_campaign=docu-internal&amp;mtm_kwd=docker">Docker - Firefly III documentation</a></p>
 </blockquote>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>生活 on 张三的网络日志</title>
+    <link>https://blog.zsan.ml/tags/%E7%94%9F%E6%B4%BB/</link>
+    <description>Recent content in 生活 on 张三的网络日志</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 28 May 2023 17:55:20 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firefly Iii使用</title>
+      <link>https://blog.zsan.ml/posts/personalfinance/</link>
+      <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
+      
+      <guid>https://blog.zsan.ml/posts/personalfinance/</guid>
+      <description>个人理财，好好生活</description>
+      <content:encoded><![CDATA[<h2 id="为何要用firefly-iii">为何要用Firefly Iii</h2>
+<p><a href="https://docs.firefly-iii.org/firefly-iii/about-firefly-iii/introduction/">简介及特点</a></p>
+<ul>
+<li>
+<p>安全</p>
+<p>账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里</p>
+</li>
+<li>
+<p>复式记账</p>
+</li>
+<li>
+<p>预算、存钱</p>
+</li>
+<li>
+<p>自动化</p>
+<p>可以自动化设置一些操作</p>
+</li>
+</ul>
+<h2 id="登录">登录</h2>
+<p>在<code>firefly</code>配置文件<code>env</code>内搜索<code>SITE_OWNER</code></p>
+<p>这个值就是配置的管理员邮箱</p>
+<p>建议使用和域名相同的邮箱登录，如果无配置邮箱服务，可以使用阿里的邮箱推送服务，目前有免费额度可以用</p>
+<h2 id="安全设置">安全设置</h2>
+<h3 id="两步验证">两步验证</h3>
+<p>打开<code>firefly</code>点击<code>选项</code> <code>个人档案</code> <code>两步验证</code>点击<code>启用</code></p>
+<p>手机下载<code>Google Authenticator</code>，切记不要登录Google账号，会上传到云上去</p>
+<p>启用之后，重新登录</p>
+<h2 id="选项设置">选项设置</h2>
+<h3 id="货币">货币</h3>
+<p>默认是欧元，可切换到人民币<code>Chinese yuan (RMB) (¥)</code>，如果有其他货币也可自行切换</p>
+<h3 id="管理">管理</h3>
+<p>包括检查更新，邮箱测试等</p>
+<h2 id="初始化设置">初始化设置</h2>
+<h3 id="账户">账户</h3>
+<h3 id="分类">分类</h3>
+<h3 id="标签">标签</h3>
+<h2 id="高级设置">高级设置</h2>
+<h3 id="预算">预算👍</h3>
+<p>制定预算将帮助您更有效地分配资金并更轻松地实现财务目标</p>
+<p>预算这个功能超级好用</p>
+<p>首先，点击左侧<code>预算</code>，创建新预算</p>
+<p>右侧<code>选填字段</code>内</p>
+<p><code>自动预算</code> 选择最后一个<code>Adjusted (&quot;... and correct for overspending&quot;)</code></p>
+<p>举🌰</p>
+<p>每个月预算都是5000</p>
+<ul>
+<li>
+<p>1月预算5000，到月底花了8000，超预算3000</p>
+</li>
+<li>
+<p>2月预算就变为2000，到月底花了1000</p>
+</li>
+<li>
+<p>3月预算就变为6000</p>
+</li>
+</ul>
+<p>这个功能一直在找，是因为某财经大佬曾说过</p>
+<blockquote>
+<p>然后，当你点开“本月支出建议”表格时，</p>
+<p>“根据您过去十二个月的支出以及理财目标、收入情况综合分析，建议您本月食物支出不要超过<strong><strong>元，休闲娱乐支出不要超过</strong></strong>元……祝您早日达成理财目标。”</p>
+<p>下个月：</p>
+<p>“您上个月非常节俭，比预计多剩余了2000元。不妨拿出500元买点喜欢的东西奖励自己！”</p>
+</blockquote>
+<p>当然自己开发一个这个软件耗时耗力，所以当时就在找类似开源软件，扯的有点远了😂😂😄</p>
+<h4 id="预算如何分配">预算如何分配？</h4>
+<p><strong>50/30/20 预算法则</strong></p>
+<p>50/30/20 预算法则是一种简单的预算策略，可以帮助您优先考虑财务目标：</p>
+<blockquote>
+<ul>
+<li>
+<p>50% 用于必需品：将收入的 50% 用于支付基本生活费用，如住房、水电费、日常食品购买和交通费。</p>
+</li>
+<li>
+<p>30% 用于愿望：将收入的 30% 用于自由支配花费和非必需开销，如外出就餐、娱乐、爱好和购物。</p>
+</li>
+<li>
+<p>20% 用于储蓄和债务偿还：将收入的 20% 用于储蓄、投资和偿还债务。</p>
+</li>
+</ul>
+</blockquote>
+<p>这个体系的目的是确保您的基本需求得到满足，有一定的自由支配费用空间，并优先为未来储蓄和管理债务。</p>
+<p>这些百分比并非一成不变。如果资金紧张，您可能需要将收入的更高比例用于支付必需品。如果您的债务很大，您可以选择分配超过 20% 的收入用于债务偿还，以加快进度。同样，如果您的储蓄目标雄心勃勃，可以将更高的比例分配给储蓄。</p>
+<h5 id="购买汽车的预算">购买汽车的预算</h5>
+<p>一条经验法则是，您车辆的总价值不应超过您年收入的<code>50%</code></p>
+<p>另一个好的经验法则是 20/4/10 规则：</p>
+<blockquote>
+<ul>
+<li>
+<p>至少支付 20% 的首付款。</p>
+</li>
+<li>
+<p>永远不要获得超过 4 年的贷款。</p>
+</li>
+<li>
+<p>您总收入的 10% 或更少用于所有车辆支出，包括贷款支付、保险、汽油、登记费、维护和修理。</p>
+</li>
+</ul>
+</blockquote>
+<p>另外一个法则：</p>
+<blockquote>
+<p>年收入买车</p>
+<p>月收入买表</p>
+</blockquote>
+<p>如果您的预算符合以下任一情况，您应该考虑改变您的生活方式：</p>
+<blockquote>
+<ul>
+<li>
+<p>您每月的抵押贷款/租金超过您实得工资的 30%。你可能想考虑找个室友，或者搬到更便宜的地方。</p>
+</li>
+<li>
+<p>您每月在车辆上的总支出超过您实得工资的 15%。您可能需要考虑拼车上班、减少出行次数，或者乘坐公共汽车或自行车。如果可以的话，您可能还想考虑搬到更近的地方或卖掉您的汽车。每月预算的 10% 是一个更健康的汽车支出数字。</p>
+</li>
+</ul>
+</blockquote>
+<p>本杰明·富兰克林曾说：“省下一分钱就等于赚了一分钱。”如果这句话是真的，那么削减预算就相当于提高了你的收入。</p>
+<blockquote>
+<p>常被提及的减少开支的方法有：削减有线电视、将手机套餐调整到实际使用的通话/数据量、在家烹饪/带食物去工作、重新评估贷款、扔掉优惠券、下单前先找找优惠券、取消在线购物网站的信用卡关联、减少信用卡使用并改用现金、不用时关闭灯光、不在家或睡觉时降低暖气/空调等。</p>
+</blockquote>
+<h3 id="账单">账单</h3>
+<h3 id="存钱罐">存钱罐👍</h3>
+<p>这个功能有助于帮助您实现您的财务目标</p>
+<h4 id="应急资金fuck-money">应急资金（fuck money）</h4>
+<p>对大多数人来说，3 到 6 个月的开支就足够了。如果您的收入不稳定或不确定，可能需要更大的应急基金（例如 9 到 12 个月）</p>
+<blockquote>
+<p>一般放银行存款或货币基金内r1r2即可</p>
+</blockquote>
+<h4 id="超长期养老">超长期养老</h4>
+<p>以后养老要靠自己了，每月拿出收入的10%或20%放到长期账户内，为以后退休做准备</p>
+<h3 id="自动化">自动化</h3>
+<p> </p>
+<h2 id="参考">参考</h2>
+<blockquote>
+<p><a href="https://docs.firefly-iii.org/firefly-iii/faq/financials/">Managing your finances - Firefly III documentation</a></p>
+<p><a href="https://www.reddit.com/r/personalfinance/wiki/budgeting/">budgeting</a></p>
+<p><a href="https://www.reddit.com/r/personalfinance/wiki/vehicles/">commontopics</a></p>
+<p><a href="https://www.reddit.com/r/personalfinance/wiki/commontopics/">commontopics</a></p>
+<p><a href="https://www.reddit.com/r/personalfinance/wiki/emergencyfunds/">emergencyfunds</a></p>
+<p><a href="https://www.reddit.com/r/personalfinance/wiki/early_career/">early_career</a></p>
+<p><a href="https://docs.firefly-iii.org/firefly-iii/financial-concepts/organizing/">organizing</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
