@@ -14,7 +14,7 @@
       <pubDate>Fri, 18 Feb 2022 18:04:50 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/linux-unset-proxy/</guid>
-      <description>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来</description>
+      <description>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来感觉用的不爽，就给卸载了，服务也去了，但是proxy代理经常会自动设置，有时候手动给取消了，下次再用又有了，这次终于忍不了了，就搜了一下给解决了 1、定位bug export 查看下，有相应端口，手动取消后，再查看没有了，重启后又有</description>
       <content:encoded><![CDATA[<blockquote>
 <p>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来感觉用的不爽，就给卸载了，服务也去了，但是proxy代理经常会自动设置，有时候手动给取消了，下次再用又有了，这次终于忍不了了，就搜了一下给解决了</p>
 </blockquote>

@@ -14,7 +14,7 @@
       <pubDate>Wed, 31 Aug 2022 14:03:46 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/sillygril-qqbot-deploy/</guid>
-      <description>一、docker-compose 编排文件 创建docker-compose.yaml文</description>
+      <description>一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容 version: &amp;#34;3&amp;#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=&amp;#39;ws://sillygirl:8080/qq/receive&amp;#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动 docker-compose logs -f 查看日志 二、FAQ 1、go-cq</description>
       <content:encoded><![CDATA[<h3 id="一docker-compose-编排文件">一、docker-compose 编排文件</h3>
 <p>创建<code>docker-compose.yaml</code>文件并拷贝下面内容</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>

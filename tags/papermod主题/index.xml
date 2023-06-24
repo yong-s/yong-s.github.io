@@ -14,7 +14,7 @@
       <pubDate>Sat, 22 Jan 2022 21:34:31 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</guid>
-      <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交</description>
+      <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交时间 :git: 根据git提交版本时间 :fileModTime：文件修改时间 Configure Hugo | Hugo 写的都有,but是英文的🙃</description>
       <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">frontmatter</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">lastmod</span>:

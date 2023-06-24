@@ -14,7 +14,7 @@
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-generate-image/</guid>
-      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳</description>
+      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&amp;hellip; 1、创建Dockerfile文件 比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换 换完在当前目录 docker build -t jd_scripts . 直接生成自己的image docker images</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
 <h3 id="1创建dockerfile文件">1、创建Dockerfile文件</h3>
@@ -40,7 +40,7 @@ Docker —— 从入门到实践</a></p>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-build-jdbot/</guid>
-      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
+      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docker： 20.10.6 docker-compose： 1.27.4 1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose Docker安装 国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>

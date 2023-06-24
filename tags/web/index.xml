@@ -185,7 +185,7 @@
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-build-nginx/</guid>
-      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好</description>
+      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &amp;#39;3.3&amp;#39; services: web: image: nginx:latest container_name: nginx</description>
       <content:encoded><![CDATA[<blockquote>
 <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠</p>
 </blockquote>

@@ -14,7 +14,7 @@
       <pubDate>Sun, 28 May 2023 19:49:45 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/404public-interest/</guid>
-      <description>layouts文件夹，新建404.html &amp;lt;!-- console.error(&amp;#34;4</description>
+      <description>layouts文件夹，新建404.html &amp;lt;!-- console.error(&amp;#34;404，您访问的脚本 &amp;#34;+document.currentScript.src+&amp;#34; 搞丢了！&amp;#34;); ((s)=&amp;gt;{ s.src=&amp;#34;https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js&amp;#34;; s.referrerScript=document.currentScript.src s.onload=()=&amp;gt;{ (new Aegis({id:&amp;#39;aorgLlJTLfQVrxAwGe&amp;#39;,uin:&amp;#39;&amp;#39;,reportApiSpeed: true,reportAssetSpeed: true})).report(&amp;#34;网页 &amp;#34;+location.href+&amp;#34; 引用 &amp;#34;+s.referrerScript+&amp;#34; 脚本触发了404&amp;#34;) } document.getElementsByTagName(&amp;#34;head&amp;#34;)[0].appendChild(s) })(document.createElement(&amp;#34;script&amp;#34;)) /*--&amp;gt; &amp;lt;!DOCTYPE HTML&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;description&amp;#34; content=&amp;#34;公益404页面是由腾讯公司员</description>
       <content:encoded><![CDATA[<p>layouts文件夹，新建<code>404.html</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">console.error(&#34;404，您访问的脚本 &#34;+document.currentScript.src+&#34; 搞丢了！&#34;);

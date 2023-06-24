@@ -11,7 +11,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/tags/mac/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.81d291b5bc5da0ffa35066fdfd1ad72fce6ceba3c1990d0831362f7a4aadf938.css" integrity="sha256-gdKRtbxdoP&#43;jUGb9/RrXL85s66PBmQ0IMTYvekqt&#43;Tg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -129,8 +129,8 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签">
-                    <span>标签</span>
+                <a href="https://blog.zsan.ml/tags" title="标签云">
+                    <span>标签云</span>
                 </a>
             </li>
             <li>
@@ -154,7 +154,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下...</p>
+    <p>mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下，给解决了 用的 Oh My Zsh，官方文档里写的很详细，不过是英文的，这里给翻译记录下 1、在 ~/.zshrc 里添加下面code if type brew &amp;&gt;/dev/null then FPATH=&#34;$(brew --prefix)/share/zsh/site-functions:${FPATH}&#34; autoload -Uz compinit compinit fi 2、在 ~/.zprofile 里添加下面code FPATH=&#34;$(brew --prefix)/share/zsh/site-functions:${FPATH}&#34; 3、强制重建zcompdump rm -f ~/.zcompdump; compinit 4、如果出现 zsh compinit: insecure directory...</p>
   </div>
   <footer class="entry-footer">
 

@@ -2,7 +2,7 @@
 <html lang="zh" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.113.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.114.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -12,7 +12,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.81d291b5bc5da0ffa35066fdfd1ad72fce6ceba3c1990d0831362f7a4aadf938.css" integrity="sha256-gdKRtbxdoP&#43;jUGb9/RrXL85s66PBmQ0IMTYvekqt&#43;Tg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -144,8 +144,8 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签">
-                    <span>标签</span>
+                <a href="https://blog.zsan.ml/tags" title="标签云">
+                    <span>标签云</span>
                 </a>
             </li>
             <li>
@@ -164,7 +164,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>必需：有公网IP的服务器一台 服务端部署 在具有公网 IP 的机器上部署 采用一键部署脚本安装 作...</p>
+    <p>必需：有公网IP的服务器一台 服务端部署 在具有公网 IP 的机器上部署 采用一键部署脚本安装 作者的github被封了，来补一个gitee的 wget https://gitee.com/mvscode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh chmod 700 ./install-frps.sh ./install-frps.sh install wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh chmod 700 ./install-frps.sh ./install-frps.sh install 简单用法 Usage: /etc/init.d/frps {start|stop|restart|status|config|version} 客户端部署 下载Releases · fatedier/frp · GitHub 解压缩下载的压缩包，将其中的 frpc 拷贝到内网服务所在的机器上 配置 这里可以下载配置文件fr...</p>
   </div>
   <footer class="entry-footer">
 
@@ -188,7 +188,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>必备：NFC卡贴 android手机支持NFC 1、买卡贴 拼夕夕买CUID卡就行了，大多...</p>
+    <p>必备：NFC卡贴 android手机支持NFC 1、买卡贴 拼夕夕买CUID卡就行了，大多数可以用 2、克隆 Android 下载 Mifare Classic Tool 关键操作步骤： 1、读标签 选择读标签，然后把门卡贴在手机nfc位置，之后点开始映射并读取标签，就可以读取到了，至于key，可以全选或者选择一个试试就行了。 然后点击右上角菜单，选择写转储就可以...</p>
   </div>
   <footer class="entry-footer">
 
@@ -212,7 +212,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>一、docker-compose 编排文件 创建docker-compose.yaml文...</p>
+    <p>一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容 version: &#34;3&#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=&#39;ws://sillygirl:8080/qq/receive&#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动 docker-compose logs -f 查看日志 二、FAQ 1、go-cq...</p>
   </div>
   <footer class="entry-footer">
 
@@ -236,7 +236,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>最近闲来无事，把网站升级了，更加像原生APP 记录下升级过程，免得以后忘了 PWA是什么...</p>
+    <p>最近闲来无事，把网站升级了，更加像原生APP 记录下升级过程，免得以后忘了 PWA是什么？可以去网上搜一下，but中文文章少一点 用Google 封装的 好的 workbox 来升级 注册Service Worker 在html页面注册 SW &lt;script&gt; if (&#39;serviceWorker&#39; in navigator) { navigator.serviceWorker.getRegistrations() .then(regs =&gt; { for (let reg of regs) { // 注销掉不是当前作用域的所有的 Service Worker if (reg.scope !== &#39;http://localhost:8000/&#39;) { reg.unregister() } } // 注销掉污染 Service Worker 之后再...</p>
   </div>
   <footer class="entry-footer">
 
@@ -260,7 +260,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>很久以前遇到的问题了，用cloudflare 设置有大坑，今天来记录下 之前网站的域名需...</p>
+    <p>很久以前遇到的问题了，用cloudflare 设置有大坑，今天来记录下 之前网站的域名需要更换，blog等域名也需要从旧域名到新域名 旧域名：olddona.com 新域名：newdona.com 现在需要访问 olddona.com 时跳转到 newdona.com 1、clourflare 上 dns 解析 olddona.com 登录clourflare、点击 dns、点击添加一条a记...</p>
   </div>
   <footer class="entry-footer">
 
@@ -284,7 +284,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下...</p>
+    <p>mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下，给解决了 用的 Oh My Zsh，官方文档里写的很详细，不过是英文的，这里给翻译记录下 1、在 ~/.zshrc 里添加下面code if type brew &amp;&gt;/dev/null then FPATH=&#34;$(brew --prefix)/share/zsh/site-functions:${FPATH}&#34; autoload -Uz compinit compinit fi 2、在 ~/.zprofile 里添加下面code FPATH=&#34;$(brew --prefix)/share/zsh/site-functions:${FPATH}&#34; 3、强制重建zcompdump rm -f ~/.zcompdump; compinit 4、如果出现 zsh compinit: insecure directory...</p>
   </div>
   <footer class="entry-footer">
 
@@ -308,7 +308,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，...</p>
+    <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦； 在寻找解决方案时发现用自建播客来实现下载音乐方案可行，于是就有了下面的教程 What 播客（podcast）创作者将音频或视频上传至RSS或在线播客平台，听众或观众则通过软件获取...</p>
   </div>
   <footer class="entry-footer">
 
@@ -332,7 +332,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>最近薅🦙接触了autojs，在Android手机上可自动化运行的脚本，不用root，...</p>
+    <p>最近薅🦙接触了autojs，在Android手机上可自动化运行的脚本，不用root，可直接运行，轻量小巧，底层调用Android API，自己可封装API👍 安装 autojs原作者已不再维护，推出了autojs.pro版，有钱的大佬可以直接去安装下载，官方文档也很全 没钱的话，可以用autoxjs，从原有...</p>
   </div>
   <footer class="entry-footer">
 

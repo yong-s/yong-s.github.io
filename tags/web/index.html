@@ -11,7 +11,7 @@
 <meta name="author" content="
 作者:&nbsp;张三">
 <link rel="canonical" href="https://blog.zsan.ml/tags/web/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.81d291b5bc5da0ffa35066fdfd1ad72fce6ceba3c1990d0831362f7a4aadf938.css" integrity="sha256-gdKRtbxdoP&#43;jUGb9/RrXL85s66PBmQ0IMTYvekqt&#43;Tg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.ml/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
@@ -129,8 +129,8 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签">
-                    <span>标签</span>
+                <a href="https://blog.zsan.ml/tags" title="标签云">
+                    <span>标签云</span>
                 </a>
             </li>
             <li>
@@ -154,7 +154,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>最近闲来无事，把网站升级了，更加像原生APP 记录下升级过程，免得以后忘了 PWA是什么...</p>
+    <p>最近闲来无事，把网站升级了，更加像原生APP 记录下升级过程，免得以后忘了 PWA是什么？可以去网上搜一下，but中文文章少一点 用Google 封装的 好的 workbox 来升级 注册Service Worker 在html页面注册 SW &lt;script&gt; if (&#39;serviceWorker&#39; in navigator) { navigator.serviceWorker.getRegistrations() .then(regs =&gt; { for (let reg of regs) { // 注销掉不是当前作用域的所有的 Service Worker if (reg.scope !== &#39;http://localhost:8000/&#39;) { reg.unregister() } } // 注销掉污染 Service Worker 之后再...</p>
   </div>
   <footer class="entry-footer">
 
@@ -178,7 +178,7 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好...</p>
+    <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &#39;3.3&#39; services: web: image: nginx:latest container_name: nginx...</p>
   </div>
   <footer class="entry-footer">
 

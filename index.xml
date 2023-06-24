@@ -14,7 +14,7 @@
       <pubDate>Sun, 11 Jun 2023 18:35:38 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-change-directory/</guid>
-      <description>查询目前已安装的路径 sudo docker info | grep &amp;quot;Docker Root Dir&amp;quot; 备份旧数据到新目录 cp -a /var/lib/docker /path/to/docker 修改配置文件 docker 版本 &amp;gt; 17.05</description>
+      <description>查询目前已安装的路径 sudo docker info | grep &amp;quot;Docker Root Dir&amp;quot; 备份旧数据到新目录 cp -a /var/lib/docker /path/to/docker 修改配置文件 docker 版本 &amp;gt; 17.05 vim /etc/docker/daemon.json { &amp;#34;data-root&amp;#34;: &amp;#34;/path/to/docker&amp;#34;, &amp;#34;storage-driver&amp;#34;: &amp;#34;overlay2&amp;#34; # 这个是Docker的默认设置，这里也可以不用加 } 重启docker sudo systemctl restart docker 参考 两种方式迁移Docker</description>
       <content:encoded><![CDATA[<h2 id="查询目前已安装的路径">查询目前已安装的路径</h2>
 <p><code>sudo docker info | grep &quot;Docker Root Dir&quot;</code></p>
 <h2 id="备份旧数据到新目录">备份旧数据到新目录</h2>
@@ -231,7 +231,7 @@
       <pubDate>Sun, 28 May 2023 19:49:45 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/404public-interest/</guid>
-      <description>layouts文件夹，新建404.html &amp;lt;!-- console.error(&amp;#34;4</description>
+      <description>layouts文件夹，新建404.html &amp;lt;!-- console.error(&amp;#34;404，您访问的脚本 &amp;#34;+document.currentScript.src+&amp;#34; 搞丢了！&amp;#34;); ((s)=&amp;gt;{ s.src=&amp;#34;https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js&amp;#34;; s.referrerScript=document.currentScript.src s.onload=()=&amp;gt;{ (new Aegis({id:&amp;#39;aorgLlJTLfQVrxAwGe&amp;#39;,uin:&amp;#39;&amp;#39;,reportApiSpeed: true,reportAssetSpeed: true})).report(&amp;#34;网页 &amp;#34;+location.href+&amp;#34; 引用 &amp;#34;+s.referrerScript+&amp;#34; 脚本触发了404&amp;#34;) } document.getElementsByTagName(&amp;#34;head&amp;#34;)[0].appendChild(s) })(document.createElement(&amp;#34;script&amp;#34;)) /*--&amp;gt; &amp;lt;!DOCTYPE HTML&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;description&amp;#34; content=&amp;#34;公益404页面是由腾讯公司员</description>
       <content:encoded><![CDATA[<p>layouts文件夹，新建<code>404.html</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">console.error(&#34;404，您访问的脚本 &#34;+document.currentScript.src+&#34; 搞丢了！&#34;);
@@ -271,12 +271,37 @@
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/firefly-iii-install/</guid>
-      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定</description>
+      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &amp;nbsp; 标签: #安全&amp;nbsp; #保护&amp;nbsp; #服务器&amp;nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补</description>
       <content:encoded><![CDATA[<blockquote>
 <p>⚠️：你必须准备</p>
 <p>域名：国内可能需要备案</p>
 <p>服务器：Linux</p>
-<p>‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考<a href="https://blog.zsan.ml/posts/set-up-and-secure/">保护您的服务器 | 张三的网络日志</a></p>
+<p>‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考<div style="height: 200px;margin: 1em auto;position: relative;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 25%), 0 0 2px rgb(0 0 0 / 25%);
+        border-radius: 15px;padding: 23px;max-width: 780px;background: var(--entry);">
+    
+    
+    <div style="font-size: 22px; font-weight: 600">
+        <a target="_blank" href="https://blog.zsan.ml/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
+    </div>
+    <span style="font-size: 14px; color: #999">
+        日期: 2023-06-04
+        &nbsp;
+        标签:
+        
+            #安全&nbsp;
+        
+            #保护&nbsp;
+        
+            #服务器&nbsp;
+        
+    </span>
+    <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
+        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL ......
+    </div>
+    
+    
+</div></p>
 </blockquote>
 <h2 id="省流版">省流版</h2>
 <h3 id="docker一把过">docker一把过</h3>
@@ -412,14 +437,122 @@
 <p>根据自己需要自行修改即可</p>
 <p>最后<code>docker-compose up -d</code>启动</p>
 <p><code>docker-compose logs -f --tail=500</code> 查看日志</p>
-<p>现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎<a href="http://localhost:1313/posts/personalfinance/">Firefly Iii使用 | 张三的网络日志</a></p>
-<p>浏览器输入域名访问即可，英文不好，点击<code>选项-偏好设定</code>修改语言为中文</p>
+<p>现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎
+<div style="height: 200px;margin: 1em auto;position: relative;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 25%), 0 0 2px rgb(0 0 0 / 25%);
+        border-radius: 15px;padding: 23px;max-width: 780px;background: var(--entry);">
+    
+    
+    <div style="font-size: 22px; font-weight: 600">
+        <a target="_blank" href="https://blog.zsan.ml/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
+    </div>
+    <span style="font-size: 14px; color: #999">
+        日期: 2023-05-28
+        &nbsp;
+        标签:
+        
+            #理财&nbsp;
+        
+            #预算&nbsp;
+        
+            #存钱&nbsp;
+        
+            #买车&nbsp;
+        
+            #生活&nbsp;
+        
+    </span>
+    <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
+        为何要用Firefly Iii 简介及特点 Login to Firefly III Demo 安全 账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里 复式记账 预算、存钱 自动化 可以自动化设置一些操作 登录 在firefly配置文件env内搜索SITE_OWNER 这个值就是配置的管理员邮箱 建议使用和域名相同的邮箱登录，如果无配置邮箱服务 ......
+    </div>
+    
+    
+</div>
+浏览器输入域名访问即可，英文不好，点击<code>选项-偏好设定</code>修改语言为中文</p>
 <h2 id="详细版">详细版</h2>
 <p>空了再写吧！🤣</p>
 <h2 id="备份">备份</h2>
 <p>财务数据特别重要，所以一定要备份</p>
 <h3 id="下载sh">下载sh</h3>
 <p><a href="https://gist.github.com/dawid-czarnecki/8fa3420531f88b2b2631250854e23381#file-firefly-iii-backuper-sh">Script to backup Firefly III database, uploads and config files installed with docker-compose · GitHub</a></p>
+<!-- <!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <style type="text/css">
+        .github {
+            border: 1px solid var(--color-contrast-low);
+            border-radius: 3px;
+            margin: 0 auto;
+            margin-bottom: 1em;
+            padding: 1em;
+        }
+
+        .github .github-icon {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 0.5em;
+            margin-bottom: 0.2em;
+            fill: var(--color-contrast-high);
+            transition: all 0.5s;
+        }
+
+        .github .name {
+            font-weight: bold;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .github .description {
+            margin-top: 0.5em;
+            margin-bottom: 1em;
+            color: var(--color-contrast-high);
+            text-align: justify;
+            font-size: 90%;
+            transition: all 0.5s;
+        }
+
+        .github .language-color {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            width: 0.75em;
+            height: 0.75em;
+            border-radius: 50%;
+        }
+
+        .github .language-name {
+            color: var(--color-contrast-high);
+            font-size: 90%;
+            margin-left: 0.5em;
+            transition: all 0.5s;
+        }
+    </style>
+    <title></title>
+</head>
+
+<body>
+    <div class="github">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 2.5C2 1.83696 2.26339 1.20107 2.73223 0.732233C3.20108 0.263392 3.83696 0 4.5 0L13.25 0C13.4489 0 13.6397 0.0790176 13.7803 0.21967C13.921 0.360322 14 0.551088 14 0.75V13.25C14 13.4489 13.921 13.6397 13.7803 13.7803C13.6397 13.921 13.4489 14 13.25 14H10.75C10.5511 14 10.3603 13.921 10.2197 13.7803C10.079 13.6397 10 13.4489 10 13.25C10 13.0511 10.079 12.8603 10.2197 12.7197C10.3603 12.579 10.5511 12.5 10.75 12.5H12.5V10.5H4.5C4.30308 10.5 4.11056 10.5582 3.94657 10.6672C3.78257 10.7762 3.65442 10.9312 3.57816 11.1128C3.50191 11.2943 3.48096 11.4943 3.51793 11.6878C3.5549 11.8812 3.64816 12.0594 3.786 12.2C3.92524 12.3422 4.0023 12.5338 4.00024 12.7328C3.99818 12.9318 3.91716 13.1218 3.775 13.261C3.63285 13.4002 3.4412 13.4773 3.24222 13.4752C3.04325 13.4732 2.85324 13.3922 2.714 13.25C2.25571 12.7829 1.99929 12.1544 2 11.5V2.5ZM12.5 1.5V9H4.5C4.144 9 3.806 9.074 3.5 9.208V2.5C3.5 2.23478 3.60536 1.98043 3.79289 1.79289C3.98043 1.60536 4.23478 1.5 4.5 1.5H12.5ZM5 12.25V15.5C5 15.5464 5.01293 15.5919 5.03734 15.6314C5.06175 15.6709 5.09667 15.7028 5.1382 15.7236C5.17972 15.7444 5.22621 15.7532 5.27245 15.749C5.31869 15.7448 5.36286 15.7279 5.4 15.7L6.85 14.613C6.89328 14.5805 6.94591 14.563 7 14.563C7.05409 14.563 7.10673 14.5805 7.15 14.613L8.6 15.7C8.63714 15.7279 8.68131 15.7448 8.72755 15.749C8.77379 15.7532 8.82028 15.7444 8.8618 15.7236C8.90333 15.7028 8.93826 15.6709 8.96266 15.6314C8.98707 15.5919 9 15.5464 9 15.5V12.25C9 12.1837 8.97366 12.1201 8.92678 12.0732C8.87989 12.0263 8.81631 12 8.75 12H5.25C5.1837 12 5.12011 12.0263 5.07322 12.0732C5.02634 12.1201 5 12.1837 5 12.25Z"/></svg>
+
+            
+            <a class="name" href=https://gist.github.com/dawid-czarnecki/8fa3420531f88b2b2631250854e23381#file-firefly-iii-backuper-sh target="_blank">file-firefly-iii-backuper-sh</a>
+        </div>
+        <div class="description">Script to backup Firefly III database, uploads and config files installed with docker-compose · GitHub</div> 
+        <div class="language">
+            <span class="language-color" style="background-color: #e16737"></span>
+            <span class="language-name">Shell</span>
+        </div>
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
+ -->
 <p>这个shell 根据命令执行即可备份</p>
 <h3 id="添加为定时任务">添加为定时任务</h3>
 <p>新建backup.sh</p>
@@ -708,7 +841,7 @@
       <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/minio-service-deployment/</guid>
-      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存</description>
+      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。 前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自</description>
       <content:encoded><![CDATA[<blockquote>
 <p><strong>MinIO</strong> 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
 </blockquote>
@@ -724,7 +857,7 @@
       <pubDate>Tue, 14 Mar 2023 21:20:29 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/setting-up-server-monitoring-service-nezha-probe/</guid>
-      <description>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署</description>
+      <description>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看准备工作 | 哪吒监控 服务器安装管理面板 curl -L https://cdn.jsdelivr.net/gh/naiba/nezha@master/script/install.sh -o nezha.sh &amp;amp;&amp;amp; chmod +x nezha.sh &amp;amp;&amp;amp; sudo CN=true ./nezha.sh` 客户端安装Agent 绿色的 Linux/Windows 图标按钮，复制一键安装命令 PS：官网写的太详细了，我这篇也没必要写了，占个坑，算是知道相关服</description>
       <content:encoded><![CDATA[<blockquote>
 <p>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看<a href="https://nezha.wiki/guide/dashboard.html">准备工作 | 哪吒监控</a></p>
 </blockquote>
@@ -1003,7 +1136,7 @@
       <pubDate>Wed, 31 Aug 2022 14:03:46 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/sillygril-qqbot-deploy/</guid>
-      <description>一、docker-compose 编排文件 创建docker-compose.yaml文</description>
+      <description>一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容 version: &amp;#34;3&amp;#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=&amp;#39;ws://sillygirl:8080/qq/receive&amp;#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动 docker-compose logs -f 查看日志 二、FAQ 1、go-cq</description>
       <content:encoded><![CDATA[<h3 id="一docker-compose-编排文件">一、docker-compose 编排文件</h3>
 <p>创建<code>docker-compose.yaml</code>文件并拷贝下面内容</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
@@ -1642,7 +1775,7 @@ access:readonly
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-build-nginx/</guid>
-      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好</description>
+      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &amp;#39;3.3&amp;#39; services: web: image: nginx:latest container_name: nginx</description>
       <content:encoded><![CDATA[<blockquote>
 <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠</p>
 </blockquote>
@@ -1836,7 +1969,7 @@ access:readonly
       <pubDate>Fri, 18 Feb 2022 18:04:50 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/linux-unset-proxy/</guid>
-      <description>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来</description>
+      <description>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来感觉用的不爽，就给卸载了，服务也去了，但是proxy代理经常会自动设置，有时候手动给取消了，下次再用又有了，这次终于忍不了了，就搜了一下给解决了 1、定位bug export 查看下，有相应端口，手动取消后，再查看没有了，重启后又有</description>
       <content:encoded><![CDATA[<blockquote>
 <p>最近遇到一个很有点麻烦的事，以前在国内机上装了clash代理，用的编译包安装的，后来感觉用的不爽，就给卸载了，服务也去了，但是proxy代理经常会自动设置，有时候手动给取消了，下次再用又有了，这次终于忍不了了，就搜了一下给解决了</p>
 </blockquote>
@@ -1853,7 +1986,7 @@ access:readonly
       <pubDate>Sun, 06 Feb 2022 17:05:32 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/comparison-robot-building-for-docker/</guid>
-      <description>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商</description>
+      <description>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker</description>
       <content:encoded><![CDATA[<blockquote>
 <p>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！</p>
 </blockquote>
@@ -2201,7 +2334,7 @@ access:readonly
       <pubDate>Sat, 22 Jan 2022 21:34:31 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</guid>
-      <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交</description>
+      <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交时间 :git: 根据git提交版本时间 :fileModTime：文件修改时间 Configure Hugo | Hugo 写的都有,but是英文的🙃</description>
       <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">frontmatter</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">lastmod</span>:
@@ -2309,7 +2442,7 @@ access:readonly
       <pubDate>Thu, 13 Jan 2022 20:56:38 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/about/</guid>
-      <description>如果真的是你，请打招呼！ 🏠 关于本站 内容+主题：Hugo &amp;amp; PaperMod 托管：GitHub Pages 域名：</description>
+      <description>如果真的是你，请打招呼！ 🏠 关于本站 内容+主题：Hugo &amp;amp; PaperMod 托管：GitHub Pages 域名：freenom 防护+CDN：Cloudflare 编辑器：VS code 这里主要记录一些平常遇到的一些技术坑(有些东西用完就忘了)，方便以后可以查阅😄 本站最开始是2019年就搭建了，当时用的hexo构建，部署在github，用</description>
       <content:encoded><![CDATA[<blockquote>
 <p>如果真的是你，请打招呼！</p>
 </blockquote>
@@ -2338,7 +2471,7 @@ access:readonly
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-generate-image/</guid>
-      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳</description>
+      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&amp;hellip; 1、创建Dockerfile文件 比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换 换完在当前目录 docker build -t jd_scripts . 直接生成自己的image docker images</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
 <h3 id="1创建dockerfile文件">1、创建Dockerfile文件</h3>
@@ -2364,7 +2497,7 @@ Docker —— 从入门到实践</a></p>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
-      <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
+      <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。 1、修改post.ejs文件 head新增 &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 搜索&amp;lt;%- post.content %&amp;gt;复制一下代码覆盖copy &amp;lt;div class=&amp;#34;post-content-wrapper&amp;#34;&amp;gt; &amp;lt;div</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
 <p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
@@ -2485,7 +2618,7 @@ Docker —— 从入门到实践</a></p>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-build-jdbot/</guid>
-      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
+      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docker： 20.10.6 docker-compose： 1.27.4 1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose Docker安装 国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>

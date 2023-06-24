@@ -14,7 +14,7 @@
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
-      <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术</description>
+      <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。 1、修改post.ejs文件 head新增 &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 搜索&amp;lt;%- post.content %&amp;gt;复制一下代码覆盖copy &amp;lt;div class=&amp;#34;post-content-wrapper&amp;#34;&amp;gt; &amp;lt;div</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
 <p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>

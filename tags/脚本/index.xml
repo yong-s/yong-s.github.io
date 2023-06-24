@@ -101,7 +101,7 @@
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
       <guid>https://blog.zsan.ml/posts/docker-build-jdbot/</guid>
-      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docke</description>
+      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docker： 20.10.6 docker-compose： 1.27.4 1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose Docker安装 国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>

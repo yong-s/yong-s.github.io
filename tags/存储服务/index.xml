@@ -14,7 +14,7 @@
       <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
       
       <guid>https://blog.zsan.ml/posts/minio-service-deployment/</guid>
-      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存</description>
+      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。 前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自</description>
       <content:encoded><![CDATA[<blockquote>
 <p><strong>MinIO</strong> 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
 </blockquote>
