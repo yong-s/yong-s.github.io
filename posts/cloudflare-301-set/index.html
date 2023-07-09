@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>在Cloudflare 设置域名 301 重定向 | 张三的网络日志</title>
-<meta name="keywords" content="301, cloudflare, forwarding, 重定向">
+<meta name="keywords" content="301, cloudflare, 重定向">
 <meta name="description" content="在Cloudflare 设置域名 301 重定向 有点小坑">
 <meta name="author" content="
 作者:&nbsp;张三">
@@ -71,7 +71,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zsan.ml/posts/cloudflare-301-set/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-31T19:54:01+08:00" />
-<meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
+<meta property="article:modified_time" content="2023-07-09T15:16:22+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在Cloudflare 设置域名 301 重定向"/>
@@ -106,13 +106,13 @@ if (!doNotTrack) {
   "name": "在Cloudflare 设置域名 301 重定向",
   "description": "在Cloudflare 设置域名 301 重定向 有点小坑",
   "keywords": [
-    "301", "cloudflare", "forwarding", "重定向"
+    "301", "cloudflare", "重定向"
   ],
   "articleBody": " 很久以前遇到的问题了，用cloudflare 设置有大坑，今天来记录下\n之前网站的域名需要更换，blog等域名也需要从旧域名到新域名\n旧域名：olddona.com\n新域名：newdona.com\n现在需要访问 olddona.com 时跳转到 newdona.com\n1、clourflare 上 dns 解析 olddona.com\n登录clourflare、点击 dns、点击添加一条a记录\n类型：A\n名称：olddona.com\nipv4地址：8.8.8.8\nps：ipv4 地址一定要填一个可用的，这是个坑\n2、cloudflare 添加重定向\n点击规则\n点击创建页面规则\nurl: olddona.com/*\n选取设置：转发URL、301永久\n输入目标URL：https://newdona.com/$1\n保存之后，去访问olddona.com 可以跳到 newdona.com 成功🎉\n也可以试下olddona.com/* 是否成功跳转即可\n",
   "wordCount" : "336",
   "inLanguage": "zh",
   "datePublished": "2022-07-31T19:54:01+08:00",
-  "dateModified": "2023-02-01T13:14:22.896190237+08:00",
+  "dateModified": "2023-07-09T15:16:22.265358744+08:00",
   "author":[{
     "@type": "Person",
     "name": "张三"
@@ -218,20 +218,13 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-07-31 19:54:01 +0800 CST'>2022-07-31</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;336字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-07-31 19:54:01 +0800 CST'>2022-07-31</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;336字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
   </header> 
 
   
-<div class="post-outdated">
-  <div class="hint">
-    <p>【注意】最后更新于 
-      <span class="timeago" datetime="2023-02-01T13:14:22" title="二月 1, 2023">二月 1, 2023</span>，文中内容可能已过时，请谨慎使用。
-    </p>
-  </div>
-</div>
   <div class="post-content"><blockquote>
 <p>很久以前遇到的问题了，用cloudflare 设置有大坑，今天来记录下</p>
 <p>之前网站的域名需要更换，blog等域名也需要从旧域名到新域名</p>
@@ -273,7 +266,6 @@ if (!doNotTrack) {
     <ul class="post-tags">
       <li><a href="https://blog.zsan.ml/tags/301/">301</a></li>
       <li><a href="https://blog.zsan.ml/tags/cloudflare/">cloudflare</a></li>
-      <li><a href="https://blog.zsan.ml/tags/forwarding/">forwarding</a></li>
       <li><a href="https://blog.zsan.ml/tags/%E9%87%8D%E5%AE%9A%E5%90%91/">重定向</a></li>
     </ul>
 <nav class="paginav">

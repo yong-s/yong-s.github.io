@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>girde simple修改添加支持侧边栏目录 | 张三的网络日志</title>
-<meta name="keywords" content="girde, simple">
+<meta name="keywords" content="主题">
 <meta name="description" content="修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。 1、修改post.ejs文件 head新增 &lt;script src=&quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&quot;&gt;&lt;/script&gt; 搜索&lt;%- post.content %&gt;复制一下代码覆盖copy &lt;div class=&#34;post-content-wrapper&#34;&gt; &lt;div">
 <meta name="author" content="
 作者:&nbsp;张三">
@@ -71,7 +71,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-06T18:50:26+00:00" />
-<meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
+<meta property="article:modified_time" content="2023-07-09T15:17:51+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="girde simple修改添加支持侧边栏目录"/>
@@ -106,13 +106,13 @@ if (!doNotTrack) {
   "name": "girde simple修改添加支持侧边栏目录",
   "description": "修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。 1、修改post.ejs文件 head新增 \u0026lt;script src=\u0026quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js\u0026quot;\u0026gt;\u0026lt;/script\u0026gt; 搜索\u0026lt;%- post.content %\u0026gt;复制一下代码覆盖copy \u0026lt;div class=\u0026#34;post-content-wrapper\u0026#34;\u0026gt; \u0026lt;div",
   "keywords": [
-    "girde", "simple"
+    "主题"
   ],
   "articleBody": "修改主题文件支持侧边栏目录\nsimple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。\n1、修改post.ejs文件 head新增\n搜索\u003c%- post.content %\u003e复制一下代码覆盖copy\n\u003cdiv class=\"post-content-wrapper\"\u003e \u003cdiv class=\"post-content\" v-pre\u003e \u003c%- post.content %\u003e \u003c/div\u003e \u003cdiv class=\"toc-container\"\u003e \u003c%- post.toc %\u003e \u003c/div\u003e \u003c/div\u003e 新增高亮js\n\u003cscript\u003e hljs.initHighlightingOnLoad() let mainNavLinks = document.querySelectorAll(\".markdownIt-TOC a\"); // This should probably be throttled. // Especially because it triggers during smooth scrolling. // https://lodash.com/docs/4.17.10#throttle // You could do like... // window.addEventListener(\"scroll\", () =\u003e { // _.throttle(doThatStuff, 100); // }); // Only not doing it here to keep this Pen dependency-free. window.addEventListener(\"scroll\", event =\u003e { let fromTop = window.scrollY; mainNavLinks.forEach((link, index) =\u003e { let section = document.getElementById(decodeURI(link.hash).substring(1)); let nextSection = null if (mainNavLinks[index + 1]) { nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1)); } if (section.offsetTop \u003c= fromTop) { if (nextSection) { if (nextSection.offsetTop \u003e fromTop) { link.classList.add(\"current\"); } else { link.classList.remove(\"current\"); } } else { link.classList.add(\"current\"); } } else { link.classList.remove(\"current\"); } }); }); \u003c/script\u003e 2、客户端新增自定义css .toc-container .markdownIt-TOC { position: sticky; top: 32px; width: 200px; font-size: 12px; list-style: none; padding-left: 0; padding: 16px 8px; } .toc-container .markdownIt-TOC:before { content: \"\"; position: absolute; top: 0; left: 8px; bottom: 0; width: 1px; background-color: #ebedef; opacity: .5; } .toc-container ul { list-style: none; } .toc-container li { padding-left: 16px; } .toc-container li a { color: #868e96; padding: 4px; display: block; transition: all 0.3s; } .toc-container li a:hover { background: #cddbef; } .toc-container li a.current { color: #006CFF; background: #fafafa; } .post-content-wrapper { display: flex; } .post-content { width: 100%; margin-right: 20px; } @media (max-width: 1150px) { .toc-container { display: none; } } 3、修改main.css文件 搜索.post-detail 修改margin: 0 auto;为\nmargin: 0 20px;\n重新渲染网页即可尽情享用吧！\n",
   "wordCount" : "458",
   "inLanguage": "zh",
   "datePublished": "2021-06-06T18:50:26Z",
-  "dateModified": "2023-02-01T13:14:22.897200115+08:00",
+  "dateModified": "2023-07-09T15:17:51.57930545+08:00",
   "author":{
     "@type": "Person",
     "name": "张三"
@@ -215,7 +215,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2021-06-06 18:50:26 +0000 UTC'>2021-06-06</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;458字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2021-06-06 18:50:26 +0000 UTC'>2021-06-06</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;458字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -301,13 +301,6 @@ if (!doNotTrack) {
 
 
   
-<div class="post-outdated">
-  <div class="hint">
-    <p>【注意】最后更新于 
-      <span class="timeago" datetime="2023-02-01T13:14:22" title="二月 1, 2023">二月 1, 2023</span>，文中内容可能已过时，请谨慎使用。
-    </p>
-  </div>
-</div>
   <div class="post-content"><p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
 <p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>
@@ -425,8 +418,7 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/girde/">girde</a></li>
-      <li><a href="https://blog.zsan.ml/tags/simple/">simple</a></li>
+      <li><a href="https://blog.zsan.ml/tags/%E4%B8%BB%E9%A2%98/">主题</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://blog.zsan.ml/posts/docker-generate-image/">

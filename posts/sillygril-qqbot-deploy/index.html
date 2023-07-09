@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>SillyGril&amp;QQbot一键部署 | 张三的网络日志</title>
-<meta name="keywords" content="SillyGril, 傻妞, go-cqhttp, qqBot">
+<meta name="keywords" content="SillyGril, go-cqhttp">
 <meta name="description" content="一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容 version: &#34;3&#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=&#39;ws://sillygirl:8080/qq/receive&#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动 docker-compose logs -f 查看日志 二、FAQ 1、go-cq">
 <meta name="author" content="
 作者:&nbsp;张三">
@@ -106,7 +106,7 @@ if (!doNotTrack) {
   "name": "SillyGril\u0026QQbot一键部署",
   "description": "一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容 version: \u0026#34;3\u0026#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=\u0026#39;ws://sillygirl:8080/qq/receive\u0026#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动 docker-compose logs -f 查看日志 二、FAQ 1、go-cq",
   "keywords": [
-    "SillyGril", "傻妞", "go-cqhttp", "qqBot"
+    "SillyGril", "go-cqhttp"
   ],
   "articleBody": "一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容\nversion: \"3\" services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url='ws://sillygirl:8080/qq/receive' - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动\ndocker-compose logs -f 查看日志\n二、FAQ 1、go-cqhttp 扫码失败 问题解决 云服务器导致 可以在本地服务器（与手机qq扫码在同一局域网内）启动服务，生成session.token 复制到云服务器相同目录下\n看这里解决\n2、go-cqhttp 建议修改为手表登录 首先运行一下，会生成device.json\n找到protocol字段修改为2\n你可能会用到的一些资料\nhttps://hub.docker.com/r/mzzsfy/sillygirl\nhttps://hub.docker.com/r/mzzsfy/go-cqhttp\ngo-cqhttp配置\n",
   "wordCount" : "310",
@@ -370,9 +370,7 @@ if (!doNotTrack) {
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://blog.zsan.ml/tags/sillygril/">SillyGril</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E5%82%BB%E5%A6%9E/">傻妞</a></li>
       <li><a href="https://blog.zsan.ml/tags/go-cqhttp/">go-cqhttp</a></li>
-      <li><a href="https://blog.zsan.ml/tags/qqbot/">qqBot</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://blog.zsan.ml/posts/nfc-card-simulation-access-control/">

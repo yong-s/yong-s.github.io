@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>【躺赚】docker部署网心云容器魔方 | 张三的网络日志</title>
-<meta name="keywords" content="docker, 网心云, wxedge">
+<meta name="keywords" content="docker, 网心云">
 <meta name="description" content="N1盒子外挂硬盘跑网心云赚钱">
 <meta name="author" content="
 作者:&nbsp;张三">
@@ -71,7 +71,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-09T21:05:31+08:00" />
-<meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
+<meta property="article:modified_time" content="2023-07-09T15:23:28+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="【躺赚】docker部署网心云容器魔方"/>
@@ -106,13 +106,13 @@ if (!doNotTrack) {
   "name": "【躺赚】docker部署网心云容器魔方",
   "description": "N1盒子外挂硬盘跑网心云赚钱",
   "keywords": [
-    "docker", "网心云", "wxedge"
+    "docker", "网心云"
   ],
   "articleBody": " 设备：N1\n硬盘：400g ssd\n已安装服务：docker、docker-compose\n开干！\n一、挂载ssd（挂载过直接跳到第二步） 硬盘插到N1上\nlsblk #查看当前磁盘情况 fdisk -l #查看当前未挂载的磁盘 #假设磁盘名为 dev/sda #创建分区 fdisk dev/sda #输入n, p, 1, 两次回车，wq #新建一个主分区，大小整个磁盘，保存写入 #写入文件格式 mkfs.ext4 /dev/sda #ext4格式 #挂载 mount /dev/sda /media/data #查看文件 df -lh #查看到刚才挂载的硬盘 #设置开机自动挂载 vim /etc/fstab # 在最后新增一行 /dev/sdb /media/data ext4 defaults 0 0 二、部署 mkdir wxedge cd wxedge vim docker-compose.yml version: '3.3' services: wxedge: container_name: wxedge restart: always privileged: true network_mode: host tmpfs: - /run - /tmp volumes: - '/media/data/wxedge:/storage:rw' image: onething1/wxedge ip:18888 打开 成功🎉🎉🎉\n躺着赚钱吧！\n",
   "wordCount" : "252",
   "inLanguage": "zh",
   "datePublished": "2022-05-09T21:05:31+08:00",
-  "dateModified": "2023-02-01T13:14:22.895788403+08:00",
+  "dateModified": "2023-07-09T15:23:28.132661808+08:00",
   "author":[{
     "@type": "Person",
     "name": "张三"
@@ -218,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-05-09 21:05:31 +0800 CST'>2022-05-09</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;252字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-05-09 21:05:31 +0800 CST'>2022-05-09</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;252字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -302,13 +302,6 @@ if (!doNotTrack) {
 
 
   
-<div class="post-outdated">
-  <div class="hint">
-    <p>【注意】最后更新于 
-      <span class="timeago" datetime="2023-02-01T13:14:22" title="二月 1, 2023">二月 1, 2023</span>，文中内容可能已过时，请谨慎使用。
-    </p>
-  </div>
-</div>
   <div class="post-content"><blockquote>
 <p>设备：N1</p>
 <p>硬盘：400g ssd</p>
@@ -367,7 +360,6 @@ if (!doNotTrack) {
     <ul class="post-tags">
       <li><a href="https://blog.zsan.ml/tags/docker/">docker</a></li>
       <li><a href="https://blog.zsan.ml/tags/%E7%BD%91%E5%BF%83%E4%BA%91/">网心云</a></li>
-      <li><a href="https://blog.zsan.ml/tags/wxedge/">wxedge</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://blog.zsan.ml/posts/docker-deploy-snapdrop/">

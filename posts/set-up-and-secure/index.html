@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>保护您的服务器 | 张三的网络日志</title>
-<meta name="keywords" content="安全, 保护, 服务器">
+<meta name="keywords" content="安全, 服务器">
 <meta name="description" content="新买的服务器通常需要一系列保护措施">
 <meta name="author" content="
 作者:&nbsp;张三">
@@ -71,7 +71,7 @@ if (!doNotTrack) {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zsan.ml/posts/set-up-and-secure/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-04T16:59:21+08:00" />
-<meta property="article:modified_time" content="2023-06-05T20:18:10+08:00" />
+<meta property="article:modified_time" content="2023-07-09T15:23:58+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="保护您的服务器"/>
@@ -106,13 +106,13 @@ if (!doNotTrack) {
   "name": "保护您的服务器",
   "description": "新买的服务器通常需要一系列保护措施",
   "keywords": [
-    "安全", "保护", "服务器"
+    "安全", "服务器"
   ],
   "articleBody": "执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。\nUbuntu、Debian 和 Kali Linux apt update \u0026\u0026 apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora\ndnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。\n大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。\n使用 timedatectl 输出可用时区列表\ntimedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。\n使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。\ntimedatectl set-timezone 'America/New_York' Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata\n打开 tzdata 工具\ndpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter\n使用箭头键选择您所在的地区，然后按 Enter\n检查时间 使用 date 命令根据您的服务器查看当前日期和时间\nroot@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。\n简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。\n大多数发行版 将 example-hostname 替换为您的选择之一\nhostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析\n在文本编辑器（例如 Nano）中打开 hosts 文件\nnano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.example.com 是 FQDN\n127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行\n127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname 由于这里并没有配置FQDN所以只修改了127.0.1.1\n添加受限用户账户 到目前为止，您已经以 root 用户的身份访问了您的计算实例，该用户拥有无限的权限并且可以执行任何命令——甚至是可能会意外中断您的服务器的命令。我们建议创建一个受限用户帐户并始终使用该帐户。管理任务将使用 sudo 来临时提升您的受限用户的权限，以便您可以管理您的服务器。稍后，当您想要限制用户的 sudo 访问权限时，请参阅 Linux 用户和组。\nUbuntu 和 Debian 创建用户，用你想要的用户名替换 example_user 。然后，系统会要求您为用户分配一个密码：\nadduser example_user 将用户添加到 sudo 组，以便您拥有管理权限：\nadduser example_user sudo CentOS/RHEL Stream 和 Fedora 创建用户，用你想要的用户名替换 example_user ，并指定一个密码：\nuseradd example_user \u0026\u0026 passwd example_user 将用户添加到 wheel 组以获得 sudo 权限：\nusermod -aG wheel example_user 以新用户身份登录 创建受限用户后，断开与计算实例的连接：\nexit 以您的新用户身份重新登录。将 example_user 替换为您的用户名，将示例 IP 地址替换为您实例的 IP 地址：\nssh example_user@192.0.2.1 现在您可以从您的新用户帐户而不是 root 管理您的计算实例。几乎所有超级用户命令都可以使用 sudo （例如： sudo iptables -L -nv ）执行，这些命令将被记录到 /var/log/auth.log 安全访问ssh 默认情况下，密码身份验证用于通过 SSH 连接到您的计算实例。加密密钥对更安全，因为私钥取代了密码，而密码通常更难通过暴力解密。在本节中，我们将创建一个密钥对并将您的系统配置为不接受 SSH 登录的密码。\n创建身份密钥对ssh-key 命令创建\nssh-keygen -b 4096 公钥上传到您的服务器\nLinux 从您的本地计算机：\nssh-copy-id example_user@192.0.2.1 macOS scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys 最后，您需要为公钥目录和密钥文件本身设置权限\nsudo chmod -R 700 ~/.ssh \u0026\u0026 chmod 600 ~/.ssh/authorized_keys 现在退出并重新登录到您的计算实例\nssh守护进程设置 使用 Linux 文本编辑器（例如 nano 或 vim）打开计算实例上的 SSH 配置文件：\nsudo nano /etc/ssh/sshd_config 禁止通过 SSH 进行 root 登录。这要求所有 SSH 连接都由非 root 用户进行。一旦连接了受限用户帐户，就可以通过使用 sudo 或使用 su - 更改为root shell 来访问管理权限。\n# Authentication: ... PermitRootLogin no 禁用 SSH 密码验证。这要求所有通过 SSH 连接的用户都使用密钥身份验证。根据 Linux 发行版，可能需要添加行 PasswordAuthentication ，或者通过删除前导 # 来取消注释。\n# Change to no to disable tunnelled clear text passwords PasswordAuthentication no 只监听一种互联网协议。默认情况下，SSH 守护程序监听通过 IPv4 和 IPv6 的传入连接。除非您需要使用这两种协议通过 SSH 连接到您的计算实例，否则请禁用您不需要的任何一个。这不会在系统范围内禁用该协议，它仅适用于 SSH 守护进程。根据 Linux 发行版，可能需要添加行 AddressFamily ，或者通过删除前导 # 取消注释\nUse the option: 使用选项：\nAddressFamily inet 仅在 IPv4 上侦听。\nAddressFamily inet6 仅在 IPv6 上侦听。\n# Port 22 AddressFamily inet 重新启动 SSH 服务以加载新配置 如果您使用的是使用 systemd 的 Linux 发行版（CentOS 7、Debian 8、Fedora、Ubuntu 15.10+）\nsudo systemctl restart sshd 如果您的初始化系统是 SystemV 或 Upstart（CentOS 6、Debian 7、Ubuntu 14.04）：\nsudo service sshd restart 使用Fail2Ban保护ssh登录 Fail2Ban 是一个应用程序，它可以在登录尝试失败次数过多后禁止 IP 地址登录您的服务器。由于合法登录通常不会超过三次尝试成功（并且使用 SSH 密钥，最多不会超过一次），因此服务器被不成功登录的垃圾邮件表明试图进行恶意访问\nFail2Ban 可以监控多种协议，包括 SSH、HTTP 和 SMTP。默认情况下，Fail2Ban 仅监控 SSH，并且对任何服务器都是一种有用的安全威慑，因为 SSH 守护程序通常配置为持续运行并侦听来自任何远程 IP 地址的连接\n具体可参考这篇\n参考：\n大部分是摘抄下文并做了汉化，国内这些资料太少了😢\nGuides - Setting Up and Securing a Compute Instance\n",
   "wordCount" : "2248",
   "inLanguage": "zh",
   "datePublished": "2023-06-04T16:59:21+08:00",
-  "dateModified": "2023-06-05T20:18:10.304783049+08:00",
+  "dateModified": "2023-07-09T15:23:58.17590559+08:00",
   "author":[{
     "@type": "Person",
     "name": "张三"
@@ -218,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-06-04 16:59:21 +0800 CST'>2023-06-04</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-05&nbsp;|&nbsp;字数:&nbsp;2248字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-06-04 16:59:21 +0800 CST'>2023-06-04</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;2248字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -532,7 +532,6 @@ if (!doNotTrack) {
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://blog.zsan.ml/tags/%E5%AE%89%E5%85%A8/">安全</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E4%BF%9D%E6%8A%A4/">保护</a></li>
       <li><a href="https://blog.zsan.ml/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li>
     </ul>
 <nav class="paginav">
