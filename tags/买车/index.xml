@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>买车 on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/%E4%B9%B0%E8%BD%A6/</link>
+    <link>https://blog.zsan.cf/tags/%E4%B9%B0%E8%BD%A6/</link>
     <description>Recent content in 买车 on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 28 May 2023 17:55:20 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E4%B9%B0%E8%BD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 May 2023 17:55:20 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/%E4%B9%B0%E8%BD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Firefly Iii使用</title>
-      <link>https://blog.zsan.ml/posts/personalfinance/</link>
+      <link>https://blog.zsan.cf/posts/personalfinance/</link>
       <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/personalfinance/</guid>
+      <guid>https://blog.zsan.cf/posts/personalfinance/</guid>
       <description>个人理财，好好生活</description>
       <content:encoded><![CDATA[<h2 id="为何要用firefly-iii">为何要用Firefly Iii</h2>
 <p><a href="https://docs.firefly-iii.org/firefly-iii/about-firefly-iii/introduction/">简介及特点</a></p>
@@ -30,10 +30,16 @@
 <p>预算、存钱</p>
 </li>
 <li>
-<p>自动化</p>
-<p>可以自动化设置一些操作</p>
+<p>自动化，可以自动化设置一些操作</p>
 </li>
 </ul>
+<h2 id="各端体验">各端体验</h2>
+<p>PC端：web页面访问，适合PC浏览器上查看，特别是报表，很适合大屏观看</p>
+<p>移动端：没有单独的App，但是支持PWA，推荐用chrome打开，然后添加到桌面就行了，和App无异</p>
+<blockquote>
+<p>说点题外的，当年PWA出来的时候Safari是支持的，后来支持的功能就少了，是因为自己的App Store出来了。但是最近貌似对PWA的支持友好了😂</p>
+<p>不扯太远了，总之只要支持PWA，基本上和App无异，对App有执念的，可以做个客户端，官方API都是开放的</p>
+</blockquote>
 <h2 id="登录">登录</h2>
 <p>在<code>firefly</code>配置文件<code>env</code>内搜索<code>SITE_OWNER</code></p>
 <p>这个值就是配置的管理员邮箱</p>

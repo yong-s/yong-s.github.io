@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>hugo on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/hugo/</link>
+    <link>https://blog.zsan.cf/tags/hugo/</link>
     <description>Recent content in hugo on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 26 Mar 2023 11:40:12 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Mar 2023 11:40:12 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PaperMod文章添加过时提醒</title>
-      <link>https://blog.zsan.ml/posts/add-outdated-info-warning/</link>
+      <link>https://blog.zsan.cf/posts/add-outdated-info-warning/</link>
       <pubDate>Sun, 26 Mar 2023 11:40:12 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/add-outdated-info-warning/</guid>
+      <guid>https://blog.zsan.cf/posts/add-outdated-info-warning/</guid>
       <description>技术快速迭代并且方法不断改变，该博客通过魔改实现了针对该主题的内容提醒功能</description>
       <content:encoded><![CDATA[<p>技术性文章没有内容提醒怎么行的，技术快速迭代，今天可以的方法明天可能就不行了</p>
 <p>网上搜了一圈，对应主题的没找到现成的，只能魔改了</p>
@@ -112,10 +112,10 @@
     
     <item>
       <title>低成本搭建高质量播客发布服务</title>
-      <link>https://blog.zsan.ml/posts/how-to-make-podcast/</link>
+      <link>https://blog.zsan.cf/posts/how-to-make-podcast/</link>
       <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/how-to-make-podcast/</guid>
+      <guid>https://blog.zsan.cf/posts/how-to-make-podcast/</guid>
       <description>用播客在iPhone上听那些自己喜欢的歌曲</description>
       <content:encoded><![CDATA[<blockquote>
 <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；</p>
@@ -203,11 +203,16 @@ access:readonly
     
     <item>
       <title>Hugo 自动更新文章修改时间</title>
-      <link>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</link>
+      <link>https://blog.zsan.cf/posts/hugo-auto-update-lastmod/</link>
       <pubDate>Sat, 22 Jan 2022 21:34:31 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/hugo-auto-update-lastmod/</guid>
-      <description>config配置文件里加上如下参数： frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为： lastmod :最后提交时间 :git: 根据git提交版本时间 :fileModTime：文件修改时间 Configure Hugo | Hugo 写的都有,but是英文的🙃</description>
+      <guid>https://blog.zsan.cf/posts/hugo-auto-update-lastmod/</guid>
+      <description>config配置文件里加上如下参数：
+frontmatter: lastmod: - lastmod - :git - :fileModTime - :default 依次取的顺序为：
+lastmod :最后提交时间
+:git: 根据git提交版本时间
+:fileModTime：文件修改时间
+Configure Hugo | Hugo 写的都有,but是英文的🙃</description>
       <content:encoded><![CDATA[<p>config配置文件里加上如下参数：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">frontmatter</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">lastmod</span>:

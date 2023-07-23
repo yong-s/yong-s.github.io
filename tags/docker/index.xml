@@ -2,19 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>docker on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/docker/</link>
+    <link>https://blog.zsan.cf/tags/docker/</link>
     <description>Recent content in docker on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 11 Jun 2023 18:35:38 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jun 2023 18:35:38 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker更换默认目录</title>
-      <link>https://blog.zsan.ml/posts/docker-change-directory/</link>
+      <link>https://blog.zsan.cf/posts/docker-change-directory/</link>
       <pubDate>Sun, 11 Jun 2023 18:35:38 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-change-directory/</guid>
-      <description>查询目前已安装的路径 sudo docker info | grep &amp;quot;Docker Root Dir&amp;quot; 备份旧数据到新目录 cp -a /var/lib/docker /path/to/docker 修改配置文件 docker 版本 &amp;gt; 17.05 vim /etc/docker/daemon.json { &amp;#34;data-root&amp;#34;: &amp;#34;/path/to/docker&amp;#34;, &amp;#34;storage-driver&amp;#34;: &amp;#34;overlay2&amp;#34; # 这个是Docker的默认设置，这里也可以不用加 } 重启docker sudo systemctl restart docker 参考 两种方式迁移Docker</description>
+      <guid>https://blog.zsan.cf/posts/docker-change-directory/</guid>
+      <description>查询目前已安装的路径 sudo docker info | grep &amp;quot;Docker Root Dir&amp;quot;
+备份旧数据到新目录 cp -a /var/lib/docker /path/to/docker
+修改配置文件 docker 版本 &amp;gt; 17.05 vim /etc/docker/daemon.json
+{ &amp;#34;data-root&amp;#34;: &amp;#34;/path/to/docker&amp;#34;, &amp;#34;storage-driver&amp;#34;: &amp;#34;overlay2&amp;#34; # 这个是Docker的默认设置，这里也可以不用加 } 重启docker sudo systemctl restart docker
+参考 两种方式迁移Docker</description>
       <content:encoded><![CDATA[<h2 id="查询目前已安装的路径">查询目前已安装的路径</h2>
 <p><code>sudo docker info | grep &quot;Docker Root Dir&quot;</code></p>
 <h2 id="备份旧数据到新目录">备份旧数据到新目录</h2>
@@ -37,11 +41,14 @@
     
     <item>
       <title>个人理财工具-Firefly Iii安装</title>
-      <link>https://blog.zsan.ml/posts/firefly-iii-install/</link>
+      <link>https://blog.zsan.cf/posts/firefly-iii-install/</link>
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/firefly-iii-install/</guid>
-      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &amp;nbsp; 标签: #安全&amp;nbsp; #服务器&amp;nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许</description>
+      <guid>https://blog.zsan.cf/posts/firefly-iii-install/</guid>
+      <description>⚠️：你必须准备
+域名：国内可能需要备案
+服务器：Linux
+‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &amp;nbsp; 标签: #安全&amp;nbsp; #服务器&amp;nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;amp;&amp;amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;amp;#39;America/New_York&amp;amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.</description>
       <content:encoded><![CDATA[<blockquote>
 <p>⚠️：你必须准备</p>
 <p>域名：国内可能需要备案</p>
@@ -52,7 +59,7 @@
     
     
     <div style="font-size: 22px; font-weight: 600">
-        <a target="_blank" href="https://blog.zsan.ml/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
+        <a target="_blank" href="https://blog.zsan.cf/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
     </div>
     <span style="font-size: 14px; color: #999">
         日期: 2023-06-04
@@ -65,7 +72,25 @@
         
     </span>
     <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
-        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL ......
+        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。
+Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora
+dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。
+大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。
+使用 timedatectl 输出可用时区列表
+timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。
+使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。
+timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata
+打开 tzdata 工具
+dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter
+使用箭头键选择您所在的地区，然后按 Enter
+检查时间 使用 date 命令根据您的服务器查看当前日期和时间
+root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。
+简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。
+大多数发行版 将 example-hostname 替换为您的选择之一
+hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析
+在文本编辑器（例如 Nano）中打开 hosts 文件
+nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.example.com 是 FQDN
+127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行 ......
     </div>
     
     
@@ -212,7 +237,7 @@
     
     
     <div style="font-size: 22px; font-weight: 600">
-        <a target="_blank" href="https://blog.zsan.ml/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
+        <a target="_blank" href="https://blog.zsan.cf/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
     </div>
     <span style="font-size: 14px; color: #999">
         日期: 2023-05-28
@@ -231,7 +256,72 @@
         
     </span>
     <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
-        为何要用Firefly Iii 简介及特点 Login to Firefly III Demo 安全 账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里 复式记账 预算、存钱 自动化 可以自动化设置一些操作 登录 在firefly配置文件env内搜索SITE_OWNER 这个值就是配置的管理员邮箱 建议使用和域名相同的邮箱登录，如果无配置邮箱服务 ......
+        为何要用Firefly Iii 简介及特点
+Login to Firefly III Demo
+安全
+账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里
+复式记账
+预算、存钱
+自动化，可以自动化设置一些操作
+各端体验 PC端：web页面访问，适合PC浏览器上查看，特别是报表，很适合大屏观看
+移动端：没有单独的App，但是支持PWA，推荐用chrome打开，然后添加到桌面就行了，和App无异
+说点题外的，当年PWA出来的时候Safari是支持的，后来支持的功能就少了，是因为自己的App Store出来了。但是最近貌似对PWA的支持友好了😂
+不扯太远了，总之只要支持PWA，基本上和App无异，对App有执念的，可以做个客户端，官方API都是开放的
+登录 在firefly配置文件env内搜索SITE_OWNER
+这个值就是配置的管理员邮箱
+建议使用和域名相同的邮箱登录，如果无配置邮箱服务，可以使用阿里的邮箱推送服务，目前有免费额度可以用
+安全设置 两步验证 打开firefly点击选项 个人档案 两步验证点击启用
+手机下载Google Authenticator，切记不要登录Google账号，会上传到云上去
+启用之后，重新登录
+选项设置 货币 默认是欧元，可切换到人民币Chinese yuan (RMB) (¥)，如果有其他货币也可自行切换
+管理 包括检查更新，邮箱测试等
+初始化设置 账户 分类 标签 高级设置 预算👍 制定预算将帮助您更有效地分配资金并更轻松地实现财务目标
+预算这个功能超级好用
+首先，点击左侧预算，创建新预算
+右侧选填字段内
+自动预算 选择最后一个Adjusted (&amp;quot;... and correct for overspending&amp;quot;)
+举🌰
+每个月预算都是5000
+1月预算5000，到月底花了8000，超预算3000
+2月预算就变为2000，到月底花了1000
+3月预算就变为6000
+这个功能一直在找，是因为某财经大佬曾说过
+然后，当你点开“本月支出建议”表格时，
+“根据您过去十二个月的支出以及理财目标、收入情况综合分析，建议您本月食物支出不要超过元，休闲娱乐支出不要超过元……祝您早日达成理财目标。”
+下个月：
+“您上个月非常节俭，比预计多剩余了2000元。不妨拿出500元买点喜欢的东西奖励自己！”
+当然自己开发一个这个软件耗时耗力，所以当时就在找类似开源软件，扯的有点远了😂😂😄
+预算如何分配？ 50/30/20 预算法则
+50/30/20 预算法则是一种简单的预算策略，可以帮助您优先考虑财务目标：
+50% 用于必需品：将收入的 50% 用于支付基本生活费用，如住房、水电费、日常食品购买和交通费。
+30% 用于愿望：将收入的 30% 用于自由支配花费和非必需开销，如外出就餐、娱乐、爱好和购物。
+20% 用于储蓄和债务偿还：将收入的 20% 用于储蓄、投资和偿还债务。
+这个体系的目的是确保您的基本需求得到满足，有一定的自由支配费用空间，并优先为未来储蓄和管理债务。
+这些百分比并非一成不变。如果资金紧张，您可能需要将收入的更高比例用于支付必需品。如果您的债务很大，您可以选择分配超过 20% 的收入用于债务偿还，以加快进度。同样，如果您的储蓄目标雄心勃勃，可以将更高的比例分配给储蓄。
+购买汽车的预算 一条经验法则是，您车辆的总价值不应超过您年收入的50%
+另一个好的经验法则是 20/4/10 规则：
+至少支付 20% 的首付款。
+永远不要获得超过 4 年的贷款。
+您总收入的 10% 或更少用于所有车辆支出，包括贷款支付、保险、汽油、登记费、维护和修理。
+另外一个法则：
+年收入买车
+月收入买表
+如果您的预算符合以下任一情况，您应该考虑改变您的生活方式：
+您每月的抵押贷款/租金超过您实得工资的 30%。你可能想考虑找个室友，或者搬到更便宜的地方。
+您每月在车辆上的总支出超过您实得工资的 15%。您可能需要考虑拼车上班、减少出行次数，或者乘坐公共汽车或自行车。如果可以的话，您可能还想考虑搬到更近的地方或卖掉您的汽车。每月预算的 10% 是一个更健康的汽车支出数字。
+本杰明·富兰克林曾说：“省下一分钱就等于赚了一分钱。”如果这句话是真的，那么削减预算就相当于提高了你的收入。
+常被提及的减少开支的方法有：削减有线电视、将手机套餐调整到实际使用的通话/数据量、在家烹饪/带食物去工作、重新评估贷款、扔掉优惠券、下单前先找找优惠券、取消在线购物网站的信用卡关联、减少信用卡使用并改用现金、不用时关闭灯光、不在家或睡觉时降低暖气/空调等。
+账单 存钱罐👍 这个功能有助于帮助您实现您的财务目标
+应急资金（fuck money） 对大多数人来说，3 到 6 个月的开支就足够了。如果您的收入不稳定或不确定，可能需要更大的应急基金（例如 9 到 12 个月）
+一般放银行存款或货币基金内r1r2即可
+超长期养老 以后养老要靠自己了，每月拿出收入的10%或20%放到长期账户内，为以后退休做准备
+自动化 参考 Managing your finances - Firefly III documentation
+budgeting
+commontopics
+commontopics
+emergencyfunds
+early_career
+organizing ......
     </div>
     
     
@@ -352,11 +442,14 @@
     
     <item>
       <title>搭建 MinIO 高性能对象存储</title>
-      <link>https://blog.zsan.ml/posts/minio-service-deployment/</link>
+      <link>https://blog.zsan.cf/posts/minio-service-deployment/</link>
       <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/minio-service-deployment/</guid>
-      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。 前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自</description>
+      <guid>https://blog.zsan.cf/posts/minio-service-deployment/</guid>
+      <description>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。
+前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自己搭建一个对象存储服务，然后就了解了MinIO，搭建很简单，直接docker部署
+放一个中文的教程Minio - Docker — 从入门到实践，方便后面来翻阅
+MinIO Object Storage for Container — MinIO Object Storage for Container</description>
       <content:encoded><![CDATA[<blockquote>
 <p><strong>MinIO</strong> 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。</p>
 </blockquote>
@@ -368,10 +461,10 @@
     
     <item>
       <title>低成本搭建高质量播客发布服务</title>
-      <link>https://blog.zsan.ml/posts/how-to-make-podcast/</link>
+      <link>https://blog.zsan.cf/posts/how-to-make-podcast/</link>
       <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/how-to-make-podcast/</guid>
+      <guid>https://blog.zsan.cf/posts/how-to-make-podcast/</guid>
       <description>用播客在iPhone上听那些自己喜欢的歌曲</description>
       <content:encoded><![CDATA[<blockquote>
 <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；</p>
@@ -459,10 +552,10 @@ access:readonly
     
     <item>
       <title>Docker 部署 Snapdrop</title>
-      <link>https://blog.zsan.ml/posts/docker-deploy-snapdrop/</link>
+      <link>https://blog.zsan.cf/posts/docker-deploy-snapdrop/</link>
       <pubDate>Sun, 19 Jun 2022 17:44:20 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-deploy-snapdrop/</guid>
+      <guid>https://blog.zsan.cf/posts/docker-deploy-snapdrop/</guid>
       <description>好用的跨平台文件传输工具（无需下载安装、打开网页即可使用）</description>
       <content:encoded><![CDATA[<blockquote>
 <p>Snapdrop 是一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件</p>
@@ -511,10 +604,10 @@ access:readonly
     
     <item>
       <title>【躺赚】docker部署网心云容器魔方</title>
-      <link>https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/</link>
+      <link>https://blog.zsan.cf/posts/docker-deploying-netcentric-cloud-containers/</link>
       <pubDate>Mon, 09 May 2022 21:05:31 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/</guid>
+      <guid>https://blog.zsan.cf/posts/docker-deploying-netcentric-cloud-containers/</guid>
       <description>N1盒子外挂硬盘跑网心云赚钱</description>
       <content:encoded><![CDATA[<blockquote>
 <p>设备：N1</p>
@@ -571,11 +664,16 @@ access:readonly
     
     <item>
       <title>Docker 部署 Nginx服务</title>
-      <link>https://blog.zsan.ml/posts/docker-build-nginx/</link>
+      <link>https://blog.zsan.cf/posts/docker-build-nginx/</link>
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-build-nginx/</guid>
-      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &amp;#39;3.3&amp;#39; services: web: image: nginx:latest container_name: nginx</description>
+      <guid>https://blog.zsan.cf/posts/docker-build-nginx/</guid>
+      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠
+1、创建docker-nginx目录 新建 docker-compose.yml 文件
+mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &amp;#39;3.3&amp;#39; services: web: image: nginx:latest container_name: nginx volumes: - ./nginx:/etc/nginx - ./log:/var/log/nginx - ./html:/usr/share/nginx/html //网站放置目录 ports: - &amp;#34;8081:80&amp;#34; environment: - NGINX_HOST=&amp;#34;192.168.116.10&amp;#34; //访问地址/域名 - NGINX_PORT=&amp;#34;80&amp;#34; //访问端口 - TZ=&amp;#34;Asia/Shanghai&amp;#34; //时区 restart: always 3、手动cp配置文件 由于官方image没有默认映射外部文件，需要手动把配置文件cp出来
+# 运行官方命令创建默认容器 docker run --name nginx -p 8080:80 -d nginx #配置文件复制到nginx里,其他文件可用复制 #是个坑，路径必须是全路径 docker cp nginx:/etc/nginx /opt/docker-nginx #删除默认容器 docker stop nginx &amp;amp;&amp;amp; docker rm nginx 4、修改nginx配置文件 端口号、域名，ssl等和以前配置一样，不再赘述
+5、运行&amp;amp;测试 docker-compose up -d #查看日志 docker-compose logs -f #浏览器输入IP或域名查看是否可以访问 参考文档：
+1、Docker Hub-nginx</description>
       <content:encoded><![CDATA[<blockquote>
 <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠</p>
 </blockquote>
@@ -633,10 +731,10 @@ access:readonly
     
     <item>
       <title>打破信息茧房</title>
-      <link>https://blog.zsan.ml/posts/rss-build/</link>
+      <link>https://blog.zsan.cf/posts/rss-build/</link>
       <pubDate>Sun, 13 Mar 2022 13:05:35 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/rss-build/</guid>
+      <guid>https://blog.zsan.cf/posts/rss-build/</guid>
       <description>RSS服务快速搭建</description>
       <content:encoded><![CDATA[<p>何为信息茧房：</p>
 <blockquote>
@@ -765,11 +863,15 @@ access:readonly
     
     <item>
       <title>比价助手机器人docker快速部署</title>
-      <link>https://blog.zsan.ml/posts/comparison-robot-building-for-docker/</link>
+      <link>https://blog.zsan.cf/posts/comparison-robot-building-for-docker/</link>
       <pubDate>Sun, 06 Feb 2022 17:05:32 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/comparison-robot-building-for-docker/</guid>
-      <description>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker</description>
+      <guid>https://blog.zsan.cf/posts/comparison-robot-building-for-docker/</guid>
+      <description>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！
+一、部署傻妞助手bot 项目地址：GitHub - cdle/sillyGirl: 傻妞机器人
+一键安装：支持linux arm64和amd64位 cd /opt s=sillyGirl;a=arm64;if [[ $(uname -a | grep &amp;#34;x86_64&amp;#34;) != &amp;#34;&amp;#34; ]];then a=amd64;fi ;if [ ! -d $s ];then mkdir $s;fi ;cd $s;wget https://github.com/cdle/${s}/releases/download/main/${s}_linux_$a -O $s &amp;amp;&amp;amp; chmod 777 $s;pkill -9 $s;$(pwd)/$s 在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置
+主要是配置管理员账号等，也可以通过对话配置
+### 一些基础设置 ### # 傻妞机器人名 set sillyGirl name 傻妞 # 傻妞http服务端口 set sillyGirl port 800 # 傻妞消息撤回等待时间，单位秒 set sillyGirl duration 5 # 傻妞自动升级是否通知 set sillyGirl update_notify true # 是否开启傻妞自动更新 set sillyGirl auto_update false # 傻妞内置赞赏码 set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg #是否启动http服务 set sillyGirl enable_http_server true # 关闭守护模式，守护模式会导致没法自动升级 #systemctl disable sillyGirl ### 对接青龙的设置 ### # 设置青龙openapi的client_id参数 #set qinglong client_id ? # 设置青龙openapi的client_secret参数 #set qinglong client_secret ? # 青龙是否开启自动隐藏重复任务功能 #set qinglong autoCronHideDuplicate true # 设置青龙面板地址 #set qinglong host http://127.0.0.1:5700 ### 对接QQ的设置 ### # 设置qq登录账号 #set qq uin ? # 设置qq登录密码 #set qq password ? # 设置qq临时消息默认群号 #set qq tempMessageGroupCode ? # 指定要监听的qq群 #set qq onGroups g1&amp;amp;g2&amp;amp;g3... # 设置是否自动同意好友请求 #set qq auto_friend false # 设置是否对监听自身消息 #set qq onself true # 设置qq管理员 #set qq masters q1&amp;amp;q2&amp;amp;q3.</description>
       <content:encoded><![CDATA[<blockquote>
 <p>对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！</p>
 </blockquote>
@@ -1113,10 +1215,10 @@ access:readonly
     
     <item>
       <title>Docker Compose部署filebrowser</title>
-      <link>https://blog.zsan.ml/posts/docker-deploy-filebrowser/</link>
+      <link>https://blog.zsan.cf/posts/docker-deploy-filebrowser/</link>
       <pubDate>Fri, 21 Jan 2022 11:24:05 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-deploy-filebrowser/</guid>
+      <guid>https://blog.zsan.cf/posts/docker-deploy-filebrowser/</guid>
       <description>docker快速搭建个人网盘</description>
       <content:encoded><![CDATA[<p>在linuxserver服务器上安装</p>
 <p>环境：docker、docker- compose</p>
@@ -1197,11 +1299,22 @@ access:readonly
     
     <item>
       <title>docker 生成自己的镜像</title>
-      <link>https://blog.zsan.ml/posts/docker-generate-image/</link>
+      <link>https://blog.zsan.cf/posts/docker-generate-image/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-generate-image/</guid>
-      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&amp;hellip; 1、创建Dockerfile文件 比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换 换完在当前目录 docker build -t jd_scripts . 直接生成自己的image docker images</description>
+      <guid>https://blog.zsan.cf/posts/docker-generate-image/</guid>
+      <description>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&amp;hellip;
+1、创建Dockerfile文件 比较懒，直接把大佬的Dockerfile拉来换了仓库地址，rsa记着也要换
+换完在当前目录 docker build -t jd_scripts .
+直接生成自己的image
+docker images 查看镜像
+2、修改docker-compose文件 修改docker-compose里面的仓库地址为自己的地址，其他参数不用变
+docker-compose up -d 启动镜像
+完美运行！
+继续躺平。
+建议学学docker，真的好强大！
+附上一个不错的docker教程
+Docker —— 从入门到实践</description>
       <content:encoded><![CDATA[<p>看过前面的文章知道，大佬的库仓库也锁了，不能pull，只能换取仓库地址才行，为了一劳永逸，索性换了自己的库，只谈技术，不谈其他&hellip;</p>
 <!-- more -->
 <h3 id="1创建dockerfile文件">1、创建Dockerfile文件</h3>
@@ -1223,11 +1336,52 @@ Docker —— 从入门到实践</a></p>
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.zsan.ml/posts/docker-build-jdbot/</link>
+      <link>https://blog.zsan.cf/posts/docker-build-jdbot/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-build-jdbot/</guid>
-      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docker： 20.10.6 docker-compose： 1.27.4 1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose Docker安装 国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装</description>
+      <guid>https://blog.zsan.cf/posts/docker-build-jdbot/</guid>
+      <description>使用docker部署自动领金豆bot脚本
+使用的版本：
+服务器：centos 8
+docker： 20.10.6
+docker-compose： 1.27.4
+1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose
+Docker安装
+国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun docker-compose安装
+$ sudo curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose
+要安装其他版本的 Compose，请替换 1.24.1。
+最新发行的版本地址：https://github.com/docker/compose/releases。
+将可执行权限应用于二进制文件：
+$ sudo chmod +x /usr/local/bin/docker-compose
+创建软链：
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+通过docker-compose version查看docker-compose版本，确认是否安装成功。
+2、安装jd_scripts 创建一个目录jd_scripts用于存放备份配置等数据，迁移重装的时候只需要备份整个jd_scripts目录即可
+需要新建的目录文件结构参考如下:
+jd_scripts ├── logs │ ├── XXXX.log │ └── XXXX.log ├── my_crontab_list.sh └── docker-compose.yml jd_scripts/logs建一个空文件夹就行 jd_scripts/docker-compose.yml 参考内容如下(自己动手能力不行搞不定请使用默认配置)： 根据文档一步一步下去就ok了，下面主要记录下可能用到的命令
+目录文件配置好之后在 jd_scripts目录执行。
+docker-compose up -d 启动（修改docker-compose.yml后需要使用此命令使更改生效）；
+docker-compose logs 打印日志；
+docker-compose logs -f 打印日志，-f表示跟随日志； docker logs -f jd_scripts 和上面两条相比可以显示汉字； docker-compose pull 更新镜像；
+docker-compose stop 停止容器；
+docker-compose restart 重启容器；
+docker-compose down 停止并删除容器；
+3、开代理机器，激活tg-bot 这里是个大坑，拿个小本本记下来，其实就是docker内代理宿主机代理的问题
+由于众所周知的原因，国内的机器不能访问tg，而又想使用tg-bot来控制，无奈，国外机子太贵（穷），最低也要5美刀！遂买国内机子开代理使用
+1、买国内机器，推荐大厂的 这里应该放各大厂的aff的，留个坑
+2、安装clash 一直在使用clash，直接网上搜索clash下载，找到对应版本下载，博主用的是centos，下载linux-amd64的
+1、下载clash，最新版本可去官网找
+wget https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz 2、解压
+gzip -d clash-linux-amd64-v0.19.0.gz 3、移动至usr/bin/clash并重命名为clash
+sudo mv clash-linux-amd64-v0.19.0 /usr/bin/clash 4、赋予clash运行权限
+sudo chmod +x /usr/bin/clash 5、检查是否安装成功
+clash -v 3、创建配置文件、安装控制面板 1.创建配置文件目录
+mkdir -p /etc/clash/ 2.进入目录
+cd /etc/clash/ 3.创建配置文件
+vim config.yaml 4.手动编辑很麻烦，可用winscp上传
+配置参数自行查找
+5.下载前端代码
+wget https://github.com/Dreamacro/clash-dashboard/tree/gh-pages 6.解压</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>

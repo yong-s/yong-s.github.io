@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +10,16 @@
 <meta name="description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/tags/docker-compose/">
+<link rel="canonical" href="https://blog.zsan.cf/tags/docker-compose/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://blog.zsan.ml/tags/docker-compose/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://blog.zsan.cf/tags/docker-compose/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,7 +70,7 @@ if (!doNotTrack) {
 <meta property="og:title" content="docker-compose" />
 <meta property="og:description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.zsan.ml/tags/docker-compose/" />
+<meta property="og:url" content="https://blog.zsan.cf/tags/docker-compose/" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="docker-compose"/>
@@ -93,7 +93,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -119,22 +119,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -142,7 +142,7 @@ if (!doNotTrack) {
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/tags/">Tags</a></div>
   <h1>
     docker-compose
   </h1>
@@ -154,7 +154,12 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &#39;3.3&#39; services: web: image: nginx:latest container_name: nginx...</p>
+    <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠
+1、创建docker-nginx目录 新建 docker-compose.yml 文件
+mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &#39;3.3&#39; services: web: image: nginx:latest container_name: nginx volumes: - ./nginx:/etc/nginx - ./log:/var/log/nginx - ./html:/usr/share/nginx/html //网站放置目录 ports: - &#34;8081:80&#34; environment: - NGINX_HOST=&#34;192.168.116.10&#34; //访问地址/域名 - NGINX_PORT=&#34;80&#34; //访问端口 - TZ=&#34;Asia/Shanghai&#34; //时区 restart: always 3、手动cp配置文件 由于官方image没有默认映射外部文件，需要手动把配置文件cp出来
+# 运行官方命令创建默认容器 docker run --name nginx -p 8080:80 -d nginx #配置文件复制到nginx里,其他文件可用复制 #是个坑，路径必须是全路径 docker cp nginx:/etc/nginx /opt/docker-nginx #删除默认容器 docker stop nginx &amp;&amp; docker rm nginx 4、修改nginx配置文件 端口号、域名，ssl等和以前配置一样，不再赘述
+5、运行&amp;测试 docker-compose up -d #查看日志 docker-compose logs -f #浏览器输入IP或域名查看是否可以访问 参考文档：
+1、Docker Hub-nginx</p>
   </div>
   <footer class="entry-footer">
 
@@ -167,9 +172,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-04-08 16:23:01 +0800 CST'>2022-04-08</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-13&nbsp;|&nbsp;字数:&nbsp;405字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-04-08 16:23:01 +0800 CST'>2022-04-08</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-13&nbsp;|&nbsp;字数:&nbsp;87字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to Docker 部署 Nginx服务" href="https://blog.zsan.ml/posts/docker-build-nginx/"></a>
+  <a class="entry-link" aria-label="post link to Docker 部署 Nginx服务" href="https://blog.zsan.cf/posts/docker-build-nginx/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -178,7 +183,18 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>在linuxserver服务器上安装 环境：docker、docker- compose 需要了解docker基本知识，不懂可以翻翻以前的博客或者搜下教程学习 filebrowser官网上给的是docker命令执行的，但用compose习惯了，所以转换了一下格式，但是这里有个坑，官网也提示了 By default, we already have a configuration file with some defaults so you can...</p>
+    <p>在linuxserver服务器上安装
+环境：docker、docker- compose
+需要了解docker基本知识，不懂可以翻翻以前的博客或者搜下教程学习
+filebrowser官网上给的是docker命令执行的，但用compose习惯了，所以转换了一下格式，但是这里有个坑，官网也提示了
+By default, we already have a configuration file with some defaults so you can just mount the root and the database. Although you can overwrite by mounting a directory with a new config file. If you don’t already have a database file, make sure to create a new empty file under the path you specified. Otherwise, Docker will create an empty folder instead of an empty file, resulting in an error when mounting the database into the container.
+翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！
+1、创建docker-compose文件 内容如下：
+version: &#39;3.3&#39; services: filebrowser: image: filebrowser/filebrowser:s6 container_name: filebrowser volumes: - ./root:/srv - ./database/filebrowser.db:/database/filebrowser.db - ./settings.json:/config/settings.json environment: - PUID=0 - PGID=0 ports: - &#39;8080:80&#39; restart: always 2、创建默认文件和文件夹 对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：
+{ &#34;port&#34;: 80, &#34;baseURL&#34;: &#34;&#34;, &#34;address&#34;: &#34;0.0.0.0&#34;, &#34;log&#34;: &#34;stdout&#34;, &#34;database&#34;: &#34;/database/filebrowser.db&#34;, &#34;root&#34;: &#34;/srv&#34; } 在当前目录创建 database/filebrowser.db 文件夹和文件
+mkdir database cd database touch filebrowser.db 3、运行测试是否成功 执行 docker- compose logs -f 看下日志是否报错
+需要其他机器访问记得防火墙 把端口打开，本例用的8080端口
+浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉...</p>
   </div>
   <footer class="entry-footer">
 
@@ -191,9 +207,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-01-21 11:24:05 +0800 CST'>2022-01-21</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;717字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-01-21 11:24:05 +0800 CST'>2022-01-21</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;197字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to Docker Compose部署filebrowser" href="https://blog.zsan.ml/posts/docker-deploy-filebrowser/"></a>
+  <a class="entry-link" aria-label="post link to Docker Compose部署filebrowser" href="https://blog.zsan.cf/posts/docker-deploy-filebrowser/"></a>
 </article>
     </main>
     

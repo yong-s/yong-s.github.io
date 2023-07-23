@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,13 @@
 <meta name="description" content="docker快速搭建个人网盘">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/docker-deploy-filebrowser/">
+<link rel="canonical" href="https://blog.zsan.cf/posts/docker-deploy-filebrowser/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -69,7 +69,7 @@ if (!doNotTrack) {
 <meta property="og:title" content="Docker Compose部署filebrowser" />
 <meta property="og:description" content="docker快速搭建个人网盘" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/docker-deploy-filebrowser/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/docker-deploy-filebrowser/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-21T11:24:05+08:00" />
 <meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
 
@@ -87,13 +87,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.zsan.ml/posts/"
+      "item": "https://blog.zsan.cf/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Docker Compose部署filebrowser",
-      "item": "https://blog.zsan.ml/posts/docker-deploy-filebrowser/"
+      "item": "https://blog.zsan.cf/posts/docker-deploy-filebrowser/"
     }
   ]
 }
@@ -109,8 +109,8 @@ if (!doNotTrack) {
     "docker", "docker-compose", "filebrowser", "个人网盘"
   ],
   "articleBody": "在linuxserver服务器上安装\n环境：docker、docker- compose\n需要了解docker基本知识，不懂可以翻翻以前的博客或者搜下教程学习\nfilebrowser官网上给的是docker命令执行的，但用compose习惯了，所以转换了一下格式，但是这里有个坑，官网也提示了\nBy default, we already have a configuration file with some defaults so you can just mount the root and the database. Although you can overwrite by mounting a directory with a new config file. If you don’t already have a database file, make sure to create a new empty file under the path you specified. Otherwise, Docker will create an empty folder instead of an empty file, resulting in an error when mounting the database into the container.\n翻译过来就是需要提前创建所需的文件和文件夹，否则，Docker会创建一个空的文件夹而不是空的文件，导致在将数据库挂载到容器中时出现错误！这点一定要注意啊！！！\n1、创建docker-compose文件 内容如下：\nversion: '3.3' services: filebrowser: image: filebrowser/filebrowser:s6 container_name: filebrowser volumes: - ./root:/srv - ./database/filebrowser.db:/database/filebrowser.db - ./settings.json:/config/settings.json environment: - PUID=0 - PGID=0 ports: - '8080:80' restart: always 2、创建默认文件和文件夹 对照上述docker-compose的路径，需要在当前目录创建 settings.json 文件，内容如下：\n{ \"port\": 80, \"baseURL\": \"\", \"address\": \"0.0.0.0\", \"log\": \"stdout\", \"database\": \"/database/filebrowser.db\", \"root\": \"/srv\" } 在当前目录创建 database/filebrowser.db 文件夹和文件\nmkdir database cd database touch filebrowser.db 3、运行测试是否成功 执行 docker- compose logs -f 看下日志是否报错\n需要其他机器访问记得防火墙 把端口打开，本例用的8080端口\n浏览器访问 服务器ip:8080 成功打开即可，Enjoy it！🎉🎉🎉\n4、n1小钢炮安装 灯大魔改的好久没更新了，功能好多不支持了，今天给升级（踩坑）了一下\n1、docker-compose需要改下配置\nversion: '3.3' services: filebrowser: image: filebrowser/filebrowser container_name: filebrowser volumes: - /media:/srv - ./database/filebrowser.db:/database/filebrowser.db - ./settings.json:/config/settings.json - /etc/timezone:/etc/timezone #时区 cst - /etc/localtime:/etc/localtime #时区 cst environment: - PUID=1002 - PGID=100 # - TZ=Asia/Shanghai ports: - '8081:80' restart: always 2、灯大版的移除，执行这个即可\n两个小坑，1、镜像要用laster的 2、时区设置用挂载的\n参考：\n1、filebrowser官网\n2、filebrowser 一个跨平台的文件管理器的使用方法-森林的个人博客\n",
-  "wordCount" : "717",
-  "inLanguage": "zh",
+  "wordCount" : "197",
+  "inLanguage": "en",
   "datePublished": "2022-01-21T11:24:05+08:00",
   "dateModified": "2023-02-01T13:14:22.89667003+08:00",
   "author":{
@@ -119,14 +119,14 @@ if (!doNotTrack) {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/docker-deploy-filebrowser/"
+    "@id": "https://blog.zsan.cf/posts/docker-deploy-filebrowser/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "张三的网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.zsan.ml/favicon.ico"
+      "url": "https://blog.zsan.cf/favicon.ico"
     }
   }
 }
@@ -148,7 +148,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,22 +174,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -200,7 +200,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
     <h1 class="post-title">
       Docker Compose部署filebrowser
     </h1>
@@ -218,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-01-21 11:24:05 +0800 CST'>2022-01-21</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;717字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-01-21 11:24:05 +0800 CST'>2022-01-21</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;197字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -309,7 +309,7 @@ if (!doNotTrack) {
 <div class="post-outdated">
   <div class="hint">
     <p>【注意】最后更新于 
-      <span class="timeago" datetime="2023-02-01T13:14:22" title="二月 1, 2023">二月 1, 2023</span>，文中内容可能已过时，请谨慎使用。
+      <span class="timeago" datetime="2023-02-01T13:14:22" title="February 1, 2023">February 1, 2023</span>，文中内容可能已过时，请谨慎使用。
     </p>
   </div>
 </div>
@@ -393,18 +393,18 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/docker/">docker</a></li>
-      <li><a href="https://blog.zsan.ml/tags/docker-compose/">docker-compose</a></li>
-      <li><a href="https://blog.zsan.ml/tags/filebrowser/">filebrowser</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98/">个人网盘</a></li>
+      <li><a href="https://blog.zsan.cf/tags/docker/">docker</a></li>
+      <li><a href="https://blog.zsan.cf/tags/docker-compose/">docker-compose</a></li>
+      <li><a href="https://blog.zsan.cf/tags/filebrowser/">filebrowser</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98/">个人网盘</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/hugo-auto-update-lastmod/">
+  <a class="prev" href="https://blog.zsan.cf/posts/hugo-auto-update-lastmod/">
     <span class="title">« 上一页</span>
     <br>
     <span>Hugo 自动更新文章修改时间</span>
   </a>
-  <a class="next" href="https://blog.zsan.ml/posts/docker-generate-image/">
+  <a class="next" href="https://blog.zsan.cf/posts/docker-generate-image/">
     <span class="title">下一页 »</span>
     <br>
     <span>docker 生成自己的镜像</span>
@@ -421,7 +421,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.zsan.ml/",  
+            envId: "https://twikoo.zsan.cf/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

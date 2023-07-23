@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,13 @@
 <meta name="description" content="RSS服务快速搭建">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/rss-build/">
+<link rel="canonical" href="https://blog.zsan.cf/posts/rss-build/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -69,7 +69,7 @@ if (!doNotTrack) {
 <meta property="og:title" content="打破信息茧房" />
 <meta property="og:description" content="RSS服务快速搭建" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/rss-build/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/rss-build/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-13T13:05:35+08:00" />
 <meta property="article:modified_time" content="2023-07-09T15:20:42+08:00" />
 
@@ -87,13 +87,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.zsan.ml/posts/"
+      "item": "https://blog.zsan.cf/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "打破信息茧房",
-      "item": "https://blog.zsan.ml/posts/rss-build/"
+      "item": "https://blog.zsan.cf/posts/rss-build/"
     }
   ]
 }
@@ -109,8 +109,8 @@ if (!doNotTrack) {
     "RSS", "docker", "信息茧房"
   ],
   "articleBody": "何为信息茧房：\n哈佛大学凯斯·桑斯坦教授在《信息乌托邦》一书中提出，人类社会存在一种“信息茧房”现象。他认为，在信息传播中人们自身的信息需求并非全方位的，只会注意选择想要的或能使自己愉悦的信息，久而久之接触的信息就越来越局限，越来越窄，就像蚕吐出来的丝一样，细细密密地把自己包裹起来，最终像一个蚕宝宝一样被桎梏在“信息茧房”内，失去对其他不同事物的了解能力和接触机会。当时，他的这一观点还只是作为一种推论和预测，但随着网络信息和人工智能技术的飞速发展，这种“信息茧房”现象，正越来越多地发生在现实生活中和我们的身边。\n说人话就是：\n在现如今的生活中，人们接受信息的来源（主要指生活在大陆，国外也差不多），主要从微信、微博、抖音、快手等中心化的平台，各家相互关闭自己的开放接口，强迫用户留在自己平台上，有时候只关注某个大V的信息，却不得不安装一个app，就这样手机上装了很多app（这些app们平均一周更新一次，要吐了）再加上平台的推荐算法，只推荐你喜欢的（兼听则明，偏信则暗），这样下去，整个人的认知无法被提高\n经过一段时间的探索，搭建了RSS这套服务，RSS服务属于古老服务了，估计只有数字原住民才听说过，目前来说还可以，正在慢慢过渡，在此记录下搭建过程，方便下次迁移\nRSS（英文全称：RDF Site Summary 或 Really Simple Syndication[2]），中文译作简易信息聚合[3]，也称聚合内容[4]，是一种消息来源格式规范，用以聚合多个网站更新的内容并自动通知网站订阅者。使用 RSS 后，网站订阅者便无需再手动查看网站是否有新的内容，同时 RSS 可将多个网站更新的内容进行整合，以摘要的形式呈现，有助于订阅者快速获取重要信息，并选择性地点阅查看。\n——引用wikipedia\n准备：\n需要一台服务器，运行linux即可 配置不用太大，我用的是阿里云的服务器，生活在大陆，国内访问比较快\n用到的服务：\nRSSHub：一个开源、简单易用、易于扩展的 RSS 生成器，可以给任何奇奇怪怪的内容生成 RSS 订阅源。\nTTRSS：一款基于 PHP 的免费开源 RSS 聚合阅读器。\n用rsshub生成官方没有的订阅源，ttrss来管理订阅源的阅读记录，支持各端同步\n一、部署RSSHub 支持docker部署，不过，我是部署到 Vercel 上的，好处是免费、国外的机子，真正连接到互联网的，国内可访问。\n1、注册 Vercel\n有帐户的直接可以登录部署\n没有的先注册，建议用GitHub账号登录注册，github账号邮箱建议用gmail等国外的，通过率高，如果提示失败，可以和官方人员发email解封，我的当时就直接被冻结了，发了email后，一会就解封了，态度超好👍\n2、成功后可以直接点去部署了，我是没有用官方的库部署，fork官方库后去授权部署的，效果一样，vercel 用默认的就行，等待一会，撒花，表示部署成功\n3、直接访问域名成功打开即部署成功\n4、rsshub配置环境可参考 部署 | RSSHub 配置\n用户认证\n日志配置\n其他一些服务需要的api-key\n5、在vercel 配置完 重新部署服务，才生效\n更新 支持vercel自动拉取代码更新\n二、部署TTRSS 部署到vps 阿里云上，支持docker、docker-composr即可\ndocker-compose部署 下载 docker-compose.yml至任意目录。 更改 docker-compose.yml 中的设置，请务必更改 postgres 用户密码。 通过终端在同目录下运行 docker-compose up -d 后等待部署完成。 默认通过 181 端口访问 TTRSS，默认账户：admin 密码：password，请第一时间更改。 wangqiru/mercury-parser-api 及 wangqiru/opencc-api-server 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。 SELF_URL_PATH: TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。\n这里说明一下，如果没有域名就要配置为 ip:端口号 的形式\n更多配置参考 官方文档\n更新 推荐使用手动更新\n#自用 docker-compose pull #官方推荐 docker pull wangqiru/ttrss:latest # docker pull wangqiru/mercury-parser-api:latest # docker pull wangqiru/opencc-api-server:latest docker-compose up -d # 如果您没有使用 docker-compose，我确信您知道该怎么做。 备份 养成定期备份的习惯，有些订阅源很重要的资料可以永久保存，避免404\n复制 Postgres 数据卷 ~/postgres/data/（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！\n执行如下命令来导出所有数据：\n#docker exec postgres pg_dumpall -c -U 数据库用户名 \u003e export.sql docker exec postgres pg_dumpall -c -U postgres \u003e export.sql 执行如下命令来导入所有数据： #cat export.sql | docker exec -i postgres psql -U 数据库用户名 cat export.sql | docker exec -i postgres psql -U postgres 三、客户端推荐 服务端都配置好了，接下来就是如何阅读了\niOS/macOS：Reeder 5 内置的 Fever API 模拟插件 可以使用\nandroid：FeedMe\nWeb：直接网页登录查看即可\n四、订阅源订阅小技巧 服务都搭建好了，下面就该订阅订阅源了，分享一些小技巧\n微博的可以使用 Weibo to RSS 订阅\n微信的封锁严重，rsshub订阅有限，可以用 公众号列表 | 微信公众号转RSS服务 来订阅，如果没有想订阅的，可以提 提交新公众号前看这里 · Issue #7 · ttttmr/wechat2rss · GitHub\nblogspot的rsshub没有提供，可以用cf反代后订阅\ntwitter 的开发者api太难申请了，可以用 nitter 输出的rss 访问困难再结合cf反代，完美\n以上，一个低成本，服务稳定，数据可控RSS生态部署成功，尽情享用吧！🎉\n参考文档：\nRSSHub\n🐋 Awesome TTRSS | 🐋 Awesome TTRSS\n我有特别的 RSS 使用技巧\n我的RSS解决方案 - alpaca++\n警惕陷入“信息茧房” - 中华人民共和国国防部\n信息茧房 - MBA智库百科\nRSS 维基百科\n",
-  "wordCount" : "2150",
-  "inLanguage": "zh",
+  "wordCount" : "230",
+  "inLanguage": "en",
   "datePublished": "2022-03-13T13:05:35+08:00",
   "dateModified": "2023-07-09T15:20:42.871605741+08:00",
   "author":{
@@ -119,14 +119,14 @@ if (!doNotTrack) {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/rss-build/"
+    "@id": "https://blog.zsan.cf/posts/rss-build/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "张三的网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.zsan.ml/favicon.ico"
+      "url": "https://blog.zsan.cf/favicon.ico"
     }
   }
 }
@@ -148,7 +148,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,22 +174,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -200,7 +200,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
     <h1 class="post-title">
       打破信息茧房
     </h1>
@@ -218,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-03-13 13:05:35 +0800 CST'>2022-03-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;2150字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-03-13 13:05:35 +0800 CST'>2022-03-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;230字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -448,17 +448,17 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/rss/">RSS</a></li>
-      <li><a href="https://blog.zsan.ml/tags/docker/">docker</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/">信息茧房</a></li>
+      <li><a href="https://blog.zsan.cf/tags/rss/">RSS</a></li>
+      <li><a href="https://blog.zsan.cf/tags/docker/">docker</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/">信息茧房</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/docker-build-nginx/">
+  <a class="prev" href="https://blog.zsan.cf/posts/docker-build-nginx/">
     <span class="title">« 上一页</span>
     <br>
     <span>Docker 部署 Nginx服务</span>
   </a>
-  <a class="next" href="https://blog.zsan.ml/posts/linux-unset-proxy/">
+  <a class="next" href="https://blog.zsan.cf/posts/linux-unset-proxy/">
     <span class="title">下一页 »</span>
     <br>
     <span>Linux设置代理</span>
@@ -475,7 +475,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.zsan.ml/",  
+            envId: "https://twikoo.zsan.cf/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

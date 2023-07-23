@@ -2,608 +2,608 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/</link>
+    <link>https://blog.zsan.cf/tags/</link>
     <description>Recent content in Tags on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 11 Jun 2023 18:35:38 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jun 2023 18:35:38 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker</title>
-      <link>https://blog.zsan.ml/tags/docker/</link>
+      <link>https://blog.zsan.cf/tags/docker/</link>
       <pubDate>Sun, 11 Jun 2023 18:35:38 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/docker/</guid>
+      <guid>https://blog.zsan.cf/tags/docker/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>安全</title>
-      <link>https://blog.zsan.ml/tags/%E5%AE%89%E5%85%A8/</link>
+      <link>https://blog.zsan.cf/tags/%E5%AE%89%E5%85%A8/</link>
       <pubDate>Sun, 04 Jun 2023 16:59:21 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E5%AE%89%E5%85%A8/</guid>
+      <guid>https://blog.zsan.cf/tags/%E5%AE%89%E5%85%A8/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>服务器</title>
-      <link>https://blog.zsan.ml/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>https://blog.zsan.cf/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 04 Jun 2023 16:59:21 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>https://blog.zsan.cf/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>404</title>
-      <link>https://blog.zsan.ml/tags/404/</link>
+      <link>https://blog.zsan.cf/tags/404/</link>
       <pubDate>Sun, 28 May 2023 19:49:45 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/404/</guid>
+      <guid>https://blog.zsan.cf/tags/404/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>公益</title>
-      <link>https://blog.zsan.ml/tags/%E5%85%AC%E7%9B%8A/</link>
+      <link>https://blog.zsan.cf/tags/%E5%85%AC%E7%9B%8A/</link>
       <pubDate>Sun, 28 May 2023 19:49:45 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E5%85%AC%E7%9B%8A/</guid>
+      <guid>https://blog.zsan.cf/tags/%E5%85%AC%E7%9B%8A/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>fireflyIii</title>
-      <link>https://blog.zsan.ml/tags/fireflyiii/</link>
+      <link>https://blog.zsan.cf/tags/fireflyiii/</link>
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/fireflyiii/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>记账</title>
-      <link>https://blog.zsan.ml/tags/%E8%AE%B0%E8%B4%A6/</link>
-      <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
-      
-      <guid>https://blog.zsan.ml/tags/%E8%AE%B0%E8%B4%A6/</guid>
+      <guid>https://blog.zsan.cf/tags/fireflyiii/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>理财</title>
-      <link>https://blog.zsan.ml/tags/%E7%90%86%E8%B4%A2/</link>
+      <link>https://blog.zsan.cf/tags/%E7%90%86%E8%B4%A2/</link>
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E7%90%86%E8%B4%A2/</guid>
+      <guid>https://blog.zsan.cf/tags/%E7%90%86%E8%B4%A2/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>记账</title>
+      <link>https://blog.zsan.cf/tags/%E8%AE%B0%E8%B4%A6/</link>
+      <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
+      
+      <guid>https://blog.zsan.cf/tags/%E8%AE%B0%E8%B4%A6/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>预算</title>
-      <link>https://blog.zsan.ml/tags/%E9%A2%84%E7%AE%97/</link>
+      <link>https://blog.zsan.cf/tags/%E9%A2%84%E7%AE%97/</link>
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E9%A2%84%E7%AE%97/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>存钱</title>
-      <link>https://blog.zsan.ml/tags/%E5%AD%98%E9%92%B1/</link>
-      <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
-      
-      <guid>https://blog.zsan.ml/tags/%E5%AD%98%E9%92%B1/</guid>
+      <guid>https://blog.zsan.cf/tags/%E9%A2%84%E7%AE%97/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>买车</title>
-      <link>https://blog.zsan.ml/tags/%E4%B9%B0%E8%BD%A6/</link>
+      <link>https://blog.zsan.cf/tags/%E4%B9%B0%E8%BD%A6/</link>
       <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E4%B9%B0%E8%BD%A6/</guid>
+      <guid>https://blog.zsan.cf/tags/%E4%B9%B0%E8%BD%A6/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>存钱</title>
+      <link>https://blog.zsan.cf/tags/%E5%AD%98%E9%92%B1/</link>
+      <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
+      
+      <guid>https://blog.zsan.cf/tags/%E5%AD%98%E9%92%B1/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>生活</title>
-      <link>https://blog.zsan.ml/tags/%E7%94%9F%E6%B4%BB/</link>
+      <link>https://blog.zsan.cf/tags/%E7%94%9F%E6%B4%BB/</link>
       <pubDate>Sun, 28 May 2023 17:55:20 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <guid>https://blog.zsan.cf/tags/%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>ChatGPT</title>
-      <link>https://blog.zsan.ml/tags/chatgpt/</link>
+      <link>https://blog.zsan.cf/tags/chatgpt/</link>
       <pubDate>Sun, 26 Mar 2023 11:40:12 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/chatgpt/</guid>
+      <guid>https://blog.zsan.cf/tags/chatgpt/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://blog.zsan.ml/tags/hugo/</link>
+      <link>https://blog.zsan.cf/tags/hugo/</link>
       <pubDate>Sun, 26 Mar 2023 11:40:12 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/hugo/</guid>
+      <guid>https://blog.zsan.cf/tags/hugo/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>PaperMod</title>
-      <link>https://blog.zsan.ml/tags/papermod/</link>
+      <link>https://blog.zsan.cf/tags/papermod/</link>
       <pubDate>Sun, 26 Mar 2023 11:40:12 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/papermod/</guid>
+      <guid>https://blog.zsan.cf/tags/papermod/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>过时提醒</title>
-      <link>https://blog.zsan.ml/tags/%E8%BF%87%E6%97%B6%E6%8F%90%E9%86%92/</link>
+      <link>https://blog.zsan.cf/tags/%E8%BF%87%E6%97%B6%E6%8F%90%E9%86%92/</link>
       <pubDate>Sun, 26 Mar 2023 11:40:12 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E8%BF%87%E6%97%B6%E6%8F%90%E9%86%92/</guid>
+      <guid>https://blog.zsan.cf/tags/%E8%BF%87%E6%97%B6%E6%8F%90%E9%86%92/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>存储服务</title>
-      <link>https://blog.zsan.ml/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://blog.zsan.cf/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>https://blog.zsan.cf/tags/%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>对象存储</title>
-      <link>https://blog.zsan.ml/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</link>
+      <link>https://blog.zsan.cf/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</link>
       <pubDate>Tue, 14 Mar 2023 21:25:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</guid>
+      <guid>https://blog.zsan.cf/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>nezha</title>
-      <link>https://blog.zsan.ml/tags/nezha/</link>
+      <link>https://blog.zsan.cf/tags/nezha/</link>
       <pubDate>Tue, 14 Mar 2023 21:20:29 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/nezha/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>监控</title>
-      <link>https://blog.zsan.ml/tags/%E7%9B%91%E6%8E%A7/</link>
-      <pubDate>Tue, 14 Mar 2023 21:20:29 +0800</pubDate>
-      
-      <guid>https://blog.zsan.ml/tags/%E7%9B%91%E6%8E%A7/</guid>
+      <guid>https://blog.zsan.cf/tags/nezha/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>探针</title>
-      <link>https://blog.zsan.ml/tags/%E6%8E%A2%E9%92%88/</link>
+      <link>https://blog.zsan.cf/tags/%E6%8E%A2%E9%92%88/</link>
       <pubDate>Tue, 14 Mar 2023 21:20:29 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E6%8E%A2%E9%92%88/</guid>
+      <guid>https://blog.zsan.cf/tags/%E6%8E%A2%E9%92%88/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>监控</title>
+      <link>https://blog.zsan.cf/tags/%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Tue, 14 Mar 2023 21:20:29 +0800</pubDate>
+      
+      <guid>https://blog.zsan.cf/tags/%E7%9B%91%E6%8E%A7/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>frp</title>
-      <link>https://blog.zsan.ml/tags/frp/</link>
+      <link>https://blog.zsan.cf/tags/frp/</link>
       <pubDate>Tue, 14 Mar 2023 21:12:45 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/frp/</guid>
+      <guid>https://blog.zsan.cf/tags/frp/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>内网穿透</title>
-      <link>https://blog.zsan.ml/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+      <link>https://blog.zsan.cf/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
       <pubDate>Tue, 14 Mar 2023 21:12:45 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
+      <guid>https://blog.zsan.cf/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>NFC</title>
-      <link>https://blog.zsan.ml/tags/nfc/</link>
+      <link>https://blog.zsan.cf/tags/nfc/</link>
       <pubDate>Mon, 13 Mar 2023 13:35:25 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/nfc/</guid>
+      <guid>https://blog.zsan.cf/tags/nfc/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>卡贴</title>
-      <link>https://blog.zsan.ml/tags/%E5%8D%A1%E8%B4%B4/</link>
+      <link>https://blog.zsan.cf/tags/%E5%8D%A1%E8%B4%B4/</link>
       <pubDate>Mon, 13 Mar 2023 13:35:25 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E5%8D%A1%E8%B4%B4/</guid>
+      <guid>https://blog.zsan.cf/tags/%E5%8D%A1%E8%B4%B4/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>门禁卡</title>
-      <link>https://blog.zsan.ml/tags/%E9%97%A8%E7%A6%81%E5%8D%A1/</link>
+      <link>https://blog.zsan.cf/tags/%E9%97%A8%E7%A6%81%E5%8D%A1/</link>
       <pubDate>Mon, 13 Mar 2023 13:35:25 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E9%97%A8%E7%A6%81%E5%8D%A1/</guid>
+      <guid>https://blog.zsan.cf/tags/%E9%97%A8%E7%A6%81%E5%8D%A1/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>go-cqhttp</title>
-      <link>https://blog.zsan.ml/tags/go-cqhttp/</link>
+      <link>https://blog.zsan.cf/tags/go-cqhttp/</link>
       <pubDate>Wed, 31 Aug 2022 14:03:46 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/go-cqhttp/</guid>
+      <guid>https://blog.zsan.cf/tags/go-cqhttp/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>SillyGril</title>
-      <link>https://blog.zsan.ml/tags/sillygril/</link>
+      <link>https://blog.zsan.cf/tags/sillygril/</link>
       <pubDate>Wed, 31 Aug 2022 14:03:46 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/sillygril/</guid>
+      <guid>https://blog.zsan.cf/tags/sillygril/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title> workbox</title>
-      <link>https://blog.zsan.ml/tags/workbox/</link>
+      <link>https://blog.zsan.cf/tags/workbox/</link>
       <pubDate>Sun, 07 Aug 2022 16:28:27 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/workbox/</guid>
+      <guid>https://blog.zsan.cf/tags/workbox/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>PWA</title>
-      <link>https://blog.zsan.ml/tags/pwa/</link>
+      <link>https://blog.zsan.cf/tags/pwa/</link>
       <pubDate>Sun, 07 Aug 2022 16:28:27 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/pwa/</guid>
+      <guid>https://blog.zsan.cf/tags/pwa/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>web</title>
-      <link>https://blog.zsan.ml/tags/web/</link>
+      <link>https://blog.zsan.cf/tags/web/</link>
       <pubDate>Sun, 07 Aug 2022 16:28:27 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/web/</guid>
+      <guid>https://blog.zsan.cf/tags/web/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>301</title>
-      <link>https://blog.zsan.ml/tags/301/</link>
+      <link>https://blog.zsan.cf/tags/301/</link>
       <pubDate>Sun, 31 Jul 2022 19:54:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/301/</guid>
+      <guid>https://blog.zsan.cf/tags/301/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>cloudflare</title>
-      <link>https://blog.zsan.ml/tags/cloudflare/</link>
+      <link>https://blog.zsan.cf/tags/cloudflare/</link>
       <pubDate>Sun, 31 Jul 2022 19:54:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/cloudflare/</guid>
+      <guid>https://blog.zsan.cf/tags/cloudflare/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>重定向</title>
-      <link>https://blog.zsan.ml/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</link>
+      <link>https://blog.zsan.cf/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</link>
       <pubDate>Sun, 31 Jul 2022 19:54:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
+      <guid>https://blog.zsan.cf/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>brew</title>
-      <link>https://blog.zsan.ml/tags/brew/</link>
+      <link>https://blog.zsan.cf/tags/brew/</link>
       <pubDate>Tue, 26 Jul 2022 22:17:56 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/brew/</guid>
+      <guid>https://blog.zsan.cf/tags/brew/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>mac</title>
-      <link>https://blog.zsan.ml/tags/mac/</link>
+      <link>https://blog.zsan.cf/tags/mac/</link>
       <pubDate>Tue, 26 Jul 2022 22:17:56 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/mac/</guid>
+      <guid>https://blog.zsan.cf/tags/mac/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>zsh</title>
-      <link>https://blog.zsan.ml/tags/zsh/</link>
+      <link>https://blog.zsan.cf/tags/zsh/</link>
       <pubDate>Tue, 26 Jul 2022 22:17:56 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/zsh/</guid>
+      <guid>https://blog.zsan.cf/tags/zsh/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>玩机</title>
-      <link>https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/</link>
+      <link>https://blog.zsan.cf/tags/%E7%8E%A9%E6%9C%BA/</link>
       <pubDate>Tue, 26 Jul 2022 22:17:56 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/</guid>
+      <guid>https://blog.zsan.cf/tags/%E7%8E%A9%E6%9C%BA/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>podcast</title>
-      <link>https://blog.zsan.ml/tags/podcast/</link>
+      <link>https://blog.zsan.cf/tags/podcast/</link>
       <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/podcast/</guid>
+      <guid>https://blog.zsan.cf/tags/podcast/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>autojs</title>
-      <link>https://blog.zsan.ml/tags/autojs/</link>
+      <link>https://blog.zsan.cf/tags/autojs/</link>
       <pubDate>Sun, 26 Jun 2022 15:08:44 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/autojs/</guid>
+      <guid>https://blog.zsan.cf/tags/autojs/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>javascript</title>
-      <link>https://blog.zsan.ml/tags/javascript/</link>
+      <link>https://blog.zsan.cf/tags/javascript/</link>
       <pubDate>Sun, 26 Jun 2022 15:08:44 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/javascript/</guid>
+      <guid>https://blog.zsan.cf/tags/javascript/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>脚本</title>
-      <link>https://blog.zsan.ml/tags/%E8%84%9A%E6%9C%AC/</link>
+      <link>https://blog.zsan.cf/tags/%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Sun, 26 Jun 2022 15:08:44 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E8%84%9A%E6%9C%AC/</guid>
+      <guid>https://blog.zsan.cf/tags/%E8%84%9A%E6%9C%AC/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>tester</title>
-      <link>https://blog.zsan.ml/tags/tester/</link>
+      <link>https://blog.zsan.cf/tags/tester/</link>
       <pubDate>Sun, 26 Jun 2022 13:52:23 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/tester/</guid>
+      <guid>https://blog.zsan.cf/tags/tester/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>snapdrop</title>
-      <link>https://blog.zsan.ml/tags/snapdrop/</link>
+      <link>https://blog.zsan.cf/tags/snapdrop/</link>
       <pubDate>Sun, 19 Jun 2022 17:44:20 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/snapdrop/</guid>
+      <guid>https://blog.zsan.cf/tags/snapdrop/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>文件传输</title>
-      <link>https://blog.zsan.ml/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</link>
+      <link>https://blog.zsan.cf/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</link>
       <pubDate>Sun, 19 Jun 2022 17:44:20 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</guid>
+      <guid>https://blog.zsan.cf/tags/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>网心云</title>
-      <link>https://blog.zsan.ml/tags/%E7%BD%91%E5%BF%83%E4%BA%91/</link>
+      <link>https://blog.zsan.cf/tags/%E7%BD%91%E5%BF%83%E4%BA%91/</link>
       <pubDate>Mon, 09 May 2022 21:05:31 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E7%BD%91%E5%BF%83%E4%BA%91/</guid>
+      <guid>https://blog.zsan.cf/tags/%E7%BD%91%E5%BF%83%E4%BA%91/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>docker-compose</title>
-      <link>https://blog.zsan.ml/tags/docker-compose/</link>
+      <link>https://blog.zsan.cf/tags/docker-compose/</link>
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/docker-compose/</guid>
+      <guid>https://blog.zsan.cf/tags/docker-compose/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>nginx</title>
-      <link>https://blog.zsan.ml/tags/nginx/</link>
+      <link>https://blog.zsan.cf/tags/nginx/</link>
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/nginx/</guid>
+      <guid>https://blog.zsan.cf/tags/nginx/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>网站部署</title>
-      <link>https://blog.zsan.ml/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</link>
+      <link>https://blog.zsan.cf/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://blog.zsan.cf/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>RSS</title>
-      <link>https://blog.zsan.ml/tags/rss/</link>
+      <link>https://blog.zsan.cf/tags/rss/</link>
       <pubDate>Sun, 13 Mar 2022 13:05:35 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/rss/</guid>
+      <guid>https://blog.zsan.cf/tags/rss/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>信息茧房</title>
-      <link>https://blog.zsan.ml/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/</link>
+      <link>https://blog.zsan.cf/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/</link>
       <pubDate>Sun, 13 Mar 2022 13:05:35 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/</guid>
+      <guid>https://blog.zsan.cf/tags/%E4%BF%A1%E6%81%AF%E8%8C%A7%E6%88%BF/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://blog.zsan.ml/tags/linux/</link>
+      <link>https://blog.zsan.cf/tags/linux/</link>
       <pubDate>Fri, 18 Feb 2022 18:04:50 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/linux/</guid>
+      <guid>https://blog.zsan.cf/tags/linux/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>proxy</title>
-      <link>https://blog.zsan.ml/tags/proxy/</link>
+      <link>https://blog.zsan.cf/tags/proxy/</link>
       <pubDate>Fri, 18 Feb 2022 18:04:50 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/proxy/</guid>
+      <guid>https://blog.zsan.cf/tags/proxy/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>代理</title>
-      <link>https://blog.zsan.ml/tags/%E4%BB%A3%E7%90%86/</link>
+      <link>https://blog.zsan.cf/tags/%E4%BB%A3%E7%90%86/</link>
       <pubDate>Fri, 18 Feb 2022 18:04:50 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E4%BB%A3%E7%90%86/</guid>
+      <guid>https://blog.zsan.cf/tags/%E4%BB%A3%E7%90%86/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>比价</title>
-      <link>https://blog.zsan.ml/tags/%E6%AF%94%E4%BB%B7/</link>
+      <link>https://blog.zsan.cf/tags/%E6%AF%94%E4%BB%B7/</link>
       <pubDate>Sun, 06 Feb 2022 17:05:32 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E6%AF%94%E4%BB%B7/</guid>
+      <guid>https://blog.zsan.cf/tags/%E6%AF%94%E4%BB%B7/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>filebrowser</title>
-      <link>https://blog.zsan.ml/tags/filebrowser/</link>
+      <link>https://blog.zsan.cf/tags/filebrowser/</link>
       <pubDate>Fri, 21 Jan 2022 11:24:05 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/filebrowser/</guid>
+      <guid>https://blog.zsan.cf/tags/filebrowser/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>个人网盘</title>
-      <link>https://blog.zsan.ml/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98/</link>
+      <link>https://blog.zsan.cf/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98/</link>
       <pubDate>Fri, 21 Jan 2022 11:24:05 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98/</guid>
+      <guid>https://blog.zsan.cf/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>京豆</title>
-      <link>https://blog.zsan.ml/tags/%E4%BA%AC%E8%B1%86/</link>
+      <link>https://blog.zsan.cf/tags/%E4%BA%AC%E8%B1%86/</link>
       <pubDate>Mon, 21 Jun 2021 23:26:34 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E4%BA%AC%E8%B1%86/</guid>
+      <guid>https://blog.zsan.cf/tags/%E4%BA%AC%E8%B1%86/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>主题</title>
-      <link>https://blog.zsan.ml/tags/%E4%B8%BB%E9%A2%98/</link>
+      <link>https://blog.zsan.cf/tags/%E4%B8%BB%E9%A2%98/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E4%B8%BB%E9%A2%98/</guid>
+      <guid>https://blog.zsan.cf/tags/%E4%B8%BB%E9%A2%98/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
     
     <item>
       <title>羊毛</title>
-      <link>https://blog.zsan.ml/tags/%E7%BE%8A%E6%AF%9B/</link>
+      <link>https://blog.zsan.cf/tags/%E7%BE%8A%E6%AF%9B/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/tags/%E7%BE%8A%E6%AF%9B/</guid>
+      <guid>https://blog.zsan.cf/tags/%E7%BE%8A%E6%AF%9B/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>

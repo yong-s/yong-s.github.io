@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +7,20 @@
 <meta name="robots" content="index, follow">
 <title>比价助手机器人docker快速部署 | 张三的网络日志</title>
 <meta name="keywords" content="docker, 比价">
-<meta name="description" content="对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker">
+<meta name="description" content="对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！
+一、部署傻妞助手bot 项目地址：GitHub - cdle/sillyGirl: 傻妞机器人
+一键安装：支持linux arm64和amd64位 cd /opt s=sillyGirl;a=arm64;if [[ $(uname -a | grep &#34;x86_64&#34;) != &#34;&#34; ]];then a=amd64;fi ;if [ ! -d $s ];then mkdir $s;fi ;cd $s;wget https://github.com/cdle/${s}/releases/download/main/${s}_linux_$a -O $s &amp;&amp; chmod 777 $s;pkill -9 $s;$(pwd)/$s 在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置
+主要是配置管理员账号等，也可以通过对话配置
+### 一些基础设置 ### # 傻妞机器人名 set sillyGirl name 傻妞 # 傻妞http服务端口 set sillyGirl port 800 # 傻妞消息撤回等待时间，单位秒 set sillyGirl duration 5 # 傻妞自动升级是否通知 set sillyGirl update_notify true # 是否开启傻妞自动更新 set sillyGirl auto_update false # 傻妞内置赞赏码 set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg #是否启动http服务 set sillyGirl enable_http_server true # 关闭守护模式，守护模式会导致没法自动升级 #systemctl disable sillyGirl ### 对接青龙的设置 ### # 设置青龙openapi的client_id参数 #set qinglong client_id ? # 设置青龙openapi的client_secret参数 #set qinglong client_secret ? # 青龙是否开启自动隐藏重复任务功能 #set qinglong autoCronHideDuplicate true # 设置青龙面板地址 #set qinglong host http://127.0.0.1:5700 ### 对接QQ的设置 ### # 设置qq登录账号 #set qq uin ? # 设置qq登录密码 #set qq password ? # 设置qq临时消息默认群号 #set qq tempMessageGroupCode ? # 指定要监听的qq群 #set qq onGroups g1&amp;g2&amp;g3... # 设置是否自动同意好友请求 #set qq auto_friend false # 设置是否对监听自身消息 #set qq onself true # 设置qq管理员 #set qq masters q1&amp;q2&amp;q3.">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/comparison-robot-building-for-docker/">
+<link rel="canonical" href="https://blog.zsan.cf/posts/comparison-robot-building-for-docker/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -67,15 +71,23 @@ if (!doNotTrack) {
 }
 </script>
 <meta property="og:title" content="比价助手机器人docker快速部署" />
-<meta property="og:description" content="对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker" />
+<meta property="og:description" content="对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！
+一、部署傻妞助手bot 项目地址：GitHub - cdle/sillyGirl: 傻妞机器人
+一键安装：支持linux arm64和amd64位 cd /opt s=sillyGirl;a=arm64;if [[ $(uname -a | grep &#34;x86_64&#34;) != &#34;&#34; ]];then a=amd64;fi ;if [ ! -d $s ];then mkdir $s;fi ;cd $s;wget https://github.com/cdle/${s}/releases/download/main/${s}_linux_$a -O $s &amp;&amp; chmod 777 $s;pkill -9 $s;$(pwd)/$s 在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置
+主要是配置管理员账号等，也可以通过对话配置
+### 一些基础设置 ### # 傻妞机器人名 set sillyGirl name 傻妞 # 傻妞http服务端口 set sillyGirl port 800 # 傻妞消息撤回等待时间，单位秒 set sillyGirl duration 5 # 傻妞自动升级是否通知 set sillyGirl update_notify true # 是否开启傻妞自动更新 set sillyGirl auto_update false # 傻妞内置赞赏码 set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg #是否启动http服务 set sillyGirl enable_http_server true # 关闭守护模式，守护模式会导致没法自动升级 #systemctl disable sillyGirl ### 对接青龙的设置 ### # 设置青龙openapi的client_id参数 #set qinglong client_id ? # 设置青龙openapi的client_secret参数 #set qinglong client_secret ? # 青龙是否开启自动隐藏重复任务功能 #set qinglong autoCronHideDuplicate true # 设置青龙面板地址 #set qinglong host http://127.0.0.1:5700 ### 对接QQ的设置 ### # 设置qq登录账号 #set qq uin ? # 设置qq登录密码 #set qq password ? # 设置qq临时消息默认群号 #set qq tempMessageGroupCode ? # 指定要监听的qq群 #set qq onGroups g1&amp;g2&amp;g3... # 设置是否自动同意好友请求 #set qq auto_friend false # 设置是否对监听自身消息 #set qq onself true # 设置qq管理员 #set qq masters q1&amp;q2&amp;q3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/comparison-robot-building-for-docker/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/comparison-robot-building-for-docker/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-06T17:05:32+08:00" />
-<meta property="article:modified_time" content="2023-07-09T15:25:37+08:00" />
+<meta property="article:modified_time" content="2023-07-09T15:31:11+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="比价助手机器人docker快速部署"/>
-<meta name="twitter:description" content="对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker"/>
+<meta name="twitter:description" content="对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！
+一、部署傻妞助手bot 项目地址：GitHub - cdle/sillyGirl: 傻妞机器人
+一键安装：支持linux arm64和amd64位 cd /opt s=sillyGirl;a=arm64;if [[ $(uname -a | grep &#34;x86_64&#34;) != &#34;&#34; ]];then a=amd64;fi ;if [ ! -d $s ];then mkdir $s;fi ;cd $s;wget https://github.com/cdle/${s}/releases/download/main/${s}_linux_$a -O $s &amp;&amp; chmod 777 $s;pkill -9 $s;$(pwd)/$s 在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置
+主要是配置管理员账号等，也可以通过对话配置
+### 一些基础设置 ### # 傻妞机器人名 set sillyGirl name 傻妞 # 傻妞http服务端口 set sillyGirl port 800 # 傻妞消息撤回等待时间，单位秒 set sillyGirl duration 5 # 傻妞自动升级是否通知 set sillyGirl update_notify true # 是否开启傻妞自动更新 set sillyGirl auto_update false # 傻妞内置赞赏码 set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg #是否启动http服务 set sillyGirl enable_http_server true # 关闭守护模式，守护模式会导致没法自动升级 #systemctl disable sillyGirl ### 对接青龙的设置 ### # 设置青龙openapi的client_id参数 #set qinglong client_id ? # 设置青龙openapi的client_secret参数 #set qinglong client_secret ? # 青龙是否开启自动隐藏重复任务功能 #set qinglong autoCronHideDuplicate true # 设置青龙面板地址 #set qinglong host http://127.0.0.1:5700 ### 对接QQ的设置 ### # 设置qq登录账号 #set qq uin ? # 设置qq登录密码 #set qq password ? # 设置qq临时消息默认群号 #set qq tempMessageGroupCode ? # 指定要监听的qq群 #set qq onGroups g1&amp;g2&amp;g3... # 设置是否自动同意好友请求 #set qq auto_friend false # 设置是否对监听自身消息 #set qq onself true # 设置qq管理员 #set qq masters q1&amp;q2&amp;q3."/>
 
 
 <script type="application/ld+json">
@@ -87,13 +99,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.zsan.ml/posts/"
+      "item": "https://blog.zsan.cf/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "比价助手机器人docker快速部署",
-      "item": "https://blog.zsan.ml/posts/comparison-robot-building-for-docker/"
+      "item": "https://blog.zsan.cf/posts/comparison-robot-building-for-docker/"
     }
   ]
 }
@@ -104,29 +116,29 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "比价助手机器人docker快速部署",
   "name": "比价助手机器人docker快速部署",
-  "description": "对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker",
+  "description": "对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！\n一、部署傻妞助手bot 项目地址：GitHub - cdle/sillyGirl: 傻妞机器人\n一键安装：支持linux arm64和amd64位 cd /opt s=sillyGirl;a=arm64;if [[ $(uname -a | grep \u0026#34;x86_64\u0026#34;) != \u0026#34;\u0026#34; ]];then a=amd64;fi ;if [ ! -d $s ];then mkdir $s;fi ;cd $s;wget https://github.com/cdle/${s}/releases/download/main/${s}_linux_$a -O $s \u0026amp;\u0026amp; chmod 777 $s;pkill -9 $s;$(pwd)/$s 在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置\n主要是配置管理员账号等，也可以通过对话配置\n### 一些基础设置 ### # 傻妞机器人名 set sillyGirl name 傻妞 # 傻妞http服务端口 set sillyGirl port 800 # 傻妞消息撤回等待时间，单位秒 set sillyGirl duration 5 # 傻妞自动升级是否通知 set sillyGirl update_notify true # 是否开启傻妞自动更新 set sillyGirl auto_update false # 傻妞内置赞赏码 set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg #是否启动http服务 set sillyGirl enable_http_server true # 关闭守护模式，守护模式会导致没法自动升级 #systemctl disable sillyGirl ### 对接青龙的设置 ### # 设置青龙openapi的client_id参数 #set qinglong client_id ? # 设置青龙openapi的client_secret参数 #set qinglong client_secret ? # 青龙是否开启自动隐藏重复任务功能 #set qinglong autoCronHideDuplicate true # 设置青龙面板地址 #set qinglong host http://127.0.0.1:5700 ### 对接QQ的设置 ### # 设置qq登录账号 #set qq uin ? # 设置qq登录密码 #set qq password ? # 设置qq临时消息默认群号 #set qq tempMessageGroupCode ? # 指定要监听的qq群 #set qq onGroups g1\u0026amp;g2\u0026amp;g3... # 设置是否自动同意好友请求 #set qq auto_friend false # 设置是否对监听自身消息 #set qq onself true # 设置qq管理员 #set qq masters q1\u0026amp;q2\u0026amp;q3.",
   "keywords": [
     "docker", "比价"
   ],
   "articleBody": " 对于商品比价是个不错的购买商品的方法，可以给我们是否值得入手这件商品提供决策。各大商城有这方面数据但不会免费给分享出来，第三方网站有相关服务，但体验不好，相关api也太贵，这次找到了大佬免费提供的对话bot的比价助手——傻妞助手，应该是内置比价api吧！目前来说数据还可以值得参考的，用了docker部署，很快搞定！\n一、部署傻妞助手bot 项目地址：GitHub - cdle/sillyGirl: 傻妞机器人\n一键安装：支持linux arm64和amd64位 cd /opt s=sillyGirl;a=arm64;if [[ $(uname -a | grep \"x86_64\") != \"\" ]];then a=amd64;fi ;if [ ! -d $s ];then mkdir $s;fi ;cd $s;wget https://github.com/cdle/${s}/releases/download/main/${s}_linux_$a -O $s \u0026\u0026 chmod 777 $s;pkill -9 $s;$(pwd)/$s 在目录/etc/sillyGirl下新建sets.conf可以进行初始化配置\n主要是配置管理员账号等，也可以通过对话配置\n### 一些基础设置 ### # 傻妞机器人名 set sillyGirl name 傻妞 # 傻妞http服务端口 set sillyGirl port 800 # 傻妞消息撤回等待时间，单位秒 set sillyGirl duration 5 # 傻妞自动升级是否通知 set sillyGirl update_notify true # 是否开启傻妞自动更新 set sillyGirl auto_update false # 傻妞内置赞赏码 set sillyGirl appreciate https://gitee.com/aiancandle/sillyGirl/raw/main/appreciate.jpg #是否启动http服务 set sillyGirl enable_http_server true # 关闭守护模式，守护模式会导致没法自动升级 #systemctl disable sillyGirl ### 对接青龙的设置 ### # 设置青龙openapi的client_id参数 #set qinglong client_id ? # 设置青龙openapi的client_secret参数 #set qinglong client_secret ? # 青龙是否开启自动隐藏重复任务功能 #set qinglong autoCronHideDuplicate true # 设置青龙面板地址 #set qinglong host http://127.0.0.1:5700 ### 对接QQ的设置 ### # 设置qq登录账号 #set qq uin ? # 设置qq登录密码 #set qq password ? # 设置qq临时消息默认群号 #set qq tempMessageGroupCode ? # 指定要监听的qq群 #set qq onGroups g1\u0026g2\u0026g3... # 设置是否自动同意好友请求 #set qq auto_friend false # 设置是否对监听自身消息 #set qq onself true # 设置qq管理员 #set qq masters q1\u0026q2\u0026q3... # 设置接受通知的qq账号 #set qq notifier q1\u0026q2\u0026q3... # 设置qq设备信息(自动生成) #set qq device.json ? # 设置qq登录令牌(自动生成) #set qq session.token ? # 注销qqbot命令，重新运行扫码即可 #delete qq session.token # 指定系统通知发送对象命令，如不设置默认发送给所有管理员。 #set [im type] notifiers [accounts join by '\u0026'] ### 对接telegram的设置 ### # 设置telegram机器人token #set tg token ? # 设置telegram机器人代理 #set tg http_proxy ? # 设置telegram机器人管理员 #set tg masters t1\u0026t2\u0026t3... # 设置接受通知的telegram账号 #set tg notifier t1\u0026t2\u0026t3... ### 对接微信公众号的设置 ### # 设置微信公众平台app_id #set wxmp app_id ? # 设置微信公众平台app_secret #set wxmp app_secret ? # 设置微信公众平台token #set wxmp token ? # 设置微信公众平台encoding_aes_key #set wxmp encoding_aes_key ? # 设置微信公众平台管理员 #set wxmp masters w1\u0026w2\u0026w3... # 设置公众号关注事件回复 #set wxmp subscribe_reply 感谢关注！ # 设置公众号默认回复 #set wxmp default_reply 无法回复该消息 ### 对接微信号的设置 ### # 傻妞内置微信插件，依赖于可爱猫和http-sdk # 傻妞远程处理接口 /wx/receive # 设置插件调用地址，确保傻妞可以访问可爱猫端口 #set wx api_url ? # 设置图片转发模式，否则可能会出现此图片来自xx未经允许不得使用的提示 set wx relay_mode true # 设置指定转发地址，格式为 https://域名/relay?url=%s，不知道不用填 #set wx relaier ? # 设置# 傻妞是否动态网络地址，适用于# 傻妞家庭宽带而可爱猫在云服务器的情况下 #set wx sillyGirl_dynamic_ip true # 设置可爱猫是否动态网络地址，适用于可爱猫家庭宽带而# 傻妞在云服务器的情况下 #set wx keaimao_dynamic_ip true # 设置可爱猫端口 #set wx keaimao_port ? # 设置微信管理员 #set wx masters ? # vlw的API调用地址 #set wx vlw_addr http://ip:port # vlw的token #set wx vlw_token ? ### 对接pushplus的设置 ### # 管理员推送绑定pushplus指令 #set sillyGirl pushplus [token] # 关键词撤回功能，关键词支持正则表达式。 #set sillyGirl recall 关键词1\u0026关键词2... # 关键词回复功能，第一个问号是支持正则的关键词，第二个问号是回复的内容。 #set reply ? ? ### 对接芝士的设置 ### # 资产推送定时，以九点为例，包括失效提醒。 set jd_cookie asset_push 0 9 * * * # 设置阿东登录地址，例：set jd_cookie adong_addr 192.168.1.1:5702 #set jd_cookie adong_addr 阿东ip:端口 # 设置阿东qq机器人账号，这里的机器人qq账号，请务必和阿东go-cqhttp配置中config.yml里qq一样。 #set jd_cookie selfQid 机器人qq账号 # 设置登录坑位 #set jd_cookie login_num ? #设置诺兰登陆地址 #set jd_cookie nolan_addr http://诺兰ip:端口 # 对接xdd，额外设置参数 #set jd_cookie xdd_token ? ### 对接小爱同学的设置 ### # 小爱同学，可以指定API，对小爱说对话模式即可开启连续对话模式，闭嘴可关闭。 #set sillyGirl 小爱同学 http://81.70.100.130/api/xiaoai.php?msg=%s\u0026n=text #挂了就自己换 #set sillyGirl 小爱同学 http://jiuli.xiaoapi.cn/i/xiaoai_tts.php?msg=%s #挂了就自己换 # 处理json格式数据的小爱api，不填获取整个文本 #set sillyGirl 小爱同学gjson text # 删除处理json格式数据的小爱api #silly delete 小爱同学gjson # 使用方法： #1、唤起小爱：发送“小爱+想说的话”，例如：小爱今天天气。 #2、对话模式：发送“小爱对话模式”开启，发送“闭嘴”结束。 #3、成语接龙：发送“成语接龙”开始。这个可应该不是小爱同学的功能，但我懒得单独写它了。 ### 对接短网址的设置 ### # 设置短网址服务地址，填傻妞对外的可以访问的地址。 #set dwz address ? # 设置短网址服务前缀 #set dwz prefix d # 使用方法 #发送“短网址+你想要转换的网址“ #例：短网址 http://kejiwanjia.com/ 启动命令 配置完成后，在/opt/sillyGirl下执行 ./sillyGirl -t 查看是否运行成功\n输入 time\n成功后 执行 ./sillyGirl -d 后台运行\n其他常用命令 杀掉进程\nps -A|grep sillyGirl kill pid 查看端口是否开启\nnetstat -tlan 二、部署node-onebot 傻妞开发者把内置qq登录给去掉了，需要自己对接qqbot\n官方给的是node安装的，需要安装node环境，太麻烦，改为用docker安装\n1、拉取代码 //国外机 git clone https://github.com/takayama-lily/node-onebot //国内机 git clone https://ghproxy.realproxy.workers.dev/https://github.com/takayama-lily/node-onebot 机 2、修改Dockerfile文件 修改默认Dockerfile里面最后一行的QQ号成自己的bot账号\nFROM node:14-alpine WORKDIR /app COPY . . CMD [\"node\", \"main\",\"这里改为自己的bot账号\"] 3、创建config.js文件 cp config.sample.js config.js \"use strict\"; // 将此文件更名为config.js才能生效哦 module.exports = { //通用配置 general: { platform: 5, //1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad debug: false, //开启debug use_cqhttp_notice: true, //是否使用cqhttp标准的notice事件格式 host: \"localhost\", //监听主机名 port: 5700, //端口 use_http: false, //启用http use_ws: false, //启用正向ws，和http使用相同地址和端口 access_token: \"\", //访问api的token secret: \"\", //上报数据的sha1签名密钥 post_timeout: 30, //post超时时间(秒) post_message_format:\"array\", //\"string\"或\"array\" enable_cors: false, //是否允许跨域请求 enable_heartbeat: false, //是否启用ws心跳 heartbeat_interval: 15000, //ws心跳间隔(毫秒) rate_limit_interval:500, //使用_rate_limited后缀限速调用api的排队间隔时间(毫秒) event_filter: \"\", //json格式的事件过滤器文件路径 post_url: [ //上报地址，可以添加多个url // \"http://your.address.com:80\", ], ws_reverse_url: [ //反向ws地址，可以添加多个url \"ws://127.0.0.1:8080/qq/receive\", //这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true ], ws_reverse_reconnect_interval: 3000, //反向ws断线重连间隔(毫秒)，设为负数直接不重连 ws_reverse_reconnect_on_code_1000: true, //反向ws是否在关闭状态码为1000的时候重连 }, //每个账号的单独配置(用于覆盖通用配置) 147258369: { }, }; // 安全注意： // 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。 // 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。 // 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。 终极防风控：\n\"use strict\"; // 将此文件更名为config.js才能生效哦 module.exports = { //通用配置 general: { platform: 3, //1:安卓手机 2:aPad 3:安卓手表 4:MacOS 5:iPad debug: false, //开启debug use_cqhttp_notice: true, //是否使用cqhttp标准的notice事件格式 host: \"localhost\", //监听主机名 port: 5700, //端口 use_http: false, //启用http use_ws: false, //启用正向ws，和http使用相同地址和端口 access_token: \"\", //访问api的token secret: \"\", //上报数据的sha1签名密钥 post_timeout: 30, //post超时时间(秒) post_message_format:\"array\", //\"string\"或\"array\" enable_cors: false, //是否允许跨域请求 enable_heartbeat: false, //是否启用ws心跳 heartbeat_interval: 15000, //ws心跳间隔(毫秒) rate_limit_interval:500, //使用_rate_limited后缀限速调用api的排队间隔时间(毫秒) event_filter: \"\", //json格式的事件过滤器文件路径 post_url: [ //上报地址，可以添加多个url // \"http://your.address.com:80\", ], ws_reverse_url: [ //反向ws地址，可以添加多个url \"ws://127.0.0.1:8080/qq/receive\", //这是傻妞的反向链接地址，其中的8080端口记得改成你傻妞的端口，同时开启傻妞的傻妞的http server，即set sillyGirl enable_http_server true ], ws_reverse_reconnect_interval: 3000, //反向ws断线重连间隔(毫秒)，设为负数直接不重连 ws_reverse_reconnect_on_code_1000: true, //反向ws是否在关闭状态码为1000的时候重连 }, //每个账号的单独配置(用于覆盖通用配置) 147258369: { }, }; // 安全注意： // 监听0.0.0.0表示监听网卡上的所有地址。如果你的机器可以通过公网ip直接访问，同时你也没有设定access_token，则被认为是极不安全的。 // 你应该知道这样做会导致以下后果：任何人都可以无限制地访问你的Bot的所有API接口。 // 如果只需要在本地访问，建议将监听地址改为localhost。需要通过公网访问，你最好设定access_token。 4、编译docker image docker build -t yongs/node-onebot:latest . yongs自定义的，随便起，一定不要忘了 最后有个 . 表示在当前目录文件编译\n5、启动image 用的是docker-compose启动的，刚才拉的代码已经有yaml文件了，\n需要注意 image名字是刚才编译的名字，不知道可以用\ndocker images 查看，修改image名字即可\nversion: \"3\" services: miraiok: image: yongs/node-onebot restart: always network_mode: \"host\" volumes: - ./config.js:/root/config.js - ./data:/app/data stdin_open: true tty: true container_name: docker-onebot docker-compose up -d 6、查看日志，扫码登录，不能登录进入容器内扫码 #查看日志 docker logs -f -n 500 docker-onebot #进入容器 docker exec -it docker-onebot /bin/sh #执行登录 node main \"botqq号\" 给小助手发送命令看是否成功，比如 发送 name\n发送 淘宝京豆拼多多链接看是否回复，回复即部署成功。\n登录成功后，重启docker即可\n这里的坑就是傻妞启动失败，导致onebot连接不上傻妞。\n7、群被风控的解决办法 参考了大佬的解决办法风控解除最终版\n开启设备锁，账号设置里面的\n删除session.token 我是直接把整个账号文件夹删了\n切换安卓协议 1或者3 我用的3\n填写密码登陆\n需要验证信息，根据提示一步一步操作即可（链接推荐在Chrome里打开查找）\n参考链接：\n1、群晖傻妞SillyGirl完整部署教程 12.13更新node-onebot - 科技玩家\n2、Docker编译node-onebot，傻妞又活了 - 科技玩家\n3、GitHub - AboutCXJ/SillyGirlDockerDeploy\n",
-  "wordCount" : "4172",
-  "inLanguage": "zh",
+  "wordCount" : "783",
+  "inLanguage": "en",
   "datePublished": "2022-02-06T17:05:32+08:00",
-  "dateModified": "2023-07-09T15:25:37.570267529+08:00",
+  "dateModified": "2023-07-09T15:31:11.90627621+08:00",
   "author":{
     "@type": "Person",
     "name": "张三"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/comparison-robot-building-for-docker/"
+    "@id": "https://blog.zsan.cf/posts/comparison-robot-building-for-docker/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "张三的网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.zsan.ml/favicon.ico"
+      "url": "https://blog.zsan.cf/favicon.ico"
     }
   }
 }
@@ -148,7 +160,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,22 +186,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -200,7 +212,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
     <h1 class="post-title">
       比价助手机器人docker快速部署
     </h1>
@@ -215,7 +227,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-02-06 17:05:32 +0800 CST'>2022-02-06</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;4172字&nbsp;|&nbsp;时长: 9分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-02-06 17:05:32 +0800 CST'>2022-02-06</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;783字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -672,16 +684,16 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/docker/">docker</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E6%AF%94%E4%BB%B7/">比价</a></li>
+      <li><a href="https://blog.zsan.cf/tags/docker/">docker</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E6%AF%94%E4%BB%B7/">比价</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/linux-unset-proxy/">
+  <a class="prev" href="https://blog.zsan.cf/posts/linux-unset-proxy/">
     <span class="title">« 上一页</span>
     <br>
     <span>Linux设置代理</span>
   </a>
-  <a class="next" href="https://blog.zsan.ml/posts/hugo-auto-update-lastmod/">
+  <a class="next" href="https://blog.zsan.cf/posts/hugo-auto-update-lastmod/">
     <span class="title">下一页 »</span>
     <br>
     <span>Hugo 自动更新文章修改时间</span>
@@ -698,7 +710,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.zsan.ml/",  
+            envId: "https://twikoo.zsan.cf/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

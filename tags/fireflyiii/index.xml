@@ -2,19 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>fireflyIii on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/fireflyiii/</link>
+    <link>https://blog.zsan.cf/tags/fireflyiii/</link>
     <description>Recent content in fireflyIii on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 28 May 2023 18:09:34 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/fireflyiii/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 May 2023 18:09:34 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/fireflyiii/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>个人理财工具-Firefly Iii安装</title>
-      <link>https://blog.zsan.ml/posts/firefly-iii-install/</link>
+      <link>https://blog.zsan.cf/posts/firefly-iii-install/</link>
       <pubDate>Sun, 28 May 2023 18:09:34 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/firefly-iii-install/</guid>
-      <description>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &amp;nbsp; 标签: #安全&amp;nbsp; #服务器&amp;nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许</description>
+      <guid>https://blog.zsan.cf/posts/firefly-iii-install/</guid>
+      <description>⚠️：你必须准备
+域名：国内可能需要备案
+服务器：Linux
+‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &amp;nbsp; 标签: #安全&amp;nbsp; #服务器&amp;nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;amp;&amp;amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;amp;#39;America/New_York&amp;amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.</description>
       <content:encoded><![CDATA[<blockquote>
 <p>⚠️：你必须准备</p>
 <p>域名：国内可能需要备案</p>
@@ -25,7 +28,7 @@
     
     
     <div style="font-size: 22px; font-weight: 600">
-        <a target="_blank" href="https://blog.zsan.ml/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
+        <a target="_blank" href="https://blog.zsan.cf/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
     </div>
     <span style="font-size: 14px; color: #999">
         日期: 2023-06-04
@@ -38,7 +41,25 @@
         
     </span>
     <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
-        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL ......
+        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。
+Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora
+dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。
+大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。
+使用 timedatectl 输出可用时区列表
+timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。
+使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。
+timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata
+打开 tzdata 工具
+dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter
+使用箭头键选择您所在的地区，然后按 Enter
+检查时间 使用 date 命令根据您的服务器查看当前日期和时间
+root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。
+简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。
+大多数发行版 将 example-hostname 替换为您的选择之一
+hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析
+在文本编辑器（例如 Nano）中打开 hosts 文件
+nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.example.com 是 FQDN
+127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行 ......
     </div>
     
     
@@ -185,7 +206,7 @@
     
     
     <div style="font-size: 22px; font-weight: 600">
-        <a target="_blank" href="https://blog.zsan.ml/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
+        <a target="_blank" href="https://blog.zsan.cf/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
     </div>
     <span style="font-size: 14px; color: #999">
         日期: 2023-05-28
@@ -204,7 +225,72 @@
         
     </span>
     <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
-        为何要用Firefly Iii 简介及特点 Login to Firefly III Demo 安全 账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里 复式记账 预算、存钱 自动化 可以自动化设置一些操作 登录 在firefly配置文件env内搜索SITE_OWNER 这个值就是配置的管理员邮箱 建议使用和域名相同的邮箱登录，如果无配置邮箱服务 ......
+        为何要用Firefly Iii 简介及特点
+Login to Firefly III Demo
+安全
+账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里
+复式记账
+预算、存钱
+自动化，可以自动化设置一些操作
+各端体验 PC端：web页面访问，适合PC浏览器上查看，特别是报表，很适合大屏观看
+移动端：没有单独的App，但是支持PWA，推荐用chrome打开，然后添加到桌面就行了，和App无异
+说点题外的，当年PWA出来的时候Safari是支持的，后来支持的功能就少了，是因为自己的App Store出来了。但是最近貌似对PWA的支持友好了😂
+不扯太远了，总之只要支持PWA，基本上和App无异，对App有执念的，可以做个客户端，官方API都是开放的
+登录 在firefly配置文件env内搜索SITE_OWNER
+这个值就是配置的管理员邮箱
+建议使用和域名相同的邮箱登录，如果无配置邮箱服务，可以使用阿里的邮箱推送服务，目前有免费额度可以用
+安全设置 两步验证 打开firefly点击选项 个人档案 两步验证点击启用
+手机下载Google Authenticator，切记不要登录Google账号，会上传到云上去
+启用之后，重新登录
+选项设置 货币 默认是欧元，可切换到人民币Chinese yuan (RMB) (¥)，如果有其他货币也可自行切换
+管理 包括检查更新，邮箱测试等
+初始化设置 账户 分类 标签 高级设置 预算👍 制定预算将帮助您更有效地分配资金并更轻松地实现财务目标
+预算这个功能超级好用
+首先，点击左侧预算，创建新预算
+右侧选填字段内
+自动预算 选择最后一个Adjusted (&amp;quot;... and correct for overspending&amp;quot;)
+举🌰
+每个月预算都是5000
+1月预算5000，到月底花了8000，超预算3000
+2月预算就变为2000，到月底花了1000
+3月预算就变为6000
+这个功能一直在找，是因为某财经大佬曾说过
+然后，当你点开“本月支出建议”表格时，
+“根据您过去十二个月的支出以及理财目标、收入情况综合分析，建议您本月食物支出不要超过元，休闲娱乐支出不要超过元……祝您早日达成理财目标。”
+下个月：
+“您上个月非常节俭，比预计多剩余了2000元。不妨拿出500元买点喜欢的东西奖励自己！”
+当然自己开发一个这个软件耗时耗力，所以当时就在找类似开源软件，扯的有点远了😂😂😄
+预算如何分配？ 50/30/20 预算法则
+50/30/20 预算法则是一种简单的预算策略，可以帮助您优先考虑财务目标：
+50% 用于必需品：将收入的 50% 用于支付基本生活费用，如住房、水电费、日常食品购买和交通费。
+30% 用于愿望：将收入的 30% 用于自由支配花费和非必需开销，如外出就餐、娱乐、爱好和购物。
+20% 用于储蓄和债务偿还：将收入的 20% 用于储蓄、投资和偿还债务。
+这个体系的目的是确保您的基本需求得到满足，有一定的自由支配费用空间，并优先为未来储蓄和管理债务。
+这些百分比并非一成不变。如果资金紧张，您可能需要将收入的更高比例用于支付必需品。如果您的债务很大，您可以选择分配超过 20% 的收入用于债务偿还，以加快进度。同样，如果您的储蓄目标雄心勃勃，可以将更高的比例分配给储蓄。
+购买汽车的预算 一条经验法则是，您车辆的总价值不应超过您年收入的50%
+另一个好的经验法则是 20/4/10 规则：
+至少支付 20% 的首付款。
+永远不要获得超过 4 年的贷款。
+您总收入的 10% 或更少用于所有车辆支出，包括贷款支付、保险、汽油、登记费、维护和修理。
+另外一个法则：
+年收入买车
+月收入买表
+如果您的预算符合以下任一情况，您应该考虑改变您的生活方式：
+您每月的抵押贷款/租金超过您实得工资的 30%。你可能想考虑找个室友，或者搬到更便宜的地方。
+您每月在车辆上的总支出超过您实得工资的 15%。您可能需要考虑拼车上班、减少出行次数，或者乘坐公共汽车或自行车。如果可以的话，您可能还想考虑搬到更近的地方或卖掉您的汽车。每月预算的 10% 是一个更健康的汽车支出数字。
+本杰明·富兰克林曾说：“省下一分钱就等于赚了一分钱。”如果这句话是真的，那么削减预算就相当于提高了你的收入。
+常被提及的减少开支的方法有：削减有线电视、将手机套餐调整到实际使用的通话/数据量、在家烹饪/带食物去工作、重新评估贷款、扔掉优惠券、下单前先找找优惠券、取消在线购物网站的信用卡关联、减少信用卡使用并改用现金、不用时关闭灯光、不在家或睡觉时降低暖气/空调等。
+账单 存钱罐👍 这个功能有助于帮助您实现您的财务目标
+应急资金（fuck money） 对大多数人来说，3 到 6 个月的开支就足够了。如果您的收入不稳定或不确定，可能需要更大的应急基金（例如 9 到 12 个月）
+一般放银行存款或货币基金内r1r2即可
+超长期养老 以后养老要靠自己了，每月拿出收入的10%或20%放到长期账户内，为以后退休做准备
+自动化 参考 Managing your finances - Firefly III documentation
+budgeting
+commontopics
+commontopics
+emergencyfunds
+early_career
+organizing ......
     </div>
     
     

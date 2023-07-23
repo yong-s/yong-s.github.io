@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>javascript on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/javascript/</link>
+    <link>https://blog.zsan.cf/tags/javascript/</link>
     <description>Recent content in javascript on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 26 Jun 2022 15:08:44 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jun 2022 15:08:44 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autojs 笔记</title>
-      <link>https://blog.zsan.ml/posts/autojs-notes/</link>
+      <link>https://blog.zsan.cf/posts/autojs-notes/</link>
       <pubDate>Sun, 26 Jun 2022 15:08:44 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/autojs-notes/</guid>
+      <guid>https://blog.zsan.cf/posts/autojs-notes/</guid>
       <description>用autojs在Android上写些小脚本吧！</description>
       <content:encoded><![CDATA[<blockquote>
 <p>最近薅🦙接触了autojs，在Android手机上可自动化运行的脚本，不用root，可直接运行，轻量小巧，底层调用Android API，自己可封装API👍</p>

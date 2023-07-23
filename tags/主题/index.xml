@@ -2,19 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>主题 on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/%E4%B8%BB%E9%A2%98/</link>
+    <link>https://blog.zsan.cf/tags/%E4%B8%BB%E9%A2%98/</link>
     <description>Recent content in 主题 on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 18:50:26 +0000</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E4%B8%BB%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Jun 2021 18:50:26 +0000</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/%E4%B8%BB%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>girde simple修改添加支持侧边栏目录</title>
-      <link>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</link>
+      <link>https://blog.zsan.cf/posts/girde-simple-support-for-sidebar-directory/</link>
       <pubDate>Sun, 06 Jun 2021 18:50:26 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/girde-simple-support-for-sidebar-directory/</guid>
-      <description>修改主题文件支持侧边栏目录 simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。 1、修改post.ejs文件 head新增 &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 搜索&amp;lt;%- post.content %&amp;gt;复制一下代码覆盖copy &amp;lt;div class=&amp;#34;post-content-wrapper&amp;#34;&amp;gt; &amp;lt;div</description>
+      <guid>https://blog.zsan.cf/posts/girde-simple-support-for-sidebar-directory/</guid>
+      <description>修改主题文件支持侧边栏目录
+simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。
+1、修改post.ejs文件 head新增
+&amp;lt;script src=&amp;quot;https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+搜索&amp;lt;%- post.content %&amp;gt;复制一下代码覆盖copy
+&amp;lt;div class=&amp;#34;post-content-wrapper&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;post-content&amp;#34; v-pre&amp;gt; &amp;lt;%- post.content %&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;toc-container&amp;#34;&amp;gt; &amp;lt;%- post.toc %&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 新增高亮js
+&amp;lt;script&amp;gt; hljs.initHighlightingOnLoad() let mainNavLinks = document.querySelectorAll(&amp;#34;.markdownIt-TOC a&amp;#34;); // This should probably be throttled. // Especially because it triggers during smooth scrolling. // https://lodash.com/docs/4.17.10#throttle // You could do like... // window.addEventListener(&amp;#34;scroll&amp;#34;, () =&amp;gt; { // _.throttle(doThatStuff, 100); // }); // Only not doing it here to keep this Pen dependency-free. window.addEventListener(&amp;#34;scroll&amp;#34;, event =&amp;gt; { let fromTop = window.scrollY; mainNavLinks.forEach((link, index) =&amp;gt; { let section = document.getElementById(decodeURI(link.hash).substring(1)); let nextSection = null if (mainNavLinks[index + 1]) { nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1)); } if (section.offsetTop &amp;lt;= fromTop) { if (nextSection) { if (nextSection.offsetTop &amp;gt; fromTop) { link.classList.add(&amp;#34;current&amp;#34;); } else { link.classList.remove(&amp;#34;current&amp;#34;); } } else { link.classList.add(&amp;#34;current&amp;#34;); } } else { link.classList.remove(&amp;#34;current&amp;#34;); } }); }); &amp;lt;/script&amp;gt; 2、客户端新增自定义css .toc-container .markdownIt-TOC { position: sticky; top: 32px; width: 200px; font-size: 12px; list-style: none; padding-left: 0; padding: 16px 8px; } .</description>
       <content:encoded><![CDATA[<p>修改主题文件支持侧边栏目录</p>
 <!-- more -->
 <p>simple主题整体还行，但文章无侧边栏目录，一般写的技术性文章很长，就需要侧边栏目录和这个功能了，在网上搜了一下资料，对于前端小学生的我费了好长时间才搞定，记录一下过程。</p>

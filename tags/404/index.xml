@@ -2,32 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>404 on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/404/</link>
+    <link>https://blog.zsan.cf/tags/404/</link>
     <description>Recent content in 404 on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 28 May 2023 19:49:45 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/404/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 May 2023 19:49:45 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/404/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo更换404公益页面</title>
-      <link>https://blog.zsan.ml/posts/404public-interest/</link>
+      <link>https://blog.zsan.cf/posts/404public-interest/</link>
       <pubDate>Sun, 28 May 2023 19:49:45 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/404public-interest/</guid>
-      <description>layouts文件夹，新建404.html &amp;lt;!-- console.error(&amp;#34;404，您访问的脚本 &amp;#34;+document.currentScript.src+&amp;#34; 搞丢了！&amp;#34;); ((s)=&amp;gt;{ s.src=&amp;#34;https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js&amp;#34;; s.referrerScript=document.currentScript.src s.onload=()=&amp;gt;{ (new Aegis({id:&amp;#39;aorgLlJTLfQVrxAwGe&amp;#39;,uin:&amp;#39;&amp;#39;,reportApiSpeed: true,reportAssetSpeed: true})).report(&amp;#34;网页 &amp;#34;+location.href+&amp;#34; 引用 &amp;#34;+s.referrerScript+&amp;#34; 脚本触发了404&amp;#34;) } document.getElementsByTagName(&amp;#34;head&amp;#34;)[0].appendChild(s) })(document.createElement(&amp;#34;script&amp;#34;)) /*--&amp;gt; &amp;lt;!DOCTYPE HTML&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;description&amp;#34; content=&amp;#34;公益404页面是由腾讯公司员</description>
+      <guid>https://blog.zsan.cf/posts/404public-interest/</guid>
+      <description>layouts文件夹，新建404.html
+&amp;lt;!DOCTYPE HTML&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;description&amp;#34; content=&amp;#34;公益404页面是由腾讯公司员工志愿者自主发起的互联网公益活动。&amp;#34; /&amp;gt; &amp;lt;link rel=&amp;#34;icon&amp;#34; href=&amp;#34;data:image/gif;base64,R0lGODdhIAAgANUAAAAAAAgFBgYICAwMDBAPDxAQDxQTFBUYFxcaGRwcHCQkJCQoJykqKTQ0ND09PUJCQktMTFZWVltcXF1hYGNjY2doaGpqanNzc3d5eHp6eoODg4uLi5eXl5mamqOjo62tra+wr7S0tLe5uLu7u7/AwMPEw83NzdbX1tfa2dra2uTk5Ovr6+/w7/T09Pj39/f4+P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAADEALAAAAAAgACAAAAb/QJhwOGyZOpIGQ6FgNCQcU4tIrcJaIwlgy+1uJaOplZqydBOSzGaTkSS6lNN4ONoOAJRQajV0rVAgFF0jcyEAbw9hc1cjD4cAIVZ1DAAXKotEKxkAlIREJ48bYphFGwAKAHJCLWaVo6RFF1sWYnUDDpewVSoOd4QtWgCeMCmXLaqfUyopdF9GWxRiKQAVKh3CRHUdKhQEzFeCAEdbH6uOh28A3ypbCQhbEGIfWx2CCd8wJhB2CpFDIQvuAIBgYkiKN0kASOAzRJYjBwyFrGgAwNGFTFqUAMjwYogpA1woMFwRDgDIDUQ2LQGAcoiGLRr2QRgp8yUADURMMWFJRYMH3BglJOQSwq0EDA84c56ilOGVLisqKUaISKVFihIjRJRI4XTIiggAGggygKxICAoguSDI0/UEyAnXAJTLJMtLlwxUYcwD0MEEtIgtBKGi0OHDh3qn8IwKvEVKuGHXGAwI8apFCAOUOvxzBqNOAVzgthi1UgKasl7YrtS9MMXI6DEjpKieNWoaSA1dF7V4+QafkNKoLOlSIQsVCUkmATgYwWIRCxEOAByANKc0AAEAJnzYI6bFihQfBAUQjSlF3S0GIqjZgCFC2i0XfM/BUtJuSEVPjdRTwsQJYdljBAEAOw==&amp;#34;&amp;gt; &amp;lt;title&amp;gt;404 您访问的页面搞丢了&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script&amp;gt; let s = document.createElement(&amp;#34;script&amp;#34;); s.src=&amp;#34;//volunteer.cdn-go.cn/404/latest/404.js&amp;#34; s.crossorigin=&amp;#34;anonymous&amp;#34; document.getElementsByTagName(&amp;#34;head&amp;#34;)[0].appendChild(s); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; &amp;lt;!-- */ //--&amp;gt; </description>
       <content:encoded><![CDATA[<p>layouts文件夹，新建<code>404.html</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">console.error(&#34;404，您访问的脚本 &#34;+document.currentScript.src+&#34; 搞丢了！&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">((s)=&gt;{
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	s.src=&#34;https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	s.referrerScript=document.currentScript.src
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	s.onload=()=&gt;{
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		(new Aegis({id:&#39;aorgLlJTLfQVrxAwGe&#39;,uin:&#39;&#39;,reportApiSpeed: true,reportAssetSpeed: true})).report(&#34;网页 &#34;+location.href+&#34; 引用 &#34;+s.referrerScript+&#34; 脚本触发了404&#34;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	}
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	document.getElementsByTagName(&#34;head&#34;)[0].appendChild(s)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">})(document.createElement(&#34;script&#34;))
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/*--&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE HTML&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE HTML&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span> /&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>podcast on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/podcast/</link>
+    <link>https://blog.zsan.cf/tags/podcast/</link>
     <description>Recent content in podcast on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 12 Jul 2022 22:04:47 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 22:04:47 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>低成本搭建高质量播客发布服务</title>
-      <link>https://blog.zsan.ml/posts/how-to-make-podcast/</link>
+      <link>https://blog.zsan.cf/posts/how-to-make-podcast/</link>
       <pubDate>Tue, 12 Jul 2022 22:04:47 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/how-to-make-podcast/</guid>
+      <guid>https://blog.zsan.cf/posts/how-to-make-podcast/</guid>
       <description>用播客在iPhone上听那些自己喜欢的歌曲</description>
       <content:encoded><![CDATA[<blockquote>
 <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；</p>

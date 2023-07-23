@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: https://blog.zsan.ml/sitemap.xml
+Sitemap: https://blog.zsan.cf/sitemap.xml

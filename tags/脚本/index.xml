@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>脚本 on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/%E8%84%9A%E6%9C%AC/</link>
+    <link>https://blog.zsan.cf/tags/%E8%84%9A%E6%9C%AC/</link>
     <description>Recent content in 脚本 on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 26 Jun 2022 15:08:44 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jun 2022 15:08:44 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autojs 笔记</title>
-      <link>https://blog.zsan.ml/posts/autojs-notes/</link>
+      <link>https://blog.zsan.cf/posts/autojs-notes/</link>
       <pubDate>Sun, 26 Jun 2022 15:08:44 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/autojs-notes/</guid>
+      <guid>https://blog.zsan.cf/posts/autojs-notes/</guid>
       <description>用autojs在Android上写些小脚本吧！</description>
       <content:encoded><![CDATA[<blockquote>
 <p>最近薅🦙接触了autojs，在Android手机上可自动化运行的脚本，不用root，可直接运行，轻量小巧，底层调用Android API，自己可封装API👍</p>
@@ -97,11 +97,52 @@
     
     <item>
       <title>云服务器docker搭建自动领京豆bot互动指令</title>
-      <link>https://blog.zsan.ml/posts/docker-build-jdbot/</link>
+      <link>https://blog.zsan.cf/posts/docker-build-jdbot/</link>
       <pubDate>Fri, 30 Apr 2021 22:49:08 +0000</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-build-jdbot/</guid>
-      <description>使用docker部署自动领金豆bot脚本 使用的版本： 服务器：centos 8 docker： 20.10.6 docker-compose： 1.27.4 1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose Docker安装 国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装</description>
+      <guid>https://blog.zsan.cf/posts/docker-build-jdbot/</guid>
+      <description>使用docker部署自动领金豆bot脚本
+使用的版本：
+服务器：centos 8
+docker： 20.10.6
+docker-compose： 1.27.4
+1、服务器安装docker，docker-compose 推荐使用centos服务器安装docker、docker-compose
+Docker安装
+国内一键安装 curl -sSL https://get.daocloud.io/docker | sh 国外一键安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun docker-compose安装
+$ sudo curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose
+要安装其他版本的 Compose，请替换 1.24.1。
+最新发行的版本地址：https://github.com/docker/compose/releases。
+将可执行权限应用于二进制文件：
+$ sudo chmod +x /usr/local/bin/docker-compose
+创建软链：
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+通过docker-compose version查看docker-compose版本，确认是否安装成功。
+2、安装jd_scripts 创建一个目录jd_scripts用于存放备份配置等数据，迁移重装的时候只需要备份整个jd_scripts目录即可
+需要新建的目录文件结构参考如下:
+jd_scripts ├── logs │ ├── XXXX.log │ └── XXXX.log ├── my_crontab_list.sh └── docker-compose.yml jd_scripts/logs建一个空文件夹就行 jd_scripts/docker-compose.yml 参考内容如下(自己动手能力不行搞不定请使用默认配置)： 根据文档一步一步下去就ok了，下面主要记录下可能用到的命令
+目录文件配置好之后在 jd_scripts目录执行。
+docker-compose up -d 启动（修改docker-compose.yml后需要使用此命令使更改生效）；
+docker-compose logs 打印日志；
+docker-compose logs -f 打印日志，-f表示跟随日志； docker logs -f jd_scripts 和上面两条相比可以显示汉字； docker-compose pull 更新镜像；
+docker-compose stop 停止容器；
+docker-compose restart 重启容器；
+docker-compose down 停止并删除容器；
+3、开代理机器，激活tg-bot 这里是个大坑，拿个小本本记下来，其实就是docker内代理宿主机代理的问题
+由于众所周知的原因，国内的机器不能访问tg，而又想使用tg-bot来控制，无奈，国外机子太贵（穷），最低也要5美刀！遂买国内机子开代理使用
+1、买国内机器，推荐大厂的 这里应该放各大厂的aff的，留个坑
+2、安装clash 一直在使用clash，直接网上搜索clash下载，找到对应版本下载，博主用的是centos，下载linux-amd64的
+1、下载clash，最新版本可去官网找
+wget https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz 2、解压
+gzip -d clash-linux-amd64-v0.19.0.gz 3、移动至usr/bin/clash并重命名为clash
+sudo mv clash-linux-amd64-v0.19.0 /usr/bin/clash 4、赋予clash运行权限
+sudo chmod +x /usr/bin/clash 5、检查是否安装成功
+clash -v 3、创建配置文件、安装控制面板 1.创建配置文件目录
+mkdir -p /etc/clash/ 2.进入目录
+cd /etc/clash/ 3.创建配置文件
+vim config.yaml 4.手动编辑很麻烦，可用winscp上传
+配置参数自行查找
+5.下载前端代码
+wget https://github.com/Dreamacro/clash-dashboard/tree/gh-pages 6.解压</description>
       <content:encoded><![CDATA[<p>使用docker部署自动领金豆bot脚本</p>
 <!-- more -->
 <p>使用的版本：</p>

@@ -2,19 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>探针 on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/%E6%8E%A2%E9%92%88/</link>
+    <link>https://blog.zsan.cf/tags/%E6%8E%A2%E9%92%88/</link>
     <description>Recent content in 探针 on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 14 Mar 2023 21:20:29 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E6%8E%A2%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Mar 2023 21:20:29 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/%E6%8E%A2%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>搭建服务器监控服务-哪吒探针</title>
-      <link>https://blog.zsan.ml/posts/setting-up-server-monitoring-service-nezha-probe/</link>
+      <link>https://blog.zsan.cf/posts/setting-up-server-monitoring-service-nezha-probe/</link>
       <pubDate>Tue, 14 Mar 2023 21:20:29 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/setting-up-server-monitoring-service-nezha-probe/</guid>
-      <description>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看准备工作 | 哪吒监控 服务器安装管理面板 curl -L https://cdn.jsdelivr.net/gh/naiba/nezha@master/script/install.sh -o nezha.sh &amp;amp;&amp;amp; chmod +x nezha.sh &amp;amp;&amp;amp; sudo CN=true ./nezha.sh` 客户端安装Agent 绿色的 Linux/Windows 图标按钮，复制一键安装命令 PS：官网写的太详细了，我这篇也没必要写了，占个坑，算是知道相关服</description>
+      <guid>https://blog.zsan.cf/posts/setting-up-server-monitoring-service-nezha-probe/</guid>
+      <description>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看准备工作 | 哪吒监控
+服务器安装管理面板 curl -L https://cdn.jsdelivr.net/gh/naiba/nezha@master/script/install.sh -o nezha.sh &amp;amp;&amp;amp; chmod +x nezha.sh &amp;amp;&amp;amp; sudo CN=true ./nezha.sh` 客户端安装Agent 绿色的 Linux/Windows 图标按钮，复制一键安装命令
+PS：官网写的太详细了，我这篇也没必要写了，占个坑，算是知道相关服务</description>
       <content:encoded><![CDATA[<blockquote>
 <p>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看<a href="https://nezha.wiki/guide/dashboard.html">准备工作 | 哪吒监控</a></p>
 </blockquote>

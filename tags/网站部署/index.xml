@@ -2,19 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>网站部署 on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</link>
+    <link>https://blog.zsan.cf/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/</link>
     <description>Recent content in 网站部署 on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 08 Apr 2022 16:23:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Apr 2022 16:23:01 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker 部署 Nginx服务</title>
-      <link>https://blog.zsan.ml/posts/docker-build-nginx/</link>
+      <link>https://blog.zsan.cf/posts/docker-build-nginx/</link>
       <pubDate>Fri, 08 Apr 2022 16:23:01 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/docker-build-nginx/</guid>
-      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &amp;#39;3.3&amp;#39; services: web: image: nginx:latest container_name: nginx</description>
+      <guid>https://blog.zsan.cf/posts/docker-build-nginx/</guid>
+      <description>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠
+1、创建docker-nginx目录 新建 docker-compose.yml 文件
+mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &amp;#39;3.3&amp;#39; services: web: image: nginx:latest container_name: nginx volumes: - ./nginx:/etc/nginx - ./log:/var/log/nginx - ./html:/usr/share/nginx/html //网站放置目录 ports: - &amp;#34;8081:80&amp;#34; environment: - NGINX_HOST=&amp;#34;192.168.116.10&amp;#34; //访问地址/域名 - NGINX_PORT=&amp;#34;80&amp;#34; //访问端口 - TZ=&amp;#34;Asia/Shanghai&amp;#34; //时区 restart: always 3、手动cp配置文件 由于官方image没有默认映射外部文件，需要手动把配置文件cp出来
+# 运行官方命令创建默认容器 docker run --name nginx -p 8080:80 -d nginx #配置文件复制到nginx里,其他文件可用复制 #是个坑，路径必须是全路径 docker cp nginx:/etc/nginx /opt/docker-nginx #删除默认容器 docker stop nginx &amp;amp;&amp;amp; docker rm nginx 4、修改nginx配置文件 端口号、域名，ssl等和以前配置一样，不再赘述
+5、运行&amp;amp;测试 docker-compose up -d #查看日志 docker-compose logs -f #浏览器输入IP或域名查看是否可以访问 参考文档：
+1、Docker Hub-nginx</description>
       <content:encoded><![CDATA[<blockquote>
 <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠</p>
 </blockquote>

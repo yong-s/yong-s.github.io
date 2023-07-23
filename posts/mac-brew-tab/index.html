@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,13 @@
 <meta name="description" content="Mac系统下brew 按tab命令 自动补全">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/mac-brew-tab/">
+<link rel="canonical" href="https://blog.zsan.cf/posts/mac-brew-tab/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -69,7 +69,7 @@ if (!doNotTrack) {
 <meta property="og:title" content="Mac Brew Tab 命令自动补全" />
 <meta property="og:description" content="Mac系统下brew 按tab命令 自动补全" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/mac-brew-tab/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/mac-brew-tab/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-26T22:17:56+08:00" />
 <meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
 
@@ -87,13 +87,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.zsan.ml/posts/"
+      "item": "https://blog.zsan.cf/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Mac Brew Tab 命令自动补全",
-      "item": "https://blog.zsan.ml/posts/mac-brew-tab/"
+      "item": "https://blog.zsan.cf/posts/mac-brew-tab/"
     }
   ]
 }
@@ -109,8 +109,8 @@ if (!doNotTrack) {
     "brew", "mac", "zsh", "玩机"
   ],
   "articleBody": " mac arm版 2021版的brew 一键安装后 命令 按tab 不能补全，今天有点闲，就搜了一下，给解决了\n用的 Oh My Zsh，官方文档里写的很详细，不过是英文的，这里给翻译记录下\n1、在 ~/.zshrc 里添加下面code\nif type brew \u0026\u003e/dev/null then FPATH=\"$(brew --prefix)/share/zsh/site-functions:${FPATH}\" autoload -Uz compinit compinit fi 2、在 ~/.zprofile 里添加下面code\nFPATH=\"$(brew --prefix)/share/zsh/site-functions:${FPATH}\" 3、强制重建zcompdump\nrm -f ~/.zcompdump; compinit 4、如果出现 zsh compinit: insecure directory 警告\nchmod -R go-w \"$(brew --prefix)/share\" 参考：\nHomebrew Shell Completion — Homebrew Documentation\n",
-  "wordCount" : "166",
-  "inLanguage": "zh",
+  "wordCount" : "54",
+  "inLanguage": "en",
   "datePublished": "2022-07-26T22:17:56+08:00",
   "dateModified": "2023-02-01T13:14:22.897659532+08:00",
   "author":[{
@@ -119,14 +119,14 @@ if (!doNotTrack) {
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/mac-brew-tab/"
+    "@id": "https://blog.zsan.cf/posts/mac-brew-tab/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "张三的网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.zsan.ml/favicon.ico"
+      "url": "https://blog.zsan.cf/favicon.ico"
     }
   }
 }
@@ -148,7 +148,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,22 +174,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -200,7 +200,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
     <h1 class="post-title">
       Mac Brew Tab 命令自动补全
     </h1>
@@ -218,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-07-26 22:17:56 +0800 CST'>2022-07-26</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;166字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-07-26 22:17:56 +0800 CST'>2022-07-26</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;54字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -228,7 +228,7 @@ if (!doNotTrack) {
 <div class="post-outdated">
   <div class="hint">
     <p>【注意】最后更新于 
-      <span class="timeago" datetime="2023-02-01T13:14:22" title="二月 1, 2023">二月 1, 2023</span>，文中内容可能已过时，请谨慎使用。
+      <span class="timeago" datetime="2023-02-01T13:14:22" title="February 1, 2023">February 1, 2023</span>，文中内容可能已过时，请谨慎使用。
     </p>
   </div>
 </div>
@@ -260,18 +260,18 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/brew/">brew</a></li>
-      <li><a href="https://blog.zsan.ml/tags/mac/">mac</a></li>
-      <li><a href="https://blog.zsan.ml/tags/zsh/">zsh</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E7%8E%A9%E6%9C%BA/">玩机</a></li>
+      <li><a href="https://blog.zsan.cf/tags/brew/">brew</a></li>
+      <li><a href="https://blog.zsan.cf/tags/mac/">mac</a></li>
+      <li><a href="https://blog.zsan.cf/tags/zsh/">zsh</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E7%8E%A9%E6%9C%BA/">玩机</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/cloudflare-301-set/">
+  <a class="prev" href="https://blog.zsan.cf/posts/cloudflare-301-set/">
     <span class="title">« 上一页</span>
     <br>
     <span>在Cloudflare 设置域名 301 重定向</span>
   </a>
-  <a class="next" href="https://blog.zsan.ml/posts/how-to-make-podcast/">
+  <a class="next" href="https://blog.zsan.cf/posts/how-to-make-podcast/">
     <span class="title">下一页 »</span>
     <br>
     <span>低成本搭建高质量播客发布服务</span>
@@ -288,7 +288,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.zsan.ml/",  
+            envId: "https://twikoo.zsan.cf/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

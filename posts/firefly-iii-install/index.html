@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +7,19 @@
 <meta name="robots" content="index, follow">
 <title>个人理财工具-Firefly Iii安装 | 张三的网络日志</title>
 <meta name="keywords" content="fireflyIii, 记账, 理财, 预算, docker">
-<meta name="description" content="⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &nbsp; 标签: #安全&nbsp; #服务器&nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许">
+<meta name="description" content="⚠️：你必须准备
+域名：国内可能需要备案
+服务器：Linux
+‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &nbsp; 标签: #安全&nbsp; #服务器&nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/firefly-iii-install/">
+<link rel="canonical" href="https://blog.zsan.cf/posts/firefly-iii-install/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -67,15 +70,21 @@ if (!doNotTrack) {
 }
 </script>
 <meta property="og:title" content="个人理财工具-Firefly Iii安装" />
-<meta property="og:description" content="⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &nbsp; 标签: #安全&nbsp; #服务器&nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许" />
+<meta property="og:description" content="⚠️：你必须准备
+域名：国内可能需要备案
+服务器：Linux
+‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &nbsp; 标签: #安全&nbsp; #服务器&nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/firefly-iii-install/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/firefly-iii-install/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-28T18:09:34+08:00" />
 <meta property="article:modified_time" content="2023-06-24T16:42:22+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="个人理财工具-Firefly Iii安装"/>
-<meta name="twitter:description" content="⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &nbsp; 标签: #安全&nbsp; #服务器&nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许"/>
+<meta name="twitter:description" content="⚠️：你必须准备
+域名：国内可能需要备案
+服务器：Linux
+‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 &nbsp; 标签: #安全&nbsp; #服务器&nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname."/>
 
 
 <script type="application/ld+json">
@@ -87,13 +96,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.zsan.ml/posts/"
+      "item": "https://blog.zsan.cf/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "个人理财工具-Firefly Iii安装",
-      "item": "https://blog.zsan.ml/posts/firefly-iii-install/"
+      "item": "https://blog.zsan.cf/posts/firefly-iii-install/"
     }
   ]
 }
@@ -104,13 +113,13 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "个人理财工具-Firefly Iii安装",
   "name": "个人理财工具-Firefly Iii安装",
-  "description": "⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 \u0026nbsp; 标签: #安全\u0026nbsp; #服务器\u0026nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许",
+  "description": "⚠️：你必须准备\n域名：国内可能需要备案\n服务器：Linux\n‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 \u0026nbsp; 标签: #安全\u0026nbsp; #服务器\u0026nbsp; 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update \u0026amp;amp;\u0026amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone \u0026amp;#39;America/New_York\u0026amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.",
   "keywords": [
     "fireflyIii", "记账", "理财", "预算", "docker"
   ],
-  "articleBody": " ⚠️：你必须准备\n域名：国内可能需要备案\n服务器：Linux\n‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 标签: #安全 #服务器 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update \u0026amp;\u0026amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL ...... 省流版 docker一把过 1、首先新建文件夹，比如fireflyiii\ncd fireflyiii，创建docker-compose.yml\n拷贝下面,把{{}}内的改为自己的，不要{{}}\nversion: '3.3' services: nginx-proxy: image: nginxproxy/nginx-proxy container_name: nginx-proxy restart: always ports: - \"80:80\" - \"443:443\" volumes: - /var/run/docker.sock:/tmp/docker.sock:ro - ./certs:/etc/nginx/certs:ro - ./vhost:/etc/nginx/vhost.d - ./html:/usr/share/nginx/html nginx-proxy-acme: image: nginxproxy/acme-companion container_name: nginx-proxy-acme restart: always volumes: - /var/run/docker.sock:/var/run/docker.sock:ro - ./acme:/etc/acme.sh - ./certs:/etc/nginx/certs - ./vhost:/etc/nginx/vhost.d - ./html:/usr/share/nginx/html environment: # 警告接收email地址 - DEFAULT_EMAIL={{acme@fireflyiii.com}} - NGINX_PROXY_CONTAINER=nginx-proxy depends_on: - nginx-proxy app: image: fireflyiii/core:latest container_name: firefly_app restart: always volumes: - ./firefly_iii_upload:/var/www/html/storage/upload env_file: .env depends_on: - db expose: - \"8080\" environment: # 这里要改为自己的域名 - VIRTUAL_HOST={{fireflyiii.com}} - VIRTUAL_PORT=8080 - LETSENCRYPT_HOST={{fireflyiii.com}} - LETSENCRYPT_EMAIL={{acme@fireflyiii.com}} db: # docker 20.10.10 以上使用最新 image: mariadb:latest # image: mariadb:10.7.8-focal container_name: firefly_db hostname: fireflyiiidb restart: always environment: # 和下面.env 配置文件内一致 - MYSQL_RANDOM_ROOT_PASSWORD=yes - MYSQL_USER=firefly - MYSQL_PASSWORD={{.env内的}} - MYSQL_DATABASE=firefly volumes: - ./firefly_iii_db:/var/lib/mysql cron: image: alpine container_name: firefly_cron # 使用登录之后的选项--命令行令牌的 command: sh -c \"echo \\\"0 3 * * * wget -qO- http://app:8080/api/v1/cron/{{登录之后的选项--命令行令牌获取}}\\\" | crontab - \u0026\u0026 crond -f -L /dev/stdout\" redis: image: redis:6.0.9 container_name: redis restart: always volumes: - ./redis/data:/data - ./redis/logs:/var/log/redis - ./redis/conf/redis.conf:/etc/redis/redis.conf - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致 environment: - TZ=Asia/Shanghai - LANG=en_US.UTF-8 command: redis-server /etc/redis/redis.conf # 启动redis命令 volumes: firefly_iii_upload: firefly_iii_db: certs: vhost: html: 2、修改配置文件\nfireflyiii配置文件 下载wget https://raw.githubusercontent.com/firefly-iii/firefly-iii/v6.0.11/.env.example\ncp .env.example .env\n根据自己需要自行修改即可，简单说下配置redis\n# If you're looking for performance improvements, you could install memcached or redis CACHE_DRIVER=redis SESSION_DRIVER=redis # If you set either of the options above to 'redis', you might want to update these settings too # If you use Docker or similar, you can set REDIS_HOST_FILE, REDIS_PASSWORD_FILE or # REDIS_PORT_FILE to set the value from a file instead of from an environment variable # can be tcp, unix or http REDIS_SCHEME=tcp # use only when using 'unix' for REDIS_SCHEME. Leave empty otherwise. REDIS_PATH= # use only when using 'tcp' or 'http' for REDIS_SCHEME. Leave empty otherwise. REDIS_HOST=redis REDIS_PORT=6379 # Use only with Redis 6+ with proper ACL set. Leave empty otherwise. REDIS_USERNAME= REDIS_PASSWORD= # always use quotes and make sure redis db \"0\" and \"1\" exists. Otherwise change accordingly. REDIS_DB=\"0\" REDIS_CACHE_DB=\"1\" redis 配置文件 下载wget https://raw.githubusercontent.com/redis/redis/unstable/redis.conf\n根据自己需要自行修改即可\n最后docker-compose up -d启动\ndocker-compose logs -f --tail=500 查看日志\n现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎 Firefly Iii使用 日期: 2023-05-28 标签: #理财 #预算 #存钱 #买车 #生活 为何要用Firefly Iii 简介及特点 Login to Firefly III Demo 安全 账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里 复式记账 预算、存钱 自动化 可以自动化设置一些操作 登录 在firefly配置文件env内搜索SITE_OWNER 这个值就是配置的管理员邮箱 建议使用和域名相同的邮箱登录，如果无配置邮箱服务 ...... 浏览器输入域名访问即可，英文不好，点击选项-偏好设定修改语言为中文\n详细版 空了再写吧！🤣\n备份 财务数据特别重要，所以一定要备份\n下载sh Script to backup Firefly III database, uploads and config files installed with docker-compose · GitHub\n这个shell 根据命令执行即可备份\n添加为定时任务 新建backup.sh\n#!/bin/bash #本地备份 echo \"开始备份\" bash /path/to/fireflyiii/firefly-iii-backuper.sh backup /path/to/fireflyiii/backup/firefly-$(date '+%F').tar echo \"备份完成\" #备份到tg群里,不要删掉即可 # Define variables token=\"\" chat_id=\"\" message_thread_id=\"\" file_path=\"/path/to/fireflyiii/backup/firefly-$(date '+%F').tar\" text=\"备份成功\" # Send file to telegram curl -F chat_id=\"$chat_id\" -F message_thread_id=\"$message_thread_id\" -F document=@\"$file_path\" https://api.telegram.org/bot$token/sendDocument 添加到cron内\n3 1 * * * bash /path/to/fireflyiii/backup.sh\n参考 Docker - Firefly III documentation\n",
-  "wordCount" : "1387",
-  "inLanguage": "zh",
+  "articleBody": " ⚠️：你必须准备\n域名：国内可能需要备案\n服务器：Linux\n‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04 标签: #安全 #服务器 执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update \u0026amp;\u0026amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone \u0026#39;America/New_York\u0026#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.example.com 是 FQDN 127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行 ...... 省流版 docker一把过 1、首先新建文件夹，比如fireflyiii\ncd fireflyiii，创建docker-compose.yml\n拷贝下面,把{{}}内的改为自己的，不要{{}}\nversion: '3.3' services: nginx-proxy: image: nginxproxy/nginx-proxy container_name: nginx-proxy restart: always ports: - \"80:80\" - \"443:443\" volumes: - /var/run/docker.sock:/tmp/docker.sock:ro - ./certs:/etc/nginx/certs:ro - ./vhost:/etc/nginx/vhost.d - ./html:/usr/share/nginx/html nginx-proxy-acme: image: nginxproxy/acme-companion container_name: nginx-proxy-acme restart: always volumes: - /var/run/docker.sock:/var/run/docker.sock:ro - ./acme:/etc/acme.sh - ./certs:/etc/nginx/certs - ./vhost:/etc/nginx/vhost.d - ./html:/usr/share/nginx/html environment: # 警告接收email地址 - DEFAULT_EMAIL={{acme@fireflyiii.com}} - NGINX_PROXY_CONTAINER=nginx-proxy depends_on: - nginx-proxy app: image: fireflyiii/core:latest container_name: firefly_app restart: always volumes: - ./firefly_iii_upload:/var/www/html/storage/upload env_file: .env depends_on: - db expose: - \"8080\" environment: # 这里要改为自己的域名 - VIRTUAL_HOST={{fireflyiii.com}} - VIRTUAL_PORT=8080 - LETSENCRYPT_HOST={{fireflyiii.com}} - LETSENCRYPT_EMAIL={{acme@fireflyiii.com}} db: # docker 20.10.10 以上使用最新 image: mariadb:latest # image: mariadb:10.7.8-focal container_name: firefly_db hostname: fireflyiiidb restart: always environment: # 和下面.env 配置文件内一致 - MYSQL_RANDOM_ROOT_PASSWORD=yes - MYSQL_USER=firefly - MYSQL_PASSWORD={{.env内的}} - MYSQL_DATABASE=firefly volumes: - ./firefly_iii_db:/var/lib/mysql cron: image: alpine container_name: firefly_cron # 使用登录之后的选项--命令行令牌的 command: sh -c \"echo \\\"0 3 * * * wget -qO- http://app:8080/api/v1/cron/{{登录之后的选项--命令行令牌获取}}\\\" | crontab - \u0026\u0026 crond -f -L /dev/stdout\" redis: image: redis:6.0.9 container_name: redis restart: always volumes: - ./redis/data:/data - ./redis/logs:/var/log/redis - ./redis/conf/redis.conf:/etc/redis/redis.conf - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致 environment: - TZ=Asia/Shanghai - LANG=en_US.UTF-8 command: redis-server /etc/redis/redis.conf # 启动redis命令 volumes: firefly_iii_upload: firefly_iii_db: certs: vhost: html: 2、修改配置文件\nfireflyiii配置文件 下载wget https://raw.githubusercontent.com/firefly-iii/firefly-iii/v6.0.11/.env.example\ncp .env.example .env\n根据自己需要自行修改即可，简单说下配置redis\n# If you're looking for performance improvements, you could install memcached or redis CACHE_DRIVER=redis SESSION_DRIVER=redis # If you set either of the options above to 'redis', you might want to update these settings too # If you use Docker or similar, you can set REDIS_HOST_FILE, REDIS_PASSWORD_FILE or # REDIS_PORT_FILE to set the value from a file instead of from an environment variable # can be tcp, unix or http REDIS_SCHEME=tcp # use only when using 'unix' for REDIS_SCHEME. Leave empty otherwise. REDIS_PATH= # use only when using 'tcp' or 'http' for REDIS_SCHEME. Leave empty otherwise. REDIS_HOST=redis REDIS_PORT=6379 # Use only with Redis 6+ with proper ACL set. Leave empty otherwise. REDIS_USERNAME= REDIS_PASSWORD= # always use quotes and make sure redis db \"0\" and \"1\" exists. Otherwise change accordingly. REDIS_DB=\"0\" REDIS_CACHE_DB=\"1\" redis 配置文件 下载wget https://raw.githubusercontent.com/redis/redis/unstable/redis.conf\n根据自己需要自行修改即可\n最后docker-compose up -d启动\ndocker-compose logs -f --tail=500 查看日志\n现在fireflyiii已成功启动了，你可能会遇到很多错误，养成看日志的习惯，接下来就是使用了，不难😎 Firefly Iii使用 日期: 2023-05-28 标签: #理财 #预算 #存钱 #买车 #生活 为何要用Firefly Iii 简介及特点 Login to Firefly III Demo 安全 账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里 复式记账 预算、存钱 自动化，可以自动化设置一些操作 各端体验 PC端：web页面访问，适合PC浏览器上查看，特别是报表，很适合大屏观看 移动端：没有单独的App，但是支持PWA，推荐用chrome打开，然后添加到桌面就行了，和App无异 说点题外的，当年PWA出来的时候Safari是支持的，后来支持的功能就少了，是因为自己的App Store出来了。但是最近貌似对PWA的支持友好了😂 不扯太远了，总之只要支持PWA，基本上和App无异，对App有执念的，可以做个客户端，官方API都是开放的 登录 在firefly配置文件env内搜索SITE_OWNER 这个值就是配置的管理员邮箱 建议使用和域名相同的邮箱登录，如果无配置邮箱服务，可以使用阿里的邮箱推送服务，目前有免费额度可以用 安全设置 两步验证 打开firefly点击选项 个人档案 两步验证点击启用 手机下载Google Authenticator，切记不要登录Google账号，会上传到云上去 启用之后，重新登录 选项设置 货币 默认是欧元，可切换到人民币Chinese yuan (RMB) (¥)，如果有其他货币也可自行切换 管理 包括检查更新，邮箱测试等 初始化设置 账户 分类 标签 高级设置 预算👍 制定预算将帮助您更有效地分配资金并更轻松地实现财务目标 预算这个功能超级好用 首先，点击左侧预算，创建新预算 右侧选填字段内 自动预算 选择最后一个Adjusted (\u0026quot;... and correct for overspending\u0026quot;) 举🌰 每个月预算都是5000 1月预算5000，到月底花了8000，超预算3000 2月预算就变为2000，到月底花了1000 3月预算就变为6000 这个功能一直在找，是因为某财经大佬曾说过 然后，当你点开“本月支出建议”表格时， “根据您过去十二个月的支出以及理财目标、收入情况综合分析，建议您本月食物支出不要超过元，休闲娱乐支出不要超过元……祝您早日达成理财目标。” 下个月： “您上个月非常节俭，比预计多剩余了2000元。不妨拿出500元买点喜欢的东西奖励自己！” 当然自己开发一个这个软件耗时耗力，所以当时就在找类似开源软件，扯的有点远了😂😂😄 预算如何分配？ 50/30/20 预算法则 50/30/20 预算法则是一种简单的预算策略，可以帮助您优先考虑财务目标： 50% 用于必需品：将收入的 50% 用于支付基本生活费用，如住房、水电费、日常食品购买和交通费。 30% 用于愿望：将收入的 30% 用于自由支配花费和非必需开销，如外出就餐、娱乐、爱好和购物。 20% 用于储蓄和债务偿还：将收入的 20% 用于储蓄、投资和偿还债务。 这个体系的目的是确保您的基本需求得到满足，有一定的自由支配费用空间，并优先为未来储蓄和管理债务。 这些百分比并非一成不变。如果资金紧张，您可能需要将收入的更高比例用于支付必需品。如果您的债务很大，您可以选择分配超过 20% 的收入用于债务偿还，以加快进度。同样，如果您的储蓄目标雄心勃勃，可以将更高的比例分配给储蓄。 购买汽车的预算 一条经验法则是，您车辆的总价值不应超过您年收入的50% 另一个好的经验法则是 20/4/10 规则： 至少支付 20% 的首付款。 永远不要获得超过 4 年的贷款。 您总收入的 10% 或更少用于所有车辆支出，包括贷款支付、保险、汽油、登记费、维护和修理。 另外一个法则： 年收入买车 月收入买表 如果您的预算符合以下任一情况，您应该考虑改变您的生活方式： 您每月的抵押贷款/租金超过您实得工资的 30%。你可能想考虑找个室友，或者搬到更便宜的地方。 您每月在车辆上的总支出超过您实得工资的 15%。您可能需要考虑拼车上班、减少出行次数，或者乘坐公共汽车或自行车。如果可以的话，您可能还想考虑搬到更近的地方或卖掉您的汽车。每月预算的 10% 是一个更健康的汽车支出数字。 本杰明·富兰克林曾说：“省下一分钱就等于赚了一分钱。”如果这句话是真的，那么削减预算就相当于提高了你的收入。 常被提及的减少开支的方法有：削减有线电视、将手机套餐调整到实际使用的通话/数据量、在家烹饪/带食物去工作、重新评估贷款、扔掉优惠券、下单前先找找优惠券、取消在线购物网站的信用卡关联、减少信用卡使用并改用现金、不用时关闭灯光、不在家或睡觉时降低暖气/空调等。 账单 存钱罐👍 这个功能有助于帮助您实现您的财务目标 应急资金（fuck money） 对大多数人来说，3 到 6 个月的开支就足够了。如果您的收入不稳定或不确定，可能需要更大的应急基金（例如 9 到 12 个月） 一般放银行存款或货币基金内r1r2即可 超长期养老 以后养老要靠自己了，每月拿出收入的10%或20%放到长期账户内，为以后退休做准备 自动化 参考 Managing your finances - Firefly III documentation budgeting commontopics commontopics emergencyfunds early_career organizing ...... 浏览器输入域名访问即可，英文不好，点击选项-偏好设定修改语言为中文\n详细版 空了再写吧！🤣\n备份 财务数据特别重要，所以一定要备份\n下载sh Script to backup Firefly III database, uploads and config files installed with docker-compose · GitHub\n这个shell 根据命令执行即可备份\n添加为定时任务 新建backup.sh\n#!/bin/bash #本地备份 echo \"开始备份\" bash /path/to/fireflyiii/firefly-iii-backuper.sh backup /path/to/fireflyiii/backup/firefly-$(date '+%F').tar echo \"备份完成\" #备份到tg群里,不要删掉即可 # Define variables token=\"\" chat_id=\"\" message_thread_id=\"\" file_path=\"/path/to/fireflyiii/backup/firefly-$(date '+%F').tar\" text=\"备份成功\" # Send file to telegram curl -F chat_id=\"$chat_id\" -F message_thread_id=\"$message_thread_id\" -F document=@\"$file_path\" https://api.telegram.org/bot$token/sendDocument 添加到cron内\n3 1 * * * bash /path/to/fireflyiii/backup.sh\n参考 Docker - Firefly III documentation\n",
+  "wordCount" : "729",
+  "inLanguage": "en",
   "datePublished": "2023-05-28T18:09:34+08:00",
   "dateModified": "2023-06-24T16:42:22.351878795+08:00",
   "author":[{
@@ -119,14 +128,14 @@ if (!doNotTrack) {
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/firefly-iii-install/"
+    "@id": "https://blog.zsan.cf/posts/firefly-iii-install/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "张三的网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.zsan.ml/favicon.ico"
+      "url": "https://blog.zsan.cf/favicon.ico"
     }
   }
 }
@@ -148,7 +157,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,22 +183,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -200,7 +209,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
     <h1 class="post-title">
       个人理财工具-Firefly Iii安装
     </h1>
@@ -215,7 +224,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-24&nbsp;|&nbsp;字数:&nbsp;1387字&nbsp;|&nbsp;时长: 3分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-24&nbsp;|&nbsp;字数:&nbsp;729字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -329,7 +338,7 @@ if (!doNotTrack) {
     
     
     <div style="font-size: 22px; font-weight: 600">
-        <a target="_blank" href="https://blog.zsan.ml/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
+        <a target="_blank" href="https://blog.zsan.cf/posts/set-up-and-secure/" style="box-shadow: none">保护您的服务器</a>
     </div>
     <span style="font-size: 14px; color: #999">
         日期: 2023-06-04
@@ -342,7 +351,25 @@ if (!doNotTrack) {
         
     </span>
     <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
-        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL ......
+        执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。
+Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora
+dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。
+大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。
+使用 timedatectl 输出可用时区列表
+timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。
+使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。
+timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata
+打开 tzdata 工具
+dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter
+使用箭头键选择您所在的地区，然后按 Enter
+检查时间 使用 date 命令根据您的服务器查看当前日期和时间
+root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。
+简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。
+大多数发行版 将 example-hostname 替换为您的选择之一
+hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析
+在文本编辑器（例如 Nano）中打开 hosts 文件
+nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname.example.com 是 FQDN
+127.0.0.1 localhost.localdomain localhost 203.0.113.10 example-hostname.example.com example-hostname 为您的计算实例的 IPv6 地址添加一行。如果没有此条目，需要 IPv6 的应用程序将无法运行 ......
     </div>
     
     
@@ -489,7 +516,7 @@ if (!doNotTrack) {
     
     
     <div style="font-size: 22px; font-weight: 600">
-        <a target="_blank" href="https://blog.zsan.ml/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
+        <a target="_blank" href="https://blog.zsan.cf/posts/personalfinance/" style="box-shadow: none">Firefly Iii使用</a>
     </div>
     <span style="font-size: 14px; color: #999">
         日期: 2023-05-28
@@ -508,7 +535,72 @@ if (!doNotTrack) {
         
     </span>
     <div style="font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;">
-        为何要用Firefly Iii 简介及特点 Login to Firefly III Demo 安全 账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里 复式记账 预算、存钱 自动化 可以自动化设置一些操作 登录 在firefly配置文件env内搜索SITE_OWNER 这个值就是配置的管理员邮箱 建议使用和域名相同的邮箱登录，如果无配置邮箱服务 ......
+        为何要用Firefly Iii 简介及特点
+Login to Firefly III Demo
+安全
+账本的安全，不言而喻了，它是自托管和隔离的，意味着数据完全掌握在自己手里
+复式记账
+预算、存钱
+自动化，可以自动化设置一些操作
+各端体验 PC端：web页面访问，适合PC浏览器上查看，特别是报表，很适合大屏观看
+移动端：没有单独的App，但是支持PWA，推荐用chrome打开，然后添加到桌面就行了，和App无异
+说点题外的，当年PWA出来的时候Safari是支持的，后来支持的功能就少了，是因为自己的App Store出来了。但是最近貌似对PWA的支持友好了😂
+不扯太远了，总之只要支持PWA，基本上和App无异，对App有执念的，可以做个客户端，官方API都是开放的
+登录 在firefly配置文件env内搜索SITE_OWNER
+这个值就是配置的管理员邮箱
+建议使用和域名相同的邮箱登录，如果无配置邮箱服务，可以使用阿里的邮箱推送服务，目前有免费额度可以用
+安全设置 两步验证 打开firefly点击选项 个人档案 两步验证点击启用
+手机下载Google Authenticator，切记不要登录Google账号，会上传到云上去
+启用之后，重新登录
+选项设置 货币 默认是欧元，可切换到人民币Chinese yuan (RMB) (¥)，如果有其他货币也可自行切换
+管理 包括检查更新，邮箱测试等
+初始化设置 账户 分类 标签 高级设置 预算👍 制定预算将帮助您更有效地分配资金并更轻松地实现财务目标
+预算这个功能超级好用
+首先，点击左侧预算，创建新预算
+右侧选填字段内
+自动预算 选择最后一个Adjusted (&amp;quot;... and correct for overspending&amp;quot;)
+举🌰
+每个月预算都是5000
+1月预算5000，到月底花了8000，超预算3000
+2月预算就变为2000，到月底花了1000
+3月预算就变为6000
+这个功能一直在找，是因为某财经大佬曾说过
+然后，当你点开“本月支出建议”表格时，
+“根据您过去十二个月的支出以及理财目标、收入情况综合分析，建议您本月食物支出不要超过元，休闲娱乐支出不要超过元……祝您早日达成理财目标。”
+下个月：
+“您上个月非常节俭，比预计多剩余了2000元。不妨拿出500元买点喜欢的东西奖励自己！”
+当然自己开发一个这个软件耗时耗力，所以当时就在找类似开源软件，扯的有点远了😂😂😄
+预算如何分配？ 50/30/20 预算法则
+50/30/20 预算法则是一种简单的预算策略，可以帮助您优先考虑财务目标：
+50% 用于必需品：将收入的 50% 用于支付基本生活费用，如住房、水电费、日常食品购买和交通费。
+30% 用于愿望：将收入的 30% 用于自由支配花费和非必需开销，如外出就餐、娱乐、爱好和购物。
+20% 用于储蓄和债务偿还：将收入的 20% 用于储蓄、投资和偿还债务。
+这个体系的目的是确保您的基本需求得到满足，有一定的自由支配费用空间，并优先为未来储蓄和管理债务。
+这些百分比并非一成不变。如果资金紧张，您可能需要将收入的更高比例用于支付必需品。如果您的债务很大，您可以选择分配超过 20% 的收入用于债务偿还，以加快进度。同样，如果您的储蓄目标雄心勃勃，可以将更高的比例分配给储蓄。
+购买汽车的预算 一条经验法则是，您车辆的总价值不应超过您年收入的50%
+另一个好的经验法则是 20/4/10 规则：
+至少支付 20% 的首付款。
+永远不要获得超过 4 年的贷款。
+您总收入的 10% 或更少用于所有车辆支出，包括贷款支付、保险、汽油、登记费、维护和修理。
+另外一个法则：
+年收入买车
+月收入买表
+如果您的预算符合以下任一情况，您应该考虑改变您的生活方式：
+您每月的抵押贷款/租金超过您实得工资的 30%。你可能想考虑找个室友，或者搬到更便宜的地方。
+您每月在车辆上的总支出超过您实得工资的 15%。您可能需要考虑拼车上班、减少出行次数，或者乘坐公共汽车或自行车。如果可以的话，您可能还想考虑搬到更近的地方或卖掉您的汽车。每月预算的 10% 是一个更健康的汽车支出数字。
+本杰明·富兰克林曾说：“省下一分钱就等于赚了一分钱。”如果这句话是真的，那么削减预算就相当于提高了你的收入。
+常被提及的减少开支的方法有：削减有线电视、将手机套餐调整到实际使用的通话/数据量、在家烹饪/带食物去工作、重新评估贷款、扔掉优惠券、下单前先找找优惠券、取消在线购物网站的信用卡关联、减少信用卡使用并改用现金、不用时关闭灯光、不在家或睡觉时降低暖气/空调等。
+账单 存钱罐👍 这个功能有助于帮助您实现您的财务目标
+应急资金（fuck money） 对大多数人来说，3 到 6 个月的开支就足够了。如果您的收入不稳定或不确定，可能需要更大的应急基金（例如 9 到 12 个月）
+一般放银行存款或货币基金内r1r2即可
+超长期养老 以后养老要靠自己了，每月拿出收入的10%或20%放到长期账户内，为以后退休做准备
+自动化 参考 Managing your finances - Firefly III documentation
+budgeting
+commontopics
+commontopics
+emergencyfunds
+early_career
+organizing ......
     </div>
     
     
@@ -630,19 +722,19 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/fireflyiii/">fireflyIii</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E8%AE%B0%E8%B4%A6/">记账</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E7%90%86%E8%B4%A2/">理财</a></li>
-      <li><a href="https://blog.zsan.ml/tags/%E9%A2%84%E7%AE%97/">预算</a></li>
-      <li><a href="https://blog.zsan.ml/tags/docker/">docker</a></li>
+      <li><a href="https://blog.zsan.cf/tags/fireflyiii/">fireflyIii</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E8%AE%B0%E8%B4%A6/">记账</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E7%90%86%E8%B4%A2/">理财</a></li>
+      <li><a href="https://blog.zsan.cf/tags/%E9%A2%84%E7%AE%97/">预算</a></li>
+      <li><a href="https://blog.zsan.cf/tags/docker/">docker</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/404public-interest/">
+  <a class="prev" href="https://blog.zsan.cf/posts/404public-interest/">
     <span class="title">« 上一页</span>
     <br>
     <span>hugo更换404公益页面</span>
   </a>
-  <a class="next" href="https://blog.zsan.ml/posts/personalfinance/">
+  <a class="next" href="https://blog.zsan.cf/posts/personalfinance/">
     <span class="title">下一页 »</span>
     <br>
     <span>Firefly Iii使用</span>
@@ -659,7 +751,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.zsan.ml/",  
+            envId: "https://twikoo.zsan.cf/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

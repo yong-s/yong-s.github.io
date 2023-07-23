@@ -2,19 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>go-cqhttp on 张三的网络日志</title>
-    <link>https://blog.zsan.ml/tags/go-cqhttp/</link>
+    <link>https://blog.zsan.cf/tags/go-cqhttp/</link>
     <description>Recent content in go-cqhttp on 张三的网络日志</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 31 Aug 2022 14:03:46 +0800</lastBuildDate><atom:link href="https://blog.zsan.ml/tags/go-cqhttp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Aug 2022 14:03:46 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/tags/go-cqhttp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SillyGril&amp;QQbot一键部署</title>
-      <link>https://blog.zsan.ml/posts/sillygril-qqbot-deploy/</link>
+      <link>https://blog.zsan.cf/posts/sillygril-qqbot-deploy/</link>
       <pubDate>Wed, 31 Aug 2022 14:03:46 +0800</pubDate>
       
-      <guid>https://blog.zsan.ml/posts/sillygril-qqbot-deploy/</guid>
-      <description>一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容 version: &amp;#34;3&amp;#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=&amp;#39;ws://sillygirl:8080/qq/receive&amp;#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动 docker-compose logs -f 查看日志 二、FAQ 1、go-cq</description>
+      <guid>https://blog.zsan.cf/posts/sillygril-qqbot-deploy/</guid>
+      <description>一、docker-compose 编排文件 创建docker-compose.yaml文件并拷贝下面内容
+version: &amp;#34;3&amp;#34; services: go-cqhttp: image: mzzsfy/go-cqhttp:latest container_name: go-cqhttp volumes: - ./data:/data restart: always environment: # - token=$Yourtoken #替换为自己生成的token - ws_url=&amp;#39;ws://sillygirl:8080/qq/receive&amp;#39; - TZ=Asia/Shanghai networks: - sillygirl depends_on: - sillygirl sillygirl: image: mzzsfy/sillygirl:latest container_name: sillygirl volumes: - ./sillyGirl:/etc/sillyGirl restart: always environment: # - set__qq__token=$Yourtoken #替换为自己生成的token - TZ=Asia/Shanghai networks: - sillygirl networks: sillygirl: docker-compsoe up -d 启动
+docker-compose logs -f 查看日志
+二、FAQ 1、go-cqhttp 扫码失败 问题解决 云服务器导致 可以在本地服务器（与手机qq扫码在同一局域网内）启动服务，生成session.token 复制到云服务器相同目录下
+看这里解决
+2、go-cqhttp 建议修改为手表登录 首先运行一下，会生成device.json
+找到protocol字段修改为2
+你可能会用到的一些资料
+https://hub.docker.com/r/mzzsfy/sillygirl
+https://hub.docker.com/r/mzzsfy/go-cqhttp
+go-cqhttp配置</description>
       <content:encoded><![CDATA[<h3 id="一docker-compose-编排文件">一、docker-compose 编排文件</h3>
 <p>创建<code>docker-compose.yaml</code>文件并拷贝下面内容</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>

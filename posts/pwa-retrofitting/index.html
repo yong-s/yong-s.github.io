@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,13 @@
 <meta name="description" content="PWA使WEB网站更丝滑">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/posts/pwa-retrofitting/">
+<link rel="canonical" href="https://blog.zsan.cf/posts/pwa-retrofitting/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -69,7 +69,7 @@ if (!doNotTrack) {
 <meta property="og:title" content="用PWA 改造WEB 为原生App" />
 <meta property="og:description" content="PWA使WEB网站更丝滑" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.zsan.ml/posts/pwa-retrofitting/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/pwa-retrofitting/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-08-07T16:28:27+08:00" />
 <meta property="article:modified_time" content="2023-02-01T13:14:22+08:00" />
 
@@ -87,13 +87,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://blog.zsan.ml/posts/"
+      "item": "https://blog.zsan.cf/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "用PWA 改造WEB 为原生App",
-      "item": "https://blog.zsan.ml/posts/pwa-retrofitting/"
+      "item": "https://blog.zsan.cf/posts/pwa-retrofitting/"
     }
   ]
 }
@@ -109,8 +109,8 @@ if (!doNotTrack) {
     "PWA", " workbox", " WEB"
   ],
   "articleBody": " 最近闲来无事，把网站升级了，更加像原生APP\n记录下升级过程，免得以后忘了\nPWA是什么？可以去网上搜一下，but中文文章少一点\n用Google 封装的 好的 workbox 来升级\n注册Service Worker 在html页面注册 SW\n\u003cscript\u003e if ('serviceWorker' in navigator) { navigator.serviceWorker.getRegistrations() .then(regs =\u003e { for (let reg of regs) { // 注销掉不是当前作用域的所有的 Service Worker if (reg.scope !== 'http://localhost:8000/') { reg.unregister() } } // 注销掉污染 Service Worker 之后再重新注册自己作用域的 Service Worker window.addEventListener('load', () =\u003e { navigator.serviceWorker.register('./sw.js').then(function (e) { console.log(\"支持sw:\", e.scope) }) }) }) } \u003c/script\u003e 生成SW.js文件 google cdn importScripts(\" 'https://storage.googleapis.com/workbox-cdn/releases/6.1.1/workbox-sw.js' \"); 国内建议不使用Google\njsdelivr cdn importScripts(\"https://fastly.jsdelivr.net/npm/workbox-sw@6.5.4/build/workbox-sw.min.js\"); SW.js 编写 配置相关 workbox.setConfig( { // 是否开启debug debug: false } ); let cacheSuffixVersion = '-220806'; // 缓存版本号 const maxEntries = 100; // 最大条目数 workbox.core.setCacheNameDetails({ prefix: 'zsan', // 前缀 suffix: cacheSuffixVersion, // 后缀 }); //检测是否安装成功 if (workbox) { console.log(\"Yay! Workbox is loaded 🎉\") } else { console.log(\"Boo! Workbox didn't load 😬\") } 预缓存文件 let cacheFiles = [ { url: \"/index.html\", revision: cacheSuffixVersion } ]; workbox.precaching.precacheAndRoute(cacheFiles); workbox策略 cdn策略 对于一些cdn的使用，使用CacheFirst 缓存优先策略，此策略将首先检查缓存中是否有响应，如果有响应，则使用该策略。如果请求不在缓存中，则将使用网络，并将任何有效响应添加到缓存中，然后再传递给浏览器。\nworkbox.routing.registerRoute( new RegExp('^https://fastly\\\\.jsdelivr\\\\.net'), new workbox.strategies.CacheFirst({ cacheName: 'static-immutable' + cacheSuffixVersion, fetchOptions: { mode: 'cors', credentials: 'omit', }, plugins: [ new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 30 * 24 * 60 * 60, purgeOnQuotaError: true, }), ], }) ); 字体文件 对于字体文件，基本上确定好就不会改动了，这里使用StaleWhileRevalidate，此策略将对网络请求使用缓存来响应（如果有），并在后台更新缓存。如果未缓存，它将等待网络响应并使用它。\nworkbox.routing.registerRoute( // 匹配 woff 字体 new RegExp('.*.woff'), new workbox.strategies.StaleWhileRevalidate({ // cache storage 名称和版本号 cacheName: 'font-cache' + cacheSuffixVersion, plugins: [ // 使用 expiration 插件实现缓存条目数目和时间控制 new workbox.expiration.ExpirationPlugin({ // 最大保存项目 maxEntries, // 缓存 30 天 maxAgeSeconds: 30 * 24 * 60 * 60, }), // 使用 cacheableResponse 插件缓存状态码为 0 的请求 new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0, 200], }), ], }) ); API资源 API数据的请求使用NetworkFirst 策略，此策略将尝试首先从网络获得响应。如果收到响应，它将把它传递给浏览器，并将其保存到缓存中。如果网络请求失败，将使用最后一个缓存的响应。\nworkbox.routing.registerRoute( // 匹配 leancloudapi.xsbb.ml new RegExp('^https://(?:blog\\\\.zsan\\\\.ml)'), new workbox.strategies.NetworkFirst({ // cache storage 名称和版本号 cacheName: 'blog-api-cache' + cacheSuffixVersion, fetchOptions: { mode: 'cors', credentials: 'omit', }, networkTimeoutSeconds: 3, }) ); Google-Analytics 官方有Google Analytics 离线统计插件,但是英文的，相关资料也少，折腾了好一阵子\n1、简单点，一句代码就行,注意用这个时候，head里的代码需要是官方获取的最新的\nworkbox.googleAnalytics.initialize() 2、带离线统计\n需要去Google analytics 添加自定义指标和自定义维度\nworkbox.googleAnalytics.initialize({ parameterOverrides: { cd1: 'offline', }, hitFilter: (params) =\u003e { const queueTimeInSeconds = Math.round(params.get('qt') / 1000); params.set('cm1', queueTimeInSeconds); }, }); 其他后缀匹配 保证体验良好\nworkbox.routing.registerRoute( new RegExp('.*.(?:png|jpg|jpeg|svg|gif|webp|ico)'), new workbox.strategies.StaleWhileRevalidate() ); workbox.routing.registerRoute( new RegExp('.*.(css|js)'), new workbox.strategies.StaleWhileRevalidate() ); // 默认 workbox.routing.setDefaultHandler( new workbox.strategies.NetworkFirst({ networkTimeoutSeconds: 3, }) ); 改造完成，尽情享用🎉\n参考资料 初识 Service Worker —— 使用 Workbox 快速开发 Service Worker - 宝硕博客\nPWA来了，你准备好了么？ - PWA学习手册\nHOME · PWA 应用实战\nService worker overview - Chrome Developers\n",
-  "wordCount" : "1047",
-  "inLanguage": "zh",
+  "wordCount" : "340",
+  "inLanguage": "en",
   "datePublished": "2022-08-07T16:28:27+08:00",
   "dateModified": "2023-02-01T13:14:22.895945737+08:00",
   "author":[{
@@ -119,14 +119,14 @@ if (!doNotTrack) {
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.zsan.ml/posts/pwa-retrofitting/"
+    "@id": "https://blog.zsan.cf/posts/pwa-retrofitting/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "张三的网络日志",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://blog.zsan.ml/favicon.ico"
+      "url": "https://blog.zsan.cf/favicon.ico"
     }
   }
 }
@@ -148,7 +148,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,22 +174,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -200,7 +200,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
     <h1 class="post-title">
       用PWA 改造WEB 为原生App
     </h1>
@@ -218,7 +218,7 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-08-07 16:28:27 +0800 CST'>2022-08-07</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;1047字&nbsp;|&nbsp;时长: 3分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-08-07 16:28:27 +0800 CST'>2022-08-07</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;340字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
 作者:&nbsp;张三
 
 </div>
@@ -335,7 +335,7 @@ if (!doNotTrack) {
 <div class="post-outdated">
   <div class="hint">
     <p>【注意】最后更新于 
-      <span class="timeago" datetime="2023-02-01T13:14:22" title="二月 1, 2023">二月 1, 2023</span>，文中内容可能已过时，请谨慎使用。
+      <span class="timeago" datetime="2023-02-01T13:14:22" title="February 1, 2023">February 1, 2023</span>，文中内容可能已过时，请谨慎使用。
     </p>
   </div>
 </div>
@@ -506,17 +506,17 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blog.zsan.ml/tags/pwa/">PWA</a></li>
-      <li><a href="https://blog.zsan.ml/tags/workbox/"> workbox</a></li>
-      <li><a href="https://blog.zsan.ml/tags/web/">web</a></li>
+      <li><a href="https://blog.zsan.cf/tags/pwa/">PWA</a></li>
+      <li><a href="https://blog.zsan.cf/tags/workbox/"> workbox</a></li>
+      <li><a href="https://blog.zsan.cf/tags/web/">web</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.zsan.ml/posts/sillygril-qqbot-deploy/">
+  <a class="prev" href="https://blog.zsan.cf/posts/sillygril-qqbot-deploy/">
     <span class="title">« 上一页</span>
     <br>
     <span>SillyGril&amp;QQbot一键部署</span>
   </a>
-  <a class="next" href="https://blog.zsan.ml/posts/cloudflare-301-set/">
+  <a class="next" href="https://blog.zsan.cf/posts/cloudflare-301-set/">
     <span class="title">下一页 »</span>
     <br>
     <span>在Cloudflare 设置域名 301 重定向</span>
@@ -533,7 +533,7 @@ if (!doNotTrack) {
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://twikoo.zsan.ml/",  
+            envId: "https://twikoo.zsan.cf/",  
             el: "#tcomment",
             lang: 'zh-CN',
             

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="en" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +10,16 @@
 <meta name="description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.ml/tags/docker/">
+<link rel="canonical" href="https://blog.zsan.cf/tags/docker/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.zsan.ml/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.ml/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.ml/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.zsan.ml/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.zsan.ml/safari-pinned-tab.svg">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://blog.zsan.ml/tags/docker/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://blog.zsan.cf/tags/docker/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,7 +70,7 @@ if (!doNotTrack) {
 <meta property="og:title" content="docker" />
 <meta property="og:description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.zsan.ml/tags/docker/" />
+<meta property="og:url" content="https://blog.zsan.cf/tags/docker/" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="docker"/>
@@ -93,7 +93,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.zsan.ml/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -119,22 +119,22 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://blog.zsan.ml/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/archives/" title="归档">
+                <a href="https://blog.zsan.cf/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/tags" title="标签云">
+                <a href="https://blog.zsan.cf/tags" title="标签云">
                     <span>标签云</span>
                 </a>
             </li>
             <li>
-                <a href="https://blog.zsan.ml/about" title="关于">
+                <a href="https://blog.zsan.cf/about" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -142,7 +142,7 @@ if (!doNotTrack) {
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://blog.zsan.ml/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.ml/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/tags/">Tags</a></div>
   <h1>
     docker
   </h1>
@@ -154,7 +154,11 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>查询目前已安装的路径 sudo docker info | grep &#34;Docker Root Dir&#34; 备份旧数据到新目录 cp -a /var/lib/docker /path/to/docker 修改配置文件 docker 版本 &gt; 17.05 vim /etc/docker/daemon.json { &#34;data-root&#34;: &#34;/path/to/docker&#34;, &#34;storage-driver&#34;: &#34;overlay2&#34; # 这个是Docker的默认设置，这里也可以不用加 } 重启docker sudo systemctl restart docker 参考 两种方式迁移Docker</p>
+    <p>查询目前已安装的路径 sudo docker info | grep &#34;Docker Root Dir&#34;
+备份旧数据到新目录 cp -a /var/lib/docker /path/to/docker
+修改配置文件 docker 版本 &gt; 17.05 vim /etc/docker/daemon.json
+{ &#34;data-root&#34;: &#34;/path/to/docker&#34;, &#34;storage-driver&#34;: &#34;overlay2&#34; # 这个是Docker的默认设置，这里也可以不用加 } 重启docker sudo systemctl restart docker
+参考 两种方式迁移Docker</p>
   </div>
   <footer class="entry-footer">
 
@@ -167,9 +171,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-06-11 18:35:38 +0800 CST'>2023-06-11</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-11&nbsp;|&nbsp;字数:&nbsp;100字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-06-11 18:35:38 +0800 CST'>2023-06-11</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-11&nbsp;|&nbsp;字数:&nbsp;36字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to Docker更换默认目录" href="https://blog.zsan.ml/posts/docker-change-directory/"></a>
+  <a class="entry-link" aria-label="post link to Docker更换默认目录" href="https://blog.zsan.cf/posts/docker-change-directory/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -178,7 +182,10 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>⚠️：你必须准备 域名：国内可能需要备案 服务器：Linux ‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04   标签: #安全  #服务器  执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许...</p>
+    <p>⚠️：你必须准备
+域名：国内可能需要备案
+服务器：Linux
+‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04   标签: #安全  #服务器  执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname....</p>
   </div>
   <footer class="entry-footer">
 
@@ -191,9 +198,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-24&nbsp;|&nbsp;字数:&nbsp;1387字&nbsp;|&nbsp;时长: 3分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-24&nbsp;|&nbsp;字数:&nbsp;729字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 个人理财工具-Firefly Iii安装" href="https://blog.zsan.ml/posts/firefly-iii-install/"></a>
+  <a class="entry-link" aria-label="post link to 个人理财工具-Firefly Iii安装" href="https://blog.zsan.cf/posts/firefly-iii-install/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -202,7 +209,10 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。 前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自...</p>
+    <p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。
+前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自己搭建一个对象存储服务，然后就了解了MinIO，搭建很简单，直接docker部署
+放一个中文的教程Minio - Docker — 从入门到实践，方便后面来翻阅
+MinIO Object Storage for Container — MinIO Object Storage for Container</p>
   </div>
   <footer class="entry-footer">
 
@@ -215,9 +225,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-03-14 21:25:47 +0800 CST'>2023-03-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-28&nbsp;|&nbsp;字数:&nbsp;231字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-03-14 21:25:47 +0800 CST'>2023-03-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-28&nbsp;|&nbsp;字数:&nbsp;29字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 搭建 MinIO 高性能对象存储" href="https://blog.zsan.ml/posts/minio-service-deployment/"></a>
+  <a class="entry-link" aria-label="post link to 搭建 MinIO 高性能对象存储" href="https://blog.zsan.cf/posts/minio-service-deployment/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -226,7 +236,33 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦； 在寻找解决方案时发现用自建播客来实现下载音乐方案可行，于是就有了下面的教程 What 播客（podcast）创作者将音频或视频上传至RSS或在线播客平台，听众或观众则通过软件获取...</p>
+    <p>引言：最近用了iPhone手机，听Apple music的时候，有些喜欢的歌曲并没有，想下载到本地但由于iOS的生态封闭，操作太麻烦；
+在寻找解决方案时发现用自建播客来实现下载音乐方案可行，于是就有了下面的教程
+What 播客（podcast）创作者将音频或视频上传至RSS或在线播客平台，听众或观众则通过软件获取节目更新。
+How 制作过程不说了，来谈谈发布过程，很简单，一个支持RSS的网站发布音频信息供用户拉取，一个音频托管平台存放音频
+网站直接Hugo搭建，用zen主题支持podcast，放在GitHub page上，域名可以在freedom上注册，用cloudflare DNS解析和加速 hugo 搭建播客
+#新建网站 hugo new site podcast #安装 zen主题 git clone https://github.com/frjo/hugo-theme-zen.git themes/zen #在content内新建podcast文件夹，此页面内新增音频 cd content mkdir podcast #podcast的一些设置 #设置的图片，需要现在根目录新建 assets/images 目录，取相对路径即可 #podcast 音频下面显示链接，如何取消 vim layouts/partials/podcast.html #注释掉下面行 &lt;figcaption&gt;&lt;a href=&#34;{{ $src }}&#34;&gt;{{ .Title }}&lt;/a&gt;&lt;/figcaption&gt; podcast 配置
+#文章顶部新增参数 podcast: mp3: duration: 音频托管平台自建minin服务存储音频 minio服务很强大，感兴趣可以了解一下
+docker 部署
+version: &#39;3.3&#39; services: minio: image: quay.io/minio/minio container_name: minio1 ports: - 9090:9090 #控制台端口 - 9000:9000 #API端口 volumes: - &#39;./data:/data&#39; - &#39;./config:/root/.minio&#39; environment: MINIO_ROOT_USER: admin #管理用户名 MINIO_ROOT_PASSWORD: admin #管理密码 command: server /data --console-address &#39;:9090&#39; restart: always 部署成功，ip:9090访问登录
+控制台操作
+1、创建存储桶
+create bucket
+2、点击manage，Access Rules
+add rule
+prefix：*.* access:readonly 3、上传音频
+4、分享文件，链接地址 复制出来，前面ip换成外部ip即可
+把地址贴在上面podcast 参数 mp3 的地方
+enjoy 这样算下来，除了用了一台服务器外，其他全部费用为零，总费用百元不到
+部署全部完成，点击RSS链接放到订阅的地方，尽情享用吧！🎉
+参考：
+Zen | Hugo Themes
+GitHub - frjo/hugo-theme-zen: A fast and clean Hugo base theme with css-grid and Hugo pipes support.
+如何零成本开始一档新播客 - Keep Coding
+苹果博客指南
+GitHub - minio/minio: Multi-Cloud Object Storage
+MinIO | The MinIO Quickstart Guide
+自建对象存储Minio - 博客小站</p>
   </div>
   <footer class="entry-footer">
 
@@ -239,9 +275,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-07-12 22:04:47 +0800 CST'>2022-07-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;776字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-07-12 22:04:47 +0800 CST'>2022-07-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;149字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 低成本搭建高质量播客发布服务" href="https://blog.zsan.ml/posts/how-to-make-podcast/"></a>
+  <a class="entry-link" aria-label="post link to 低成本搭建高质量播客发布服务" href="https://blog.zsan.cf/posts/how-to-make-podcast/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -250,7 +286,14 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>Snapdrop 是一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件 官网有demo，but不稳定，自部署一套稳定可靠可控 官方已经上传image 了，所以下面手动下载的可以不用看了 version: &#34;3&#34; services: node: image: linuxserver/snapdrop # user: &#34;node&#34; container_name: snapdrop restart: always ports: - 80:80 #git clone 下载 git...</p>
+    <p> Snapdrop 是一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件
+官网有demo，but不稳定，自部署一套稳定可靠可控
+官方已经上传image 了，所以下面手动下载的可以不用看了
+version: &#34;3&#34; services: node: image: linuxserver/snapdrop # user: &#34;node&#34; container_name: snapdrop restart: always ports: - 80:80 #git clone 下载 git clone https://github.com/RobinLinus/snapdrop.git cd snapdrop #国内服务需换源 cd docker vim nginx-with-openssl.Dockerfile #RUN apk add --no-cache openssl 上方添加命令 RUN sed -i &#39;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#39; /etc/apk/repositories #保存 启动 docker-compose up -d 常见问题：
+1、启动后日志里报
+npm ERR! Error: EACCES: permission denied, access &#39;/home/node/app&#39; npm ERR! { Error: EACCES: permission denied, access &#39;/home/node/app&#39; npm ERR! stack: &#39;Error: EACCES: permission denied, access \&#39;/home/node/app\&#39;&#39;, npm ERR! errno: -13, npm ERR! code: &#39;EACCES&#39;, npm ERR! syscall: &#39;access&#39;, npm ERR! path: &#39;/home/node/app&#39; } 权限 user的坑，我默认是root用户，yml里node启动为node用户，导致权限过低，启动失败
+此时只需要把docker-compose.yml 里的user: “node” 注释即可
+vim docker-compose #user: &#34;node” </p>
   </div>
   <footer class="entry-footer">
 
@@ -263,9 +306,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-06-19 17:44:20 +0800 CST'>2022-06-19</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-06&nbsp;|&nbsp;字数:&nbsp;356字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-06-19 17:44:20 +0800 CST'>2022-06-19</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-06&nbsp;|&nbsp;字数:&nbsp;107字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to Docker 部署 Snapdrop" href="https://blog.zsan.ml/posts/docker-deploy-snapdrop/"></a>
+  <a class="entry-link" aria-label="post link to Docker 部署 Snapdrop" href="https://blog.zsan.cf/posts/docker-deploy-snapdrop/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -274,7 +317,13 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>设备：N1 硬盘：400g ssd 已安装服务：docker、docker-compose 开干！ 一、挂载ssd（挂载过直接跳到第二步） 硬盘插到N1上 lsblk #查看当前磁盘情况 fdisk -l #查看当前未挂载的磁盘 #假设磁盘名为 dev/sda #创建分区 fdisk dev/sda #输入n, p, 1, 两次回车，wq #新建一个主分区，大小整个磁盘，保存写入 #写入文件格式 mkfs.ext4 /dev/sda...</p>
+    <p>设备：N1
+硬盘：400g ssd
+已安装服务：docker、docker-compose
+开干！
+一、挂载ssd（挂载过直接跳到第二步） 硬盘插到N1上
+lsblk #查看当前磁盘情况 fdisk -l #查看当前未挂载的磁盘 #假设磁盘名为 dev/sda #创建分区 fdisk dev/sda #输入n, p, 1, 两次回车，wq #新建一个主分区，大小整个磁盘，保存写入 #写入文件格式 mkfs.ext4 /dev/sda #ext4格式 #挂载 mount /dev/sda /media/data #查看文件 df -lh #查看到刚才挂载的硬盘 #设置开机自动挂载 vim /etc/fstab # 在最后新增一行 /dev/sdb /media/data ext4 defaults 0 0 二、部署 mkdir wxedge cd wxedge vim docker-compose.yml version: &#39;3.3&#39; services: wxedge: container_name: wxedge restart: always privileged: true network_mode: host tmpfs: - /run - /tmp volumes: - &#39;/media/data/wxedge:/storage:rw&#39; image: onething1/wxedge ip:18888 打开 成功🎉🎉🎉
+躺着赚钱吧！</p>
   </div>
   <footer class="entry-footer">
 
@@ -287,9 +336,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-05-09 21:05:31 +0800 CST'>2022-05-09</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;252字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-05-09 21:05:31 +0800 CST'>2022-05-09</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;78字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 【躺赚】docker部署网心云容器魔方" href="https://blog.zsan.ml/posts/docker-deploying-netcentric-cloud-containers/"></a>
+  <a class="entry-link" aria-label="post link to 【躺赚】docker部署网心云容器魔方" href="https://blog.zsan.cf/posts/docker-deploying-netcentric-cloud-containers/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -298,7 +347,12 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠 1、创建docker-nginx目录 新建 docker-compose.yml 文件 mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &#39;3.3&#39; services: web: image: nginx:latest container_name: nginx...</p>
+    <p>用docker部署nginx官方只给了docker版本的，没有compose的，只好自己转换一下了，记录一下，方便下次部署，这只是简单的部署，至于nginx配置的话，有空再补吧🫠
+1、创建docker-nginx目录 新建 docker-compose.yml 文件
+mkdir docker-nginx mkdir nginx mkdir log mkdir html vim docker-compose.yml 2、docker-compose.yml version: &#39;3.3&#39; services: web: image: nginx:latest container_name: nginx volumes: - ./nginx:/etc/nginx - ./log:/var/log/nginx - ./html:/usr/share/nginx/html //网站放置目录 ports: - &#34;8081:80&#34; environment: - NGINX_HOST=&#34;192.168.116.10&#34; //访问地址/域名 - NGINX_PORT=&#34;80&#34; //访问端口 - TZ=&#34;Asia/Shanghai&#34; //时区 restart: always 3、手动cp配置文件 由于官方image没有默认映射外部文件，需要手动把配置文件cp出来
+# 运行官方命令创建默认容器 docker run --name nginx -p 8080:80 -d nginx #配置文件复制到nginx里,其他文件可用复制 #是个坑，路径必须是全路径 docker cp nginx:/etc/nginx /opt/docker-nginx #删除默认容器 docker stop nginx &amp;&amp; docker rm nginx 4、修改nginx配置文件 端口号、域名，ssl等和以前配置一样，不再赘述
+5、运行&amp;测试 docker-compose up -d #查看日志 docker-compose logs -f #浏览器输入IP或域名查看是否可以访问 参考文档：
+1、Docker Hub-nginx</p>
   </div>
   <footer class="entry-footer">
 
@@ -311,9 +365,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-04-08 16:23:01 +0800 CST'>2022-04-08</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-13&nbsp;|&nbsp;字数:&nbsp;405字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-04-08 16:23:01 +0800 CST'>2022-04-08</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-13&nbsp;|&nbsp;字数:&nbsp;87字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to Docker 部署 Nginx服务" href="https://blog.zsan.ml/posts/docker-build-nginx/"></a>
+  <a class="entry-link" aria-label="post link to Docker 部署 Nginx服务" href="https://blog.zsan.cf/posts/docker-build-nginx/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -322,7 +376,40 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>何为信息茧房： 哈佛大学凯斯·桑斯坦教授在《信息乌托邦》一书中提出，人类社会存在一种“信息茧房”现象。他认为，在信息传播中人们自身的信息需求并非全方位的，只会注意选择想要的或能使自己愉悦的信息，久而久之接触的信息就越来越局限，越来越窄，就像蚕吐出来的丝一样，细细密密地把自己包裹起来，最终像一个蚕宝宝一...</p>
+    <p>何为信息茧房：
+哈佛大学凯斯·桑斯坦教授在《信息乌托邦》一书中提出，人类社会存在一种“信息茧房”现象。他认为，在信息传播中人们自身的信息需求并非全方位的，只会注意选择想要的或能使自己愉悦的信息，久而久之接触的信息就越来越局限，越来越窄，就像蚕吐出来的丝一样，细细密密地把自己包裹起来，最终像一个蚕宝宝一样被桎梏在“信息茧房”内，失去对其他不同事物的了解能力和接触机会。当时，他的这一观点还只是作为一种推论和预测，但随着网络信息和人工智能技术的飞速发展，这种“信息茧房”现象，正越来越多地发生在现实生活中和我们的身边。
+说人话就是：
+在现如今的生活中，人们接受信息的来源（主要指生活在大陆，国外也差不多），主要从微信、微博、抖音、快手等中心化的平台，各家相互关闭自己的开放接口，强迫用户留在自己平台上，有时候只关注某个大V的信息，却不得不安装一个app，就这样手机上装了很多app（这些app们平均一周更新一次，要吐了）再加上平台的推荐算法，只推荐你喜欢的（兼听则明，偏信则暗），这样下去，整个人的认知无法被提高
+经过一段时间的探索，搭建了RSS这套服务，RSS服务属于古老服务了，估计只有数字原住民才听说过，目前来说还可以，正在慢慢过渡，在此记录下搭建过程，方便下次迁移
+RSS（英文全称：RDF Site Summary 或 Really Simple Syndication[2]），中文译作简易信息聚合[3]，也称聚合内容[4]，是一种消息来源格式规范，用以聚合多个网站更新的内容并自动通知网站订阅者。使用 RSS 后，网站订阅者便无需再手动查看网站是否有新的内容，同时 RSS 可将多个网站更新的内容进行整合，以摘要的形式呈现，有助于订阅者快速获取重要信息，并选择性地点阅查看。
+——引用wikipedia
+准备：
+需要一台服务器，运行linux即可 配置不用太大，我用的是阿里云的服务器，生活在大陆，国内访问比较快
+用到的服务：
+RSSHub：一个开源、简单易用、易于扩展的 RSS 生成器，可以给任何奇奇怪怪的内容生成 RSS 订阅源。
+TTRSS：一款基于 PHP 的免费开源 RSS 聚合阅读器。
+用rsshub生成官方没有的订阅源，ttrss来管理订阅源的阅读记录，支持各端同步
+一、部署RSSHub 支持docker部署，不过，我是部署到 Vercel 上的，好处是免费、国外的机子，真正连接到互联网的，国内可访问。
+1、注册 Vercel
+有帐户的直接可以登录部署
+没有的先注册，建议用GitHub账号登录注册，github账号邮箱建议用gmail等国外的，通过率高，如果提示失败，可以和官方人员发email解封，我的当时就直接被冻结了，发了email后，一会就解封了，态度超好👍
+2、成功后可以直接点去部署了，我是没有用官方的库部署，fork官方库后去授权部署的，效果一样，vercel 用默认的就行，等待一会，撒花，表示部署成功
+3、直接访问域名成功打开即部署成功
+4、rsshub配置环境可参考 部署 | RSSHub 配置
+用户认证
+日志配置
+其他一些服务需要的api-key
+5、在vercel 配置完 重新部署服务，才生效
+更新 支持vercel自动拉取代码更新
+二、部署TTRSS 部署到vps 阿里云上，支持docker、docker-composr即可
+docker-compose部署 下载 docker-compose.yml至任意目录。 更改 docker-compose.yml 中的设置，请务必更改 postgres 用户密码。 通过终端在同目录下运行 docker-compose up -d 后等待部署完成。 默认通过 181 端口访问 TTRSS，默认账户：admin 密码：password，请第一时间更改。 wangqiru/mercury-parser-api 及 wangqiru/opencc-api-server 为支持高级功能而加入的可选服务类容器，删除不会影响 TTRSS 基础功能。 SELF_URL_PATH: TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。
+这里说明一下，如果没有域名就要配置为 ip:端口号 的形式
+更多配置参考 官方文档
+更新 推荐使用手动更新
+#自用 docker-compose pull #官方推荐 docker pull wangqiru/ttrss:latest # docker pull wangqiru/mercury-parser-api:latest # docker pull wangqiru/opencc-api-server:latest docker-compose up -d # 如果您没有使用 docker-compose，我确信您知道该怎么做。 备份 养成定期备份的习惯，有些订阅源很重要的资料可以永久保存，避免404
+复制 Postgres 数据卷 ~/postgres/data/（或者你在 docker-compose 中指定的目录）至其他任何地方作为备份，这非常重要！
+执行如下命令来导出所有数据：
+#docker exec postgres pg_dumpall -c -U 数据库用户名 &gt; export.sql docker exec postgres pg_dumpall -c -U postgres &gt; export.sql 执行如下命令来导入所有数据： #cat export....</p>
   </div>
   <footer class="entry-footer">
 
@@ -335,13 +422,13 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2022-03-13 13:05:35 +0800 CST'>2022-03-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;2150字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2022-03-13 13:05:35 +0800 CST'>2022-03-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-09&nbsp;|&nbsp;字数:&nbsp;230字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 打破信息茧房" href="https://blog.zsan.ml/posts/rss-build/"></a>
+  <a class="entry-link" aria-label="post link to 打破信息茧房" href="https://blog.zsan.cf/posts/rss-build/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="https://blog.zsan.ml/tags/docker/page/2/">下一页&nbsp;&nbsp;»
+    <a class="next" href="https://blog.zsan.cf/tags/docker/page/2/">下一页&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
