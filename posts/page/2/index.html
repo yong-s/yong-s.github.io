@@ -165,6 +165,32 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>搭建服务器监控服务-哪吒探针
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看准备工作 | 哪吒监控
+服务器安装管理面板 curl -L https://cdn.jsdelivr.net/gh/naiba/nezha@master/script/install.sh -o nezha.sh &amp;&amp; chmod &#43;x nezha.sh &amp;&amp; sudo CN=true ./nezha.sh` 客户端安装Agent 绿色的 Linux/Windows 图标按钮，复制一键安装命令
+PS：官网写的太详细了，我这篇也没必要写了，占个坑，算是知道相关服务</p>
+  </div>
+  <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-03-14 21:20:29 +0800 CST'>2023-03-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-01&nbsp;|&nbsp;字数:&nbsp;22字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;张三</footer>
+  <a class="entry-link" aria-label="post link to 搭建服务器监控服务-哪吒探针" href="https://blog.zsan.cf/posts/setting-up-server-monitoring-service-nezha-probe/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>搭建 frp 内网穿透服务
     </h2>
   </header>
@@ -422,34 +448,6 @@ MinIO | The MinIO Quickstart Guide
 创建:&nbsp;<span title='2022-07-12 22:04:47 +0800 CST'>2022-07-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;149字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
   <a class="entry-link" aria-label="post link to 低成本搭建高质量播客发布服务" href="https://blog.zsan.cf/posts/how-to-make-podcast/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Autojs 笔记
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>最近薅🦙接触了autojs，在Android手机上可自动化运行的脚本，不用root，可直接运行，轻量小巧，底层调用Android API，自己可封装API👍
-安装 autojs原作者已不再维护，推出了autojs.pro版，有钱的大佬可以直接去安装下载，官方文档也很全
-没钱的话，可以用autoxjs，从原有开源库接手过来的，开源免费
-GitHub - kkevsekk1/AutoX: A UiAutomator on android, does not need root access(安卓平台上的JavaScript自动化工具)
-常用语法 获取设备信息 // 打印运行环境信息 let str = &#34;&#34;; let str = &#34;&#34;; str &#43;= &#34;屏幕宽度:&#34; &#43; device.width; str &#43;= &#34;\n屏幕高度:&#34; &#43; device.height; str &#43;= &#34;\nbuildId:&#34; &#43; device.buildId; str &#43;= &#34;\n主板:&#34; &#43; device.board; str &#43;= &#34;\n制造商:&#34; &#43; device.brand; str &#43;= &#34;\n型号:&#34; &#43; device.model; str &#43;= &#34;\n产品名称:&#34; &#43; device.product; str &#43;= &#34;\nbootloader版本:&#34; str &#43;= &#34;\nbootloader版本:&#34; &#43; device.bootloader; str &#43;= &#34;\n硬件名称:&#34; &#43; device.hardware; str &#43;= &#34;\n唯一标识码:&#34; &#43; device.fingerprint; str &#43;= &#34;\nIMEI: &#34; &#43; device.getIMEI(); str &#43;= &#34;\nAndroidId: &#34; &#43; device.getAndroidId(); str &#43;= &#34;\nMac: &#34; &#43; device.getMacAddress(); str &#43;= &#34;\nAPI: &#34; &#43; device.sdkInt; log(str); 打开应用市场app详情页 //打开应用市场app详情页 function startAppStore() { toastLog(&#34;去应用市场...&#34;) let i = app.intent({ action: &#34;VIEW&#34;, // type: &#34;image/png&#34;, data: app.parseUri(&#39;market://details?id=&#39; &#43; pkgName), flags: [&#34;activity_new_task&#34;], packageName: myDevice(&#34;Markets&#34;), }); context.startActivity(i); } 检测app安装状态 // 通过判断包名判断是否安装app getAppName(pkgName) 获取当前时间 function getCurData() { let now = new Date(); let timeNow; let y = now....</p>
-  </div>
-  <footer class="entry-footer">
-
-
-
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2022-06-26 15:08:44 +0800 CST'>2022-06-26</span>&nbsp;|&nbsp;更新:&nbsp;2023-02-01&nbsp;|&nbsp;字数:&nbsp;237字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
-作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to Autojs 笔记" href="https://blog.zsan.cf/posts/autojs-notes/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

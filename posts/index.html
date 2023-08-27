@@ -254,6 +254,68 @@ organizing</p>
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>N1安装小刚炮(Nano Disk Manager)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>垃圾佬捡的N1安装小刚炮充当下载机，没钱买nas，这里记录下安装教程，备个份
+灯大的教程
+Nano Disk Manager (NanoDM) N1 PT下载小钢炮固件安装说明 本说明最后由 荒野无灯 于 2019-04-24 17:38 编辑
+公测版由于功能尚未最终稳定。因此，更新会比较频繁。
+强烈建议使用0411之后的版本, 不要再去下载0909版本了…
+0909版本的任何问题或bug都不予处理.
+FAQ 缓存问题 (此问题仅存在于0909及之前的老固件):
+如果你进某个页面总是跳回登录页面,或者直接没有显示任何东西 ，浏览器返回的是该页无法显示。
+chrome浏览器缓存问题。 ctrl &#43; shift &#43; i , 然后右击浏览器顶部地址栏的刷新按钮，
+选择第三项：“清空缓存并硬性重新加载”， 即可。
+更多FAQ见： https://gitee.com/8ox86/phicomm-n1-issue
+从n1原版android系统刷机操作步骤 1.有一个N1,准备个U盘. 不要太大，U盘大于512M即可. usb 2.0的最佳。
+闪迪（SanDisk）酷豆（CZ33）16GB 或 8GB的测试通过，表现良好。lexar 8GB USB2.0 U盘表现更佳。
+经测试，上次撸的台电（Teclast）锋芒 U盘 64G USB3.0很大概率上识别会有问题。
+下载 phicomm-n1-s905-linux-hacklog-20190327-0136.img.7z , 用7z或winrar解压后,再校验img文件的md5. 注意校验md5 phicomm-n1-s905-linux-hacklog-20190327-0136.md5sum.txt
+将镜像文件 phicomm-n1-s905-linux-hacklog-20190327-0136.img 通过工具写入U盘 (windows下可用USB Image Tool或etcher[https://etcher.io]， linux gnome3环境下可直接用Disks工具写入)
+关于img写入 推荐使用usb-image-tool 写入 其它工具没有测试过.不保证其工作正常. 如果你下载的是一个.xz的文件,请解压出 .img文件出来,并校对 .img文件的md值. 然后再行写入. 写入方法详细步骤: 荒野无灯N1固件img写入教程for windows users.zip
+U盘写好后，先别插入！ U盘写好后，先别插入！ U盘写好后，先别插入！
+N1插上网线连接到路由器（路由器要支持DHCP）,N1开机，打开adb远程调试. (关于如何打开adb，这里我说明一下，接显示器和鼠标，进入原装的N1系统，然后点击版本号4次，提示adb已经打开即可。这个时候，即使你断电，下次开机，会也是adb已经开启的状态。)
+N1成功获取到IP后，在路由器Client Status你可以看到类似android-a08558xxxx这种名称的机器.
+N1通过adb连接n1，这里假设我们获取到的N1的IP为: 192.168.8.201, 在电脑端执行命令： adb connect 192.168.8.201 (这里为盒子的IP）,连接成功后你会看到提示： connected to 192.168.6.201:5555
+这一步如果没有连接成功,你后面的不用看了…
+前提：必须保证第5步你adb连接成功了！(这时可连接显示器看效果,但不是必须的),输入:
+adb shell 确保已经进入android的shell,成功进入的标记是，命令提示符会变成： p230:/ $ 然后手里准备好U盘，再执行：
+reboot update 此时，迅速插上U盘到离HDMI口最近的那个位置。只插一个U盘,不要插其它多余的USB…
+如果命令执行成功,且你的U盘是做好的,那么,会自动进入linux系统(没错,我还没想好名字,先叫linux吧),
+然后你如果接了显示器的话,应该是始终黑屏的. 反之,如果不是黑屏,而是进入了盒子系统的画面,
+或者进入了盒子的recovery界面,
+说明你的U盘做得有问题,换U盘,或者检查自己制作启动盘的过程是不是存在问题.
+进入老毛子路由器，打开Client Status（客户端状态）列表，点击刷新。等待N1启动后获取IP, 你会看到一个名为phicomm-n1的机器， N1 的mac 开头是 FC7C02 的。
+这里假设N1的IP为: 192.168.8.201， 后续的说明以这个假设为基础。
+启动大概需要两三分钟。
+安装到内置emmc: 通过浏览器打开 http://192.168.8.201:8086/ ，即可看到安装界面。 然后,点击start install按钮即可开始自动安装。
+如果有看到socket ignored的错误,不用管.其它操作成功就行.
+最后显示：Complete copy OS to eMMC parted SYSTEM 即表示安装过程已经完成。此时，
+可气沉丹田，蛋定，然后，断掉N1电源, 拔掉U盘。
+再上电开机即可。
+静静地等待启动。大概两三分钟吧。 查看IP可以用上面提到的”Client Status（客户端状态）列表“ 法。 （也可以用ping，一般是没必要的。）
+打开登录页面后，务必清空chrome浏览器缓存。 ctrl &#43; shift &#43; i , 然后右击浏览器顶部地址栏的刷新按钮，...</p>
+  </div>
+  <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-08-27 21:10:48 +0800 CST'>2023-08-27</span>&nbsp;|&nbsp;更新:&nbsp;2023-08-27&nbsp;|&nbsp;字数:&nbsp;465字&nbsp;|&nbsp;时长: 3分钟&nbsp;|&nbsp;
+作者:&nbsp;张三</footer>
+  <a class="entry-link" aria-label="post link to N1安装小刚炮(Nano Disk Manager)" href="https://blog.zsan.cf/posts/installnanodm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Docker更换默认目录
     </h2>
   </header>
@@ -432,32 +494,6 @@ MinIO Object Storage for Container — MinIO Object Storage for Container</p>
 创建:&nbsp;<span title='2023-03-14 21:25:47 +0800 CST'>2023-03-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-28&nbsp;|&nbsp;字数:&nbsp;29字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
   <a class="entry-link" aria-label="post link to 搭建 MinIO 高性能对象存储" href="https://blog.zsan.cf/posts/minio-service-deployment/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>搭建服务器监控服务-哪吒探针
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>本来想写下当时部署时的坑的，刚才重新部署，发现文档特别完善，不像我当时（2年前）部署时的了，就简单记录下吧，详细可以看准备工作 | 哪吒监控
-服务器安装管理面板 curl -L https://cdn.jsdelivr.net/gh/naiba/nezha@master/script/install.sh -o nezha.sh &amp;&amp; chmod &#43;x nezha.sh &amp;&amp; sudo CN=true ./nezha.sh` 客户端安装Agent 绿色的 Linux/Windows 图标按钮，复制一键安装命令
-PS：官网写的太详细了，我这篇也没必要写了，占个坑，算是知道相关服务</p>
-  </div>
-  <footer class="entry-footer">
-
-
-
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-03-14 21:20:29 +0800 CST'>2023-03-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-01&nbsp;|&nbsp;字数:&nbsp;22字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
-作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 搭建服务器监控服务-哪吒探针" href="https://blog.zsan.cf/posts/setting-up-server-monitoring-service-nezha-probe/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

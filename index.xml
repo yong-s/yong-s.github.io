@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 11 Jun 2023 18:35:38 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Aug 2023 21:10:48 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Firefly Iii使用</title>
       <link>https://blog.zsan.cf/posts/personalfinance/</link>
@@ -163,6 +163,210 @@
 <p><a href="https://docs.firefly-iii.org/firefly-iii/financial-concepts/organizing/">organizing</a></p>
 </blockquote>
 ]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>N1安装小刚炮(Nano Disk Manager)</title>
+      <link>https://blog.zsan.cf/posts/installnanodm/</link>
+      <pubDate>Sun, 27 Aug 2023 21:10:48 +0800</pubDate>
+      
+      <guid>https://blog.zsan.cf/posts/installnanodm/</guid>
+      <description>N1安装小刚炮教程</description>
+      <content:encoded><![CDATA[<blockquote>
+<p>垃圾佬捡的N1安装小刚炮充当下载机，没钱买nas，这里记录下安装教程，备个份</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>灯大的教程</p>
+</blockquote>
+<h1 id="nano-disk-manager-nanodm">Nano Disk Manager (NanoDM)</h1>
+<h2 id="n1-pt下载小钢炮固件安装说明">N1 PT下载小钢炮固件安装说明</h2>
+<p>本说明最后由 荒野无灯 于 2019-04-24 17:38 编辑</p>
+<p>公测版由于功能尚未最终稳定。因此，更新会比较频繁。</p>
+<p>强烈建议使用0411之后的版本, 不要再去下载0909版本了&hellip;</p>
+<p>0909版本的任何问题或bug都不予处理.</p>
+<h1 id="faq">FAQ</h1>
+<p>缓存问题 (此问题仅存在于0909及之前的老固件):</p>
+<p>如果你进某个页面总是跳回登录页面,或者直接没有显示任何东西 ，浏览器返回的是该页无法显示。</p>
+<p>chrome浏览器缓存问题。 ctrl + shift + i , 然后右击浏览器顶部地址栏的刷新按钮，</p>
+<p>选择第三项：“清空缓存并硬性重新加载”， 即可。</p>
+<p>更多FAQ见： <a href="https://gitee.com/8ox86/phicomm-n1-issue">https://gitee.com/8ox86/phicomm-n1-issue</a></p>
+<h1 id="从n1原版android系统刷机操作步骤">从n1原版android系统刷机操作步骤</h1>
+<p>1.有一个N1,准备个U盘. 不要太大，U盘大于512M即可. usb 2.0的最佳。</p>
+<p>闪迪（SanDisk）酷豆（CZ33）16GB 或 8GB的测试通过，表现良好。lexar 8GB USB2.0 U盘表现更佳。</p>
+<p>经测试，上次撸的台电（Teclast）锋芒 U盘 64G USB3.0很大概率上识别会有问题。</p>
+<p>下载 phicomm-n1-s905-linux-hacklog-20190327-0136.img.7z , 用7z或winrar解压后,再校验img文件的md5.
+注意校验md5 phicomm-n1-s905-linux-hacklog-20190327-0136.md5sum.txt</p>
+<p>将镜像文件 phicomm-n1-s905-linux-hacklog-20190327-0136.img 通过工具写入U盘
+(windows下可用USB Image Tool或etcher[https://etcher.io]， linux gnome3环境下可直接用Disks工具写入)</p>
+<h2 id="关于img写入">关于img写入</h2>
+<p>推荐使用usb-image-tool 写入 其它工具没有测试过.不保证其工作正常. 如果你下载的是一个.xz的文件,请解压出 .img文件出来,并校对 .img文件的md值. 然后再行写入. 写入方法详细步骤: 荒野无灯N1固件img写入教程for windows users.zip</p>
+<p>U盘写好后，先别插入！ U盘写好后，先别插入！ U盘写好后，先别插入！</p>
+<p>N1插上网线连接到路由器（路由器要支持DHCP）,N1开机，打开adb远程调试.
+(关于如何打开adb，这里我说明一下，接显示器和鼠标，进入原装的N1系统，然后点击版本号4次，提示adb已经打开即可。这个时候，即使你断电，下次开机，会也是adb已经开启的状态。)</p>
+<p>N1成功获取到IP后，在路由器Client Status你可以看到类似android-a08558xxxx这种名称的机器.</p>
+<p>N1通过adb连接n1，这里假设我们获取到的N1的IP为: 192.168.8.201, 在电脑端执行命令：
+adb connect 192.168.8.201 (这里为盒子的IP）,连接成功后你会看到提示： connected to 192.168.6.201:5555</p>
+<p>这一步如果没有连接成功,你后面的不用看了&hellip;</p>
+<p>前提：必须保证第5步你adb连接成功了！(这时可连接显示器看效果,但不是必须的),输入:</p>
+<p>adb shell
+确保已经进入android的shell,成功进入的标记是，命令提示符会变成： p230:/ $ 然后手里准备好U盘，再执行：</p>
+<p>reboot update
+此时，迅速插上U盘到离HDMI口最近的那个位置。只插一个U盘,不要插其它多余的USB&hellip;</p>
+<p>如果命令执行成功,且你的U盘是做好的,那么,会自动进入linux系统(没错,我还没想好名字,先叫linux吧),</p>
+<p>然后你如果接了显示器的话,应该是始终黑屏的. 反之,如果不是黑屏,而是进入了盒子系统的画面,</p>
+<p>或者进入了盒子的recovery界面,</p>
+<p>说明你的U盘做得有问题,换U盘,或者检查自己制作启动盘的过程是不是存在问题.</p>
+<p>进入老毛子路由器，打开Client Status（客户端状态）列表，点击刷新。等待N1启动后获取IP, 你会看到一个名为phicomm-n1的机器，
+N1 的mac 开头是 FC7C02 的。</p>
+<p>这里假设N1的IP为: 192.168.8.201， 后续的说明以这个假设为基础。</p>
+<p>启动大概需要两三分钟。</p>
+<p>安装到内置emmc: 通过浏览器打开 http://192.168.8.201:8086/ ，即可看到安装界面。
+然后,点击start install按钮即可开始自动安装。</p>
+<p>如果有看到socket ignored的错误,不用管.其它操作成功就行.</p>
+<p>最后显示：Complete copy OS to eMMC parted SYSTEM 即表示安装过程已经完成。此时，</p>
+<p>可气沉丹田，蛋定，然后，断掉N1电源, 拔掉U盘。</p>
+<p>再上电开机即可。</p>
+<p>静静地等待启动。大概两三分钟吧。
+查看IP可以用上面提到的”Client Status（客户端状态）列表“ 法。 （也可以用ping，一般是没必要的。）</p>
+<p>打开登录页面后，务必清空chrome浏览器缓存。
+ctrl + shift + i , 然后右击浏览器顶部地址栏的刷新按钮，</p>
+<p>选择第三项：“清空缓存并硬性重新加载”， 即可。</p>
+<p>此操作在更新完系统或更新完dashboard后务必执行一次。</p>
+<p>如何判断刷机是正常的？登录dashbaord后，最多等待2分钟时间,然后：</p>
+<p>依次点击左侧菜单的apps下面的菜单：</p>
+<p>qBittorrent: 绿色Running
+Transmission: 绿色Running
+Aria2: 绿色Running
+Samba: 绿色Running
+FRP: 绿色Running
+ftp server: 绿色Running
+filemanager: 绿色Running
+syncthing: 绿色Running
+如果所有服务不是全绿的状态。说明刷机是有问题的。</p>
+<p>可以重新写盘，再刷一次。这时不必按这个步骤来了，</p>
+<p>而是参照下面的”从本固件旧版系统刷机操作步骤“</p>
+<p>jellyfin和docker默认没有自启动，因此是stopped 状态, 这是正常的.</p>
+<p>刷机完成后，重启一次。</p>
+<h1 id="从本固件旧版系统刷机操作步骤">从本固件旧版系统刷机操作步骤</h1>
+<p>配置备份 (具体方法见下面的&quot;配置的备份和恢复&quot;)</p>
+<p>下载img文件写入U盘</p>
+<p>关机，插入U盘，上电， 等待从U盘启动</p>
+<p>通过浏览器打开 http://192.168.8.201:8086/ ，安装固件到emmc.(注意，此步骤会自动擦除原系统的所有数据，如果你有配置文件要备份的，请注意备份)</p>
+<p>安装过程成功完成后，气沉丹田，蛋定，然后，断掉N1电源, 拔掉U盘。再上电开机即可。</p>
+<p>配置恢复 (具体方法见下面的&quot;配置的备份和恢复&quot;)</p>
+<p>配置恢复后，重启一次。</p>
+<h1 id="faq2">FAQ2</h1>
+<p>为什么我刷机成功了，qb 或 tr 等还是黄色？</p>
+<p>这不是成功，这是刷机失败的标志。</p>
+<p>写盘有问题。权限问题导致qb没能启动，从而dashboard读取不到qb的配置而启动失败。 重新写盘吧。写完之后，别动！赶紧拔出来。</p>
+<p>过早的插入U盘，或者，在U盘做好后，插入到android系统的盒子里后，会污染U盘，导致权限不正确，从而， 刷机之后很多文件权限不对。</p>
+<p>更多FAQ见：https://gitee.com/8ox86/phicomm-n1-issue</p>
+<h1 id="配置的备份和恢复">配置的备份和恢复</h1>
+<p>说明： 这里的sda1, sdb1 指的是设备名称，不是挂载点. 如指定 sdb1,则表示使用的是 /dev/sdb1 这个设备.</p>
+<p>备份：</p>
+<p>确保有且仅有一个ext4 分区的可写的硬盘已经挂在N1上，</p>
+<p>（PT用户注意：执行以下命令会关闭所有daemon, 因此，确保qb 你已经在web ui手动点击暂停了所有种子。要不然会红种。。。）</p>
+<p>然后执行</p>
+<p>cfg-backup
+（如果你连接了两个以上的硬盘，比如你想指定备份到 sda1 这个设备，那么可以这样：cfg-backup sda1)</p>
+<p>刷完机之后，从备份恢复：</p>
+<p>确保前面备份用的那个ext4 分区的硬盘已经挂在N1上，确保有且仅有一个USB设备挂在N1上面，</p>
+<p>然后执行</p>
+<p>cfg-recovery
+默认不加参数执行，是备份到sda1这个分区，恢复也是.</p>
+<p>（如果你有多个分区或硬盘，也可以在后面加参数，比如想从sdb1恢复，则执行 cfg-recovery sdb1）</p>
+<h1 id="默认用户名密码访问url及端口说明">默认用户名密码、访问URL及端口说明</h1>
+<p>假设N1的IP为: 192.168.8.201</p>
+<hr>
+<p>dashboard登录地址为： http://192.168.8.201</p>
+<p>默认用户名：root 密码： root</p>
+<p>其它信息:</p>
+<p>ssh 默认 端口 22, 用户名root, 密码root
+ftp 默认 端口 21, 用户名root, 密码root</p>
+<hr>
+<p>如果多次写盘（正确的工具，正确的操作）仍没能成功进入web ui，</p>
+<p>请检测是否降级，或者操作是否有问题。</p>
+<p>降级可以参考：v2.27 , v2.28 降级教程</p>
+<p>如果多次写盘（正确的工具，正确的操作）仍没能成功”全绿“，</p>
+<p>请仔细再看看这个文档，是不是有什么步骤没按说明来。</p>
+<hr>
+<p>！！！ 特别提醒 ！！！</p>
+<p>使用qb, aria, tr 等下载器时，自己一定要设置下载目录为外接磁盘！</p>
+<p>不要用默认的路径就开始下载东西！</p>
+<hr>
+<p>默认开机自动走有线网口dhcp获取IP,</p>
+<p>如果你的路由器没开dhcp, 那么,</p>
+<p>会自动退回到原厂设定的固定IP: 192.168.8.88</p>
+<hr>
+<p>qb 默认web ui: http://192.168.8.201:8083/</p>
+<p>默认用户名: admin</p>
+<p>默认密码: adminadmin</p>
+<hr>
+<p>tr 默认web地址: http://192.168.8.201:9091/</p>
+<p>第一次用,注意在dashboard设置 http://192.168.8.201/appcfg/transmission</p>
+<p>默认用户名: admin</p>
+<p>默认密码: 自己设置</p>
+<p>默认局域网内是不需要密码就能访问的，如果需要密码认证的，自己修改配置:</p>
+<p>rpc-authentication-required true</p>
+<hr>
+<p>filebrowser web 地址: https://192.168.8.201:8081/</p>
+<p>默认用户名: admin</p>
+<p>默认密码: admin</p>
+<hr>
+<p>Syncthing web 地址: http://192.168.8.201:8384/</p>
+<p>默认用户名: 无</p>
+<p>默认密码: 无</p>
+<p>设置web ui用户:</p>
+<p>右上角依次点击: 操作=&gt; 设置 =&gt; 图形用户界面 , 填写 &lsquo;图形管理界面用户名&rsquo; 和 &lsquo;图形管理界面密码&rsquo;, 保存.</p>
+<hr>
+<p>aria2 web 地址: http://192.168.8.201/apps/AriaNg</p>
+<p>smb 需要进 http://192.168.8.201/appcfg/smb-share 设置共享目录.</p>
+<p>硬盘默认会挂载到 /media/xxxx , 因此打路径时你只要打 /media/ 就会自动提示.</p>
+<p>如果不是两个全绿的运行状态,在你配置好的情况下,</p>
+<p>在主配置页面 http://192.168.8.108/appcfg/smb 点一下save就会重启smb变绿.</p>
+<p><strong>关于smb的用户配置说明:</strong></p>
+<p>这原本是你应该看smb的文档手册解决的问题,因为这些理念和约定,是smb程序设定的.</p>
+<p>如果你不了解这个,那你配置上可能会有麻烦.</p>
+<p>里面有一个名字叫root的用户,这个是最高权限级别的.拥有对任何文件的操作权限. 它的smb密码,跟你登录ssh的root用户的密码,是分开的,是两回事.</p>
+<p>smb里可以新建其它用户和共享.可以分配不同的权限,给不同的目录.</p>
+<p>以默认的设置举例说明（注意这里的root和admin用户之间有一个英文空格，这里的admin用户是自己新建另外一个用户）:</p>
+<p>Name	Comment	Path	Writeable	Valid Users	Invalid Users	Read List	Write List
+share	share	/media/my-movie	no	root admin		root admin	root admin
+Name表示出现在客户端访问里的名字, 如你可以改成myshare.
+<strong>注意这个必须是唯一的!也就是说你不能弄两个相同的Name!</strong></p>
+<p><code>Comment</code> 只是个注释,提醒自己用的,让自己别忘记设置这个目录是干嘛的.
+<code>Path</code> 表示要共享的目录的绝对路径. 一定要是真实存在的路径.</p>
+<p><code>Writeable no</code> 表示默认是不给写权限的</p>
+<p><code>Valid Users</code> 表示这个共享允许哪些用户. 相反,Invalid Users则表示不允许的.</p>
+<p><code>Read List</code> 为可读用户列表</p>
+<p><code>Write List</code> 为可写用户列表.</p>
+<p>看完这些说明,你应该明白了默认的那个设置,为什么是那样的了.</p>
+<hr>
+<p>frp 需要进 http://192.168.8.201/appcfg/frp 配置Server Addr和 Auth Token等. 如果没有服务端,可用一键部署工具: <a href="https://frps-deploy.80x86.io">https://frps-deploy.80x86.io</a> 快捷安装.</p>
+<p>Subdomain/CustomDomain 字段是自适应的。</p>
+<p>如果填写的是 abc 之类的，则是Subdomain. 如果你填写的是 a.b.c之类的(比如 foo.t.example.com)，</p>
+<p>则会自动识别为CustomDomain,</p>
+<p>具体填写什么根据你的服务器配置来。</p>
+<p>大部分免费服务器不支持Subdomain。</p>
+<p>如果你是用我的自动部署工具安装的frps，那么默认是支持Subdomain的.</p>
+<hr>
+<p>root密码可进 http://192.168.8.201/admin/system/admin 修改,同时可以在这里加自己的公钥证书,实现免密码登录ssh.</p>
+<hr>
+<h1 id="自定义修改">自定义修改</h1>
+<h2 id="filebrowser升级最新版本">filebrowser升级最新版本</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#app位置</span>
+</span></span><span style="display:flex;"><span>cd /usr/local/apps/filebrowser
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#下载最新版本放这里</span>
+</span></span><span style="display:flex;"><span>ls linux-arm64-filebrowser.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#startup 重启服务</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#默认是https访问，内网不需要，更改为http访问</span>
+</span></span><span style="display:flex;"><span>vim /etc/init.d/S99filebrows
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#注释原启动参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#FB_EXTRA_ARGS=&#34;--cert /etc/dashboard/ssl/ssl.crt --key /etc/dashboard/ssl/ssl.key --port $http_port --address 0.0.0.0 --database /var/lib/filebrowser/filebrowser.db --log /var/log/filebrowser.log --root $default_scope&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#新增</span>
+</span></span><span style="display:flex;"><span>FB_EXTRA_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; --port </span>$http_port<span style="color:#e6db74"> --address 0.0.0.0 --database /var/lib/filebrowser/filebrowser.db --log /var/log/filebrowser.log --root </span>$default_scope<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div>]]></content:encoded>
     </item>
     
     <item>
@@ -892,10 +1096,10 @@ organizing ......
 <p><code>config.yml</code>内添加下列参数</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">params</span>:
-</span></span><span style="display:flex;"><span><span style="color:#f92672">    outdatedInfoWarning</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    enable</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    hint</span>: <span style="color:#ae81ff">30</span>                <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示提醒</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">    warn</span>: <span style="color:#ae81ff">180</span>    <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示警告</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">outdatedInfoWarning</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">hint</span>: <span style="color:#ae81ff">30</span>                <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示提醒</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">warn</span>: <span style="color:#ae81ff">180</span>    <span style="color:#75715e"># 如果文章最后更新于这天数之前，显示警告</span>
 </span></span></code></pre></div><h2 id="5文章单独配置开关">5、文章单独配置开关</h2>
 <p>文章开头增加<code>enableOutdatedInfoWarning: true #内容过时提醒</code></p>
 <p>也可把上述代码添加到<code>archetypes/default.md</code></p>
