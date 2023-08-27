@@ -209,7 +209,9 @@ Name表示出现在客户端访问里的名字, 如你可以改成myshare.
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#FB_EXTRA_ARGS=&#34;--cert /etc/dashboard/ssl/ssl.crt --key /etc/dashboard/ssl/ssl.key --port $http_port --address 0.0.0.0 --database /var/lib/filebrowser/filebrowser.db --log /var/log/filebrowser.log --root $default_scope&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#新增</span>
 </span></span><span style="display:flex;"><span>FB_EXTRA_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; --port </span>$http_port<span style="color:#e6db74"> --address 0.0.0.0 --database /var/lib/filebrowser/filebrowser.db --log /var/log/filebrowser.log --root </span>$default_scope<span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div>]]></content:encoded>
+</span></span></code></pre></div><h1 id="参考">参考</h1>
+<p><a href="https://rom.nanodm.net/N1/">n1灯大官方</a></p>
+]]></content:encoded>
     </item>
     
   </channel>
