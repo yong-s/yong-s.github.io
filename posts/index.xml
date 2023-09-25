@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh&#34; target=&#34;_blank&#34;&gt;CC BY-NC-SA 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 27 Aug 2023 21:10:48 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Sep 2023 21:57:02 +0800</lastBuildDate><atom:link href="https://blog.zsan.cf/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Firefly Iii使用</title>
       <link>https://blog.zsan.cf/posts/personalfinance/</link>
@@ -151,7 +151,7 @@
 <h4 id="超长期养老">超长期养老</h4>
 <p>以后养老要靠自己了，每月拿出收入的10%或20%放到长期账户内，为以后退休做准备</p>
 <h3 id="自动化">自动化</h3>
-<p> </p>
+<hr>
 <h2 id="参考">参考</h2>
 <blockquote>
 <p><a href="https://docs.firefly-iii.org/firefly-iii/faq/financials/">Managing your finances - Firefly III documentation</a></p>
@@ -161,6 +161,165 @@
 <p><a href="https://www.reddit.com/r/personalfinance/wiki/emergencyfunds/">emergencyfunds</a></p>
 <p><a href="https://www.reddit.com/r/personalfinance/wiki/early_career/">early_career</a></p>
 <p><a href="https://docs.firefly-iii.org/firefly-iii/financial-concepts/organizing/">organizing</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>K2t 刷入 Openwrt 当作AP使用</title>
+      <link>https://blog.zsan.cf/posts/k2t-install-openwrt/</link>
+      <pubDate>Mon, 25 Sep 2023 21:57:02 +0800</pubDate>
+      
+      <guid>https://blog.zsan.cf/posts/k2t-install-openwrt/</guid>
+      <description>1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector
+点击Sysupgrade下载，并校验文件哈希
+2、配置 汉化 在线安装
+点击 software&amp;gt;Update lists
+更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install
+离线安装
+打开镜像下载站
+根据当前openwrt版本号对应的packages
+选择对应的处理器架构
+选择luci,搜索luci-i18n-base-zh-cn下载到本地
+openwrr&amp;gt;System&amp;gt;software,点击Upload Package
+修改为AP模式 删除wlan、wlan6口
+将wan口重新配置网桥的lan口，网络&amp;gt;设备&amp;gt;br-lan&amp;gt;网桥端口
+设置lan口协议为dhcp客户端
+取消lan口dhcp服务，接口&amp;gt;编辑&amp;gt;DHCP服务器，勾选忽略此接口
+启动项禁用dhcp、dns、firewall
+保存应用
+支持IPv6：
+点击添加新接口
+名称：AP6，协议：DHCPv6客户端，设备：@lan
+保存并应用
+配置Wi-Fi ssid、密码
+加密类型: WPA2 PSK
+wlan漫游开启
+LED配置 始终关闭红灯
+蓝灯-网络状态
+修改时区 时区：shanghai
+ntp添ntp1.aliyun.com
+3、备份 配置完成一定要记得备份！
+参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔
+OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube
+OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!
+Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/
+openwrt-dumbap</description>
+      <content:encoded><![CDATA[<h1 id="1刷机">1、刷机</h1>
+<h2 id="刷入不死bred">刷入不死bred</h2>
+<h2 id="刷入固件">刷入固件</h2>
+<p><a href="https://firmware-selector.openwrt.org/">OpenWrt Firmware Selector</a></p>
+<p>点击<code>Sysupgrade</code>下载，并校验文件哈希</p>
+<h1 id="2配置">2、配置</h1>
+<h2 id="汉化">汉化</h2>
+<ul>
+<li>
+<p>在线安装</p>
+<ol>
+<li>
+<p>点击 <code>software</code>&gt;<code>Update lists</code></p>
+</li>
+<li>
+<p>更新成功，筛选框搜索<code>luci-i18n-base-zh-cn</code>,点击<code>Install</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>离线安装</p>
+<ol>
+<li>
+<p><a href="https://downloads.openwrt.org/releases/">打开镜像下载站</a></p>
+</li>
+<li>
+<p>根据当前openwrt版本号对应的<code>packages</code></p>
+</li>
+<li>
+<p>选择对应的处理器架构</p>
+</li>
+<li>
+<p>选择<code>luci</code>,搜索<code>luci-i18n-base-zh-cn</code>下载到本地</p>
+</li>
+<li>
+<p><code>openwrr</code>&gt;<code>System</code>&gt;<code>software</code>,点击<code>Upload Package</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="修改为ap模式">修改为AP模式</h2>
+<ol>
+<li>
+<p>删除<code>wlan</code>、<code>wlan6</code>口</p>
+</li>
+<li>
+<p>将wan口重新配置网桥的lan口，<code>网络</code>&gt;<code>设备</code>&gt;<code>br-lan</code>&gt;<code>网桥端口</code></p>
+</li>
+<li>
+<p>设置lan口协议为dhcp客户端</p>
+</li>
+<li>
+<p>取消lan口dhcp服务，<code>接口</code>&gt;<code>编辑</code>&gt;<code>DHCP服务器</code>，勾选<code>忽略此接口</code></p>
+</li>
+<li>
+<p>启动项禁用<code>dhcp</code>、<code>dns</code>、<code>firewall</code></p>
+</li>
+<li>
+<p>保存应用</p>
+</li>
+</ol>
+<blockquote>
+<p>支持IPv6：</p>
+<ol>
+<li>
+<p>点击<code>添加新接口</code></p>
+</li>
+<li>
+<p>名称：<code>AP6</code>，协议：<code>DHCPv6客户端</code>，设备：<code>@lan</code></p>
+</li>
+<li>
+<p>保存并应用</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="配置wi-fi">配置Wi-Fi</h2>
+<ul>
+<li>
+<p>ssid、密码</p>
+</li>
+<li>
+<p>加密类型: <code>WPA2 PSK</code></p>
+</li>
+<li>
+<p>wlan漫游开启</p>
+</li>
+</ul>
+<h2 id="led配置">LED配置</h2>
+<ul>
+<li>
+<p>始终关闭红灯</p>
+</li>
+<li>
+<p>蓝灯-网络状态</p>
+</li>
+</ul>
+<h2 id="修改时区">修改时区</h2>
+<ol>
+<li>
+<p>时区：shanghai</p>
+</li>
+<li>
+<p>ntp添<code>ntp1.aliyun.com</code></p>
+</li>
+</ol>
+<h1 id="3备份">3、备份</h1>
+<p>配置完成一定要记得备份！</p>
+<hr>
+<h1 id="参考">参考</h1>
+<blockquote>
+<p><a href="https://blog.kobin.cn/blog/network/n2/1538.html">OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔</a></p>
+<p><a href="https://www.youtube.com/watch?v=cpTasYm9RpE">OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube</a></p>
+<p><a href="https://www.right.com.cn/forum/thread-8246289-1-1.html">OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!</a></p>
+<p><a href="http://www.mleaf.org/downloads/K2P-Chaos_Calmer/K2P%e7%be%a4%e8%b5%84%e6%96%99%e5%a4%87%e4%bb%bd/OpenWRT%20lede%e7%94%a8%e6%88%b7%e6%8c%87%e5%8d%97/">Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/</a></p>
+<p><a href="https://openwrt.org/docs/guide-user/network/wifi/dumbap">openwrt-dumbap</a></p>
 </blockquote>
 ]]></content:encoded>
     </item>
@@ -1016,6 +1175,7 @@ organizing ......
 </span></span><span style="display:flex;"><span>curl -F chat_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$chat_id<span style="color:#e6db74">&#34;</span> -F message_thread_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$message_thread_id<span style="color:#e6db74">&#34;</span> -F document<span style="color:#f92672">=</span>@<span style="color:#e6db74">&#34;</span>$file_path<span style="color:#e6db74">&#34;</span> https://api.telegram.org/bot$token/sendDocument
 </span></span></code></pre></div><p>添加到cron内</p>
 <p><code>3 1 * * * bash /path/to/fireflyiii/backup.sh</code></p>
+<hr>
 <h2 id="参考">参考</h2>
 <blockquote>
 <p><a href="https://docs.firefly-iii.org/firefly-iii/installation/docker/?mtm_campaign=docu-internal&amp;mtm_kwd=docker">Docker - Firefly III documentation</a></p>

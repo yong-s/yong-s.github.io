@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>记账 | 张三的网络日志</title>
+<title>ap | 张三的网络日志</title>
 <meta name="keywords" content="">
 <meta name="description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑">
 <meta name="author" content="
 作者:&nbsp;张三">
-<link rel="canonical" href="https://blog.zsan.cf/tags/%E8%AE%B0%E8%B4%A6/">
+<link rel="canonical" href="https://blog.zsan.cf/tags/ap/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.zsan.cf/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://blog.zsan.cf/tags/%E8%AE%B0%E8%B4%A6/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://blog.zsan.cf/tags/ap/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -67,13 +67,13 @@ if (!doNotTrack) {
 	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="记账" />
+<meta property="og:title" content="ap" />
 <meta property="og:description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.zsan.cf/tags/%E8%AE%B0%E8%B4%A6/" />
+<meta property="og:url" content="https://blog.zsan.cf/tags/ap/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="记账"/>
+<meta name="twitter:title" content="ap"/>
 <meta name="twitter:description" content="博客，分享技术，理财，生活，手艺人，blog，hugo，it技术，docker,linux,脚本,羊毛🐑"/>
 
 </head>
@@ -144,20 +144,50 @@ if (!doNotTrack) {
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/tags/">Tags</a></div>
   <h1>
-    记账
+    ap
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>个人理财工具-Firefly Iii安装
+    <h2>K2t 刷入 Openwrt 当作AP使用
     </h2>
   </header>
   <div class="entry-content">
-    <p>⚠️：你必须准备
-域名：国内可能需要备案
-服务器：Linux
-‼️‼️‼️新买的服务器一定要做一些安全的防护具体可参考 保护您的服务器 日期: 2023-06-04   标签: #安全  #服务器  执行系统更新 经常更新您的系统是您可以对任何操作系统采取的最大的安全预防措施。软件更新的范围从关键漏洞补丁到小错误修复，许多软件漏洞在公开时实际上已经被修补。更新还为您提供了可用于您的分发的最新软件版本。 Ubuntu、Debian 和 Kali Linux apt update &amp;amp;&amp;amp; apt upgrade CentOS/RHEL Stream 和 Fedora 包括 CentOS Stream 8（及更高版本）、CentOS 8、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）和 Fedora dnf upgrade 设置时区 默认情况下，所有新的计算实例都设置为 UTC 时间。但是，您可能更喜欢使用您居住的时区，因此日志文件时间戳是相对于您当地时间的。 大多数发行版 包括 CentOS Stream 8（及更新版本）、CentOS 7（及更新版本）、其他 RHEL 衍生产品（包括 AlmaLinux 8 和 Rocky Linux 8）、Fedora 和 Arch。这些说明也适用于大多数 Ubuntu、Debian 和 openSUSE 发行版，但在这些情况下可能首选其他方法。 使用 timedatectl 输出可用时区列表 timedatectl list-timezones 使用箭头键、 Page Up 和 Page Down 浏览列表。复制或记下您想要的时区，然后按 q 退出列表。 使用以下命令设置时区，将 America/New_York 替换为您喜欢的时区。 timedatectl set-timezone &amp;#39;America/New_York&amp;#39; Ubuntu, Debian 和 Kali Linux Ubuntu 和 Debian 都带有一个更友好的工具，称为 tzdata 打开 tzdata 工具 dpkg-reconfigure tzdata 使用箭头键选择您选择的大陆，然后按 Enter 使用箭头键选择您所在的地区，然后按 Enter 检查时间 使用 date 命令根据您的服务器查看当前日期和时间 root@localhost:~# date Thu Feb 16 12:17:52 EST 2018 配置自定义主机名 主机名用于使用易于记忆的名称来标识您的计算实例。它可以是描述性的和结构化的（详细说明系统的用途）或通用词或短语。 简单点就是默认有 locahost变为你设置的新的web-app名字，还可用作系统的 FQDN（完全限定域名）的一部分。 大多数发行版 将 example-hostname 替换为您的选择之一 hostnamectl set-hostname example-hostname 更新系统的hosts文件 hosts 文件在 IP 地址和主机名或域之间创建静态关联，系统优先考虑在 DNS 之前进行名称解析 在文本编辑器（例如 Nano）中打开 hosts 文件 nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以将此地址与实例的完全限定域名 (FQDN) 相关联（如果有的话），并与您在上述步骤中设置的本地主机名相关联。在下面的示例中， 203.0.113.10 是公共 IP 地址， example-hostname 是本地主机名， example-hostname....</p>
+    <p>1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector
+点击Sysupgrade下载，并校验文件哈希
+2、配置 汉化 在线安装
+点击 software&gt;Update lists
+更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install
+离线安装
+打开镜像下载站
+根据当前openwrt版本号对应的packages
+选择对应的处理器架构
+选择luci,搜索luci-i18n-base-zh-cn下载到本地
+openwrr&gt;System&gt;software,点击Upload Package
+修改为AP模式 删除wlan、wlan6口
+将wan口重新配置网桥的lan口，网络&gt;设备&gt;br-lan&gt;网桥端口
+设置lan口协议为dhcp客户端
+取消lan口dhcp服务，接口&gt;编辑&gt;DHCP服务器，勾选忽略此接口
+启动项禁用dhcp、dns、firewall
+保存应用
+支持IPv6：
+点击添加新接口
+名称：AP6，协议：DHCPv6客户端，设备：@lan
+保存并应用
+配置Wi-Fi ssid、密码
+加密类型: WPA2 PSK
+wlan漫游开启
+LED配置 始终关闭红灯
+蓝灯-网络状态
+修改时区 时区：shanghai
+ntp添ntp1.aliyun.com
+3、备份 配置完成一定要记得备份！
+参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔
+OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube
+OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!
+Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/
+openwrt-dumbap</p>
   </div>
   <footer class="entry-footer">
 
@@ -170,9 +200,9 @@ if (!doNotTrack) {
 
 
 
-创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-09-25&nbsp;|&nbsp;字数:&nbsp;729字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-09-25 21:57:02 +0800 CST'>2023-09-25</span>&nbsp;|&nbsp;更新:&nbsp;2023-09-25&nbsp;|&nbsp;字数:&nbsp;68字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 个人理财工具-Firefly Iii安装" href="https://blog.zsan.cf/posts/firefly-iii-install/"></a>
+  <a class="entry-link" aria-label="post link to K2t 刷入 Openwrt 当作AP使用" href="https://blog.zsan.cf/posts/k2t-install-openwrt/"></a>
 </article>
     </main>
     

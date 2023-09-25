@@ -247,9 +247,66 @@ organizing</p>
 
 
 
-创建:&nbsp;<span title='2023-05-28 17:55:20 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-07-30&nbsp;|&nbsp;字数:&nbsp;145字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-05-28 17:55:20 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-09-25&nbsp;|&nbsp;字数:&nbsp;145字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
   <a class="entry-link" aria-label="post link to Firefly Iii使用" href="https://blog.zsan.cf/posts/personalfinance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>K2t 刷入 Openwrt 当作AP使用
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector
+点击Sysupgrade下载，并校验文件哈希
+2、配置 汉化 在线安装
+点击 software&gt;Update lists
+更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install
+离线安装
+打开镜像下载站
+根据当前openwrt版本号对应的packages
+选择对应的处理器架构
+选择luci,搜索luci-i18n-base-zh-cn下载到本地
+openwrr&gt;System&gt;software,点击Upload Package
+修改为AP模式 删除wlan、wlan6口
+将wan口重新配置网桥的lan口，网络&gt;设备&gt;br-lan&gt;网桥端口
+设置lan口协议为dhcp客户端
+取消lan口dhcp服务，接口&gt;编辑&gt;DHCP服务器，勾选忽略此接口
+启动项禁用dhcp、dns、firewall
+保存应用
+支持IPv6：
+点击添加新接口
+名称：AP6，协议：DHCPv6客户端，设备：@lan
+保存并应用
+配置Wi-Fi ssid、密码
+加密类型: WPA2 PSK
+wlan漫游开启
+LED配置 始终关闭红灯
+蓝灯-网络状态
+修改时区 时区：shanghai
+ntp添ntp1.aliyun.com
+3、备份 配置完成一定要记得备份！
+参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔
+OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube
+OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!
+Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/
+openwrt-dumbap</p>
+  </div>
+  <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-09-25 21:57:02 +0800 CST'>2023-09-25</span>&nbsp;|&nbsp;更新:&nbsp;2023-09-25&nbsp;|&nbsp;字数:&nbsp;68字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;张三</footer>
+  <a class="entry-link" aria-label="post link to K2t 刷入 Openwrt 当作AP使用" href="https://blog.zsan.cf/posts/k2t-install-openwrt/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -431,7 +488,7 @@ nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以
 
 
 
-创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-06-24&nbsp;|&nbsp;字数:&nbsp;729字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;
+创建:&nbsp;<span title='2023-05-28 18:09:34 +0800 CST'>2023-05-28</span>&nbsp;|&nbsp;更新:&nbsp;2023-09-25&nbsp;|&nbsp;字数:&nbsp;729字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
   <a class="entry-link" aria-label="post link to 个人理财工具-Firefly Iii安装" href="https://blog.zsan.cf/posts/firefly-iii-install/"></a>
 </article>
@@ -467,33 +524,6 @@ nano /etc/hosts 为您的计算实例的公共 IP 地址添加一行。您可以
 创建:&nbsp;<span title='2023-03-26 11:40:12 +0800 CST'>2023-03-26</span>&nbsp;|&nbsp;更新:&nbsp;2023-03-26&nbsp;|&nbsp;字数:&nbsp;237字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;
 作者:&nbsp;张三</footer>
   <a class="entry-link" aria-label="post link to PaperMod文章添加过时提醒" href="https://blog.zsan.cf/posts/add-outdated-info-warning/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>搭建 MinIO 高性能对象存储
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。
-前段时间搭建播客的时候想找个存储文件的服务，无奈国内没免费的，国外延迟又高，就想起了自己搭建一个对象存储服务，然后就了解了MinIO，搭建很简单，直接docker部署
-放一个中文的教程Minio - Docker — 从入门到实践，方便后面来翻阅
-MinIO Object Storage for Container — MinIO Object Storage for Container</p>
-  </div>
-  <footer class="entry-footer">
-
-
-
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-03-14 21:25:47 +0800 CST'>2023-03-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-05-28&nbsp;|&nbsp;字数:&nbsp;29字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
-作者:&nbsp;张三</footer>
-  <a class="entry-link" aria-label="post link to 搭建 MinIO 高性能对象存储" href="https://blog.zsan.cf/posts/minio-service-deployment/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

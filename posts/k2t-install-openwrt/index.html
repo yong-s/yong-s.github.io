@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>K2t 刷入 Openwrt 当作AP使用 | 张三的网络日志</title>
+<meta name="keywords" content="openwrt, ap">
+<meta name="description" content="1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector
+点击Sysupgrade下载，并校验文件哈希
+2、配置 汉化 在线安装
+点击 software&gt;Update lists
+更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install
+离线安装
+打开镜像下载站
+根据当前openwrt版本号对应的packages
+选择对应的处理器架构
+选择luci,搜索luci-i18n-base-zh-cn下载到本地
+openwrr&gt;System&gt;software,点击Upload Package
+修改为AP模式 删除wlan、wlan6口
+将wan口重新配置网桥的lan口，网络&gt;设备&gt;br-lan&gt;网桥端口
+设置lan口协议为dhcp客户端
+取消lan口dhcp服务，接口&gt;编辑&gt;DHCP服务器，勾选忽略此接口
+启动项禁用dhcp、dns、firewall
+保存应用
+支持IPv6：
+点击添加新接口
+名称：AP6，协议：DHCPv6客户端，设备：@lan
+保存并应用
+配置Wi-Fi ssid、密码
+加密类型: WPA2 PSK
+wlan漫游开启
+LED配置 始终关闭红灯
+蓝灯-网络状态
+修改时区 时区：shanghai
+ntp添ntp1.aliyun.com
+3、备份 配置完成一定要记得备份！
+参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔
+OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube
+OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!
+Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/
+openwrt-dumbap">
+<meta name="author" content="
+作者:&nbsp;张三">
+<link rel="canonical" href="https://blog.zsan.cf/posts/k2t-install-openwrt/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d052bedd1cc13385351f3edb06469dd52a1f9d9110079e37b831c03e2184d72d.css" integrity="sha256-0FK&#43;3RzBM4U1Hz7bBkad1SofnZEQB543uDHAPiGE1y0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.zsan.cf/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.zsan.cf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.zsan.cf/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.zsan.cf/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.zsan.cf/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2X66ETNYD8"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-2X66ETNYD8', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="K2t 刷入 Openwrt 当作AP使用" />
+<meta property="og:description" content="1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector
+点击Sysupgrade下载，并校验文件哈希
+2、配置 汉化 在线安装
+点击 software&gt;Update lists
+更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install
+离线安装
+打开镜像下载站
+根据当前openwrt版本号对应的packages
+选择对应的处理器架构
+选择luci,搜索luci-i18n-base-zh-cn下载到本地
+openwrr&gt;System&gt;software,点击Upload Package
+修改为AP模式 删除wlan、wlan6口
+将wan口重新配置网桥的lan口，网络&gt;设备&gt;br-lan&gt;网桥端口
+设置lan口协议为dhcp客户端
+取消lan口dhcp服务，接口&gt;编辑&gt;DHCP服务器，勾选忽略此接口
+启动项禁用dhcp、dns、firewall
+保存应用
+支持IPv6：
+点击添加新接口
+名称：AP6，协议：DHCPv6客户端，设备：@lan
+保存并应用
+配置Wi-Fi ssid、密码
+加密类型: WPA2 PSK
+wlan漫游开启
+LED配置 始终关闭红灯
+蓝灯-网络状态
+修改时区 时区：shanghai
+ntp添ntp1.aliyun.com
+3、备份 配置完成一定要记得备份！
+参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔
+OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube
+OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!
+Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/
+openwrt-dumbap" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zsan.cf/posts/k2t-install-openwrt/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-25T21:57:02+08:00" />
+<meta property="article:modified_time" content="2023-09-25T22:37:26+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="K2t 刷入 Openwrt 当作AP使用"/>
+<meta name="twitter:description" content="1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector
+点击Sysupgrade下载，并校验文件哈希
+2、配置 汉化 在线安装
+点击 software&gt;Update lists
+更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install
+离线安装
+打开镜像下载站
+根据当前openwrt版本号对应的packages
+选择对应的处理器架构
+选择luci,搜索luci-i18n-base-zh-cn下载到本地
+openwrr&gt;System&gt;software,点击Upload Package
+修改为AP模式 删除wlan、wlan6口
+将wan口重新配置网桥的lan口，网络&gt;设备&gt;br-lan&gt;网桥端口
+设置lan口协议为dhcp客户端
+取消lan口dhcp服务，接口&gt;编辑&gt;DHCP服务器，勾选忽略此接口
+启动项禁用dhcp、dns、firewall
+保存应用
+支持IPv6：
+点击添加新接口
+名称：AP6，协议：DHCPv6客户端，设备：@lan
+保存并应用
+配置Wi-Fi ssid、密码
+加密类型: WPA2 PSK
+wlan漫游开启
+LED配置 始终关闭红灯
+蓝灯-网络状态
+修改时区 时区：shanghai
+ntp添ntp1.aliyun.com
+3、备份 配置完成一定要记得备份！
+参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔
+OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube
+OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!
+Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/
+openwrt-dumbap"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.zsan.cf/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "K2t 刷入 Openwrt 当作AP使用",
+      "item": "https://blog.zsan.cf/posts/k2t-install-openwrt/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "K2t 刷入 Openwrt 当作AP使用",
+  "name": "K2t 刷入 Openwrt 当作AP使用",
+  "description": "1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector\n点击Sysupgrade下载，并校验文件哈希\n2、配置 汉化 在线安装\n点击 software\u0026gt;Update lists\n更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install\n离线安装\n打开镜像下载站\n根据当前openwrt版本号对应的packages\n选择对应的处理器架构\n选择luci,搜索luci-i18n-base-zh-cn下载到本地\nopenwrr\u0026gt;System\u0026gt;software,点击Upload Package\n修改为AP模式 删除wlan、wlan6口\n将wan口重新配置网桥的lan口，网络\u0026gt;设备\u0026gt;br-lan\u0026gt;网桥端口\n设置lan口协议为dhcp客户端\n取消lan口dhcp服务，接口\u0026gt;编辑\u0026gt;DHCP服务器，勾选忽略此接口\n启动项禁用dhcp、dns、firewall\n保存应用\n支持IPv6：\n点击添加新接口\n名称：AP6，协议：DHCPv6客户端，设备：@lan\n保存并应用\n配置Wi-Fi ssid、密码\n加密类型: WPA2 PSK\nwlan漫游开启\nLED配置 始终关闭红灯\n蓝灯-网络状态\n修改时区 时区：shanghai\nntp添ntp1.aliyun.com\n3、备份 配置完成一定要记得备份！\n参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔\nOpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube\nOpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!\nIndex of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/\nopenwrt-dumbap",
+  "keywords": [
+    "openwrt", "ap"
+  ],
+  "articleBody": "1、刷机 刷入不死bred 刷入固件 OpenWrt Firmware Selector\n点击Sysupgrade下载，并校验文件哈希\n2、配置 汉化 在线安装\n点击 software\u003eUpdate lists\n更新成功，筛选框搜索luci-i18n-base-zh-cn,点击Install\n离线安装\n打开镜像下载站\n根据当前openwrt版本号对应的packages\n选择对应的处理器架构\n选择luci,搜索luci-i18n-base-zh-cn下载到本地\nopenwrr\u003eSystem\u003esoftware,点击Upload Package\n修改为AP模式 删除wlan、wlan6口\n将wan口重新配置网桥的lan口，网络\u003e设备\u003ebr-lan\u003e网桥端口\n设置lan口协议为dhcp客户端\n取消lan口dhcp服务，接口\u003e编辑\u003eDHCP服务器，勾选忽略此接口\n启动项禁用dhcp、dns、firewall\n保存应用\n支持IPv6：\n点击添加新接口\n名称：AP6，协议：DHCPv6客户端，设备：@lan\n保存并应用\n配置Wi-Fi ssid、密码\n加密类型: WPA2 PSK\nwlan漫游开启\nLED配置 始终关闭红灯\n蓝灯-网络状态\n修改时区 时区：shanghai\nntp添ntp1.aliyun.com\n3、备份 配置完成一定要记得备份！\n参考 OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔\nOpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube\nOpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!\nIndex of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/\nopenwrt-dumbap\n",
+  "wordCount" : "68",
+  "inLanguage": "en",
+  "datePublished": "2023-09-25T21:57:02+08:00",
+  "dateModified": "2023-09-25T22:37:26.394244118+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "张三"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.zsan.cf/posts/k2t-install-openwrt/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "张三的网络日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.zsan.cf/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.zsan.cf/" accesskey="h" title="张三的网络日志 (Alt + H)">张三的网络日志</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.zsan.cf/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.cf/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.cf/tags" title="标签云">
+                    <span>标签云</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.zsan.cf/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.zsan.cf/">主页</a>&nbsp;»&nbsp;<a href="https://blog.zsan.cf/posts/">Posts</a></div>
+    <h1 class="post-title">
+      K2t 刷入 Openwrt 当作AP使用
+    </h1>
+    <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-09-25 21:57:02 +0800 CST'>2023-09-25</span>&nbsp;|&nbsp;更新:&nbsp;2023-09-25&nbsp;|&nbsp;字数:&nbsp;68字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;
+作者:&nbsp;张三
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#1%e5%88%b7%e6%9c%ba" aria-label="1、刷机">1、刷机</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%88%b7%e5%85%a5%e4%b8%8d%e6%ad%bbbred" aria-label="刷入不死bred">刷入不死bred</a></li>
+                    <li>
+                        <a href="#%e5%88%b7%e5%85%a5%e5%9b%ba%e4%bb%b6" aria-label="刷入固件">刷入固件</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#2%e9%85%8d%e7%bd%ae" aria-label="2、配置">2、配置</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%b1%89%e5%8c%96" aria-label="汉化">汉化</a></li>
+                    <li>
+                        <a href="#%e4%bf%ae%e6%94%b9%e4%b8%baap%e6%a8%a1%e5%bc%8f" aria-label="修改为AP模式">修改为AP模式</a></li>
+                    <li>
+                        <a href="#%e9%85%8d%e7%bd%aewi-fi" aria-label="配置Wi-Fi">配置Wi-Fi</a></li>
+                    <li>
+                        <a href="#led%e9%85%8d%e7%bd%ae" aria-label="LED配置">LED配置</a></li>
+                    <li>
+                        <a href="#%e4%bf%ae%e6%94%b9%e6%97%b6%e5%8c%ba" aria-label="修改时区">修改时区</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#3%e5%a4%87%e4%bb%bd" aria-label="3、备份">3、备份</a></li>
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83" aria-label="参考">参考</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+
+  
+  <div class="post-content"><h1 id="1刷机">1、刷机<a hidden class="anchor" aria-hidden="true" href="#1刷机">#</a></h1>
+<h2 id="刷入不死bred">刷入不死bred<a hidden class="anchor" aria-hidden="true" href="#刷入不死bred">#</a></h2>
+<h2 id="刷入固件">刷入固件<a hidden class="anchor" aria-hidden="true" href="#刷入固件">#</a></h2>
+<p><a href="https://firmware-selector.openwrt.org/">OpenWrt Firmware Selector</a></p>
+<p>点击<code>Sysupgrade</code>下载，并校验文件哈希</p>
+<h1 id="2配置">2、配置<a hidden class="anchor" aria-hidden="true" href="#2配置">#</a></h1>
+<h2 id="汉化">汉化<a hidden class="anchor" aria-hidden="true" href="#汉化">#</a></h2>
+<ul>
+<li>
+<p>在线安装</p>
+<ol>
+<li>
+<p>点击 <code>software</code>&gt;<code>Update lists</code></p>
+</li>
+<li>
+<p>更新成功，筛选框搜索<code>luci-i18n-base-zh-cn</code>,点击<code>Install</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>离线安装</p>
+<ol>
+<li>
+<p><a href="https://downloads.openwrt.org/releases/">打开镜像下载站</a></p>
+</li>
+<li>
+<p>根据当前openwrt版本号对应的<code>packages</code></p>
+</li>
+<li>
+<p>选择对应的处理器架构</p>
+</li>
+<li>
+<p>选择<code>luci</code>,搜索<code>luci-i18n-base-zh-cn</code>下载到本地</p>
+</li>
+<li>
+<p><code>openwrr</code>&gt;<code>System</code>&gt;<code>software</code>,点击<code>Upload Package</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="修改为ap模式">修改为AP模式<a hidden class="anchor" aria-hidden="true" href="#修改为ap模式">#</a></h2>
+<ol>
+<li>
+<p>删除<code>wlan</code>、<code>wlan6</code>口</p>
+</li>
+<li>
+<p>将wan口重新配置网桥的lan口，<code>网络</code>&gt;<code>设备</code>&gt;<code>br-lan</code>&gt;<code>网桥端口</code></p>
+</li>
+<li>
+<p>设置lan口协议为dhcp客户端</p>
+</li>
+<li>
+<p>取消lan口dhcp服务，<code>接口</code>&gt;<code>编辑</code>&gt;<code>DHCP服务器</code>，勾选<code>忽略此接口</code></p>
+</li>
+<li>
+<p>启动项禁用<code>dhcp</code>、<code>dns</code>、<code>firewall</code></p>
+</li>
+<li>
+<p>保存应用</p>
+</li>
+</ol>
+<blockquote>
+<p>支持IPv6：</p>
+<ol>
+<li>
+<p>点击<code>添加新接口</code></p>
+</li>
+<li>
+<p>名称：<code>AP6</code>，协议：<code>DHCPv6客户端</code>，设备：<code>@lan</code></p>
+</li>
+<li>
+<p>保存并应用</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="配置wi-fi">配置Wi-Fi<a hidden class="anchor" aria-hidden="true" href="#配置wi-fi">#</a></h2>
+<ul>
+<li>
+<p>ssid、密码</p>
+</li>
+<li>
+<p>加密类型: <code>WPA2 PSK</code></p>
+</li>
+<li>
+<p>wlan漫游开启</p>
+</li>
+</ul>
+<h2 id="led配置">LED配置<a hidden class="anchor" aria-hidden="true" href="#led配置">#</a></h2>
+<ul>
+<li>
+<p>始终关闭红灯</p>
+</li>
+<li>
+<p>蓝灯-网络状态</p>
+</li>
+</ul>
+<h2 id="修改时区">修改时区<a hidden class="anchor" aria-hidden="true" href="#修改时区">#</a></h2>
+<ol>
+<li>
+<p>时区：shanghai</p>
+</li>
+<li>
+<p>ntp添<code>ntp1.aliyun.com</code></p>
+</li>
+</ol>
+<h1 id="3备份">3、备份<a hidden class="anchor" aria-hidden="true" href="#3备份">#</a></h1>
+<p>配置完成一定要记得备份！</p>
+<hr>
+<h1 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h1>
+<blockquote>
+<p><a href="https://blog.kobin.cn/blog/network/n2/1538.html">OpenWrt 管理界面安装中文语言包 - KOBIN 技术随笔</a></p>
+<p><a href="https://www.youtube.com/watch?v=cpTasYm9RpE">OpenWrt 设置dummy AP，扩展AP覆盖，全网统一子网，方便各种设备互通 - YouTube</a></p>
+<p><a href="https://www.right.com.cn/forum/thread-8246289-1-1.html">OpenWrt 22.03.0路由和AP模式手动切换及公网IPV6设置-OPENWRT专版-恩山无线论坛 - Powered by Discuz!</a></p>
+<p><a href="http://www.mleaf.org/downloads/K2P-Chaos_Calmer/K2P%e7%be%a4%e8%b5%84%e6%96%99%e5%a4%87%e4%bb%bd/OpenWRT%20lede%e7%94%a8%e6%88%b7%e6%8c%87%e5%8d%97/">Index of /downloads/K2P-Chaos_Calmer/K2P群资料备份/OpenWRT lede用户指南/</a></p>
+<p><a href="https://openwrt.org/docs/guide-user/network/wifi/dumbap">openwrt-dumbap</a></p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.zsan.cf/tags/openwrt/">openwrt</a></li>
+      <li><a href="https://blog.zsan.cf/tags/ap/">ap</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.zsan.cf/posts/personalfinance/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Firefly Iii使用</span>
+  </a>
+  <a class="next" href="https://blog.zsan.cf/posts/installnanodm/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>N1安装小刚炮(Nano Disk Manager)</span>
+  </a>
+</nav>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo.zsan.cf/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            
+            path: 'window.TWIKOO_MAGIC_PATH||window.location.pathname',
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

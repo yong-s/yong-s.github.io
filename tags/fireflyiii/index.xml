@@ -402,6 +402,7 @@ organizing ......
 </span></span><span style="display:flex;"><span>curl -F chat_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$chat_id<span style="color:#e6db74">&#34;</span> -F message_thread_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$message_thread_id<span style="color:#e6db74">&#34;</span> -F document<span style="color:#f92672">=</span>@<span style="color:#e6db74">&#34;</span>$file_path<span style="color:#e6db74">&#34;</span> https://api.telegram.org/bot$token/sendDocument
 </span></span></code></pre></div><p>添加到cron内</p>
 <p><code>3 1 * * * bash /path/to/fireflyiii/backup.sh</code></p>
+<hr>
 <h2 id="参考">参考</h2>
 <blockquote>
 <p><a href="https://docs.firefly-iii.org/firefly-iii/installation/docker/?mtm_campaign=docu-internal&amp;mtm_kwd=docker">Docker - Firefly III documentation</a></p>
